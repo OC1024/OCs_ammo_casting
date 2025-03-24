@@ -6,13 +6,6 @@ data:extend({
         default_value = true,
         order = "a",
     },
-    -- {
-    --     type = "bool-setting",
-    --     name = "allow-tungsten-ammo",
-    --     setting_type = "startup",
-    --     default_value = true,
-    --     order = "b-a",
-    -- },
     {
         type = "bool-setting",
         name = "allow-casting-explosive-ammo", -- now includes heavy artillery
@@ -20,13 +13,6 @@ data:extend({
         default_value = true,
         order = "b-b",
     },
-    -- {
-    --     type = "bool-setting",
-    --     name = "allow-heavy-artillery-shell",
-    --     setting_type = "startup",
-    --     default_value = true,
-    --     order = "b-c",
-    -- },
     {
         type = "bool-setting",
         name = "allow-bio-explosives", -- crafting explosives and rockets in biochamber
@@ -40,5 +26,12 @@ data:extend({
         setting_type = "startup",
         default_value = false,
         order = "c-b",
+    },
+    {
+        type = "bool-setting",
+        name = "armor-plating",
+        setting_type = "startup",
+        default_value = false, -- false until finished, then true for publishing
+        order = "d"
     },
 })

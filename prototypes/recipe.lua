@@ -452,7 +452,7 @@ data:extend({ -- crafting and casting tungsten ammo
     auto_recycle = true,
   },
 })
- -- optional recipes, see settings.lua
+
 data:extend({ -- casting turrets
   { -- casting gun turret
     type = "recipe",
@@ -755,6 +755,91 @@ data:extend({ -- biochamber recipes
   },
 })
 
+data:extend({ -- armor plating related
+  { -- heavy amor plating
+    type = "recipe",
+    name = "heavy-armor-plating",
+    icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+    icon_size = 64, --icon_mipmaps = 4,
+    category = "crafting-with-fluid",
+    group = "intermediate-products",
+    -- subgroup = "",
+    enabled = false,
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "tungsten-plate", amount = 4},
+      {type = "item", name = "steel-plate", amount = 10},
+    },
+    results = {
+      {type = "item", name = "heavy-armor-plating", amount = 1},
+    },
+    allow_productivity = true,
+    allow_decomposition = true,
+  },
+  { -- casting heavy amor plating
+    type = "recipe",
+    name = "casting-heavy-armor-plating",
+    icons =
+    {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        -- icon_mipmaps = 4,
+      },
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon_size = 64,
+        -- icon_mipmaps = 4,
+      }
+    },
+    category = "metallurgy",
+    group = "intermediate-products",
+    -- subgroup = "",
+    enabled = false,
+    energy_required = 60,
+    ingredients = {
+      {type = "item", name = "tungsten-ore", amount = 16}, -- 4*4tungsten-ore
+      {type = "fluid", name = "molten-iron", amount = 340}, -- 30*10steel-plate + 10*4tungsten-plate
+    },
+    results = {
+      {type = "item", name = "heavy-armor-plating", amount = 1},
+    },
+    allow_productivity = true,
+  },
+  { -- ablative-armor-equipment
+    type = "recipe",
+    name = "ablative-armor-equipment",
+    icons =
+    {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        -- icon_mipmaps = 4,
+      },
+      {
+        icon = "__base__/graphics/equipment/energy-shield-equipment.png",
+        icon_size = 128,
+        icon_scale = 0.125,
+        shift = {16, -16},
+        -- icon_mipmaps = 4,
+      }
+    },
+    category = "crafting-with-fluid",
+    group = "military",
+    subgroup = "military-equipment",
+    enabled = false,
+    energy_required = 8,
+    ingredients = {
+      {type = "item", name = "heavy-armor-plating", amount = 1},
+      {type = "item", name = "electronic-circuit", amount = 10},
+    },
+    results = {
+      {type = "item", name = "ablative-armor-equipment", amount = 1},
+    },
+    allow_productivity = false,
+    allow_decomposition = true,
+  },
+})
 
 if settings.startup["allow-casting-explosive-ammo"].value then
 
@@ -783,7 +868,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     }
   end
 
-  data:extend({
+  data:extend({ -- heavy artillery shell 
     { -- casting-artillery-shell (vanilla-like without DLC)
       type = "recipe",
       name = "casting-artillery-shell",

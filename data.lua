@@ -19,7 +19,8 @@ function table.copy_and_rename(original_table, new_name)
     return copied_table
 end
 
-require("prototypes.technology")
-require("prototypes.recipe")
 require("prototypes.item")
+require("OCs_ammo_casting.prototypes.equipment")
 require("prototypes.projectile")
+require("prototypes.recipe")
+require("prototypes.technology")

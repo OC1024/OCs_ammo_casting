@@ -1,8 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.5.1
+Version: 0.6.0
 Date: 2025-03-06
-  Other:
-    - dummy version
+  Major Features:
+    - Introducing new branch of technologies for armor plating. 
+  Minor Features:
+    - Further decreasing needed icons: Expanding code for icons to all technologies and recipes.
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 2025-03-05
@@ -11,7 +13,7 @@ Date: 2025-03-05
     - Removed settings which changed the core of the mod. Tungsten ammo is now always on.
   Minor Features:
     - Reworked code for icons, reducing the file size.
-    - Fragment cannon shells from "modular turret" now in the casting light ammo tech instead of the casting heavy ammo tech.
+    - 'Fragment cannon shells' from "modular turret" now in the 'casting light ammo tech' instead of the 'casting heavy ammo tech'.
   Bugfixes:
     - Set bio-(exlposive)-rockets to output just one rocket instead of two.
 ---------------------------------------------------------------------------------------------------
