@@ -1,0 +1,104 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.5.1
+Date: 2025-03-06
+  Other:
+    - dummy version
+---------------------------------------------------------------------------------------------------
+Version: 0.5.0
+Date: 2025-03-05
+  Major Features:
+    - Reworked the order and cost of technologies.
+    - Removed settings which changed the core of the mod. Tungsten ammo is now always on.
+  Minor Features:
+    - Reworked code for icons, reducing the file size.
+    - Fragment cannon shells from "modular turret" now in the casting light ammo tech instead of the casting heavy ammo tech.
+  Bugfixes:
+    - Set bio-(exlposive)-rockets to output just one rocket instead of two.
+---------------------------------------------------------------------------------------------------
+Version: 0.4.1
+Date: 2025-03-05
+  Minor Features:
+    - Fish breeding is now optional in space. Alternatively a space platform needs other ways to gain nutrience (like bioflux). (deactivated by default)
+  Balancing:
+    - Reduced the cost of the bio ammo techs by removing production and untility science packs.
+  Bugfixes:
+    - Added missing localisation lines.
+    - Replaced missleading icons by with fitting ones.
+    - Fixed that the (explosive) rocket recipes produced explosive instead.
+  Other:
+    - Alinging the version number (old 0.3.1 to 0.4.0) since it was a major update.
+---------------------------------------------------------------------------------------------------
+Version: 0.4.0
+Date: 2025-03-03
+  Major Features:
+    - Adding rocket recipes for biochambers analog to the foundry metal ammo recipes.
+    - Three new recipes for explosives in the biochamber.
+    - Two new technologies for the biochamber exploxives and ammo.
+  Other:
+    - Re-arranged the mod. A user should note no difference.
+---------------------------------------------------------------------------------------------------
+Version: 0.3.0
+Date: 2025-03-02
+  Major Features:
+    - New mod option: "heavy artillery shell". It renames the vanilla artillery shell to "medium artillery shell" and adds a new "heavy artillery shell" with more damage but less range.
+  Changes:
+    - Reduced tungsten shotgun shell spread by 25%.
+    - Addend piercing to tungsten shotgun shells
+    - Use the only sane date format with ISO 8601.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.4
+Date: 025-02-27
+  Balancing:
+    - In tungsten cannon shell recipe, swapped 4 iron sticks to 2 iron plates.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.3
+Date: 2025-01-09
+  Balancing:
+    - Raised explosive damage of tungsten cannon shells from 50 to 200.
+    - Added piercing damage to tungsten shotgun shells.
+    - Added the explosives to the tungsten cannon shells.
+    - Swapped damage and pellet amount of tungsten shotgun shells to be more in line with uranium shotgun shells.
+  Bugfixes:
+    - Removes the maximal range of ammo if Modular Turret mod is loaded. Fixes the issue that it hits the ground premature.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.2
+Date: 2025-01-08
+  Minor Features:
+    - Implemented sounds from base game for all items.
+    - Improved the sorting of the recipes.
+  Balancing:
+    - Nerfed range bonus from +50% to +25%. With "Modular Turrets" this is +37.5% to be 25% better than non-explosive cannon shells.
+    - Fixed a inconsistency: The casting of normal railgun ammo has now the correct copper price.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.1
+Date: 2025-01-03
+  Balancing:
+    - Changed tungsten railgun ammo to have same copper cable cost as regular raingun ammo.
+---------------------------------------------------------------------------------------------------
+Version: 0.2.0
+Date: 2025-01-01
+  Minor Features:
+    - Started adding compatibility with More Ammo.
+  Balancing:
+    - Changed casting firearm magazine to not being unlocked from the start.
+    - Changed tungsten ammo to not being handcraftable.
+    - Changed tungsten ammo to be autorecyclable.
+---------------------------------------------------------------------------------------------------
+Version: 0.1.2
+Date: 2024-12-29
+  Bugfixes:
+    - Fixed a chrash due to missing optional mod dependency. 
+---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 2024-12-29
+  Bugfixes:
+    - Fixed the dependency mod list. 
+---------------------------------------------------------------------------------------------------
+Version: 0.1.0
+Date: 2024-12-29
+  Major Features:
+    - Three technology steps.
+    - Added optional tungsten ammonition.
+    - Initial release.
+  Minor Features:
+    - English and German localisation.
