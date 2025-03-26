@@ -592,7 +592,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-space.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-space.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -624,7 +624,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-gleba.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-gleba.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -716,7 +716,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-space.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-space.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -755,92 +755,172 @@ data:extend({ -- biochamber recipes
   },
 })
 
-data:extend({ -- armor plating related
-  { -- heavy amor plating
+data:extend({ -- armour plating related
+  { -- light armour plating
     type = "recipe",
-    name = "heavy-armor-plating",
-    icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-    icon_size = 64, --icon_mipmaps = 4,
+    name = "heavy-armour-plating",
+    icons = {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        icon_mipmaps = 1,
+        scale = 4,
+        tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- lighter grey
+      },
+      -- {
+      --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+      --   icon_size = 256,
+      --   icon_mipmaps = 4,
+      -- }
+    },
+    category = "crafting",
+    group = "intermediate-products",
+    -- subgroup = "",
+    enabled = false,
+    energy_required = 5,
+    ingredients = {
+      {type = "item", name = "iron-plate", amount = 10},
+      {type = "item", name = "steel-plate", amount = 4},
+    },
+    results = {
+      {type = "item", name = "light-armour-plating", amount = 1},
+    },
+    allow_productivity = false,
+    allow_decomposition = true,
+  },
+  { -- heavy armour plating
+    type = "recipe",
+    name = "heavy-armour-plating",
+    icons = {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        icon_mipmaps = 1,
+      },
+      -- {
+      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon_size = 64,
+      --   icon_mipmaps = 4,
+      --   -- scale = 0.25,
+      -- }
+    },
     category = "crafting-with-fluid",
     group = "intermediate-products",
     -- subgroup = "",
     enabled = false,
-    energy_required = 60,
+    energy_required = 10,
     ingredients = {
-      {type = "item", name = "tungsten-plate", amount = 4},
+      {type = "item", name = "carbon", amount = 4},
       {type = "item", name = "steel-plate", amount = 10},
     },
     results = {
-      {type = "item", name = "heavy-armor-plating", amount = 1},
+      {type = "item", name = "heavy-armour-plating", amount = 1},
     },
-    allow_productivity = true,
+    allow_productivity = false,
     allow_decomposition = true,
   },
-  { -- casting heavy amor plating
+  { -- tungsten armour plating
     type = "recipe",
-    name = "casting-heavy-armor-plating",
+    name = "tungsten-armour-plating",
     icons =
     {
       {
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
+        tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
       },
       {
         icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
-        -- icon_mipmaps = 4,
+        icon_mipmaps = 4,
       }
     },
     category = "metallurgy",
     group = "intermediate-products",
     -- subgroup = "",
     enabled = false,
-    energy_required = 60,
+    energy_required = 30,
     ingredients = {
       {type = "item", name = "tungsten-ore", amount = 16}, -- 4*4tungsten-ore
       {type = "fluid", name = "molten-iron", amount = 340}, -- 30*10steel-plate + 10*4tungsten-plate
+      {type = "item", name = "low-density-structure", amount = 2}
     },
     results = {
-      {type = "item", name = "heavy-armor-plating", amount = 1},
+      {type = "item", name = "tungsten-armour-plating", amount = 1},
     },
-    allow_productivity = true,
+    allow_productivity = false,
+    allow_decomposition = true,
   },
-  { -- ablative-armor-equipment
+  { -- reactive armour plating
     type = "recipe",
-    name = "ablative-armor-equipment",
+    name = "reactive-armour-plating",
     icons =
     {
       {
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
+        tint = {r = 0.6, g = 1.0, b = 0.6, a = 1.0}, -- green
       },
-      {
-        icon = "__base__/graphics/equipment/energy-shield-equipment.png",
-        icon_size = 128,
-        icon_scale = 0.125,
-        shift = {16, -16},
-        -- icon_mipmaps = 4,
-      }
+      -- {
+      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon_size = 64,
+      --   icon_mipmaps = 4,
+      -- }
     },
-    category = "crafting-with-fluid",
-    group = "military",
-    subgroup = "military-equipment",
+    category = "organic",
+    group = "intermediate-products",
+    -- subgroup = "",
     enabled = false,
-    energy_required = 8,
+    energy_required = 30,
     ingredients = {
-      {type = "item", name = "heavy-armor-plating", amount = 1},
-      {type = "item", name = "electronic-circuit", amount = 10},
+      {type = "item", name = "explosives", amount = 4},
+      {type = "item", name = "steel-plate", amount = 10},
+      {type = "item", name = "low-density-structure", amount = 2}
     },
     results = {
-      {type = "item", name = "ablative-armor-equipment", amount = 1},
+      {type = "item", name = "reactive-armour-plating", amount = 1},
+    },
+    allow_productivity = false,
+    allow_decomposition = true,
+  },
+  { -- ultra-light armour plating
+    type = "recipe",
+    name = "ultra-light-armour-plating",
+    icons =
+    {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        -- icon_mipmaps = 4,
+        tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
+      },
+      -- {
+      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon_size = 64,
+      --   icon_mipmaps = 4,
+      -- }
+    },
+    category = "electromagnetics",
+    group = "intermediate-products",
+    -- subgroup = "",
+    enabled = false,
+    energy_required = 30,
+    ingredients = {
+      {type = "item", name = "carbon-fiber", amount = 4},
+      {type = "item", name = "steel-plate", amount = 10},
+      {type = "item", name = "low-density-structure", amount = 2}
+    },
+    results = {
+      {type = "item", name = "ultra-light-armour-plating", amount = 1},
     },
     allow_productivity = false,
     allow_decomposition = true,
   },
 })
 
+-- change vanilla artillery shells to medium and introduce heavy artillery shells
 if settings.startup["allow-casting-explosive-ammo"].value then
 
   -- vanilla version is overwritten to medium artillery shell

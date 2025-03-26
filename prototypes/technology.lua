@@ -4,7 +4,7 @@ data:extend({ -- standard ammo techs of this mod
     name = "casting-light-ammo-tech",
     icons = {
       {
-        icon = "__base_/graphics/technology/weapon-shooting-speed-1.png",
+        icon = "__base__/graphics/technology/weapon-shooting-speed-1.png",
         icon_size = 256,
         icon_mipmaps = 4,
       },
@@ -43,7 +43,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-molten-iron.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -74,12 +74,12 @@ data:extend({ -- standard ammo techs of this mod
     icons =
     {
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/tungsten-ammo-tech.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/tungsten-ammo-tech.png",
         icon_size = 256,
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-molten-iron.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -120,7 +120,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-molten-iron.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -165,7 +165,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-molten-iron.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -211,7 +211,7 @@ if settings.startup["allow-bio-explosives"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-biochamber.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -246,7 +246,7 @@ if settings.startup["allow-bio-explosives"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technologies/overlayer-tech-biochamber.png",
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -272,18 +272,18 @@ if settings.startup["allow-bio-explosives"].value then
   })
 end
 
-if settings.startup["armor-plating-tree"].value then
+if settings.startup["armour-plating"].value then
   data:extend({
-    { -- light armor plating
+    { -- light armour plating
       type = "technology",
-      name = "light-armor-plating-tech",
+      name = "light-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/heat-shielding.png", -- from  space-exploration by Earendel
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 4,
-          tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6},
+          tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- light grey
         },
         {
           icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
@@ -296,59 +296,56 @@ if settings.startup["armor-plating-tree"].value then
         ingredients = {
           {"automation-science-pack", 1},
           {"logistic-science-pack", 1},
-          {"millitary-science-pack", 2}, -- duh!
+          {"military-science-pack", 2}, -- duh!
         },
         time = 30,
-        count = 60 -- effectively 120 millitary-science-pack
+        count = 60 -- effectively 120 military-science-pack
         },
-        effects = { -- not impemented yet
-          -- {type = "unlock-recipe", recipe = "casting-light-armor-plating"},
-          {type = "unlock-recipe", recipe = "light-armor-plating"},
-          {type = "unlock-recipe", recipe = "ablative-armor-equipment"},
+        effects = {
+          {type = "unlock-recipe", recipe = "light-armour-plating"}, -- light
         },
     },
-    { -- heavy armor plating
+    { -- heavy armour plating
       type = "technology",
-      name = "heavy-armor-plating-tech",
+      name = "heavy-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/heat-shielding.png", -- from  space-exploration by Earendel
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 4,
         },
-        {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-        }
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        --   icon_size = 256,
+        --   icon_mipmaps = 4,
+        -- }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"light-armor-plating-tech","tank"},
+      prerequisites = {"light-armour-plating-tech","tank","space-science-pack"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
           {"logistic-science-pack", 1},
           {"chemical-science-pack", 1},
-          {"millitary-science-pack", 2}, -- duh!
+          {"military-science-pack", 2}, -- duh!
           {"utility-science-pack", 1},
           {"production-science-pack", 2}, -- duh-hu!
+          {"space-science-pack", 1},
         },
         time = 45,
         count = 120
         },
-        effects = { -- not impemented yet
-          {type = "unlock-recipe", recipe = "casting-heavy-armor-plating"},
-          {type = "unlock-recipe", recipe = "heavy-armor-plating"},
-          {type = "unlock-recipe", recipe = "heavy-ablative-armor-equipment"},
+        effects = {
+          {type = "unlock-recipe", recipe = "heavy-armour-plating"},
         },
     },
-    { -- tungsten armor plating
+    { -- tungsten armour plating
       type = "technology",
-      name = "tungsten-armor-plating-tech",
+      name = "tungsten-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/heat-shielding.png", -- from  space-exploration by Earendel
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 4,
@@ -361,13 +358,13 @@ if settings.startup["armor-plating-tree"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"heavy-armor-plating-tech","tungsten-steel","military-4"},
+      prerequisites = {"heavy-armour-plating-tech","tungsten-steel","military-4"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
           {"logistic-science-pack", 1},
           {"chemical-science-pack", 1},
-          {"millitary-science-pack", 2}, -- duh!
+          {"military-science-pack", 2}, -- duh!
           {"utility-science-pack", 1},
           {"production-science-pack", 2}, -- duh-hu!
           {"space-science-pack", 1},
@@ -376,51 +373,83 @@ if settings.startup["armor-plating-tree"].value then
         time = 60,
         count = 400
         },
-        effects = { -- not impemented yet
-          {type = "unlock-recipe", recipe = "casting-heavy-armor-plating"},
-          {type = "unlock-recipe", recipe = "heavy-armor-plating"},
-          {type = "unlock-recipe", recipe = "heavy-ablative-armor-equipment"},
+        effects = {
+          {type = "unlock-recipe", recipe = "tungsten-armour-plating"},
         },
     },
-    -- { -- reactive armor plating
-    --   type = "technology",
-    --   name = "reactive-armor-plating-tech",
-    --   icons = {
-    --     {
-    --       icon = "__OCs_ammo_casting__/graphics/technology/heat-shielding.png", -- from  space-exploration by Earendel
-    --       icon_size = 64,
-    --       icon_mipmaps = 1,
-    --       scale = 4,
-    --       tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
-    --     },
-    --     {
-    --       icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-    --       icon_size = 256,
-    --       icon_mipmaps = 4,
-    --     }
-    --   },
-    --   icon_size = 256, icon_mipmaps = 4,
-    --   prerequisites = {"heavy-armor-plating-tech","tungsten-steel","military-4"},
-    --   unit = {
-    --     ingredients = {
-    --       {"automation-science-pack", 1},
-    --       {"logistic-science-pack", 1},
-    --       {"chemical-science-pack", 1},
-    --       {"millitary-science-pack", 2}, -- duh!
-    --       {"utility-science-pack", 1},
-    --       {"production-science-pack", 2}, -- duh-hu!
-    --       {"space-science-pack", 1},
-    --       {"metallurgic-science-pack", 2}, -- duh-uh-hu!
-    --     },
-    --     time = 60,
-    --     count = 400
-    --     },
-    --     effects = { -- not impemented yet
-    --       {type = "unlock-recipe", recipe = "casting-heavy-armor-plating"},
-    --       {type = "unlock-recipe", recipe = "heavy-armor-plating"},
-    --       {type = "unlock-recipe", recipe = "reactive-armor-equipment"},
-    --     },
-    -- },
+    { -- reactive armour plating
+      type = "technology",
+      name = "reactive-armour-plating-tech",
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
+          icon_size = 64,
+          icon_mipmaps = 1,
+          scale = 4,
+          tint = {r = 1.0, g = 0.6, b = 0.8, a = 1.0}, -- pink
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        }
+      },
+      icon_size = 256, icon_mipmaps = 4,
+      prerequisites = {"heavy-armour-plating-tech","bio-explosives-tech","military-4"},
+      unit = {
+        ingredients = {
+          {"automation-science-pack", 1},
+          {"logistic-science-pack", 1},
+          {"chemical-science-pack", 1},
+          {"military-science-pack", 2}, -- duh!
+          {"utility-science-pack", 1},
+          {"production-science-pack", 2}, -- duh-hu!
+          {"space-science-pack", 1},
+          {"agricultural-science-pack", 2}, -- duh-uh-hu!
+        },
+        time = 60,
+        count = 400
+        },
+        effects = {
+          -- {type = "unlock-recipe", recipe = "reactive-armour-equipment"},
+        },
+    },
+    { -- ultra-light armour plating
+    type = "technology",
+    name = "ultra-light-armour-plating-tech",
+    icons = {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
+        icon_size = 64,
+        icon_mipmaps = 1,
+        scale = 4,
+        tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+      },
+      {
+        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon_size = 256,
+        icon_mipmaps = 4,
+      }
+    },
+    prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4"},
+    unit = {
+      ingredients = {
+        {"automation-science-pack", 1},
+        {"logistic-science-pack", 1},
+        {"chemical-science-pack", 1},
+        {"military-science-pack", 2}, -- duh!
+        {"utility-science-pack", 1},
+        {"production-science-pack", 2}, -- duh-hu!
+        {"space-science-pack", 1},
+        {"agricultural-science-pack", 2}, -- duh-uh-hu!
+      },
+      time = 60,
+      count = 400
+      },
+      effects = {
+        {type = "unlock-recipe", recipe = "ultra-light-armour-plating"},
+      },
+    },
   })
   end
 

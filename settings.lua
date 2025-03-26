@@ -24,14 +24,14 @@ data:extend({
         type = "bool-setting",
         name = "space-fish", -- space fish breeding
         setting_type = "startup",
-        default_value = false,
+        default_value = true,
         order = "c-b",
     },
     {
         type = "bool-setting",
-        name = "armor-plating",
+        name = "armour-plating",
         setting_type = "startup",
-        default_value = false, -- false until finished, then true for publishing
+        default_value = true,
         order = "d"
     },
 })

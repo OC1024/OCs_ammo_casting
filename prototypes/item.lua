@@ -228,3 +228,167 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     }
   })
 end
+
+if settings.startup["armour-plating"] then
+  data:extend({
+    {-- light-armour-plating
+      type =  "item",
+      name = "light-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+          tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- lighter grey
+        },
+        {
+          icon = "__base__/graphics/equipment/energy-shield-equipment.png",
+          icon_size = 128,
+          icon_scale = 0.125,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size =20,
+      weight = 50 * kg,
+    },
+    {-- heavy-armour-plating
+      type =  "item",
+      name = "heavy-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+        },
+        {
+          icon = "__base__/graphics/equipment/energy-shield-mk2-equipment.png",
+          icon_size = 128,
+          icon_scale = 0.125,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size =10,
+      weight = 100 * kg,
+    },
+    {-- tungsten-armour-plating
+      type =  "item",
+      name = "tungsten-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+          tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+        },
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        --   icon_size = 64,
+        --   icon_mipmaps = 4,
+        -- }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size = 5,
+      weight = 200 * kg,
+    },
+    {-- reactive-armour-plating
+      type =  "item",
+      name = "reactive-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+          tint = {r = 0.6, g = 1.0, b = 0.6, a = 1.0}, -- green
+        },
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        --   icon_size = 64,
+        --   icon_mipmaps = 4,
+        -- }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size = 10,
+      weight = 100 * kg,
+    },
+    {-- reactive-armour-plating
+      type =  "item",
+      name = "reactive-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+          tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
+        },
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        --   icon_size = 64,
+        --   icon_mipmaps = 4,
+        -- }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size = 40,
+      weight = 25 * kg,
+    },
+    {-- ultra-light-armour-plating
+      type =  "item",
+      name = "ultra-light-armour-plating",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          -- icon_mipmaps = 4,
+          tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
+        },
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        --   icon_size = 64,
+        --   icon_mipmaps = 4,
+        -- }
+      },
+      group = "intermediate-products",
+      subgroup = "military-equipment",
+      order = "a[shield]-a[energy-shield-equipment]",
+      inventory_move_sound = item_sounds.energy_shield_inventory_move,
+      pick_sound = item_sounds.energy_shield_inventory_pickup,
+      drop_sound = item_sounds.energy_shield_inventory_move,
+      stack_size = 40,
+      weight = 25 * kg,
+    },
+  })
+end

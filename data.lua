@@ -20,7 +20,7 @@ function table.copy_and_rename(original_table, new_name)
 end
 
 require("prototypes.item")
-require("OCs_ammo_casting.prototypes.equipment")
+-- require("prototypes.equipment")
 require("prototypes.projectile")
 require("prototypes.recipe")
 require("prototypes.technology")
