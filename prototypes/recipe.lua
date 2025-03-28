@@ -758,14 +758,14 @@ data:extend({ -- biochamber recipes
 data:extend({ -- armour plating related
   { -- light armour plating
     type = "recipe",
-    name = "heavy-armour-plating",
+    name = "light-armour-plating",
     icons = {
       {
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        -- icon = "__base__/graphics/icons/iron-plate.png",
         icon_size = 64,
         icon_mipmaps = 1,
-        scale = 4,
-        tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- lighter grey
+        tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
       },
       -- {
       --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
@@ -774,13 +774,14 @@ data:extend({ -- armour plating related
       -- }
     },
     category = "crafting",
-    group = "intermediate-products",
-    -- subgroup = "",
+    group = "combat",
+    subgroup = "armour-plating",
     enabled = false,
     energy_required = 5,
     ingredients = {
       {type = "item", name = "iron-plate", amount = 10},
       {type = "item", name = "steel-plate", amount = 4},
+      {type = "item", name = "electronic-circuit", amount = 5},
     },
     results = {
       {type = "item", name = "light-armour-plating", amount = 1},
@@ -805,13 +806,14 @@ data:extend({ -- armour plating related
       -- }
     },
     category = "crafting-with-fluid",
-    group = "intermediate-products",
-    -- subgroup = "",
+    group = "combat",
+    subgroup = "armour-plating",
     enabled = false,
     energy_required = 10,
     ingredients = {
       {type = "item", name = "carbon", amount = 4},
       {type = "item", name = "steel-plate", amount = 10},
+      {type = "item", name = "advanced-circuit", amount = 5},
     },
     results = {
       {type = "item", name = "heavy-armour-plating", amount = 1},
@@ -828,7 +830,7 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+        tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0}, -- purple
       },
       {
         icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
@@ -837,14 +839,15 @@ data:extend({ -- armour plating related
       }
     },
     category = "metallurgy",
-    group = "intermediate-products",
-    -- subgroup = "",
+    group = "combat",
+    subgroup = "armour-plating",
     enabled = false,
     energy_required = 30,
     ingredients = {
       {type = "item", name = "tungsten-ore", amount = 16}, -- 4*4tungsten-ore
       {type = "fluid", name = "molten-iron", amount = 340}, -- 30*10steel-plate + 10*4tungsten-plate
-      {type = "item", name = "low-density-structure", amount = 2}
+      {type = "item", name = "low-density-structure", amount = 2},
+      {type = "item", name = "advanced-circuit", amount = 5},
     },
     results = {
       {type = "item", name = "tungsten-armour-plating", amount = 1},
@@ -861,23 +864,24 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.6, g = 1.0, b = 0.6, a = 1.0}, -- green
+        tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
       },
-      -- {
-      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-      --   icon_size = 64,
-      --   icon_mipmaps = 4,
-      -- }
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
+        icon_size = 64,
+        icon_mipmaps = 4,
+      }
     },
     category = "organic",
-    group = "intermediate-products",
-    -- subgroup = "",
+    group = "combat",
+    subgroup = "armour-plating",
     enabled = false,
     energy_required = 30,
     ingredients = {
       {type = "item", name = "explosives", amount = 4},
       {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "low-density-structure", amount = 2}
+      {type = "item", name = "low-density-structure", amount = 2},
+      {type = "item", name = "advanced-circuit", amount = 5},
     },
     results = {
       {type = "item", name = "reactive-armour-plating", amount = 1},
@@ -894,23 +898,24 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
+        tint = {r = 0.6, g = 1.0, b = 1.0, a = 1.0} , -- blue/cyan
       },
-      -- {
-      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-      --   icon_size = 64,
-      --   icon_mipmaps = 4,
-      -- }
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-em-plant.png",
+        icon_size = 64,
+        icon_mipmaps = 4,
+      }
     },
     category = "electromagnetics",
-    group = "intermediate-products",
-    -- subgroup = "",
+    group = "combat",
+    subgroup = "armour-plating",
     enabled = false,
     energy_required = 30,
     ingredients = {
       {type = "item", name = "carbon-fiber", amount = 4},
       {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "low-density-structure", amount = 2}
+      {type = "item", name = "low-density-structure", amount = 2},
+      {type = "item", name = "advanced-circuit", amount = 5},
     },
     results = {
       {type = "item", name = "ultra-light-armour-plating", amount = 1},

@@ -279,17 +279,18 @@ if settings.startup["armour-plating"].value then
       name = "light-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          -- icon = "__base__/graphics/icons/iron-plate.png",
           icon_size = 64,
           icon_mipmaps = 1,
-          scale = 4,
-          tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- light grey
+          -- scale = 4,
+          tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
         },
-        {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-        }
+        -- {
+        --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        --   icon_size = 256,
+        --   icon_mipmaps = 4,
+        -- }
       },
       prerequisites = {"modular-armor","automobilism"},
       unit = {
@@ -300,11 +301,11 @@ if settings.startup["armour-plating"].value then
         },
         time = 30,
         count = 60 -- effectively 120 military-science-pack
-        },
-        effects = {
-          {type = "unlock-recipe", recipe = "light-armour-plating"}, -- light
-        },
-    },
+      },
+      effects = {
+        {type = "unlock-recipe", recipe = "light-armour-plating"}, -- light
+      },
+  },
     { -- heavy armour plating
       type = "technology",
       name = "heavy-armour-plating-tech",
@@ -335,10 +336,10 @@ if settings.startup["armour-plating"].value then
         },
         time = 45,
         count = 120
-        },
-        effects = {
-          {type = "unlock-recipe", recipe = "heavy-armour-plating"},
-        },
+      },
+      effects = {
+        {type = "unlock-recipe", recipe = "heavy-armour-plating"},
+      },
     },
     { -- tungsten armour plating
       type = "technology",
@@ -348,8 +349,9 @@ if settings.startup["armour-plating"].value then
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
           icon_size = 64,
           icon_mipmaps = 1,
-          scale = 4,
-          tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+          scale = 2,
+          tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0}, -- purple
+
         },
         {
           icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
@@ -372,10 +374,10 @@ if settings.startup["armour-plating"].value then
         },
         time = 60,
         count = 400
-        },
-        effects = {
-          {type = "unlock-recipe", recipe = "tungsten-armour-plating"},
-        },
+      },
+      effects = {
+        {type = "unlock-recipe", recipe = "tungsten-armour-plating"},
+      },
     },
     { -- reactive armour plating
       type = "technology",
@@ -384,12 +386,12 @@ if settings.startup["armour-plating"].value then
         {
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
           icon_size = 64,
-          icon_mipmaps = 1,
-          scale = 4,
-          tint = {r = 1.0, g = 0.6, b = 0.8, a = 1.0}, -- pink
+          -- icon_mipmaps = 1,
+          scale = 2,
+          tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
           icon_size = 256,
           icon_mipmaps = 4,
         }
@@ -409,42 +411,42 @@ if settings.startup["armour-plating"].value then
         },
         time = 60,
         count = 400
-        },
-        effects = {
-          -- {type = "unlock-recipe", recipe = "reactive-armour-equipment"},
-        },
+      },
+      effects = {
+        {type = "unlock-recipe", recipe = "reactive-armour-plating"},
+      },
     },
     { -- ultra-light armour plating
-    type = "technology",
-    name = "ultra-light-armour-plating-tech",
-    icons = {
-      {
-        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
-        icon_size = 64,
-        icon_mipmaps = 1,
-        scale = 4,
-        tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+      type = "technology",
+      name = "ultra-light-armour-plating-tech",
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
+          icon_size = 64,
+          icon_mipmaps = 1,
+          scale = 2,
+          tint = {r = 0.6, g = 1.0, b = 1.0, a = 1.0} , -- blue/cyan
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-em-plant.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        }
       },
-      {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
-        icon_mipmaps = 4,
-      }
-    },
-    prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4"},
-    unit = {
-      ingredients = {
-        {"automation-science-pack", 1},
-        {"logistic-science-pack", 1},
-        {"chemical-science-pack", 1},
-        {"military-science-pack", 2}, -- duh!
-        {"utility-science-pack", 1},
-        {"production-science-pack", 2}, -- duh-hu!
-        {"space-science-pack", 1},
-        {"agricultural-science-pack", 2}, -- duh-uh-hu!
-      },
-      time = 60,
-      count = 400
+      prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4"},
+      unit = {
+        ingredients = {
+          {"automation-science-pack", 1},
+          {"logistic-science-pack", 1},
+          {"chemical-science-pack", 1},
+          {"military-science-pack", 2}, -- duh!
+          {"utility-science-pack", 1},
+          {"production-science-pack", 2}, -- duh-hu!
+          {"space-science-pack", 1},
+          {"agricultural-science-pack", 2}, -- duh-uh-hu!
+        },
+        time = 60,
+        count = 400
       },
       effects = {
         {type = "unlock-recipe", recipe = "ultra-light-armour-plating"},

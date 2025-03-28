@@ -19,6 +19,7 @@ function table.copy_and_rename(original_table, new_name)
     return copied_table
 end
 
+require("prototypes.category")
 require("prototypes.item")
 -- require("prototypes.equipment")
 require("prototypes.projectile")

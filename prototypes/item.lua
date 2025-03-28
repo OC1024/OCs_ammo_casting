@@ -238,21 +238,23 @@ if settings.startup["armour-plating"] then
       {
         {
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          -- icon = "__base__/graphics/icons/iron-plate.png",
           icon_size = 64,
           -- icon_mipmaps = 4,
-          tint = {r = 1.0, g = 1.0, b = 1.0, a = 0.6}, -- lighter grey
+          tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
         },
         {
-          icon = "__base__/graphics/equipment/energy-shield-equipment.png",
-          icon_size = 128,
-          icon_scale = 0.125,
+          icon = "__base__/graphics/icons/energy-shield-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
           shift = {16, -16},
           -- icon_mipmaps = 4,
         }
       },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
+      group = "combat",
+      subgroup = "armour-plating",
+      order = "a-a",
+      -- order = "a[shield]-a[energy-shield-equipment]",
       inventory_move_sound = item_sounds.energy_shield_inventory_move,
       pick_sound = item_sounds.energy_shield_inventory_pickup,
       drop_sound = item_sounds.energy_shield_inventory_move,
@@ -270,16 +272,17 @@ if settings.startup["armour-plating"] then
           -- icon_mipmaps = 4,
         },
         {
-          icon = "__base__/graphics/equipment/energy-shield-mk2-equipment.png",
-          icon_size = 128,
-          icon_scale = 0.125,
+          icon = "__base__/graphics/icons/energy-shield-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
           shift = {16, -16},
           -- icon_mipmaps = 4,
         }
       },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
+      group = "combat",
+      subgroup = "armour-plating",
+      order = "a-b",
+      -- order = "a[shield]-a[energy-shield-equipment]",
       inventory_move_sound = item_sounds.energy_shield_inventory_move,
       pick_sound = item_sounds.energy_shield_inventory_pickup,
       drop_sound = item_sounds.energy_shield_inventory_move,
@@ -295,17 +298,20 @@ if settings.startup["armour-plating"] then
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
           icon_size = 64,
           -- icon_mipmaps = 4,
-          tint = {r = 0.8, g = 0.6, b = 1.0, a = 1.0}, -- purple
+          tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0} -- purple
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        --   icon_size = 64,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
       },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
+      group = "combat",
+      subgroup = "armour-plating",
+      order = "b-a",
+      -- order = "a[shield]-b[energy-shield-equipment-mk2]",
       inventory_move_sound = item_sounds.energy_shield_inventory_move,
       pick_sound = item_sounds.energy_shield_inventory_pickup,
       drop_sound = item_sounds.energy_shield_inventory_move,
@@ -321,48 +327,25 @@ if settings.startup["armour-plating"] then
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
           icon_size = 64,
           -- icon_mipmaps = 4,
-          tint = {r = 0.6, g = 1.0, b = 0.6, a = 1.0}, -- green
+          tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        --   icon_size = 64,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
       },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
+      group = "combat",
+      subgroup = "armour-plating",
+      order = "b-b",
+      -- order = "a[shield]-b[energy-shield-equipment-mk2]",
       inventory_move_sound = item_sounds.energy_shield_inventory_move,
       pick_sound = item_sounds.energy_shield_inventory_pickup,
       drop_sound = item_sounds.energy_shield_inventory_move,
       stack_size = 10,
       weight = 100 * kg,
-    },
-    {-- reactive-armour-plating
-      type =  "item",
-      name = "reactive-armour-plating",
-      icons =
-      {
-        {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-          icon_size = 64,
-          -- icon_mipmaps = 4,
-          tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
-        },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        --   icon_size = 64,
-        --   icon_mipmaps = 4,
-        -- }
-      },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
-      inventory_move_sound = item_sounds.energy_shield_inventory_move,
-      pick_sound = item_sounds.energy_shield_inventory_pickup,
-      drop_sound = item_sounds.energy_shield_inventory_move,
-      stack_size = 40,
-      weight = 25 * kg,
     },
     {-- ultra-light-armour-plating
       type =  "item",
@@ -373,17 +356,20 @@ if settings.startup["armour-plating"] then
           icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
           icon_size = 64,
           -- icon_mipmaps = 4,
-          tint = {r = 0.6, g = 0.6, b = 1.0, a = 1.0}, -- blue
+          tint = {r = 0.6, g = 0.8, b = 1.0, a = 1.0} , -- blue
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        --   icon_size = 64,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
       },
-      group = "intermediate-products",
-      subgroup = "military-equipment",
-      order = "a[shield]-a[energy-shield-equipment]",
+      group = "combat",
+      subgroup = "armour-plating",
+      order = "b-c",
+      -- order = "a[shield]-b[energy-shield-equipment-mk2]",
       inventory_move_sound = item_sounds.energy_shield_inventory_move,
       pick_sound = item_sounds.energy_shield_inventory_pickup,
       drop_sound = item_sounds.energy_shield_inventory_move,
