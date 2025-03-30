@@ -779,9 +779,9 @@ data:extend({ -- armour plating related
     enabled = false,
     energy_required = 5,
     ingredients = {
-      {type = "item", name = "iron-plate", amount = 10},
-      {type = "item", name = "steel-plate", amount = 4},
-      {type = "item", name = "electronic-circuit", amount = 5},
+      {type = "item", name = "iron-plate", amount = 25},
+      {type = "item", name = "steel-plate", amount = 5},
+      {type = "item", name = "electronic-circuit", amount = 4},
     },
     results = {
       {type = "item", name = "light-armour-plating", amount = 1},
@@ -813,7 +813,41 @@ data:extend({ -- armour plating related
     ingredients = {
       {type = "item", name = "carbon", amount = 4},
       {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "advanced-circuit", amount = 5},
+      {type = "item", name = "advanced-circuit", amount = 2},
+    },
+    results = {
+      {type = "item", name = "heavy-armour-plating", amount = 1},
+    },
+    allow_productivity = false,
+    allow_decomposition = true,
+  },
+  { -- heavy armour plating from light armour
+    type = "recipe",
+    name = "light-to-heavy-armour-plating",
+    icons =
+    {
+      {
+        icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+        icon_size = 64,
+        -- icon_mipmaps = 4,
+      },
+      {
+        icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
+        icon_size = 128,
+        icon_scale = 0.125,
+        shift = {8, 8},
+        -- icon_mipmaps = 4,
+      }
+    },
+    category = "crafting-with-fluid",
+    group = "combat",
+    subgroup = "armour-plating",
+    enabled = false,
+    energy_required = 10,
+    ingredients = {
+      {type = "item", name = "light-armour-plating", amount = 1},
+      {type = "item", name = "carbon", amount = 5},
+      {type = "item", name = "advanced-circuit", amount = 2},
     },
     results = {
       {type = "item", name = "heavy-armour-plating", amount = 1},

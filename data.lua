@@ -21,7 +21,8 @@ end
 
 require("prototypes.category")
 require("prototypes.item")
--- require("prototypes.equipment")
+require("prototypes.equipment")
+require("prototypes.equipment-grid")
 require("prototypes.projectile")
 require("prototypes.recipe")
 require("prototypes.technology")

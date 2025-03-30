@@ -286,13 +286,15 @@ if settings.startup["armour-plating"].value then
           -- scale = 4,
           tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-        --   icon_size = 256,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__base__/graphics/icons/energy-shield-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
       },
-      prerequisites = {"modular-armor","automobilism"},
+      prerequisites = {"heavy-armor","automobilism"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -316,11 +318,13 @@ if settings.startup["armour-plating"].value then
           icon_mipmaps = 1,
           scale = 4,
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
-        --   icon_size = 256,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__base__/graphics/icons/energy-shield-equipment.png",
+          icon_size = 64,
+          icon_scale = 0.25,
+          shift = {16, -16},
+          -- icon_mipmaps = 4,
+        }
       },
       icon_size = 256, icon_mipmaps = 4,
       prerequisites = {"light-armour-plating-tech","tank","space-science-pack"},
@@ -339,6 +343,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         {type = "unlock-recipe", recipe = "heavy-armour-plating"},
+        {type = "unlock-recipe", recipe = "light-to-heavy-armour-plating"},
       },
     },
     { -- tungsten armour plating
