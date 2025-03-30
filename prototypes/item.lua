@@ -231,182 +231,27 @@ end
 
 if settings.startup["armour-plating"] then
 
-  require("plating_variants")  -- Import the variant table
   local items = {}
 
   for _, variant in pairs(plating_variants) do
-      table.insert(items, {
-          type = "item",
-          name = variant.name,
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-          icon_size = 64,
-          icon_mipmaps = 1,
-          tint = variant.tint,
-          subgroup = "armor-platings",
-          order = variant.order,
-          inventory_move_sound = item_sounds.armor_large_inventory_move,
-          pick_sound = item_sounds.armor_large_inventory_pickup,
-          drop_sound = item_sounds.armor_large_inventory_move,
-          stack_size = variant.stack_size,
-          weight = variant.weight,
-      })
+    table.insert(items, {
+      type = "item",
+      name = variant.name,
+      icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+      icon_size = 64,
+      icon_mipmaps = 1,
+      tint = variant.tint,
+      subgroup = "armor-platings",
+      order = variant.order,
+      inventory_move_sound = item_sounds.armor_large_inventory_move,
+      pick_sound = item_sounds.armor_large_inventory_pickup,
+      drop_sound = item_sounds.armor_large_inventory_move,
+      stack_size = variant.stack_size,
+      weight = variant.weight,
+    })
   end
   
   data:extend(items)  -- Add to the game
-
-  -- old data extend
-  -- data:extend({
-  --   {-- light-armour-plating
-  --     type =  "item",
-  --     name = "light-armour-plating",
-  --     icons =
-  --     {
-  --       {
-  --         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-  --         -- icon = "__base__/graphics/icons/iron-plate.png",
-  --         icon_size = 64,
-  --         -- icon_mipmaps = 4,
-  --         tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
-  --       },
-  --       -- {
-  --       --   icon = "__base__/graphics/icons/energy-shield-equipment.png",
-  --       --   icon_size = 64,
-  --       --   icon_scale = 0.25,
-  --       --   shift = {16, -16},
-  --       --   -- icon_mipmaps = 4,
-  --       -- }
-  --     },
-  --     place_as_equipment_result = "light-armour-plating",
-  --     group = "combat",
-  --     subgroup = "armour-plating",
-  --     order = "a-a",
-  --     -- order = "a[shield]-a[energy-shield-equipment]",
-  --     inventory_move_sound = item_sounds.armor_large_inventory_move,
-  --     pick_sound = item_sounds.armor_large_inventory_pickup,
-  --     drop_sound = item_sounds.armor_large_inventory_move,
-  --     stack_size =20,
-  --     weight = 50 * kg,
-  --   },
-  --   {-- heavy-armour-plating
-  --     type =  "item",
-  --     name = "heavy-armour-plating",
-  --     icons =
-  --     {
-  --       {
-  --         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-  --         icon_size = 64,
-  --         -- icon_mipmaps = 4,
-  --       },
-  --       -- {
-  --       --   icon = "__base__/graphics/icons/energy-shield-equipment.png",
-  --       --   icon_size = 64,
-  --       --   icon_scale = 0.25,
-  --       --   shift = {16, -16},
-  --       --   -- icon_mipmaps = 4,
-  --       -- }
-  --     },
-  --     place_as_equipment_result = "heavy-armour-plating",
-  --     group = "combat",
-  --     subgroup = "armour-plating",
-  --     order = "a-b",
-  --     -- order = "a[shield]-a[energy-shield-equipment]",
-  --     inventory_move_sound = item_sounds.armor_large_inventory_move,
-  --     pick_sound = item_sounds.armor_large_inventory_pickup,
-  --     drop_sound = item_sounds.armor_large_inventory_move,
-  --     stack_size =10,
-  --     weight = 100 * kg,
-  --   },
-  --   {-- tungsten-armour-plating
-  --     type =  "item",
-  --     name = "tungsten-armour-plating",
-  --     icons =
-  --     {
-  --       {
-  --         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-  --         icon_size = 64,
-  --         -- icon_mipmaps = 4,
-  --         tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0} -- purple
-  --       },
-  --       -- {
-  --       --   icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
-  --       --   icon_size = 64,
-  --       --   icon_scale = 0.25,
-  --       --   shift = {16, -16},
-  --       --   -- icon_mipmaps = 4,
-  --       -- }
-  --     },
-  --     place_as_equipment_result = "tungsten-armour-plating",
-  --     group = "combat",
-  --     subgroup = "armour-plating",
-  --     order = "b-a",
-  --     -- order = "a[shield]-b[energy-shield-equipment-mk2]",
-  --     inventory_move_sound = item_sounds.armor_large_inventory_move,
-  --     pick_sound = item_sounds.armor_large_inventory_pickup,
-  --     drop_sound = item_sounds.armor_large_inventory_move,
-  --     stack_size = 5,
-  --     weight = 200 * kg,
-  --   },
-  --   {-- reactive-armour-plating
-  --     type =  "item",
-  --     name = "reactive-armour-plating",
-  --     icons =
-  --     {
-  --       {
-  --         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-  --         icon_size = 64,
-  --         -- icon_mipmaps = 4,
-  --         tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
-  --       },
-  --       -- {
-  --       --   icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
-  --       --   icon_size = 64,
-  --       --   icon_scale = 0.25,
-  --       --   shift = {16, -16},
-  --       --   -- icon_mipmaps = 4,
-  --       -- }
-  --     },
-  --     place_as_equipment_result = "reactive-armour-plating",
-  --     group = "combat",
-  --     subgroup = "armour-plating",
-  --     order = "b-b",
-  --     -- order = "a[shield]-b[energy-shield-equipment-mk2]",
-  --     inventory_move_sound = item_sounds.armor_large_inventory_move,
-  --     pick_sound = item_sounds.armor_large_inventory_pickup,
-  --     drop_sound = item_sounds.armor_large_inventory_move,
-  --     stack_size = 10,
-  --     weight = 100 * kg,
-  --   },
-  --   {-- ultra-light-armour-plating
-  --     type =  "item",
-  --     name = "ultra-light-armour-plating",
-  --     icons =
-  --     {
-  --       {
-  --         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-  --         icon_size = 64,
-  --         -- icon_mipmaps = 4,
-  --         tint = {r = 0.6, g = 0.8, b = 1.0, a = 1.0} , -- blue
-  --       },
-  --       -- {
-  --       --   icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
-  --       --   icon_size = 64,
-  --       --   icon_scale = 0.25,
-  --       --   shift = {16, -16},
-  --       --   -- icon_mipmaps = 4,
-  --       -- }
-  --     },
-  --     place_as_equipment_result = "ultra-light-armour-plating",
-  --     group = "combat",
-  --     subgroup = "armour-plating",
-  --     order = "b-c",
-  --     -- order = "a[shield]-b[energy-shield-equipment-mk2]",
-  --     inventory_move_sound = item_sounds.armor_large_inventory_move,
-  --     pick_sound = item_sounds.armor_large_inventory_pickup,
-  --     drop_sound = item_sounds.armor_large_inventory_move,
-  --     stack_size = 40,
-  --     weight = 25 * kg,
-  --   },
-  -- })
 
   -- add a 2x3 grid to the heavy armor for early usage of armor platings
   data:extend({

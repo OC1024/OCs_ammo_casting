@@ -20,6 +20,7 @@ function table.copy_and_rename(original_table, new_name)
 end
 
 require("prototypes.category")
+require("prototypes.plating_variants")  -- Import the variant table
 require("prototypes.item")
 require("prototypes.equipment")
 require("prototypes.equipment-grid")
