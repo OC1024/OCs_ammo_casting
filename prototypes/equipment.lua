@@ -2,10 +2,11 @@
 local armor_platings = {}
 
 for _, variant in pairs(plating_variants) do
-  table.insert(armor_platings, 
+  table.insert(armor_platings,
     { -- armor-plating-prototype
-      type = "battery-equipment", -- does not consume energy
-      -- type = "movement-bonus-equipment",
+      type = "energy-shield-equipment",
+      -- type = "battery-equipment", -- does not consume energy
+      -- type = "movement-bonus-equipment", -- base for movement bonus
       name = variant.name,
       sprite = { -- placeholder
         filename = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png",
@@ -20,14 +21,15 @@ for _, variant in pairs(plating_variants) do
         height = 2,
         type = "full"
       },
-      -- max_shield_value = 50, -- HP boost
+      max_shield_value = variant.max_shield_value, -- HP boost
+      energy_per_shield = variant.energy_per_shield, -- energy per shield HP
       energy_source = {
         type = "electric",
         usage_priority = "primary-input",
-        -- buffer_capacity = "10kJ", -- optional, for battery and shields
-        -- input_flow_limit = "240kW", -- optional, for battery and shields
+        buffer_capacity = variant.buffer_capacity, -- optional, for battery and shields
+        input_flow_limit = variant.input_flow_limit, -- optional, for battery and shields
       },
-      movement_bonus = -0.1, -- -10% speed
+      movement_bonus = variant.movement_bonus, -- optional
       resistances = variant.resistances,
       categories = variant.categories,
       order = variant.order,

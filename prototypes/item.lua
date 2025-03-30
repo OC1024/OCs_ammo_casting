@@ -237,12 +237,18 @@ if settings.startup["armour-plating"] then
     table.insert(items, {
       type = "item",
       name = variant.name,
-      icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-      icon_size = 64,
-      icon_mipmaps = 1,
-      tint = variant.tint,
-      subgroup = "armor-platings",
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
+          icon_size = 64,
+          icon_mipmaps = 1,
+          tint = variant.tint,
+        }
+      },
+      group = variant.group,
+      subgroup = variant.subgroup,
       order = variant.order,
+      place_as_equipment_result = variant.place_as_equipment_result,
       inventory_move_sound = item_sounds.armor_large_inventory_move,
       pick_sound = item_sounds.armor_large_inventory_pickup,
       drop_sound = item_sounds.armor_large_inventory_move,
@@ -250,7 +256,7 @@ if settings.startup["armour-plating"] then
       weight = variant.weight,
     })
   end
-  
+
   data:extend(items)  -- Add to the game
 
   -- add a 2x3 grid to the heavy armor for early usage of armor platings
@@ -267,27 +273,31 @@ if settings.startup["armour-plating"] then
   heavy_armor_with_grid.equipment_grid = "tiny-equipment-grid" -- This must match a defined grid!
   data:extend({ heavy_armor_with_grid })
 
-  -- define a few grits for vehicles
-  if not data.raw["equipment-grid"]["car-equipment-grid"] then
+  -- define a grid for vehicles
+  local car = data.raw["car"]["car"]  -- Getting the car prototype
+  if not car.equipment_grid then
+    car.equipment_grid = "car-equipment-grid"
     data:extend({
-        {
-            type = "equipment-grid",
-            name = "car-equipment-grid",
-            width = 6,
-            height = 6,
-            equipment_categories = {"vehicle-armour-plating-equipment", "armor"}
-        }
+      {
+        type = "equipment-grid",
+        name = "car-equipment-grid",
+        width = 4,
+        height = 4,
+        equipment_categories = {"vehicle-armour-plating-equipment", "armor"}
+      }
     })
   end
-  if not data.raw["equipment-grid"]["chaingunner-equipment-grid"] then
-    data:extend({
-        {
-            type = "equipment-grid",
-            name = "chaingunner-equipment-grid",
-            width = 2,
-            height = 3,
-            equipment_categories = {"vehicle-armour-plating-equipment", "armor"}
-        }
-    })
-  end
+  -- local chaingunner = data.raw["car"]["vehicle-chaingunner"]
+  -- if not chaingunner.equipment_grid then
+  --   chaingunner.equipment_grid = "chaingunner-equipment-grid"
+  --   data:extend({
+  --       {
+  --           type = "equipment-grid",
+  --           name = "chaingunner-equipment-grid",
+  --           width = 2,
+  --           height = 3,
+  --           equipment_categories = {"vehicle-armour-plating-equipment", "armor"}
+  --       }
+  --   })
+  -- end
 end

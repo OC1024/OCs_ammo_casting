@@ -1,27 +1,24 @@
+-- Helper function to check if a grid category is compatible with a given equipment
+local function is_grid_allowed_for_equipment(grid_name, equipment)
+    local grid = data.raw["equipment-grid"][grid_name]
+    if not grid then return false end
+
+    -- Check if the grid has the same category as the equipment
+    local equipment_category = equipment.categories or {}
+    local grid_category = grid.equipment_categories or {}
+
+    -- Allow only if any category of the grid matches any category of the equipment
+    for _, equipment_cat in pairs(equipment_category) do
+        for _, grid_cat in pairs(grid_category) do
+            if equipment_cat == grid_cat then
+                return true
+            end
+        end
+    end
+    return false
+end
 
 if settings.startup["armour-plating"] then
-    local personal_armor_grids = {
-        ["modular-amror"] = "small-equipment-grid",
-        ["power-armor"] = "medium-equipment-grid",
-        ["power-armor-mk2"] = "large-equipment-grid",
-        ["mech-armor"] = "huge-equipment-grid",
-    }
-
-    local vehicle_grids = {
-        ["car"] = "car-equipment-grid",
-        ["tank"] = "tank-equipment-grid",
-        ["spidertron"] = "spidertron-equipment-grid",
-        -- AAI vehicles
-        ["vehicle-chaingunner"] = "chaingunner-equipment-grid",
-        ["vehicle-flame-tumbler"] = "flame-tumbler-equipment-grid",
-        ["vehicle-warden"] = "warden-equipment-grid",
-        ["vehicle-flame-tank"] = "flame-tank-equipment-grid",
-        ["vehicle-laser-tank"] = "laser-tank-equipment-grid",
-        ["ironclad"] = "ironclad-equipment-grid",
-        -- hovercraft mod
-        ["hovercraft-entity"] = "hovercraft-equipment-grid",
-        ["missilecraft"] = "hovercraft-equipment-grid",
-    }
 
     -- Ensure all personal armors have the correct grid and category
     for armor_name, grid_name in pairs(personal_armor_grids) do
