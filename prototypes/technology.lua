@@ -290,7 +290,7 @@ if settings.startup["armour-plating"].value then
           icon = "__base__/graphics/icons/energy-shield-equipment.png",
           icon_size = 64,
           icon_scale = 0.25,
-          shift = {16, -16},
+          -- shift = {16, -16},
           -- icon_mipmaps = 4,
         }
       },
@@ -305,7 +305,8 @@ if settings.startup["armour-plating"].value then
         count = 60 -- effectively 120 military-science-pack
       },
       effects = {
-        {type = "unlock-recipe", recipe = "light-armour-plating"}, -- light
+        {type = "unlock-recipe", recipe = "light-armour-plating"},
+        {type = "unlock-recipe", recipe = "casting-light-armour-plating"},
       },
   },
     { -- heavy armour plating
@@ -319,10 +320,10 @@ if settings.startup["armour-plating"].value then
           scale = 4,
         },
         {
-          icon = "__base__/graphics/icons/energy-shield-equipment.png",
+          icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
           icon_size = 64,
           icon_scale = 0.25,
-          shift = {16, -16},
+          -- shift = {16, -16},
           -- icon_mipmaps = 4,
         }
       },
@@ -343,7 +344,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         {type = "unlock-recipe", recipe = "heavy-armour-plating"},
-        {type = "unlock-recipe", recipe = "light-to-heavy-armour-plating"},
+        -- {type = "unlock-recipe", recipe = "light-to-heavy-armour-plating"}, -- obsolete since now crafting is a evolution
       },
     },
     { -- tungsten armour plating

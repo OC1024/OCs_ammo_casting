@@ -778,10 +778,10 @@ data:extend({ -- armour plating related
     subgroup = "armour-plating",
     enabled = false,
     energy_required = 5,
-    ingredients = {
-      {type = "item", name = "iron-plate", amount = 25},
-      {type = "item", name = "steel-plate", amount = 5},
-      {type = "item", name = "electronic-circuit", amount = 4},
+    ingredients = { -- 96iron-plate +8electronic-circuit =< 100iron-plate
+      {type = "item", name = "iron-plate", amount = 16},
+      {type = "item", name = "steel-plate", amount = 16},
+      {type = "item", name = "electronic-circuit", amount = 8},
     },
     results = {
       {type = "item", name = "light-armour-plating", amount = 1},
@@ -805,15 +805,17 @@ data:extend({ -- armour plating related
       --   -- scale = 0.25,
       -- }
     },
-    category = "crafting-with-fluid",
+    category = "crafting-with-fluid-or-metallurgy",
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
     energy_required = 10,
-    ingredients = {
-      {type = "item", name = "carbon", amount = 4},
-      {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "advanced-circuit", amount = 2},
+    ingredients = { -- =< 400iron-plate
+      {type = "item", name = "light-armour-plating", amount = 4},
+      {type = "item", name = "carbon", amount = 16},
+      -- {type = "item", name = "steel-plate", amount = 16},
+      {type = "item", name = "low-density-structure", amount = 2},
+      {type = "item", name = "advanced-circuit", amount = 4},
     },
     results = {
       {type = "item", name = "heavy-armour-plating", amount = 1},
@@ -821,9 +823,9 @@ data:extend({ -- armour plating related
     allow_productivity = false,
     allow_decomposition = true,
   },
-  { -- heavy armour plating from light armour
+  { -- casting light armour plating
     type = "recipe",
-    name = "light-to-heavy-armour-plating",
+    name = "casting-light-armour-plating",
     icons =
     {
       {
@@ -832,22 +834,21 @@ data:extend({ -- armour plating related
         -- icon_mipmaps = 4,
       },
       {
-        icon = "__core__/graphics/icons/technology/constants/constant-capacity.png",
-        icon_size = 128,
-        icon_scale = 0.125,
-        shift = {8, 8},
-        -- icon_mipmaps = 4,
+        icon = "__OCs_ammo_casting__/graphics/icons/recipe-overlayer-molten-iron.png",
+        icon_size = 64,
+        -- icon_scale = 0.25,
+        -- shift = {8, 8},
+        icon_mipmaps = 4,
       }
     },
-    category = "crafting-with-fluid",
+    category = "metallurgy",
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
     energy_required = 10,
     ingredients = {
-      {type = "item", name = "light-armour-plating", amount = 1},
-      {type = "item", name = "carbon", amount = 5},
-      {type = "item", name = "advanced-circuit", amount = 2},
+      {type = "fluid", name = "molten-iron", amount = 640}, --  (16*30+16*10)
+      {type = "item", name = "electronic-circuit", amount = 8},
     },
     results = {
       {type = "item", name = "heavy-armour-plating", amount = 1},
@@ -876,18 +877,20 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 30,
+    energy_required = 32,
     ingredients = {
-      {type = "item", name = "tungsten-ore", amount = 16}, -- 4*4tungsten-ore
-      {type = "fluid", name = "molten-iron", amount = 340}, -- 30*10steel-plate + 10*4tungsten-plate
-      {type = "item", name = "low-density-structure", amount = 2},
-      {type = "item", name = "advanced-circuit", amount = 5},
+      {type = "item", name = "heavy-armour-plating", amount = 4},
+      {type = "item", name = "tungsten-plate", amount = 4},
+      -- {type = "fluid", name = "molten-iron", amount = 480}, -- 30*16steel-plate
+      {type = "item", name = "low-density-structure", amount = 4},
+      {type = "item", name = "processing-unit", amount = 1},
     },
     results = {
       {type = "item", name = "tungsten-armour-plating", amount = 1},
     },
     allow_productivity = false,
     allow_decomposition = true,
+    allow_autodecomposition = true,
   },
   { -- reactive armour plating
     type = "recipe",
@@ -910,12 +913,13 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 30,
+    energy_required = 32,
     ingredients = {
+      {type = "item", name = "heavy-armour-plating", amount = 4},
       {type = "item", name = "explosives", amount = 4},
-      {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "low-density-structure", amount = 2},
-      {type = "item", name = "advanced-circuit", amount = 5},
+      -- {type = "item", name = "steel-plate", amount = 16},
+      {type = "item", name = "low-density-structure", amount = 4},
+      {type = "item", name = "processing-unit", amount = 1},
     },
     results = {
       {type = "item", name = "reactive-armour-plating", amount = 1},
@@ -944,12 +948,13 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 30,
+    energy_required = 32,
     ingredients = {
+      {type = "item", name = "heavy-armour-plating", amount = 4},
       {type = "item", name = "carbon-fiber", amount = 4},
-      {type = "item", name = "steel-plate", amount = 10},
-      {type = "item", name = "low-density-structure", amount = 2},
-      {type = "item", name = "advanced-circuit", amount = 5},
+      -- {type = "item", name = "steel-plate", amount = 16},
+      {type = "item", name = "low-density-structure", amount = 4},
+      {type = "item", name = "processing-unit", amount = 1},
     },
     results = {
       {type = "item", name = "ultra-light-armour-plating", amount = 1},

@@ -74,7 +74,7 @@ plating_variants = {
          percent = 10,
         },
       },
-      categories = {"vehicle-armour-plating-equipment"},
+      categories = {"vehicle-armour-plating-equipment","personal-armour-plating-equipment"}, -- to be changed to vehicle only
       tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0}, -- purple
       group = "combat",
       subgroup = "armour-plating",
@@ -102,7 +102,7 @@ plating_variants = {
          percent = 20,
         }
       },
-      categories = {"vehicle-armour-plating-equipment"},
+      categories = {"vehicle-armour-plating-equipment","personal-armour-plating-equipment"}, -- to be changed to vehicle only
       tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
       group = "combat",
       subgroup = "armour-plating",
