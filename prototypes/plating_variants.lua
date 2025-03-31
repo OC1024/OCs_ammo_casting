@@ -1,5 +1,5 @@
 plating_variants = {
-    {
+    { -- light plating
       name = "light-armour-plating",
       resistances = {
         {
@@ -20,14 +20,14 @@ plating_variants = {
       order = "a-a",
       place_as_equipment_result = "light-armour-plating",
       max_shield_value = 100,
-      energy_per_shield = "20kJ", -- energy per shield HP
-      buffer_capacity = "1kJ",
-      input_flow_limit = "2kW", -- divide by energy_per_shield to get HP/s healrate
+      energy_per_shield = "64kJ", -- energy per shield HP
+      buffer_capacity = "8kJ",
+      input_flow_limit = "16kW", -- divide by energy_per_shield to get HP/s healrate
       movement_bonus = -0.05, -- -5% speed
       stack_size = 20,
       weight = 50 * kg,
     },
-    {
+    { -- heavy plating
       name = "heavy-armour-plating",
       resistances = {
         {
@@ -48,14 +48,14 @@ plating_variants = {
       order = "a-b",
       place_as_equipment_result = "heavy-armour-plating",
       max_shield_value = 200,
-      energy_per_shield = "20kJ", -- energy per shield HP
-      buffer_capacity = "2kJ",
-      input_flow_limit = "4kW", -- divide by energy_per_shield to get HP/s healrate
+      energy_per_shield = "128kJ", -- energy per shield HP
+      buffer_capacity = "16kJ",
+      input_flow_limit = "32kW", -- divide by energy_per_shield to get HP/s healrate
       movement_bonus = -0.1, -- -10% speed
       stack_size = 10,
       weight = 100 * kg,
     },
-    {
+    { -- tungsten plating
       name = "tungsten-armour-plating",
       resistances = {
         {
@@ -80,15 +80,15 @@ plating_variants = {
       subgroup = "armour-plating",
       order = "b-a",
       place_as_equipment_result = "tungsten-armour-plating",
-      max_shield_value = 400,
-      energy_per_shield = "40kJ", -- energy per shield HP
-      buffer_capacity = "4kJ",
-      input_flow_limit = "8kW", -- divide by energy_per_shield to get HP/s healrate
+      max_shield_value = 800,
+      energy_per_shield = "512kJ", -- energy per shield HP
+      buffer_capacity = "32kJ",
+      input_flow_limit = "64kW", -- divide by energy_per_shield to get HP/s healrate
       movement_bonus = -0.2,
       stack_size = 5,
       weight = 200 * kg,
     },
-    {
+    { -- reactive plating
       name = "reactive-armour-plating",
       resistances = {
         {
@@ -108,15 +108,15 @@ plating_variants = {
       subgroup = "armour-plating",
       order = "b-b",
       place_as_equipment_result = "reactive-armour-plating",
-      max_shield_value = 300,
-      energy_per_shield = "40kJ", -- energy per shield HP
-      buffer_capacity = "4kJ",
-      input_flow_limit = "8kW", -- divide by energy_per_shield to get HP/s healrate
+      max_shield_value = 400,
+      energy_per_shield = "256kJ", -- energy per shield HP
+      buffer_capacity = "32kJ",
+      input_flow_limit = "64kW", -- divide by energy_per_shield to get HP/s healrate
       movement_bonus = -0.1, -- -10% speed
       stack_size = 10,
       weight = 100 * kg,
     },
-    {
+    { -- ultra-light plating
       name = "ultra-light-armour-plating",
       resistances = {
         {
@@ -136,10 +136,10 @@ plating_variants = {
       subgroup = "armour-plating",
       order = "b-c",
       place_as_equipment_result = "ultra-light-armour-plating",
-      max_shield_value = 300,
-      energy_per_shield = "40kJ", -- energy per shield HP
-      buffer_capacity = "4kJ",
-      input_flow_limit = "8kW", -- divide by energy_per_shield to get HP/s healrate
+      max_shield_value = 400,
+      energy_per_shield = "256kJ", -- energy per shield HP
+      buffer_capacity = "64kJ",
+      input_flow_limit = "128kW", -- divide by energy_per_shield to get HP/s healrate
       movement_bonus = 0.0, -- no change
       stack_size = 40,
       weight = 25 * kg,
