@@ -336,6 +336,7 @@ data:extend({ -- crafting and casting tungsten ammo
     category = "metallurgy",
     group = "combat",
     subgroup = "alternative-ammo",
+    order = "b-[shotgun]-b[piercing-shotgun-shells]",
     enabled = false,
     energy_required = 10,
     ingredients = {
@@ -868,11 +869,11 @@ data:extend({ -- armour plating related
         -- icon_mipmaps = 4,
         tint = plating_variants["tungsten"].tint,
       },
-      {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      }
+      -- {
+      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon_size = 64,
+      --   icon_mipmaps = 4,
+      -- }
     },
     category = "metallurgy",
     group = "combat",

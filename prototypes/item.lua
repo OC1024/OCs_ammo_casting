@@ -95,7 +95,7 @@ data:extend({
       },
       magazine_size = 10,
       subgroup = "ammo",
-      order = "b[piercing-shotgun-shells]",
+      order = "b-[shotgun]-b[piercing-shotgun-shells]",
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,
@@ -305,7 +305,7 @@ end
 -- mod compatibility
 if mods["vtk-cannon-turret"] then
   data:extend({
-    {
+    { -- tungsten cannon shell magazine
       type = "ammo",
       name = "tungsten-cannon-shell-magazine",
       icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
@@ -336,7 +336,6 @@ if mods["vtk-cannon-turret"] then
           }
         }
       },
-      log("Ammo definition for tungsten-cannon-shell-magazine: " .. serpent.block(data.raw["ammo"]["tungsten-cannon-shell-magazine"])),
       magazine_size = 10,
       subgroup = "ammo",
       order = "d[cannon-shell]-d[tungsten]-m[magazine]",

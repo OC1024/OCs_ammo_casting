@@ -154,7 +154,7 @@ data:extend({ -- standard ammo techs of this mod
 -- Conditionally included technologies
 if settings.startup["allow-casting-explosive-ammo"].value then
   data:extend({
-  { -- casting explosive tank shells and artillery shells
+  { -- casting explosive cannon shells and artillery shells
     type = "technology",
     name = "casting-explosive-ammo-tech",
     icons =
@@ -273,6 +273,8 @@ if settings.startup["allow-bio-explosives"].value then
 end
 
 if settings.startup["armour-plating"].value then
+
+  -- wheather bio-explosive is needed or not
   if settings.startup["allow-bio-explosives"].value then
     prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","bio-explosives-tech","power-armor"}
   else
@@ -522,6 +524,7 @@ if mods["vtk-cannon-turret"] then
       recipe = "casting-uranium-cannon-shell-magazine",
     })
   end
+
   if data.raw["technology"]["casting-explosive-ammo-tech"] and settings.startup["allow-casting-explosive-ammo"].value then
       -- if data.raw["technology"]["casting-explosive-ammo-tech"] and settings.startup["allow-casting-explosive-ammo-ammo"].value then  end
     table.insert(data.raw["technology"]["casting-explosive-ammo-tech"].effects, {
@@ -533,6 +536,7 @@ if mods["vtk-cannon-turret"] then
       recipe = "casting-explosive-uranium-cannon-shell-magazine",
     })
   end
+
   if data.raw["technology"]["casting-tungsten-ammo-tech"] then
     table.insert(data.raw["technology"]["casting-tungsten-ammo-tech"].effects, {
       type = "unlock-recipe",
