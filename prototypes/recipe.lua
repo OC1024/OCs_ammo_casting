@@ -17,7 +17,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "aa",
     enabled = false,
     energy_required = 1,
@@ -46,7 +46,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "j[piercing-rounds-magazine]",
     enabled = false,
     energy_required = 3,
@@ -82,7 +82,7 @@ data:extend({ -- casting vanilla recipes
       },
       category = "metallurgy",
       group = "combat",
-      subgroup = "ammo",
+      subgroup = "alternative-ammo",
       -- order = "ac",
       enabled = false,
       energy_required = 10, -- just last step
@@ -113,7 +113,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "ad",
     enabled = false,
     energy_required = 12, -- vanilla: 8 + 12
@@ -142,7 +142,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "ae",
     enabled = false,
     energy_required = 12, -- vanilla: 8 + 12
@@ -171,7 +171,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "ba",
     enabled = false,
     energy_required = 8, -- vanilla: 8
@@ -201,7 +201,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "bb",
     enabled = false,
     energy_required = 12, -- vanilla: 8 + 12
@@ -232,7 +232,7 @@ data:extend({ -- casting vanilla recipes
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "cb",
     enabled = false,
     energy_required = 25, -- vanilla
@@ -285,7 +285,7 @@ data:extend({ -- crafting and casting tungsten ammo
       }
     },
     category = "metallurgy",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 12,
     ingredients = {
@@ -296,7 +296,7 @@ data:extend({ -- crafting and casting tungsten ammo
     results = {{type="item", name="tungsten-cannon-shell", amount=1}},
     allow_productivity = false,
     allow_decomposition = false,
-    auto_recycle = true,
+    -- auto_recycle = true,
   },
   { -- tungsten-shotgun-shell
     type = "recipe",
@@ -335,7 +335,7 @@ data:extend({ -- crafting and casting tungsten ammo
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 10,
     ingredients = {
@@ -346,7 +346,7 @@ data:extend({ -- crafting and casting tungsten ammo
     results = {{type="item", name="tungsten-shotgun-shell", amount=1}},
     allow_productivity = false,
     allow_decomposition = false,
-    auto_recycle = true,
+    -- auto_recycle = true,
   },
   { -- tungsten-rounds
     type = "recipe",
@@ -385,7 +385,7 @@ data:extend({ -- crafting and casting tungsten ammo
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 8,
     ingredients = {
@@ -396,7 +396,7 @@ data:extend({ -- crafting and casting tungsten ammo
     results = {{type="item", name="tungsten-rounds-magazine", amount=1}},
     allow_productivity = false,
     allow_decomposition = false,
-    auto_recycle = true,
+    -- auto_recycle = true,
   },
   { -- tungsten railgun ammo
     type = "recipe",
@@ -437,7 +437,7 @@ data:extend({ -- crafting and casting tungsten ammo
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 25,
     ingredients = {
@@ -449,7 +449,7 @@ data:extend({ -- crafting and casting tungsten ammo
     results = {{type = "item", name = "tungsten-railgun-ammo", amount = 1}},
     allow_productivity = false,
     allow_decomposition = false,
-    auto_recycle = true,
+    -- auto_recycle = true,
   },
 })
 
@@ -477,7 +477,7 @@ data:extend({ -- casting turrets
     enabled = false,
     energy_required = 8,
     ingredients = {
-      {type = "fluid", name = "molten-iron", amount = 400}, -- 40 iron plates
+      {type = "fluid", name = "molten-iron", amount = 300}, -- 10*20iron-plates + 10*10iron-gear-wheel
       {type = "fluid", name = "molten-copper", amount = 10}, -- 10 copper plates
     },
     results = {{type = "item", name = "gun-turret", amount = 1}},
@@ -504,7 +504,7 @@ data:extend({ -- casting explosive ammo
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "bc",
     enabled = false,
     energy_required = 8, -- vanilla:
@@ -534,7 +534,7 @@ data:extend({ -- casting explosive ammo
     },
     category = "metallurgy",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     -- order = "bd",
     enabled = false,
     energy_required = 12, -- vanilla: 8 + 12 
@@ -663,7 +663,7 @@ data:extend({ -- biochamber recipes
     },
     category = "organic",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 4,
     ingredients = {
@@ -693,7 +693,7 @@ data:extend({ -- biochamber recipes
     },
     category = "organic",
     group = "combat",
-    subgroup = "ammo",
+    subgroup = "alternative-ammo",
     enabled = false,
     energy_required = 8,
     ingredients = {
@@ -765,7 +765,7 @@ data:extend({ -- armour plating related
         -- icon = "__base__/graphics/icons/iron-plate.png",
         icon_size = 64,
         icon_mipmaps = 1,
-        tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
+        tint = plating_variants["light"].tint,
       },
       -- {
       --   icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
@@ -777,7 +777,7 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 5,
+    energy_required = 4,
     ingredients = { -- 96iron-plate +8electronic-circuit =< 100iron-plate
       {type = "item", name = "iron-plate", amount = 16},
       {type = "item", name = "steel-plate", amount = 16},
@@ -809,7 +809,7 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 10,
+    energy_required = 16,
     ingredients = { -- =< 400iron-plate
       {type = "item", name = "light-armour-plating", amount = 4},
       {type = "item", name = "carbon", amount = 16},
@@ -832,9 +832,10 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
+        tint = plating_variants["light"].tint,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/recipe-overlayer-molten-iron.png",
+        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         -- icon_scale = 0.25,
         -- shift = {8, 8},
@@ -845,13 +846,13 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 10,
+    energy_required = 4,
     ingredients = {
       {type = "fluid", name = "molten-iron", amount = 640}, --  (16*30+16*10)
       {type = "item", name = "electronic-circuit", amount = 8},
     },
     results = {
-      {type = "item", name = "heavy-armour-plating", amount = 1},
+      {type = "item", name = "light-armour-plating", amount = 1},
     },
     allow_productivity = false,
     allow_decomposition = true,
@@ -865,7 +866,7 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0}, -- purple
+        tint = plating_variants["tungsten"].tint,
       },
       {
         icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
@@ -877,7 +878,7 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 32,
+    energy_required = 64,
     ingredients = {
       {type = "item", name = "heavy-armour-plating", amount = 4},
       {type = "item", name = "tungsten-plate", amount = 4},
@@ -889,7 +890,7 @@ data:extend({ -- armour plating related
       {type = "item", name = "tungsten-armour-plating", amount = 1},
     },
     allow_productivity = false,
-    allow_decomposition = true,
+    allow_decomposition = false,
     allow_autodecomposition = true,
   },
   { -- reactive armour plating
@@ -901,7 +902,7 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
+        tint = plating_variants["reactive"].tint,
       },
       {
         icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
@@ -913,7 +914,7 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 32,
+    energy_required = 64,
     ingredients = {
       {type = "item", name = "heavy-armour-plating", amount = 4},
       {type = "item", name = "explosives", amount = 4},
@@ -936,7 +937,7 @@ data:extend({ -- armour plating related
         icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
         icon_size = 64,
         -- icon_mipmaps = 4,
-        tint = {r = 0.6, g = 1.0, b = 1.0, a = 1.0} , -- blue/cyan
+        tint = plating_variants["ultra_light"].tint,
       },
       {
         icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-em-plant.png",
@@ -948,7 +949,7 @@ data:extend({ -- armour plating related
     group = "combat",
     subgroup = "armour-plating",
     enabled = false,
-    energy_required = 32,
+    energy_required = 64,
     ingredients = {
       {type = "item", name = "heavy-armour-plating", amount = 4},
       {type = "item", name = "carbon-fiber", amount = 4},
@@ -969,9 +970,8 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 
   -- vanilla version is overwritten to medium artillery shell
   if data.raw["recipe"]["artillery-shell"] then
-
     data.raw["recipe"]["artillery-shell"].localised_name = {"recipe-name.medium-artillery-shell"}
-    data.raw["recipe"]["artillery-shell"].ingredients = { -- vanilla like recipe
+    data.raw["recipe"]["artillery-shell"].ingredients = { -- replaced by vanilla like recipe
       {type = "item", name = "steel-plate", amount = 8},
       -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
       {type = "item", name = "explosives", amount = 8}, -- half of vanilla, the other 8 are inside the 4explosive-cannon-shell
@@ -980,22 +980,12 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     }
     log("Replaced artillery shell with medium artillery shell.")
   end
-  -- my casting recipe has then to be alinged to the medium artillery shell, too.
-  if data.raw["recipe"]["casting-artillery-shell"] then
 
-    data.raw["recipe"]["casting-artillery-shell"].localised_name = {"recipe-name.medium-artillery-shell"}
-    data.raw["recipe"]["casting-artillery-shell"].ingredients = { -- vanilla like recipe
-      {type = "fluid", name = "molten-iron", amount = 490}, --  10*25iron-plate + 30*8steel-plate 
-      {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5 copper-plates
-      {type = "item", name = "explosives", amount = 8}, -- half of vanilla
-      -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
-    }
-  end
-
-  data:extend({ -- heavy artillery shell 
+  data:extend({ -- casting light artillery shell + heavy artillery shell
     { -- casting-artillery-shell (vanilla-like without DLC)
       type = "recipe",
       name = "casting-artillery-shell",
+      localised_name = {"recipe-name.casting-medium-artillery-shell"},
       icons =
       {
         {
@@ -1011,17 +1001,23 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       },
       category = "metallurgy",
       group = "combat",
-      subgroup = "ammo",
+      subgroup = "alternative-ammo",
       -- order = "ca",
       enabled = false,
       energy_required = 16, -- from raw in space age: 24, last step: 15 for shell
-      ingredients = { -- exactly DLC recipe
-        {type = "fluid", name = "molten-iron", amount = 250}, --  25iron-plate
-        {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5copper-plate
-        {type = "item", name = "tungsten-plate", amount = 4},
-        {type = "item", name = "explosives", amount = 8},
-        {type = "item", name = "calcite", amount = 1},
+      ingredients = { -- vanilla like recipe
+        {type = "fluid", name = "molten-iron", amount = 490}, --  10*25iron-plate + 30*8steel-plate 
+        {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5 copper-plates
+        {type = "item", name = "explosives", amount = 8}, -- half of vanilla
+        -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
       },
+      -- ingredients = { -- exactly DLC recipe
+      --   {type = "fluid", name = "molten-iron", amount = 250}, --  25iron-plate
+      --   {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5copper-plate
+      --   {type = "item", name = "tungsten-plate", amount = 4},
+      --   {type = "item", name = "explosives", amount = 8},
+      --   {type = "item", name = "calcite", amount = 1},
+      -- },
       results = {{type = "item", name = "artillery-shell", amount = 1}},
       allow_productivity = false,
     },
@@ -1083,7 +1079,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       },
       category = "metallurgy",
       group = "combat",
-      subgroup = "ammo",
+      subgroup = "alternative-ammo",
       enabled = false,
       energy_required = 25,
       ingredients = { -- DLC like recipe
@@ -1100,25 +1096,13 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       auto_recycle = true,
     }
   })
--- else -- nothing happens
---   -- log("Artillery shell untouched.")
---   data:extend({
---     -- something so that the dlc recipe is not touched and the casting recipe would fit in.
---   })
+  log("Added heavy artillery shell and casting recipes.")
+else -- nothing happens
+  log("Vanilla Artillery shell untouched.")
 end
 
 -- Check for the scattergun_turret mod and add the adjacent recipes if it exists
 if mods["scattergun_turret"] then
-  if data.raw["technology"]["casting-heavy-ammo-tech"] then
-      -- Inject the recipe unlock into the technology
-      table.insert(data.raw["technology"]["casting-heavy-ammo-tech"].effects, {
-          type = "unlock-recipe",
-          recipe = "casting-uranium-shotgun-shell",
-      })
-      log("Successfully added 'casting-uranium-shotgun-shell' to 'casting-heavy-ammo-tech'.")
-  else
-      log("Warning: Technology 'casting-heavy-ammo-tech' not found. Unable to add 'casting-uranium-shotgun-shell' recipe.")
-  end
   data:extend({
     { -- casting uranium shotgun shell
       type = "recipe",
@@ -1138,7 +1122,7 @@ if mods["scattergun_turret"] then
       },
       category = "metallurgy",
       group = "combat",
-      subgroup = "ammo",
+      subgroup = "alternative-ammo",
       enabled = false,
       energy_required = 12,
       ingredients =
@@ -1156,19 +1140,19 @@ if mods["scattergun_turret"] then
       icons =
       {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/casting-fragmentation-shell.png",
+          icon = "__scattergun_turret__/graphics/icons/fragmentation-cannon-shell.png",
           icon_size = 64,
           icon_mipmaps = 4,
         },
-        -- {
-        --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
-        --   icon_size = 64,
-        --   icon_mipmaps = 4,
-        -- }
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
       },
       category = "metallurgy",
       group = "combat",
-      subgroup = "ammo",
+      subgroup = "alternative-ammo",
       enabled = false,
       energy_required = 8,
       ingredients = {
@@ -1190,6 +1174,257 @@ if mods["aai-industry"] then
     log("Compatibility for AAI Industry: Modified recipe for casting-gun-turret.")
   end
 end
+
+if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell magazines
+  data:extend({
+    { -- casting-cannon-turret
+      type = "recipe",
+      name = "casting-cannon-turret",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/cannon-turret-icon.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "turret",
+      -- order = "ba",
+      enabled = false,
+      energy_required = 10,
+      ingredients = {
+        {type = "fluid", name = "molten-iron", amount = 300*2+30*30}, -- (10*10iron-plates + 10*10iron-gear-wheel)*2+30*30steel-plate
+        {type = "fluid", name = "molten-copper", amount = 10*2}, -- 10 copper plates*2
+        {type = "item", name = "electronic-circuit", amount = 2}
+      },
+      results = {{type = "item", name = "vtk-cannon-turret", amount = 1}},
+      allow_productivity = false,
+    },
+    { -- casting-cannon-turret-heavy
+      type = "recipe",
+      name = "casting-cannon-turret-heavy",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/cannon-turret-heavy-icon.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "turret",
+      -- order = "ba",
+      enabled = false,
+      energy_required = 40, -- only last step
+      ingredients = {
+        {type = "fluid", name = "molten-iron", amount = (300*2+30*30)*2+50*30}, -- ((10*10iron-plates + 10*10iron-gear-wheel)*2+30*30steel-plate)*2 + 30*50steel-plate
+        {type = "fluid", name = "molten-copper", amount = 10*2*2}, -- 10 copper plates*2
+        {type = "item", name = "electronic-circuit", amount = 2*2},
+        {type = "item", name = "advanced-circuit", amount = 10}
+      },
+      results = {{type = "item", name = "vtk-cannon-turret-heavy", amount = 1}},
+      allow_productivity = false,
+    },
+    { -- casting-cannon-shell-magazine
+      type = "recipe",
+      name = "casting-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "alternative-ammo",
+      -- order = "ba",
+      enabled = false,
+      energy_required = 8*10+2, -- vanilla: 8
+      ingredients = { -- 10 cannon-shell + 2 iron-plate + 1 plastic-bar
+        {type = "fluid", name = "molten-iron", amount = 60*10+10}, -- 30 iron/steel * 2 steel
+        {type = "item", name = "explosives", amount = 1*10},
+        {type = "item", name = "plastic-bar", amount = 2*10+1},
+      },
+      results = {{type = "item", name = "cannon-shell-magazine", amount = 1}},
+      allow_productivity = false,
+    },
+    { -- casting-uranium-cannon-shell-magazine
+      type = "recipe",
+      name = "casting-uranium-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/uranium-cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "alternative-ammo",
+      -- order = "bb",
+      enabled = false,
+      energy_required = 12*10+2, -- vanilla: 8 + 12
+      ingredients = {  -- 10 uranium-cannon-shell + 2 iron-plate + 1 plastic-bar
+        {type = "fluid", name = "molten-iron", amount = 60*10+10}, -- 30 iron/steel * 2 steel
+        {type = "item", name = "explosives", amount = 1*10},
+        {type = "item", name = "plastic-bar", amount = 2*10+1},
+        {type = "item", name = "uranium-238", amount = 1*10},
+      },
+      results = {{type = "item", name = "uranium-cannon-shell-magazine", amount = 1}},
+      allow_productivity = false,
+      allow_decomposition = false,
+    },
+    { -- casting-explosive-cannon-shell-magazine
+      type = "recipe",
+      name = "casting-explosive-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/explosive-cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "alternative-ammo",
+      -- order = "ba",
+      enabled = false,
+      energy_required = 8*10+2, -- vanilla: 8
+      ingredients = { -- 10 cannon-shell + 2 iron-plate + 1 plastic-bar
+        {type = "fluid", name = "molten-iron", amount = 60*10+10}, -- 30 iron/steel * 2 steel
+        {type = "item", name = "explosives", amount = 2*10},
+        {type = "item", name = "plastic-bar", amount = 2*10+1},
+      },
+      results = {{type = "item", name = "explosive-cannon-shell-magazine", amount = 1}},
+      allow_productivity = false,
+    },
+    { -- casting-uranium-cannon-shell-magazine
+      type = "recipe",
+      name = "casting-explosive-uranium-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__vtk-cannon-turret__/graphics/icons/explosive-uranium-cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "alternative-ammo",
+      -- order = "bb",
+      enabled = false,
+      energy_required = 12*10+2, -- vanilla: 8 + 12
+      ingredients = {  -- 10 uranium-cannon-shell + 2 iron-plate + 1 plastic-bar
+        {type = "fluid", name = "molten-iron", amount = 60*10+10}, -- 30 iron/steel * 2 steel
+        {type = "item", name = "explosives", amount = 2*10},
+        {type = "item", name = "plastic-bar", amount = 2*10+1},
+        {type = "item", name = "uranium-238", amount = 1*10},
+      },
+      results = {{type = "item", name = "explosive-uranium-cannon-shell-magazine", amount = 1}},
+      allow_productivity = false,
+      allow_decomposition = false,
+    },
+    { -- tungsten-cannon-shell-magazine
+      type = "recipe",
+      name = "tungsten-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+      },
+      category = "advanced-crafting",
+      group = "combat",
+      subgroup = "ammo",
+      enabled = false,
+      energy_required = 2,
+      ingredients = {
+        {type = "item", name = "tungsten-cannon-shell", amount = 10},
+        {type = "item", name = "iron-plate", amount = 2},
+        {type = "item", name = "plastic-bar", amount = 1},
+      },
+      results = {
+        {type = "item", name = "tungsten-cannon-shell-magazine", amount = 1},
+      },
+      allow_productivity = false,
+      allow_decomposition = true,
+    },
+    { -- casting-tungsten-cannon-shell-magazine
+      type = "recipe",
+      name = "casting-tungsten-cannon-shell-magazine",
+      icons =
+      {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      subgroup = "alternative-ammo",
+      enabled = false,
+      energy_required = 12*10+2,
+      ingredients = { --10 tungsten-cannon-shell + 2 iron-plate + 1 plastic-bar
+        {type="fluid", name="molten-iron", amount=50*10+10},
+        {type="item", name="tungsten-carbide", amount=2*10},
+        {type = "item", name = "explosives", amount = 2*10},
+        {type = "item", name = "plastic-bar", amount = 1},
+      },
+      results = {
+        {type = "item", name = "tungsten-cannon-shell-magazine", amount = 1},
+      },
+      allow_productivity = false,
+      allow_decomposition = false,
+      auto_recycle = true,
+    },
+  })
+end
+-- if vtk-cannon-turret and aai-industry then the cannon turrets must be recalculated.
 
 if mods["More_Ammo"] then -- developement paused
   if data.raw.recipe["casting-tungsten-rounds-magazine"] then

@@ -23,6 +23,16 @@ if mods["scattergun_turret"] then
     })
     log("Successfully added 'casting-fragmentation-shell' to 'casting-light-ammo-tech'.")
   end
+  if data.raw["technology"]["casting-heavy-ammo-tech"] then
+    -- Inject the recipe unlock into the technology
+    table.insert(data.raw["technology"]["casting-heavy-ammo-tech"].effects, {
+        type = "unlock-recipe",
+        recipe = "casting-uranium-shotgun-shell",
+    })
+    log("Successfully added 'casting-uranium-shotgun-shell' to 'casting-heavy-ammo-tech'.")
+else
+    log("Warning: Technology 'casting-heavy-ammo-tech' not found. Unable to add 'casting-uranium-shotgun-shell' recipe.")
+end
 end
 -- experimental compatibility
 if mods["More_Ammo"] then

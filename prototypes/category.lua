@@ -6,6 +6,12 @@ data:extend({
         order = "g-a",
     },
     {
+        type = "item-subgroup",
+        name = "alternative-ammo",
+        group = "combat",
+        order = "b-b",
+    },
+    {
         type = "equipment-category",
         name = "personal-armour-plating-equipment"
     },

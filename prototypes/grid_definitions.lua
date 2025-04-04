@@ -1,6 +1,6 @@
 
 personal_armor_grids = {
-    ["modular-amror"] = "small-equipment-grid",
+    ["modular-armor"] = "small-equipment-grid",
     ["power-armor"] = "medium-equipment-grid",
     ["power-armor-mk2"] = "large-equipment-grid",
     ["mech-armor"] = "huge-equipment-grid",

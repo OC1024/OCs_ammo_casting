@@ -273,7 +273,13 @@ if settings.startup["allow-bio-explosives"].value then
 end
 
 if settings.startup["armour-plating"].value then
-  data:extend({
+  if settings.startup["allow-bio-explosives"].value then
+    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","bio-explosives-tech","power-armor"}
+  else
+    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","explosives", "biochamber","power-armor"}
+  end
+
+  data:extend({ -- armour plating techs
     { -- light armour plating
       type = "technology",
       name = "light-armour-plating-tech",
@@ -284,7 +290,7 @@ if settings.startup["armour-plating"].value then
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 4,
-          tint = {r = 1.0, g = 1.0, b = 0.6, a = 1.0}, -- yellow tint
+          tint = plating_variants["light"].tint,
         },
         {
           icon = "__base__/graphics/icons/energy-shield-equipment.png",
@@ -308,7 +314,7 @@ if settings.startup["armour-plating"].value then
         {type = "unlock-recipe", recipe = "light-armour-plating"},
         {type = "unlock-recipe", recipe = "casting-light-armour-plating"},
       },
-  },
+    },
     { -- heavy armour plating
       type = "technology",
       name = "heavy-armour-plating-tech",
@@ -328,7 +334,7 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"light-armour-plating-tech","tank","space-science-pack"},
+      prerequisites = {"light-armour-plating-tech","tank","space-science-pack","modular-armor"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -356,7 +362,7 @@ if settings.startup["armour-plating"].value then
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 2,
-          tint = {r = 0.85, g = 0.7, b = 1.0, a = 1.0}, -- purple
+          tint = plating_variants["tungsten"].tint,
 
         },
         {
@@ -366,7 +372,7 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"heavy-armour-plating-tech","tungsten-steel","military-4"},
+      prerequisites = {"heavy-armour-plating-tech","tungsten-steel","military-4","power-armor"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -394,7 +400,7 @@ if settings.startup["armour-plating"].value then
           icon_size = 64,
           -- icon_mipmaps = 1,
           scale = 2,
-          tint = {r = 0.75, g = 1.0, b = 0.75, a = 1.0}, -- green
+          tint = plating_variants["reactive"].tint,
         },
         {
           icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
@@ -403,7 +409,8 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"heavy-armour-plating-tech","bio-explosives-tech","military-4"},
+      prerequisites = prereq_tech_reactive,
+      -- bio-explosives-tech is optional so define alt to fix issue
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -431,7 +438,7 @@ if settings.startup["armour-plating"].value then
           icon_size = 64,
           icon_mipmaps = 1,
           scale = 2,
-          tint = {r = 0.6, g = 1.0, b = 1.0, a = 1.0} , -- blue/cyan
+          tint = plating_variants["ultra_light"].tint,
         },
         {
           icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-em-plant.png",
@@ -439,7 +446,7 @@ if settings.startup["armour-plating"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4"},
+      prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4","power-armor"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -485,5 +492,55 @@ if settings.startup["allow-casting-gun-turrets"].value then
       log("Successfully added 'casting-gun-turret' to 'casting-light-ammo-tech'.")
   else
       log("Warning: Technology 'casting-light-ammo-tech' not found. Unable to add 'casting-gun-turret' recipe.")
+  end
+end
+
+-- mod compatibility
+if mods["vtk-cannon-turret"] then
+
+  if data.raw["technology"]["vtk-cannon-turret-unlock"] then
+    table.insert(data.raw["technology"]["vtk-cannon-turret-unlock"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-cannon-turret",
+    })
+  end
+
+  if data.raw["technology"]["vtk-cannon-turret-heavy-unlock"] then
+    table.insert(data.raw["technology"]["vtk-cannon-turret-heavy-unlock"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-cannon-turret-heavy",
+    })
+  end
+
+  if data.raw["technology"]["casting-heavy-ammo-tech"] then
+    table.insert(data.raw["technology"]["casting-heavy-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-cannon-shell-magazine",
+    })
+    table.insert(data.raw["technology"]["casting-heavy-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-uranium-cannon-shell-magazine",
+    })
+  end
+  if data.raw["technology"]["casting-explosive-ammo-tech"] and settings.startup["allow-casting-explosive-ammo"].value then
+      -- if data.raw["technology"]["casting-explosive-ammo-tech"] and settings.startup["allow-casting-explosive-ammo-ammo"].value then  end
+    table.insert(data.raw["technology"]["casting-explosive-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-explosive-cannon-shell-magazine",
+    })
+    table.insert(data.raw["technology"]["casting-explosive-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-explosive-uranium-cannon-shell-magazine",
+    })
+  end
+  if data.raw["technology"]["casting-tungsten-ammo-tech"] then
+    table.insert(data.raw["technology"]["casting-tungsten-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "casting-tungsten-cannon-shell-magazine",
+    })
+    table.insert(data.raw["technology"]["casting-tungsten-ammo-tech"].effects, {
+      type = "unlock-recipe",
+      recipe = "tungsten-cannon-shell-magazine",
+    })
   end
 end

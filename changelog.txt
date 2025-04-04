@@ -1,10 +1,19 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.0
-Date: 2025-03-06
+Date: 2025-04-04
   Major Features:
-    - Introducing new branch of technologies for armor plating. 
+    - Introducing new branch of technologies for armor plating. (Balancing could be refined later)
+    - Added mod compatibility for "Cannon Turret"(VortiK).
   Minor Features:
     - Further decreasing needed icons: Expanding code for icons to all technologies and recipes.
+  Balancing:
+    -  Reduced molten-iron cost of gun turret from 400 to 300 as is now using the correct foundry cost ratio.
+  Changes:
+    - Changed the order to have tungsten ammo behind uranium ammo.
+    - Chainging the external name of the mod to "OC's Ammo and Armor" to reflect all new features.
+    - Moved all alternative ammo to a new recipe-subgroup "alternative-ammo".
+  Bugfixes:
+    - Casting uranium shotgun ammo now is possible.
 ---------------------------------------------------------------------------------------------------
 Version: 0.5.0
 Date: 2025-03-05

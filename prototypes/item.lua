@@ -42,7 +42,7 @@ data:extend({
       },
       magazine_size = 10,
       subgroup = "ammo",
-      order = "a[piercing-rounds-magazine]-b[uranium-rounds-magazine]",
+      order = "a[piercing-rounds-magazine]-c[tungsten-rounds-magazine]",
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,
@@ -119,7 +119,7 @@ data:extend({
             type = "projectile",
             projectile = "tungsten-cannon-projectile",
             starting_speed = 1,
-            direction_deviation = 0.1,
+            direction_deviation = 0.05,
             range_deviation = 0.1,
             max_range = 30*1.375,
             min_range = 5,
@@ -132,7 +132,7 @@ data:extend({
         }
       },
       subgroup = "ammo",
-      order = "d[cannon-shell]-c[uranium]",
+      order = "d[cannon-shell]-d[tungsten]",
       inventory_move_sound = item_sounds.ammo_large_inventory_move,
       pick_sound = item_sounds.ammo_large_inventory_pickup,
       drop_sound = item_sounds.ammo_large_inventory_move,
@@ -176,7 +176,7 @@ data:extend({
         }
       },
       subgroup = "ammo",
-      order = "e[railgun-ammo]-a[basic]",
+      order = "e[railgun-ammo]-b[tungsten]",
       inventory_move_sound = item_sounds.ammo_large_inventory_move,
       pick_sound = item_sounds.ammo_large_inventory_pickup,
       drop_sound = item_sounds.ammo_large_inventory_move,
@@ -232,7 +232,7 @@ end
 if settings.startup["armour-plating"] then
 
   local items = {}
-
+ -- creating the items for armour plating
   for _, variant in pairs(plating_variants) do
     table.insert(items, {
       type = "item",
@@ -300,4 +300,51 @@ if settings.startup["armour-plating"] then
   --       }
   --   })
   -- end
+end
+
+-- mod compatibility
+if mods["vtk-cannon-turret"] then
+  data:extend({
+    {
+      type = "ammo",
+      name = "tungsten-cannon-shell-magazine",
+      icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
+      ammo_category = "cannon-shell-magazine",
+      ammo_type =
+      {
+        category = "cannon-shell-magazine",
+        range_modifier = 1.25,
+        target_type = "direction",
+        action =
+        {
+          type = "direct",
+          action_delivery =
+          {
+            type = "projectile",
+            projectile = "tungsten-cannon-magazine-projectile",
+            log("we should print some schnitzelsemmel"),
+            starting_speed = 1,
+            direction_deviation = 0.05,
+            range_deviation = 0.1,
+            max_range = 35*1.375,
+            min_range = 5,
+            source_effects =
+            {
+              type = "create-explosion",
+              entity_name = "explosion-gunshot"
+            }
+          }
+        }
+      },
+      log("Ammo definition for tungsten-cannon-shell-magazine: " .. serpent.block(data.raw["ammo"]["tungsten-cannon-shell-magazine"])),
+      magazine_size = 10,
+      subgroup = "ammo",
+      order = "d[cannon-shell]-d[tungsten]-m[magazine]",
+      inventory_move_sound = item_sounds.ammo_large_inventory_move,
+      pick_sound = item_sounds.ammo_large_inventory_pickup,
+      drop_sound = item_sounds.ammo_large_inventory_move,
+      stack_size = 20,
+      weight = (40*10+20)*kg -- +20*kg accound for the magazinie clip
+    },
+  })
 end
