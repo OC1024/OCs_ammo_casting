@@ -10,7 +10,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -39,7 +39,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -61,21 +61,20 @@ data:extend({ -- casting vanilla recipes
   { -- casting-uranium-rounds-magazine
       type = "recipe",
       name = "casting-uranium-rounds-magazine",
-      icon = "__OCs_ammo_casting__/graphics/icons/casting-uranium-ammo.png",
       icons =
       {
-        {
-          icon = "__base__/graphics/icons/uranium-rounds-magazine.png",
-          icon_size = 64,
-          icon_mipmaps = 4,
-        },
         -- {
         --   icon = "__base__/graphics/icons/uranium-rounds-magazine-light.png",
         --   icon_size = 64,
         --   icon_mipmaps = 4,
         -- },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__base__/graphics/icons/uranium-rounds-magazine.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -106,7 +105,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -135,7 +134,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -164,7 +163,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -194,7 +193,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -225,7 +224,7 @@ data:extend({ -- casting vanilla recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -279,7 +278,7 @@ data:extend({ -- crafting and casting tungsten ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -328,7 +327,7 @@ data:extend({ -- crafting and casting tungsten ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -379,7 +378,7 @@ data:extend({ -- crafting and casting tungsten ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -431,7 +430,7 @@ data:extend({ -- crafting and casting tungsten ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -466,7 +465,7 @@ data:extend({ -- casting turrets
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_ammo__OCs_base_assets___casting__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -498,7 +497,7 @@ data:extend({ -- casting explosive ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -528,7 +527,7 @@ data:extend({ -- casting explosive ammo
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -562,7 +561,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-biochamber.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -593,7 +592,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-space.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-space.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -625,7 +624,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-gleba.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-gleba.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -657,7 +656,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-biochamber.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -687,7 +686,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-biochamber.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -717,7 +716,7 @@ data:extend({ -- biochamber recipes
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-space.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-space.png",
         icon_size = 256,
         icon_mipmaps = 4,
         icon_scale = 0.25,
@@ -1116,7 +1115,7 @@ if mods["scattergun_turret"] then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1146,7 +1145,7 @@ if mods["scattergun_turret"] then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1189,7 +1188,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1219,7 +1218,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1250,7 +1249,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1280,7 +1279,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1312,7 +1311,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1342,7 +1341,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1401,7 +1400,7 @@ if mods["vtk-cannon-turret"] then -- casting cannon turrets + all cannon shell m
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
