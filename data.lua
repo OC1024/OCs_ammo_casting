@@ -1,5 +1,5 @@
 require("__OCs_base_assets__.prototypes.utils.helper")
-require("__OCs_base_assets__.prototypes.utils.generator") -- import but not executed
+require("__OCs_base_assets__.prototypes.utils.casting-generator") -- import but not executed
 require("prototypes.category")
 require("prototypes.plating_variants") -- Import the variant table
 require("prototypes.grid_definitions") -- defines and maps categories(personal, vehicle) to equipment_grid
