@@ -174,23 +174,3 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     data:extend({heavy_projectile})
 
 end
-
--- mod compatibility
-if mods["vtk-cannon-turret"] then
-  local projtungsten = table.deepcopy(data.raw["projectile"]["tungsten-cannon-projectile"])
-  projtungsten.name = "tungsten-cannon-magazine-projectile"
-  projtungsten.flags = {}
-  projtungsten.direction_only = true
-  projtungsten.force_condition = "not-same"
-  projtungsten.hit_collision_mask = {layers={object=true, player=true, train=true, trigger_target=true}}
-  data:extend(
-    {
-      projtungsten,
-    })
-  if data.raw["projectile"]["tungsten-cannon-magazine-projectile"] then
-    log("Projectile exists and is registered correctly.")
-  else
-    log("ERROR: Projectile not found!")
-  end
-  log("Thanks the clean code, vtk!")
-end
