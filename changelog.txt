@@ -1,8 +1,21 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.6.1
-Date: 2025-04-05
+Version: 0.6.3
+Date: 2025-04-19
+  Bugfixes:
+    - Mod option now is shown up correctly.
+    - Fixing spelling in localisation. 
   Other:
-    - Dummy Version.
+    - German localisation now has different word order. Now unified and more like vanilla
+---------------------------------------------------------------------------------------------------
+Version: 0.6.2
+Date: 2025-04-06
+  Bugfixes:
+    - Fixing wrong icon paths.
+---------------------------------------------------------------------------------------------------
+Version: 0.6.1
+Date: 2025-04-06
+  Changes:
+    - moved all helper functions and icon overlayer into the base mod "OCs_base_assets".
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.0
 Date: 2025-04-04

@@ -9,7 +9,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -43,7 +43,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -79,7 +79,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -120,7 +120,7 @@ data:extend({ -- standard ammo techs of this mod
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -165,7 +165,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -211,7 +211,7 @@ if settings.startup["allow-bio-explosives"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -246,7 +246,7 @@ if settings.startup["allow-bio-explosives"].value then
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
         icon_size = 256,
         icon_mipmaps = 4,
       }
@@ -368,7 +368,7 @@ if settings.startup["armour-plating"].value then
 
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
           icon_size = 256,
           icon_mipmaps = 4,
         }
@@ -405,7 +405,7 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["reactive"].tint,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-biochamber.png",
+          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
           icon_size = 256,
           icon_mipmaps = 4,
         }
@@ -443,7 +443,7 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["ultra_light"].tint,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/technology/overlayer-tech-em-plant.png",
+          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-em-plant.png",
           icon_size = 256,
           icon_mipmaps = 4,
         }

@@ -465,7 +465,7 @@ data:extend({ -- casting turrets
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_ammo__OCs_base_assets___casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -799,7 +799,7 @@ data:extend({ -- armour plating related
         icon_mipmaps = 1,
       },
       -- {
-      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
       --   icon_size = 64,
       --   icon_mipmaps = 4,
       --   -- scale = 0.25,
@@ -835,7 +835,7 @@ data:extend({ -- armour plating related
         tint = plating_variants["light"].tint,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
         icon_size = 64,
         -- icon_scale = 0.25,
         -- shift = {8, 8},
@@ -869,7 +869,7 @@ data:extend({ -- armour plating related
         tint = plating_variants["tungsten"].tint,
       },
       -- {
-      --   icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+      --   icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
       --   icon_size = 64,
       --   icon_mipmaps = 4,
       -- }
@@ -905,7 +905,7 @@ data:extend({ -- armour plating related
         tint = plating_variants["reactive"].tint,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-biochamber.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-biochamber.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -940,7 +940,7 @@ data:extend({ -- armour plating related
         tint = plating_variants["ultra_light"].tint,
       },
       {
-        icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-em-plant.png",
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-em-plant.png",
         icon_size = 64,
         icon_mipmaps = 4,
       }
@@ -994,7 +994,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }
@@ -1072,7 +1072,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
           icon_size = 64,
           icon_mipmaps = 4,
         }

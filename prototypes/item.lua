@@ -322,7 +322,6 @@ if mods["vtk-cannon-turret"] then
           {
             type = "projectile",
             projectile = "tungsten-cannon-magazine-projectile",
-            log("we should print some schnitzelsemmel"),
             starting_speed = 1,
             direction_deviation = 0.05,
             range_deviation = 0.1,
