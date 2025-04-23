@@ -16,7 +16,7 @@ else
 end
 log("Thanks the clean code, vtk!")
 
-
+-- crafting
 data:extend({
     { -- casting-cannon-turret
       type = "recipe",
@@ -264,6 +264,7 @@ data:extend({
       auto_recycle = true,
     },
 })
+-- if vtk-cannon-turret and aai-industry then the cannon turrets must be recalculated.
 
 local mapping = {
   ["casting-cannon-turret"] = {"vtk-cannon-turret-unlock"},
