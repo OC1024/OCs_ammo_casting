@@ -16,6 +16,48 @@ else
 end
 log("Thanks the clean code, vtk!")
 
+-- item/ammo
+data:extend({
+  { -- tungsten cannon shell magazine
+    type = "ammo",
+    name = "tungsten-cannon-shell-magazine",
+    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
+    ammo_category = "cannon-shell-magazine",
+    ammo_type =
+    {
+      category = "cannon-shell-magazine",
+      range_modifier = 1.25,
+      target_type = "direction",
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "projectile",
+          projectile = "tungsten-cannon-magazine-projectile",
+          starting_speed = 1,
+          direction_deviation = 0.05,
+          range_deviation = 0.1,
+          max_range = 35*1.375,
+          min_range = 5,
+          source_effects =
+          {
+            type = "create-explosion",
+            entity_name = "explosion-gunshot"
+          }
+        }
+      }
+    },
+    magazine_size = 10,
+    subgroup = "ammo",
+    order = "d[cannon-shell]-d[tungsten]-m[magazine]",
+    inventory_move_sound = item_sounds.ammo_large_inventory_move,
+    pick_sound = item_sounds.ammo_large_inventory_pickup,
+    drop_sound = item_sounds.ammo_large_inventory_move,
+    stack_size = 20,
+    weight = (40*10+20)*kg -- +20*kg accound for the magazinie clip
+  },
+})
 -- crafting
 data:extend({
     { -- casting-cannon-turret
@@ -264,7 +306,7 @@ data:extend({
       auto_recycle = true,
     },
 })
--- if vtk-cannon-turret and aai-industry then the cannon turrets must be recalculated.
+-- TODO: if vtk-cannon-turret and aai-industry then the cannon turrets must be recalculated.
 
 local mapping = {
   ["casting-cannon-turret"] = {"vtk-cannon-turret-unlock"},
