@@ -19,6 +19,10 @@ if mods["More_Ammo"] then
   require("prototypes.compatibilty.More_Ammo")    
 end
 
+if mods["AmmoGroup"] then
+  require("prototypes.compatibilty.AmmoGroup")
+end
+
 -- generator related code
 -- main frame of this mod
 -- require("prototypes.recipe-updates")

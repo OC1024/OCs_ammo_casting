@@ -1,6 +1,6 @@
 local item_sounds = require("__base__.prototypes.item_sounds")
 
-data:extend({
+data:extend({ -- tungsten ammo
     { -- tungsten rounds magazine
       type = "ammo",
       name = "tungsten-rounds-magazine",
