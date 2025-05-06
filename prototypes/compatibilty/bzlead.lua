@@ -27,21 +27,21 @@ if alternative_recipes then
   end
 end
 
-local casting_list = {
-  -- "lead-plate", -- base material, should be stay the same or be rejected
-  -- "lead-expansion-bolt", -- testing consistency: already exist. expect 50:50 molten-lead:molten-iron for 10 bolts
-  "lead-chest",
-  "lithium-lead-eutectic",
+local casting_dict = {
+  -- ["lead-plate"] = "metallurgy", -- base material, should be stay the same or be rejected
+  -- ["lead-expansion-bolt"] = "metallurgy", -- testing consistency: already exist. expect 50:50 molten-lead:molten-iron for 10 bolts
+  ["lead-chest"] = "metallurgy",
+  ["lithium-lead-eutectic"]= "metallurgy",
   -- recalculate the iron-based bullets, they are now made from lead instead.
-  "firearm-magazine",
-  "piercing-rounds-magazine",
-  "shotgun-shell",
-  "piercing-shotgun-shell",
-  "uranium-shotgun-shell",
-  "tungsten-shotgun-shell",
-  "tungsten-rounds-magazine",
+  ["firearm-magazine"] = "metallurgy",
+  ["piercing-rounds-magazine" ]= "metallurgy",
+  ["shotgun-shell"] = "metallurgy",
+  ["piercing-shotgun-shell"] = "metallurgy",
+  ["uranium-shotgun-shell"] = "metallurgy",
+  ["tungsten-shotgun-shell"] = "metallurgy",
+  ["tungsten-rounds-magazine"] = "metallurgy",
 }
-batch_generator(casting_list)
+batch_generator(casting_dict)
 
 local mapping = { -- it seems that lead is a early game material so casting shall be ASAP.
   -- ["lead-plate"] = {"foundry"},
