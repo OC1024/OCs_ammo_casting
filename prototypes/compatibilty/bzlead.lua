@@ -41,7 +41,7 @@ local casting_list = {
   "tungsten-shotgun-shell",
   "tungsten-rounds-magazine",
 }
-batch_generate_castings(casting_list)
+batch_generator(casting_list)
 
 local mapping = { -- it seems that lead is a early game material so casting shall be ASAP.
   -- ["lead-plate"] = {"foundry"},

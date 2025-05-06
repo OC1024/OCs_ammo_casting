@@ -5,15 +5,11 @@ projtungsten.flags = {}
 projtungsten.direction_only = true
 projtungsten.force_condition = "not-same"
 projtungsten.hit_collision_mask = {layers={object=true, player=true, train=true, trigger_target=true}}
+
 data:extend(
     {
     projtungsten,
     })
-if data.raw["projectile"]["tungsten-cannon-magazine-projectile"] then
-    log("Projectile exists and is registered correctly.")
-else
-    log("ERROR: Projectile not found!")
-end
 log("Thanks the clean code, vtk!")
 
 -- item/ammo

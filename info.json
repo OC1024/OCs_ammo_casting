@@ -9,10 +9,6 @@
     "base >= 2.0",
     "space-age",
     "OCs_base_assets >= 0.1.1",
-    "! ICastBullets",
-    "? scattergun_turret",
-    "? vtk-cannon-turret",
-    "? bzlead",
-    "(?) More_Ammo"
+    "! ICastBullets"
   ]
 }

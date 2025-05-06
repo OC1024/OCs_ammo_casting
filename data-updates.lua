@@ -23,6 +23,10 @@ if mods["AmmoGroup"] then
   require("prototypes.compatibilty.AmmoGroup")
 end
 
+if mods["metal-and-stars"] then
+  require("prototypes.compatibilty.metal-and-stars")
+end
+
 -- generator related code
 -- main frame of this mod
 -- require("prototypes.recipe-updates")
