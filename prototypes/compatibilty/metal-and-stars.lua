@@ -25,3 +25,22 @@ for tech_name, tech_data in pairs(data.raw.technology) do
         add_productivity_bonus(tech_data, "bio-explosive-rocket", 0.1)
     end
 end
+
+-- casting metal-and-stars ammo
+local casting_dict = {
+    ["thorium-rounds-magazine"] = "metallurgy",
+    ["gauss-rocket"] = "metallurgy",
+}
+batch_generator(casting_dict)
+
+local mapping = {
+    ["casting-thorium-rounds-magazine"] = "alternative-ammo",
+    ["casting-gauss-rocket"] = "alternative-ammo",
+}
+set_recipes_subgroup_mapped(mapping)
+
+local recipe_tech_mapping = {
+    ["casting-thorium-rounds-magazin"] = {"casting-heavy-ammo-tech"},
+    ["casting-gauss-rocket"] = {"casting-heavy-ammo-tech"},
+}
+add_recipe_unlocks(recipe_tech_mapping)

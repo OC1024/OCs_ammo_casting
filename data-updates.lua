@@ -1,3 +1,9 @@
+
+-- generator related code
+-- main frame of this mod
+require("prototypes.recipe-updates")
+-- require("prototypes.technology-updates")
+
 -- mod compatibility
 if mods["aai-industry"] then
   require("prototypes.compatibilty.aai-industry")
@@ -12,11 +18,11 @@ if mods["vtk-cannon-turret"] then
 end
 
 if mods["bzlead"] then
-  require("prototypes.compatibilty.bzlead")    
+  require("prototypes.compatibilty.bzlead")
 end
 
 if mods["More_Ammo"] then
-  require("prototypes.compatibilty.More_Ammo")    
+  require("prototypes.compatibilty.More_Ammo")
 end
 
 if mods["AmmoGroup"] then
@@ -26,8 +32,3 @@ end
 if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end
-
--- generator related code
--- main frame of this mod
--- require("prototypes.recipe-updates")
--- require("prototypes.technology-updates")
