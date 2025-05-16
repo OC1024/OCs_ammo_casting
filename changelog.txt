@@ -4,6 +4,10 @@ Date: 2025-04-22
   Major Features:
     - Reordering lots of code, compatibility to other mods are now more clear.
     - Updating to OCs Base Assets 0.2.0 and using its recipe generator. Compatibility with other mods is now much easier.
+  Balancing:
+    - Reworked the energy per shield cost and input flow of the ammo plating. Now it is four times faster.
+  Changes:
+    - Adjusted firearm magazine recipes to be alinged with factorio 2.0.46
   Compatibility:
     - Added compatibility for "Lead" mod by brevven.
     - Added compatibility for "Ammoo Group" such that the ammo of this mod is also oput into the new ammo group.

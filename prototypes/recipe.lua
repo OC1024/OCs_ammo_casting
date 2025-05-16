@@ -25,7 +25,7 @@ data:extend({ -- casting vanilla recipes
     {
       {type="fluid",name="molten-iron",amount=40}
     },
-    results = {{type="item",name="firearm-magazine",amount=1}},
+    results = {{type="item", name = "firearm-magazine", amount = 1}},
     allow_productivity = false,
   },
   { -- casting-piercing-rounds-magazine
@@ -52,10 +52,10 @@ data:extend({ -- casting vanilla recipes
     energy_required = 3,
     ingredients =
     {
-        {type = "fluid", name = "molten-iron", amount = 70},
-        {type = "fluid", name = "molten-copper", amount = 50}
+        {type = "fluid", name = "molten-iron", amount = 55},
+        {type = "fluid", name = "molten-copper", amount = 10}
     },
-    results = {{type="item",name="piercing-rounds-magazine",amount=1}},
+    results = {{type = "item", name = "piercing-rounds-magazine", amount = 1}},
     allow_productivity = false,
   },
   { -- casting-uranium-rounds-magazine
@@ -87,11 +87,11 @@ data:extend({ -- casting vanilla recipes
       energy_required = 10, -- just last step
       ingredients =
       {
-        {type = "fluid", name = "molten-iron", amount = 70},
-        {type = "fluid", name = "molten-copper", amount = 50},
+        {type = "fluid", name = "molten-iron", amount = 55},
+        {type = "fluid", name = "molten-copper", amount = 10},
         {type = "item", name = "uranium-238", amount = 1}
       },
-      results = {{type="item", name="uranium-rounds-magazine", amount=1}},
+      results = {{type="item", name="uranium-rounds-magazine", amount = 1}},
       allow_productivity = false,
   },
   { -- casting-shotgun-shell
@@ -389,8 +389,8 @@ data:extend({ -- crafting and casting tungsten ammo
     enabled = false,
     energy_required = 8,
     ingredients = {
-      {type="fluid", name="molten-iron", amount=70}, -- piercing-rounds-magazine: 4iron 1 steel 5 copper
-      {type="fluid", name="molten-copper", amount=50},
+      {type="fluid", name="molten-iron", amount=55}, -- piercing-rounds-magazine: as in factorio 2.0.26 (8iron, 1steel,2copper for two piercing) old:(4iron 1 steel 5 copper)
+      {type="fluid", name="molten-copper", amount=10},
       {type="item", name="tungsten-carbide", amount=1}
     },
     results = {{type="item", name="tungsten-rounds-magazine", amount=1}},
