@@ -8,7 +8,7 @@ for _, variant in pairs(plating_variants) do
       -- type = "battery-equipment", -- does not consume energy
       -- type = "movement-bonus-equipment", -- base for movement bonus
       name = variant.name,
-      sprite = { -- placeholder
+      sprite = {
         filename = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png",
         width = 64,
         height = 64,

@@ -1,5 +1,5 @@
 plating_variants = {
-    light = 
+    light =
     { -- light plating
       name = "light-armour-plating",
       resistances = {

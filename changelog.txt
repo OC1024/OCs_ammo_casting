@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0
-Date: 2025-04-22
+Date: 2025-06-02
   Major Features:
     - Reordering lots of code, compatibility to other mods are now more clear.
     - Updating to OCs Base Assets 0.2.0 and using its recipe generator. Compatibility with other mods is now much easier.
