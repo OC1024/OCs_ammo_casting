@@ -40,7 +40,7 @@ local mapping = {
 set_recipes_subgroup_mapped(mapping)
 
 local recipe_tech_mapping = {
-    ["casting-thorium-rounds-magazin"] = {"casting-heavy-ammo-tech"},
+    ["casting-thorium-rounds-magazine"] = {"casting-heavy-ammo-tech"},
     ["casting-gauss-rocket"] = {"casting-heavy-ammo-tech"},
 }
 add_recipe_unlocks(recipe_tech_mapping)

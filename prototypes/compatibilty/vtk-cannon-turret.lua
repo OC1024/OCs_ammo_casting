@@ -1,5 +1,6 @@
 
 local projtungsten = table.deepcopy(data.raw["projectile"]["tungsten-cannon-projectile"])
+local item_sounds = require("__base__.prototypes.item_sounds")
 projtungsten.name = "tungsten-cannon-magazine-projectile"
 projtungsten.flags = {}
 projtungsten.direction_only = true

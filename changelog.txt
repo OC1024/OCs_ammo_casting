@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.1
+Date: 2025-06-07
+  Bugfixes:
+    - Fixed dependency to OCs_base_assets. It requires 0.2.0, not 0.1.1, my bad.
+    - Fixed compatibility with "Metal and Stars" mod. Thorium round were uncraftable.
+    - Fixed missing localisations for "Metal and Stars" compatibility.
+    - Fixed complatiblility with "VTK's cannon Turret" mod. itemsounds were missing.
+---------------------------------------------------------------------------------------------------
 Version: 0.7.0
 Date: 2025-06-02
   Major Features:
@@ -10,7 +18,7 @@ Date: 2025-06-02
     - Adjusted firearm magazine recipes to be alinged with factorio 2.0.46
   Compatibility:
     - Added compatibility for "Lead" mod by brevven.
-    - Added compatibility for "Ammoo Group" such that the ammo of this mod is also oput into the new ammo group.
+    - Added compatibility for "Ammo Group" such that the ammo of this mod is also oput into the new ammo group.
     - Added compatibility for "Metal and Stars" mod. Mainly for the ammo productivity researches.
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.3
