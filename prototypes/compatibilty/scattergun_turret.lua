@@ -70,17 +70,105 @@ data:extend({
     enabled = false,
     energy_required = 8,
     ingredients = {
-        {type="fluid", name="molten-iron", amount=100}, --  30*2 steel + 5*8 iron stick
-        {type="item", name="explosives", amount=1}
+        {type = "fluid", name = "molten-iron", amount = 100}, --  30*2 steel + 5*8 iron stick
+        {type = "item", name = "explosives", amount = 1}
     },
     results = {{type="item", name="w93-fragmentation-cannon-shell", amount=2}},
     allow_productivity = false,
     },
 })
 
--- technology
+-- casting scattergun_turret stuff
+local casting_dict = {
+    ["w93-scattergun-turret"] = "metallurgy",
+    ["w93-modular-turret-base"] = "metallurgy",
+    ["w93-modular-turret2-base"] = "metallurgy",
+}
+batch_generator(casting_dict)
+
+data:extend({
+    {-- casting w93 turrets
+        type = "technology",
+        name = "casting-modular-turrets",
+        icons =
+        {
+            {
+                icon = "__scattergun_turret__/graphics/technology/modular-turret-tech.png",
+                icon_size = 128,
+                icon_mipmaps = 1,
+            },
+            {
+                icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
+                icon_size = 256,
+                icon_mipmaps = 4,
+            }
+        },
+        prerequisites = {"casting-light-ammo-tech","w93-modular-turrets2", "w93-scattergun-turrets"},
+        unit = {
+            ingredients = {
+            {"automation-science-pack", 1},
+            {"logistic-science-pack", 1},
+            {"chemical-science-pack", 1},
+            {"military-science-pack", 2},
+            {"space-science-pack", 1},
+            {"metallurgic-science-pack", 2}
+            },
+            time = 45,
+            count = 50
+        },
+        effects =
+        {
+            {type = "unlock-recipe", recipe = "casting-w93-scattergun-turret"},
+            {type = "unlock-recipe", recipe = "casting-w93-modular-turret-base"},
+            {type = "unlock-recipe", recipe = "casting-w93-modular-turret2-base"}
+        },
+    },
+    -- {-- casting guns
+    --     type = "technology",
+    --     name = "casting-modular-turrets",
+    --     icons =
+    --     {
+    --         {
+    --             icon = "__scattergun_turret__/graphics/technology/modular-turret-tech.png",
+    --             icon_size = 128,
+    --             icon_mipmaps = 1,
+    --         },
+    --         {
+    --             icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
+    --             icon_size = 256,
+    --             icon_mipmaps = 4,
+    --         }
+    --     },
+    --     prerequisites = {"casting-light-ammo-tech","w93-modular-turrets2", "w93-scattergun-turrets"},
+    --     unit = {
+    --         ingredients = {
+    --         {"automation-science-pack", 1},
+    --         {"logistic-science-pack", 1},
+    --         {"chemical-science-pack", 1},
+    --         {"military-science-pack", 2},
+    --         -- {"utility-science-pack", 1},
+    --         -- {"production-science-pack", 1},
+    --         {"space-science-pack", 1},
+    --         {"metallurgic-science-pack", 2}
+    --         },
+    --         time = 45,
+    --         count = 50
+    --     },
+    --     effects =
+    --     {
+    --         {type = "unlock-recipe", recipe = "casting-w93-scattergun-turret"},
+    --         {type = "unlock-recipe", recipe = "casting-w93-modular-turret-base"},
+    --         {type = "unlock-recipe", recipe = "casting-w93-modular-turret2-base"}
+    --     },
+    -- }
+})
+
+-- add recipes to technology
 local mapping = {
     ["casting-fragmentation-shell"] = {"casting-light-ammo-tech"},
     ["casting-uranium-shotgun-shell"] = {"casting-heavy-ammo-tech"},
+    -- ["casting-w93-scattergun-turret"] = {"w93-scattergun-turrets"}, -- shotgun turret
+    -- ["casting-w93-modular-turret-base"] = {"w93-modular-turrets"}, -- fronline base item
+    -- ["casting-w93-modular-turret2-base"] = {"w93-modular-turrets2"}, -- backline base item
 }
 add_recipe_unlocks(mapping)

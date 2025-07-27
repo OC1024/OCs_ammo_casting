@@ -1,7 +1,7 @@
 
 -- generator related code
 -- main frame of this mod
-require("prototypes.recipe-updates")
+-- require("prototypes.recipe-updates")
 -- require("prototypes.technology-updates")
 
 -- mod compatibility

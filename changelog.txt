@@ -1,11 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.2
+Date: 2025-06-24
+  Minor Features:
+    - Extended compatibility for "Modular Turrets" mod. Casting of the shotgun turret and the two modular turret bases are now available.
+    - Now uses the recipe generator even more. (using it for the vanilla ammo recipes too)
+  Changes:
+    - Tier 3 armour plating now requires the science pack instead of a material research. They already were a sorft requirement for the research before.
+    - Slightly changed the icon for tungsten armour plating.
+  Bugfixes:
+    - Reducing log-spamming. Hopefully.
+    - Fixed that the gun turred disabling setting was not working.
+    - "Metal and Stars": Casting gauss rockets were enabled to early, now it is with the gauss rockets technology.
+---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2025-06-07
   Bugfixes:
     - Fixed dependency to OCs_base_assets. It requires 0.2.0, not 0.1.1, my bad.
     - Fixed compatibility with "Metal and Stars" mod. Thorium round were uncraftable.
     - Fixed missing localisations for "Metal and Stars" compatibility.
-    - Fixed complatiblility with "VTK's cannon Turret" mod. itemsounds were missing.
+    - Fixed complatiblility with "VTK's cannon Turret" mod. Itemsounds were missing.
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0
 Date: 2025-06-02

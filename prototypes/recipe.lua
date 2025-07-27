@@ -868,11 +868,11 @@ data:extend({ -- armour plating related
         -- icon_mipmaps = 4,
         tint = plating_variants["tungsten"].tint,
       },
-      -- {
-      --   icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
-      --   icon_size = 64,
-      --   icon_mipmaps = 4,
-      -- }
+      {
+        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-tungsten-plate.png",
+        icon_size = 64,
+        icon_mipmaps = 4,
+      }
     },
     category = "metallurgy",
     group = "combat",
@@ -1100,3 +1100,48 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 else -- nothing happens
   log("Vanilla Artillery shell untouched.")
 end
+
+
+local casting_dict = {
+    -- vanilla casting
+    ["firearm-magazine"] = "metallurgy",
+    ["piercing-rounds-magazine"] = "metallurgy",
+    ["uranium-rounds-magazine"]  = "metallurgy",
+    ["shotgun-shell"] = "metallurgy",
+    ["piercing-shotgun-shell"] = "metallurgy",
+    ["cannon-shell"] = "metallurgy",
+    ["uranium-cannon-shell"] = "metallurgy",
+    ["railgun-ammo"]  = "metallurgy",
+    -- casting tungsten ammo
+    ["tungsten-rounds-magazine"] = "metallurgy",
+    ["tungsten-shotgun-shell"] = "metallurgy",
+    ["tungsten-cannon-shell"] = "metallurgy",
+    ["tungsten-railgun-ammo"] = "metallurgy",
+    -- casting armour plating
+    ["light-armour-plating"]  = "metallurgy",
+}
+batch_generator(casting_dict)
+if settings.startup["allow-casting-gun-turrets"].value  then
+    casting_dict = {
+        ["gun-turret"] = "metallurgy",
+    }
+end
+batch_generator(casting_dict)
+
+-- set the subroup to alternative-ammo to distinct them from normal crafting recipes
+local mapping = {
+-- base ammo
+    ["casting-firearm-magazine"] = "alternative-ammo",
+    ["casting-piercing-rounds-magazine"] = "alternative-ammo",
+    ["casting-uranium-rounds-magazine"] = "alternative-ammo",
+    ["casting-tungsten-rounds-magazine"] = "alternative-ammo",
+    ["casting-shotgun-shell"] = "alternative-ammo",
+    ["casting-piercing-shotgun-shell"] = "alternative-ammo",
+    ["casting-cannon-shell"] = "alternative-ammo",
+    ["casting-uranium-cannon-shell"] = "alternative-ammo",
+    ["casting-tungsten-cannon-shell"] = "alternative-ammo",
+    ["casting-tungsten-shotgun-shell"] = "alternative-ammo",
+    ["casting-railgun-ammo"] = "alternative-ammo",
+    ["casting-tungsten-railgun-ammo"] = "alternative-ammo",
+}
+set_recipes_subgroup_mapped(mapping)

@@ -6,8 +6,6 @@ for tech_name, tech_data in pairs(data.raw.technology) do
         add_productivity_bonus(tech_data, "tungsten-rounds-magazine", 0.1)
         add_productivity_bonus(tech_data, "casting-tungsten-rounds-magazine", 0.1)
         log("Added bullet prod to tech "..tech_name)
-    else
-        log("tech ".. tech_name.. " not match bullet-productivity")
     end
 end
 
@@ -41,6 +39,6 @@ set_recipes_subgroup_mapped(mapping)
 
 local recipe_tech_mapping = {
     ["casting-thorium-rounds-magazine"] = {"casting-heavy-ammo-tech"},
-    ["casting-gauss-rocket"] = {"casting-heavy-ammo-tech"},
+    ["casting-gauss-rocket"] = {"gauss-rockets"},
 }
 add_recipe_unlocks(recipe_tech_mapping)

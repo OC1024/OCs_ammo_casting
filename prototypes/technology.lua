@@ -276,9 +276,9 @@ if settings.startup["armour-plating"].value then
 
   -- wheather bio-explosive is needed or not
   if settings.startup["allow-bio-explosives"].value then
-    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","bio-explosives-tech","power-armor"}
+    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","bio-explosives-tech","agricultural-science-pack","power-armor"}
   else
-    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","explosives", "biochamber","power-armor"}
+    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","explosives", "agricultural-science-pack","power-armor"}
   end
 
   data:extend({ -- armour plating techs
@@ -374,7 +374,7 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"heavy-armour-plating-tech","tungsten-steel","military-4","power-armor"},
+      prerequisites = {"heavy-armour-plating-tech","metallurgic-science-pack","military-4","power-armor"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -412,7 +412,6 @@ if settings.startup["armour-plating"].value then
       },
       icon_size = 256, icon_mipmaps = 4,
       prerequisites = prereq_tech_reactive,
-      -- bio-explosives-tech is optional so define alt to fix issue
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
