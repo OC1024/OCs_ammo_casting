@@ -1,11 +1,18 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.3
+Date: 2025-08-29
+  Changes:
+    - Updated dependency to OCs_base_assets 0.3.0, it comes with huge change behind the scenes.
+  Bugfixes:
+    - Fixes a crash with the mod "More Ammo".
+---------------------------------------------------------------------------------------------------
 Version: 0.7.2
 Date: 2025-06-24
   Minor Features:
     - Extended compatibility for "Modular Turrets" mod. Casting of the shotgun turret and the two modular turret bases are now available.
     - Now uses the recipe generator even more. (using it for the vanilla ammo recipes too)
   Changes:
-    - Tier 3 armour plating now requires the science pack instead of a material research. They already were a sorft requirement for the research before.
+    - Tier 3 armour plating now requires the science pack instead of a material research. They already were a soft requirement for the research before.
     - Slightly changed the icon for tungsten armour plating.
   Bugfixes:
     - Reducing log-spamming. Hopefully.

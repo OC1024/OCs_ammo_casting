@@ -1101,9 +1101,11 @@ else -- nothing happens
   log("Vanilla Artillery shell untouched.")
 end
 
+-- pepare the generator
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
 
 local casting_dict = {
-    -- vanilla casting
+    -- vanilla ammo casting
     ["firearm-magazine"] = "metallurgy",
     ["piercing-rounds-magazine"] = "metallurgy",
     ["uranium-rounds-magazine"]  = "metallurgy",
@@ -1120,13 +1122,12 @@ local casting_dict = {
     -- casting armour plating
     ["light-armour-plating"]  = "metallurgy",
 }
-batch_generator(casting_dict)
-if settings.startup["allow-casting-gun-turrets"].value  then
-    casting_dict = {
-        ["gun-turret"] = "metallurgy",
-    }
+if settings.startup["allow-casting-gun-turrets"].value  then -- add this recipe
+  casting_dict["gun-turret"] = "metallurgy"
 end
-batch_generator(casting_dict)
+-- calling the generator locally, does not pollute global namespace. Dump output
+-- log("Try to cast recipes from this Dict: " .. serpent.block(casting_dict, {comment = false})) -- debug
+generator_api.batch_generator(casting_dict)
 
 -- set the subroup to alternative-ammo to distinct them from normal crafting recipes
 local mapping = {

@@ -1,5 +1,8 @@
 require("__OCs_base_assets__.prototypes.utils.helper")
-require("__OCs_base_assets__.prototypes.utils.recipe-generator")
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+-- local local_rules = require("__OCs_base_assets__.prototypes.utils.generator-tables")
+-- generator_api.load_rules(local_rules)
+-- require("__OCs_base_assets__.prototypes.utils.recipe-generator")
 
 require("prototypes.category")
 require("prototypes.utils.plating_variants")

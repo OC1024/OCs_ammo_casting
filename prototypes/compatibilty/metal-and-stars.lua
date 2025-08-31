@@ -1,3 +1,5 @@
+--  load api
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
 
 for tech_name, tech_data in pairs(data.raw.technology) do
     if string.match(tech_name, "^bullet%-productivity%-?%d*$") then
@@ -29,7 +31,7 @@ local casting_dict = {
     ["thorium-rounds-magazine"] = "metallurgy",
     ["gauss-rocket"] = "metallurgy",
 }
-batch_generator(casting_dict)
+generator_api.batch_generator(casting_dict)
 
 local mapping = {
     ["casting-thorium-rounds-magazine"] = "alternative-ammo",

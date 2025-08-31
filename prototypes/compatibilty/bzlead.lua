@@ -1,3 +1,6 @@
+--  load api
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+
 -- adding items to the base item list
 if casting_materials then
   local additions = {
@@ -13,19 +16,17 @@ if casting_materials then
   debug_log("Current casting_materials: " .. table.concat(keys, ", "),"generator")
 end
 
-if alternative_recipes then
-  -- Add/Change order of Alternative Receptes
-  local alternatives = {
-    ["molten-lead"] = {"molten-lead","molten-lead-from-lava"},
-    ["lead-plate"] = {"casting-lead","lead-plate",},
-    ["lead-expansion-bolt"] = {"casting-lead-expansion-bolt","lead-expansion-bolt"}, -- luckily it is already there
-    ["firearm-magazine"] = {"firearm-magazine-iron-only","firearm-magazine-iron-lead","firearm-magazine-copper-lead","firearm-magazine","casting-firearm-magazine"},
-    ["shotgun-shell"] = {"shotgun-shell"},
-  }
-  for name, alt_list in pairs(alternatives) do
-      alternative_recipes[name] = alt_list
-  end
-end
+
+-- Add/Change order of Alternative Receptes
+local alternatives = {
+  ["molten-lead"] = {"molten-lead","molten-lead-from-lava"},
+  ["lead-plate"] = {"casting-lead","lead-plate",},
+  ["lead-expansion-bolt"] = {"casting-lead-expansion-bolt","lead-expansion-bolt"}, -- luckily it is already there
+  ["firearm-magazine"] = {"firearm-magazine-iron-only","firearm-magazine-iron-lead","firearm-magazine-copper-lead","firearm-magazine","casting-firearm-magazine"},
+  ["shotgun-shell"] = {"shotgun-shell"},
+}
+generator_api.register_category_alt_recipes("metallurgy", alternatives)
+
 
 local casting_dict = {
   -- ["lead-plate"] = "metallurgy", -- base material, should be stay the same or be rejected
@@ -41,7 +42,7 @@ local casting_dict = {
   ["tungsten-shotgun-shell"] = "metallurgy",
   ["tungsten-rounds-magazine"] = "metallurgy",
 }
-batch_generator(casting_dict)
+generator_api.batch_generator(casting_dict)
 
 local mapping = { -- it seems that lead is a early game material so casting shall be ASAP.
   -- ["lead-plate"] = {"foundry"},

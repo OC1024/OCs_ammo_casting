@@ -9,6 +9,11 @@ if mods["aai-industry"] then
   require("prototypes.compatibilty.aai-industry")
 end
 
+-- if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio-2 with space-age compatible version
+-- requre("OCs_base_assets.prototypes.compatibility.Krastorio2")  
+-- require("prototypes.compatibility.Krastorio-2")
+-- end
+
 if mods["scattergun_turret"] then
   require("prototypes.compatibilty.scattergun_turret")
 end

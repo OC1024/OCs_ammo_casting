@@ -46,7 +46,7 @@ else
 end
 
 
-data:raw({
+data:extend({
   { -- tungsten rounds magazine
     type = "ammo",
     name = "tungsten-rounds-magazine",

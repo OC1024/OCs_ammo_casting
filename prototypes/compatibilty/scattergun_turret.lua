@@ -1,3 +1,6 @@
+--  load api
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+
 if data.raw["ammo"]["tungsten-cannon-shell"] and data.raw["projectile"]["tungsten-cannon-projectile"] then
     data.raw["ammo"]["tungsten-cannon-shell"].ammo_type.range_modifier = 1.375 -- such that it is still better but just half of the bonus added
     data.raw["ammo"]["tungsten-cannon-shell"].ammo_type.target_type = "position"
@@ -84,10 +87,10 @@ local casting_dict = {
     ["w93-modular-turret-base"] = "metallurgy",
     ["w93-modular-turret2-base"] = "metallurgy",
 }
-batch_generator(casting_dict)
+generator_api.batch_generator(casting_dict)
 
 data:extend({
-    {-- casting w93 turrets
+    {-- casting w93 turrets tech
         type = "technology",
         name = "casting-modular-turrets",
         icons =
