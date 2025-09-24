@@ -1110,6 +1110,44 @@ end
 -- pepare the generator
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
 
+local new_alt_recipes = {
+  ["organic"] = {
+    alternative_recipes = {
+      ["explosives"] = {"bio-explosives", "bio-explosives-space", "bio-explosives-gleba","explosives"},
+      ["rocket"] = {"bio-rocket","rocket"},
+      ["explosive-rocket"] = {"bio-explosive-rocket"},
+    }
+  },
+  ["metallurgy"] = {
+    alternative_recipes = {
+    -- personal ammo
+    ["firearm-magazine"] = {"casting-firearm-magazine","firearm-magazine"},
+    ["piercing-rounds-magazine"] = {"casting-piercing-rounds-magazine","piercing-rounds-magazine"},
+    ["uranium-rounds-magazine"] = {"casting-uranium-rounds-magazine","uranium-rounds-magazine"},
+    ["tungsten-rounds-magazine"] = {"casting-tungsten-rounds-magazine","tungsten-rounds-magazine"},
+    ["shotgun-shell"] = {"casting-shotgun-shell","shotgun-shell"},
+    ["piercing-shotgun-shell"] = {"casting-piercing-shotgun-shell","piercing-shotgun-shell"},
+    ["uranium-shotgun-shell"] = {"casting-uranium-shotgun-shell","uranium-shotgun-shell"}, -- if existent
+    ["tungsten-shotgun-shell"] = {"casting-tungsten-shotgun-shell","tungsten-shotgun-shell"},
+    -- heavy ammo
+    ["cannon-shell"] = {"casting-cannon-shell","cannon-shell"},
+    ["uranium-cannon-shell"] = {"casting-uranium-cannon-shell","uranium-cannon-shell"},
+    ["tungsten-cannon-shell"] = {"casting-tungsten-cannon-shell","tungsten-cannon-shell"},
+    ["tungsten-railgun-ammo"] = {"casting-tungsten-railgun-ammo","tungsten-railgun-ammo"},
+    ["artillery-shell"] = {"casting-artillery-shell", "artillery-shell"},
+    ["heavy-artillery-shell"] = {"casting-heavy-artillery-shell", "heavy-artillery-shell","heavy-artillery-shell-upgrading"},
+    -- armour plating
+    ["light-armour-plating"] = {"casting-light-armour-plating","light-armour-plating"},
+    ["heavy-armour-plating"] = {"casting-heavy-armour-plating","heavy-armour-plating"},
+    -- buildings
+    ["gun-turret"] = {"casting-gun-turret","gun-turret"},
+    }
+  }
+}
+generator_api.register_multi_category_alt_recipes(new_alt_recipes)
+
+debug_log("__OCs_ammo_casting__ rules table: " .. serpent.block(generator_api.rules_table), "generator_api")
+
 local casting_dict = {
   -- vanilla ammo casting
   ["firearm-magazine"]         = "metallurgy",
@@ -1127,15 +1165,32 @@ local casting_dict = {
   ["tungsten-railgun-ammo"]    = "metallurgy",
   -- casting armour plating
   ["light-armour-plating"]     = "metallurgy",
+  ["heavy-armour-plating"]     = "metallurgy",
+  -- biochamber ammo
+  ["explosives"]               = "organic",
+  ["rocket"]                   = "organic",
+  ["explosive-rocket"]         = "organic",
 }
-if settings.startup["allow-casting-gun-turrets"].value then  -- add this recipe
+if settings.startup["allow-casting-gun-turrets"].value then
+  -- weapons
   casting_dict["gun-turret"] = "metallurgy"
+  casting_dict["combat-shotgun"] = "metallurgy"
+  casting_dict["flamethrower"] = "metallurgy"
+  casting_dict["rocket-launcher"] = "electromagnetics"
+  casting_dict["pistol"] = "metallurgy"
+  casting_dict["submachine-gun"] = "metallurgy"
+  casting_dict["shotgun"] = "metallurgy"
+  casting_dict["combat-shotgun"] = "metallurgy"
+  casting_dict["rocket-launcher"] = "electromagnetics"
+  casting_dict["flamethrower"] = "metallurgy"
 end
--- calling the generator locally, does not pollute global namespace. Dump output
--- log("Try to cast recipes from this Dict: " .. serpent.block(casting_dict, {comment = false})) -- debug
+if settings.startup["allow-casting-explosive-ammo"].value then
+  casting_dict["artillery-shell"] = "metallurgy"
+  casting_dict["heavy-artillery-shell"] = "metallurgy"
+end
 generator_api.batch_generator(casting_dict)
 
--- set the subroup to alternative-ammo to distinct them from normal crafting recipes
+-- set the subrgoup to alternative-ammo to distinct them from normal crafting recipes
 local mapping = {
   -- base ammo
   ["casting-firearm-magazine"] = "alternative-ammo",
@@ -1150,5 +1205,7 @@ local mapping = {
   ["casting-tungsten-shotgun-shell"] = "alternative-ammo",
   ["casting-railgun-ammo"] = "alternative-ammo",
   ["casting-tungsten-railgun-ammo"] = "alternative-ammo",
+  ["bio-rocket"] = "alternative-ammo",
+  ["bio-explosive-rocket"] = "alternative-ammo",
 }
 set_recipes_subgroup_mapped(mapping)

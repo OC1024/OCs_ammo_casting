@@ -1,12 +1,13 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.0
-Date: 2025-09-22
+Date: 2025-09-24
   Compatibility:
     - Started K2 compatibility.
   Changes:
     - Updated dependency to OCs_base_assets 0.3.0, it comes with huge change behind the scenes.
     - Added scicence packs explicitly as prerequisit for this mod's techs, which were implicit before.
     - Switched "ultra light armour plating" sci pack from agricultural to electromagnetic.
+    - Enable weapon casting just like the gun turret.
   Balancing:
     - Switch tungsten carbide + steel to tungsten steel for cannon shells, artillery and railgun ammo.\n You might want to check your factory.
     - Lowered the piercing damage of tungsten cannon shells from 2200 to 2000.

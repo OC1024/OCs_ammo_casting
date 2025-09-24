@@ -9,6 +9,7 @@
     "base >= 2.0",
     "space-age",
     "OCs_base_assets >= 0.3.0",
+    "? Krastorio2-spaced-out >= 1.4.0",
     "! ICastBullets"
   ]
 }

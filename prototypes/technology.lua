@@ -146,7 +146,6 @@ data:extend({ -- standard ammo techs of this mod
       {type = "unlock-recipe", recipe = "tungsten-railgun-ammo"},
       {type = "unlock-recipe", recipe = "casting-tungsten-railgun-ammo"},
     },
-  --    order = "ad"
   },
 })
 
@@ -192,7 +191,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       {type = "unlock-recipe", recipe = "casting-heavy-artillery-shell"},
       {type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
     },
-    order = "ac"
   },
   })
 end
@@ -349,7 +347,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         {type = "unlock-recipe", recipe = "heavy-armour-plating"},
-        -- {type = "unlock-recipe", recipe = "light-to-heavy-armour-plating"}, -- obsolete since now crafting is a evolution
+        {type = "unlock-recipe", recipe = "casting-heavy-armour-plating"},
       },
     },
     { -- tungsten armour plating
@@ -482,13 +480,15 @@ end
 
 -- changes to mod tech
 if settings.startup["allow-casting-gun-turrets"].value then
-  if data.raw["technology"]["casting-light-ammo-tech"] then
-      table.insert(data.raw["technology"]["casting-light-ammo-tech"].effects, {
-          type = "unlock-recipe",
-          recipe = "casting-gun-turret",
-      })
-      log("Successfully added 'casting-gun-turret' to 'casting-light-ammo-tech'.")
-  else
-      log("Warning: Technology 'casting-light-ammo-tech' not found. Unable to add 'casting-gun-turret' recipe.")
-  end
+  -- adding recipes to techs
+  local recipe_tech_mapping = {
+    ["casting-gun-turret"]={"casting-light-ammo-tech"},
+    ["casting-pistol"] = {"casting-light-ammo-tech"},
+    ["casting-submachine-gun"] = {"casting-light-ammo-tech"},
+    ["casting-shotgun"] = {"casting-light-ammo-tech"},
+    ["casting-combat-shotgun"] = {"casting-heavy-ammo-tech"},
+    ["casting-rocket-launcher"] = {"casting-explosive-ammo-tech"},
+    ["casting-flamethrower"] = {"casting-explosive-ammo-tech"},
+  }
+  add_recipe_unlocks(recipe_tech_mapping)
 end

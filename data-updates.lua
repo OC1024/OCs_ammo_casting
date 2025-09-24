@@ -37,3 +37,7 @@ end
 if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end
+
+if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio2 with space-age compatible version
+  require("prototypes.compatibilty.Krastorio2")
+end
