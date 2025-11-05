@@ -1,12 +1,59 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.0
+Date: 2025-11-05
+  Minor Features:
+    - Added casting recipes for many more guns, all optional.
+  Compatibility:
+    - Started [K2SO] compatibility.
+    - [K2SO + Metal and Stars] Added compat fix between these two and also with this mod.
+    - [Metal and Stars] Added casting recipe for thorium cannon shells. All recipes should now support productivity researches from Metal and Stars.
+  Changes:
+    - Updated dependency to OCs_base_assets 0.3.0, it comes with huge change behind the scenes.
+    - Added scicence packs explicitly as prerequisit for this mod's techs, which were implicit before.
+    - Switched "ultra light armour plating" sci pack from agricultural to electromagnetic.
+    - Renamed many internal names because of the generator. If any migration issues arise, please report them.
+  Balancing:
+    - Optionally: Switch (tungsten carbide + steel plate) to (tungsten steel) for tungsten ammo. (except for shontgun shells)
+  Bugfixes:
+    - Fixes a crash with the mod "More Ammo".
+    - Fixed a typo in German localisation.
+    - Fixed heavy artillery grenate casting recipe.
+    - All bioexplosive variants now should accept productivity modules.
+    - Fixed missing casting firearm magazine productivity with the [Metal and Stars] bullet productivity technology.
+---------------------------------------------------------------------------------------------------
+Version: 0.7.2
+Date: 2025-06-24
+  Minor Features:
+    - Extended compatibility for "Modular Turrets" mod. Casting of the shotgun turret and the two modular turret bases are now available.
+    - Now uses the recipe generator even more. (using it for the vanilla ammo recipes too)
+  Changes:
+    - Tier 3 armour plating now requires the science pack instead of a material research. They already were a soft requirement for the research before.
+    - Slightly changed the icon for tungsten armour plating.
+  Bugfixes:
+    - Reducing log-spamming. Hopefully.
+    - Fixed that the gun turred disabling setting was not working.
+    - "Metal and Stars": Casting gauss rockets were enabled to early, now it is with the gauss rockets technology.
+---------------------------------------------------------------------------------------------------
+Version: 0.7.1
+Date: 2025-06-07
+  Bugfixes:
+    - Fixed dependency to OCs_base_assets. It requires 0.2.0, not 0.1.1, my bad.
+    - Fixed compatibility with "Metal and Stars" mod. Thorium round were uncraftable.
+    - Fixed missing localisations for "Metal and Stars" compatibility.
+    - Fixed complatiblility with "VTK's cannon Turret" mod. Itemsounds were missing.
+---------------------------------------------------------------------------------------------------
 Version: 0.7.0
-Date: 2025-04-22
+Date: 2025-06-02
   Major Features:
     - Reordering lots of code, compatibility to other mods are now more clear.
     - Updating to OCs Base Assets 0.2.0 and using its recipe generator. Compatibility with other mods is now much easier.
+  Balancing:
+    - Reworked the energy per shield cost and input flow of the ammo plating. Now it is four times faster.
+  Changes:
+    - Adjusted firearm magazine recipes to be alinged with factorio 2.0.46
   Compatibility:
     - Added compatibility for "Lead" mod by brevven.
-    - Added compatibility for "Ammoo Group" such that the ammo of this mod is also oput into the new ammo group.
+    - Added compatibility for "Ammo Group" such that the ammo of this mod is also oput into the new ammo group.
     - Added compatibility for "Metal and Stars" mod. Mainly for the ammo productivity researches.
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.3

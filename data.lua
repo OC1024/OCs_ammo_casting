@@ -1,5 +1,8 @@
 require("__OCs_base_assets__.prototypes.utils.helper")
-require("__OCs_base_assets__.prototypes.utils.recipe-generator")
+local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+
+-- -- quick debug_log
+-- debug_log("Category prefix table: "..serpent.block(generator_api.category_prefix), "generator")
 
 require("prototypes.category")
 require("prototypes.utils.plating_variants")

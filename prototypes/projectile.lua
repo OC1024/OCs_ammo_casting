@@ -169,8 +169,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       }
     }
   }
-
-    -- Register the new projectile
-    data:extend({heavy_projectile})
-
+  -- Register the new projectile
+  data:extend({heavy_projectile})
 end

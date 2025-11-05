@@ -1,7 +1,7 @@
 data:extend({
     {
         type = "bool-setting",
-        name = "allow-casting-gun-turrets",
+        name = "casting-weapons",
         setting_type = "startup",
         default_value = true,
         order = "a",
@@ -13,16 +13,16 @@ data:extend({
         default_value = true,
         order = "b-b",
     },
-    {
+    { -- crafting explosives and rockets in biochamber
         type = "bool-setting",
-        name = "allow-bio-explosives", -- crafting explosives and rockets in biochamber
+        name = "allow-bio-explosives",
         setting_type = "startup",
         default_value = true,
         order = "c-a",
     },
-    {
+    { -- space fish breeding
         type = "bool-setting",
-        name = "space-fish", -- space fish breeding
+        name = "space-fish",
         setting_type = "startup",
         default_value = true,
         order = "c-b",
@@ -34,4 +34,11 @@ data:extend({
         default_value = true,
         order = "d"
     },
+    {
+        type = "bool-setting",
+        name = "tungsten-steel-ammo",
+        setting_type = "startup",
+        default_value = false,
+        order = "e"
+    }
 })

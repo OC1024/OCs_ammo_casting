@@ -1,0 +1,11 @@
+{
+    "recipe": [
+      ["casting-explosive-shell","casting-explosive-cannon-shell"],
+      ["casting-explosive-uranium-shell","casting-explosive-uranium-cannon-shell"],
+      ["casting-uranium-shotgun-shell", "casting-w93-uranium-shotgun-shell"],
+      ["casting-fragmentation-shell", "casting-w93-fragmentation-cannon-shell"]
+    ],
+    "mod-setting": [
+      ["allow-casting-gun-turrets","casting-weapons"]
+    ]
+}  

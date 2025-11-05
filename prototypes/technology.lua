@@ -24,13 +24,12 @@ data:extend({ -- standard ammo techs of this mod
       },
       time = 30,
       count = 100
-      },
-      effects = {
-        {type = "unlock-recipe", recipe = "casting-firearm-magazine"},
-        {type = "unlock-recipe", recipe = "casting-piercing-rounds-magazine"},
-        {type = "unlock-recipe", recipe = "casting-shotgun-shell"},
-      },
-     order = "aa"
+    },
+    effects = {
+      {type = "unlock-recipe", recipe = "casting-firearm-magazine"},
+      {type = "unlock-recipe", recipe = "casting-piercing-rounds-magazine"},
+      {type = "unlock-recipe", recipe = "casting-shotgun-shell"},
+    },
   },
   { -- casting heavy ammo (uranium ammo and tank shells)
     type = "technology",
@@ -60,13 +59,13 @@ data:extend({ -- standard ammo techs of this mod
       },
       time = 45,
       count = 400
-      },
-      effects = {
-        {type = "unlock-recipe", recipe = "casting-uranium-rounds-magazine"},
-        {type = "unlock-recipe", recipe = "casting-piercing-shotgun-shell"},
-        {type = "unlock-recipe", recipe = "casting-cannon-shell"},
-        {type = "unlock-recipe", recipe = "casting-uranium-cannon-shell"},
-      },
+    },
+    effects = {
+      {type = "unlock-recipe", recipe = "casting-uranium-rounds-magazine"},
+      {type = "unlock-recipe", recipe = "casting-piercing-shotgun-shell"},
+      {type = "unlock-recipe", recipe = "casting-cannon-shell"},
+      {type = "unlock-recipe", recipe = "casting-uranium-cannon-shell"},
+    },
   },
   { -- casting tungsten ammo
     type = "technology",
@@ -99,15 +98,15 @@ data:extend({ -- standard ammo techs of this mod
       },
       time = 60,
       count = 800
-      },
-      effects = {
-        {type = "unlock-recipe", recipe = "casting-tungsten-rounds-magazine"},
-        {type = "unlock-recipe", recipe = "casting-tungsten-shotgun-shell"},
-        {type = "unlock-recipe", recipe = "casting-tungsten-cannon-shell"},
-        {type = "unlock-recipe", recipe = "tungsten-rounds-magazine"},
-        {type = "unlock-recipe", recipe = "tungsten-shotgun-shell"},
-        {type = "unlock-recipe", recipe = "tungsten-cannon-shell"},
-      },
+    },
+    effects = {
+      {type = "unlock-recipe", recipe = "casting-tungsten-rounds-magazine"},
+      {type = "unlock-recipe", recipe = "casting-tungsten-shotgun-shell"},
+      {type = "unlock-recipe", recipe = "casting-tungsten-cannon-shell"},
+      {type = "unlock-recipe", recipe = "tungsten-rounds-magazine"},
+      {type = "unlock-recipe", recipe = "tungsten-shotgun-shell"},
+      {type = "unlock-recipe", recipe = "tungsten-cannon-shell"},
+    },
   },
   { -- casting railgung ammo
     type = "technology",
@@ -141,13 +140,12 @@ data:extend({ -- standard ammo techs of this mod
       },
       time = 60,
       count = 1000
-      },
-      effects = {
-        {type = "unlock-recipe", recipe = "casting-railgun-ammo"},
-        {type = "unlock-recipe", recipe = "tungsten-railgun-ammo"},
-        {type = "unlock-recipe", recipe = "casting-tungsten-railgun-ammo"},
-      },
-  --    order = "ad"
+    },
+    effects = {
+      {type = "unlock-recipe", recipe = "casting-railgun-ammo"},
+      {type = "unlock-recipe", recipe = "tungsten-railgun-ammo"},
+      {type = "unlock-recipe", recipe = "casting-tungsten-railgun-ammo"},
+    },
   },
 })
 
@@ -184,16 +182,15 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       },
       time = 60,
       count = 1000
-      },
-      effects = {
-        {type = "unlock-recipe", recipe = "casting-explosive-shell"},
-        {type = "unlock-recipe", recipe = "casting-explosive-uranium-shell"},
-        {type = "unlock-recipe", recipe = "casting-artillery-shell"},
-        {type = "unlock-recipe", recipe = "heavy-artillery-shell" },
-        {type = "unlock-recipe", recipe = "casting-heavy-artillery-shell"},
-        {type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
-      },
-     order = "ac"
+    },
+    effects = {
+      {type = "unlock-recipe", recipe = "casting-explosive-cannon-shell"},
+      {type = "unlock-recipe", recipe = "casting-explosive-uranium-cannon-shell"},
+      {type = "unlock-recipe", recipe = "casting-artillery-shell"},
+      {type = "unlock-recipe", recipe = "heavy-artillery-shell" },
+      {type = "unlock-recipe", recipe = "casting-heavy-artillery-shell"},
+      {type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
+    },
   },
   })
 end
@@ -216,15 +213,13 @@ if settings.startup["allow-bio-explosives"].value then
         icon_mipmaps = 4,
       }
     },
-    prerequisites = {"biochamber","explosives"},
+    prerequisites = {"biochamber","explosives","chemical-science-pack"},
     unit = {
       ingredients = {
         {"automation-science-pack", 1},
         {"logistic-science-pack", 1},
         {"chemical-science-pack", 2},
-        -- {"military-science-pack", 2},
-        -- {"space-science-pack", 1},
-        -- {"agricultural-science-pack", 2},
+        -- {"agricultural-science-pack", 2}, -- not included to make a gleba-start more fun
       },
       time = 30,
       count = 150
@@ -259,7 +254,7 @@ if settings.startup["allow-bio-explosives"].value then
         {"chemical-science-pack", 1},
         {"military-science-pack", 2},
         -- {"space-science-pack", 1},
-        -- {"agricultural-science-pack", 2},
+        -- {"agricultural-science-pack", 2}, -- not included to make a gleba-start more fun
       },
       time = 45,
       count = 200
@@ -276,9 +271,9 @@ if settings.startup["armour-plating"].value then
 
   -- wheather bio-explosive is needed or not
   if settings.startup["allow-bio-explosives"].value then
-    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","bio-explosives-tech","power-armor"}
+    prereq_tech_reactive = {"heavy-armour-plating-tech","power-armor","military-4","bio-explosives-tech","agricultural-science-pack"}
   else
-    prereq_tech_reactive = {"heavy-armour-plating-tech","military-4","explosives", "biochamber","power-armor"}
+    prereq_tech_reactive = {"heavy-armour-plating-tech","power-armor","military-4","explosives","agricultural-science-pack"}
   end
 
   data:extend({ -- armour plating techs
@@ -302,7 +297,7 @@ if settings.startup["armour-plating"].value then
           -- icon_mipmaps = 4,
         }
       },
-      prerequisites = {"heavy-armor","automobilism"},
+      prerequisites = {"heavy-armor","automobilism","military-science-pack"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -336,7 +331,7 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"light-armour-plating-tech","tank","space-science-pack","modular-armor"},
+      prerequisites = {"light-armour-plating-tech","modular-armor","tank","space-science-pack","military-science-pack","utility-science-pack","production-science-pack"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -352,7 +347,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         {type = "unlock-recipe", recipe = "heavy-armour-plating"},
-        -- {type = "unlock-recipe", recipe = "light-to-heavy-armour-plating"}, -- obsolete since now crafting is a evolution
+        {type = "unlock-recipe", recipe = "casting-heavy-armour-plating"},
       },
     },
     { -- tungsten armour plating
@@ -374,7 +369,7 @@ if settings.startup["armour-plating"].value then
         }
       },
       icon_size = 256, icon_mipmaps = 4,
-      prerequisites = {"heavy-armour-plating-tech","tungsten-steel","military-4","power-armor"},
+      prerequisites = {"heavy-armour-plating-tech","military-4","power-armor","metallurgic-science-pack"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -412,7 +407,6 @@ if settings.startup["armour-plating"].value then
       },
       icon_size = 256, icon_mipmaps = 4,
       prerequisites = prereq_tech_reactive,
-      -- bio-explosives-tech is optional so define alt to fix issue
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -448,7 +442,7 @@ if settings.startup["armour-plating"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = {"heavy-armour-plating-tech","carbon-fiber","electromagnetic-plant","military-4","power-armor"},
+      prerequisites = {"heavy-armour-plating-tech","power-armor","military-4","carbon-fiber","electromagnetic-plant"},
       unit = {
         ingredients = {
           {"automation-science-pack", 1},
@@ -458,7 +452,7 @@ if settings.startup["armour-plating"].value then
           {"utility-science-pack", 1},
           {"production-science-pack", 2}, -- duh-hu!
           {"space-science-pack", 1},
-          {"agricultural-science-pack", 2}, -- duh-uh-hu!
+          {"electromagnetic-science-pack", 2}, -- duh-uh-hu!
         },
         time = 60,
         count = 400
@@ -485,14 +479,16 @@ else
 end
 
 -- changes to mod tech
-if settings.startup["allow-casting-gun-turrets"].value then
-  if data.raw["technology"]["casting-light-ammo-tech"] then
-      table.insert(data.raw["technology"]["casting-light-ammo-tech"].effects, {
-          type = "unlock-recipe",
-          recipe = "casting-gun-turret",
-      })
-      log("Successfully added 'casting-gun-turret' to 'casting-light-ammo-tech'.")
-  else
-      log("Warning: Technology 'casting-light-ammo-tech' not found. Unable to add 'casting-gun-turret' recipe.")
-  end
+if settings.startup["casting-weapons"].value then
+  -- adding recipes to techs
+  local recipe_tech_mapping = {
+    ["casting-gun-turret"]={"casting-light-ammo-tech"},
+    ["casting-pistol"] = {"casting-light-ammo-tech"},
+    ["casting-submachine-gun"] = {"casting-light-ammo-tech"},
+    ["casting-shotgun"] = {"casting-light-ammo-tech"},
+    ["casting-combat-shotgun"] = {"casting-heavy-ammo-tech"},
+    ["pulse-rocket-launcher"] = {"bio-rocketry-tech"},
+    ["casting-flamethrower"] = {"casting-explosive-ammo-tech"},
+  }
+  add_recipe_unlocks(recipe_tech_mapping)
 end
