@@ -41,3 +41,6 @@ end
 if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio2 with space-age compatible version
   require("prototypes.compatibilty.Krastorio2")
 end
+if mods["Krastorio2-spaced-out"] and mods["HeroTurretRedux"] then
+  require("prototypes.compatibilty.K2-range-patch")
+end

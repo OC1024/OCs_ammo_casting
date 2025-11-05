@@ -1,20 +1,25 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.0
-Date: 2025-09-24
+Date: 2025-11-05
+  Minor Features:
+    - Added casting recipes for many more guns, all optional.
   Compatibility:
-    - Started K2 compatibility.
+    - Started [K2SO] compatibility.
+    - [K2SO + Metal and Stars] Added compat fix between these two and also with this mod.
+    - [Metal and Stars] Added casting recipe for thorium cannon shells. All recipes should now support productivity researches from Metal and Stars.
   Changes:
     - Updated dependency to OCs_base_assets 0.3.0, it comes with huge change behind the scenes.
     - Added scicence packs explicitly as prerequisit for this mod's techs, which were implicit before.
     - Switched "ultra light armour plating" sci pack from agricultural to electromagnetic.
-    - Enable weapon casting just like the gun turret.
+    - Renamed many internal names because of the generator. If any migration issues arise, please report them.
   Balancing:
-    - Switch tungsten carbide + steel to tungsten steel for cannon shells, artillery and railgun ammo.\n You might want to check your factory.
-    - Lowered the piercing damage of tungsten cannon shells from 2200 to 2000.
+    - Optionally: Switch (tungsten carbide + steel plate) to (tungsten steel) for tungsten ammo. (except for shontgun shells)
   Bugfixes:
     - Fixes a crash with the mod "More Ammo".
     - Fixed a typo in German localisation.
     - Fixed heavy artillery grenate casting recipe.
+    - All bioexplosive variants now should accept productivity modules.
+    - Fixed missing casting firearm magazine productivity with the [Metal and Stars] bullet productivity technology.
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.2
 Date: 2025-06-24

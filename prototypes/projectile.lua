@@ -38,7 +38,7 @@ data:extend({
         collision_box = {{-0.3, -1.1}, {0.3, 1.1}},
         acceleration = 0,
         direction_only = true,
-        piercing_damage = 2000,
+        piercing_damage = 2200,
         action =
         {
           type = "direct",
@@ -169,8 +169,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       }
     }
   }
-
-    -- Register the new projectile
-    data:extend({heavy_projectile})
-
+  -- Register the new projectile
+  data:extend({heavy_projectile})
 end

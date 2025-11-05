@@ -1,7 +1,7 @@
 data:extend({
     {
         type = "bool-setting",
-        name = "allow-casting-gun-turrets",
+        name = "casting-weapons",
         setting_type = "startup",
         default_value = true,
         order = "a",
@@ -34,4 +34,11 @@ data:extend({
         default_value = true,
         order = "d"
     },
+    {
+        type = "bool-setting",
+        name = "tungsten-steel-ammo",
+        setting_type = "startup",
+        default_value = false,
+        order = "e"
+    }
 })

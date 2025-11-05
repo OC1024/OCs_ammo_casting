@@ -184,8 +184,8 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       count = 1000
     },
     effects = {
-      {type = "unlock-recipe", recipe = "casting-explosive-shell"},
-      {type = "unlock-recipe", recipe = "casting-explosive-uranium-shell"},
+      {type = "unlock-recipe", recipe = "casting-explosive-cannon-shell"},
+      {type = "unlock-recipe", recipe = "casting-explosive-uranium-cannon-shell"},
       {type = "unlock-recipe", recipe = "casting-artillery-shell"},
       {type = "unlock-recipe", recipe = "heavy-artillery-shell" },
       {type = "unlock-recipe", recipe = "casting-heavy-artillery-shell"},
@@ -479,7 +479,7 @@ else
 end
 
 -- changes to mod tech
-if settings.startup["allow-casting-gun-turrets"].value then
+if settings.startup["casting-weapons"].value then
   -- adding recipes to techs
   local recipe_tech_mapping = {
     ["casting-gun-turret"]={"casting-light-ammo-tech"},
@@ -487,7 +487,7 @@ if settings.startup["allow-casting-gun-turrets"].value then
     ["casting-submachine-gun"] = {"casting-light-ammo-tech"},
     ["casting-shotgun"] = {"casting-light-ammo-tech"},
     ["casting-combat-shotgun"] = {"casting-heavy-ammo-tech"},
-    ["casting-rocket-launcher"] = {"casting-explosive-ammo-tech"},
+    ["pulse-rocket-launcher"] = {"bio-rocketry-tech"},
     ["casting-flamethrower"] = {"casting-explosive-ammo-tech"},
   }
   add_recipe_unlocks(recipe_tech_mapping)

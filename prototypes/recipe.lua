@@ -1,5 +1,5 @@
---[[
---  data:extend({ -- casting vanilla recipes
+--[[ -- casting vanilla recipes
+--  data:extend({
 --   { -- casting-firearm-magazine
 --     type = "recipe",
 --     name = "casting-firearm-magazine",
@@ -247,8 +247,63 @@
 -- })
 -- ]]
 
--- crafting and casting tungsten ammo
-data:extend({
+local steel_mode = settings.startup["tungsten-steel-ammo"].value
+
+local function tungsten_ing(n) -- either tungsten-plate or tungsten-carbide + steel-plate
+  if steel_mode then
+    return {
+      {type="item", name="tungsten-plate", amount = 1 * n}
+    }
+  else
+    return {
+      {type="item", name="tungsten-carbide", amount = 2 * n},
+      {type="item", name="steel-plate", amount = 1 * n}
+    }
+  end
+end
+
+
+data:extend({ -- crafting tungsten ammo
+  { -- tungsten-rounds
+    type = "recipe",
+    name = "tungsten-rounds-magazine",
+    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-firearm-magazine.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    category = "advanced-crafting",
+    group = "combat",
+    subgroup = "ammo",
+    enabled = false,
+    energy_required = 8,
+    ingredients = {
+      { type = "item", name = "piercing-rounds-magazine", amount = 1 },
+      table.unpack(tungsten_ing(1)),
+    },
+    results = { { type = "item", name = "tungsten-rounds-magazine", amount = 1 } },
+    allow_productivity = false,
+    allow_decomposition = false,
+    auto_recycle = true,
+  },
+  { -- tungsten-shotgun-shell
+    type = "recipe",
+    name = "tungsten-shotgun-shell",
+    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-shotgun-shell.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    category = "advanced-crafting",
+    group = "combat",
+    subgroup = "ammo",
+    enabled = false,
+    energy_required = 10,
+    ingredients = {
+      { type = "item", name = "piercing-shotgun-shell", amount = 1 },
+      { type = "item", name = "tungsten-carbide",   amount = 1 } -- always tungsten-carbide here
+    },
+    results = { { type = "item", name = "tungsten-shotgun-shell", amount = 1 } },
+    allow_productivity = false,
+    allow_decomposition = false,
+    auto_recycle = true,
+  },
   { -- tungsten-cannon-shell
     type = "recipe",
     name = "tungsten-cannon-shell",
@@ -261,17 +316,38 @@ data:extend({
     enabled = false,
     energy_required = 12,
     ingredients = {
-      -- { type = "item", name = "steel-plate",  amount = 1 }, -- part of the tungsten-plate (aka tungsten steel)
-      { type = "item", name = "iron-plate",   amount = 2 },
-      -- {type="item", name="tungsten-carbide", amount=2},
-      { type = "item", name = "tungsten-plate", amount = 1 }, -- half of tungsten-carbide instead
+      { type = "item", name = "iron-plate",   amount = 2 }, -- fins or something
       { type = "item", name = "explosives",   amount = 2 }, -- twice the vanilla
+      table.unpack(tungsten_ing(1)),
     },
     results = { { type = "item", name = "tungsten-cannon-shell", amount = 1 } },
     allow_productivity = false,
     allow_decomposition = false,
     auto_recycle = true,
   },
+  { -- tungsten railgun ammo
+    type = "recipe",
+    name = "tungsten-railgun-ammo",
+    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-railgun-ammo.png",
+    icon_size = 64,
+    icon_mipmaps = 4,
+    category = "advanced-crafting",
+    group = "combat",
+    subgroup = "ammo",
+    enabled = false,
+    energy_required = 25,
+    ingredients = {
+      { type = "item", name = "copper-cable", amount = 10 },
+      { type = "item", name = "explosives", amount = 2 },  -- like vanilla
+      -- { type = "item", name = "steel-plate", amount = 2 }, -- if  not  tungsten-steel-ammo its added below
+      table.unpack(tungsten_ing(2)),
+    },
+    results = { { type = "item", name = "tungsten-railgun-ammo", amount = 1 } },
+    allow_productivity = false,
+    allow_decomposition = false,
+    auto_recycle = true,
+  },
+  --[[-- casting tungsten ammo
   -- { -- casting tungsten-cannon-shell
   --   type = "recipe",
   --   name = "casting-tungsten-cannon-shell",
@@ -302,26 +378,6 @@ data:extend({
   --   allow_decomposition = false,
   --   -- auto_recycle = true,
   -- },
-  { -- tungsten-shotgun-shell
-    type = "recipe",
-    name = "tungsten-shotgun-shell",
-    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-shotgun-shell.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
-    category = "advanced-crafting",
-    group = "combat",
-    subgroup = "ammo",
-    enabled = false,
-    energy_required = 10,
-    ingredients = {
-      { type = "item", name = "piercing-shotgun-shell", amount = 1 },
-      { type = "item", name = "tungsten-carbide",   amount = 1 }
-    },
-    results = { { type = "item", name = "tungsten-shotgun-shell", amount = 1 } },
-    allow_productivity = false,
-    allow_decomposition = false,
-    auto_recycle = true,
-  },
   -- { -- casting tungsten-shotgun-shell
   --   type = "recipe",
   --   name = "casting-tungsten-shotgun-shell",
@@ -354,26 +410,6 @@ data:extend({
   --   allow_decomposition = false,
   --   -- auto_recycle = true,
   -- },
-  { -- tungsten-rounds
-    type = "recipe",
-    name = "tungsten-rounds-magazine",
-    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-firearm-magazine.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
-    category = "advanced-crafting",
-    group = "combat",
-    subgroup = "ammo",
-    enabled = false,
-    energy_required = 8,
-    ingredients = {
-      { type = "item", name = "piercing-rounds-magazine", amount = 1 },
-      { type = "item", name = "tungsten-carbide",     amount = 1 }
-    },
-    results = { { type = "item", name = "tungsten-rounds-magazine", amount = 1 } },
-    allow_productivity = false,
-    allow_decomposition = false,
-    auto_recycle = true,
-  },
   -- { -- casting tungsten-rounds-
   --   type = "recipe",
   --   name = "casting-tungsten-rounds-magazine",
@@ -405,29 +441,6 @@ data:extend({
   --   allow_decomposition = false,
   --   -- auto_recycle = true,
   -- },
-  { -- tungsten railgun ammo
-    type = "recipe",
-    name = "tungsten-railgun-ammo",
-    icon = "__OCs_ammo_casting__/graphics/icons/tungsten-railgun-ammo.png",
-    icon_size = 64,
-    icon_mipmaps = 4,
-    category = "advanced-crafting",
-    group = "combat",
-    subgroup = "ammo",
-    enabled = false,
-    energy_required = 25,
-    ingredients = {
-      -- { type = "item", name = "steel-plate",    amount = 2 }, -- part of the tungsten-plate (aka tungsten steel)
-      { type = "item", name = "copper-cable",   amount = 10 },
-      { type = "item", name = "explosives",     amount = 2 },
-      -- {type = "item", name = "tungsten-carbide", amount = 4},
-      { type = "item", name = "tungsten-plate", amount = 2 }, -- half of tungsten-carbide instead
-    },
-    results = { { type = "item", name = "tungsten-railgun-ammo", amount = 1 } },
-    allow_productivity = false,
-    allow_decomposition = false,
-    auto_recycle = true,
-  },
   -- { -- casting tungsten railgun ammo
   --   type = "recipe",
   --   name = "casting-tungsten-railgun-ammo",
@@ -460,7 +473,12 @@ data:extend({
   --   allow_decomposition = false,
   --   -- auto_recycle = true,
   -- },
+  ]]
 })
+ -- remove steel plate from tungsten-steel ammo recipes if the setting is disabled
+if not settings.startup["tungsten-steel-ammo"].value then
+  remove_ingredient("tungsten-rounds-magazine", "item", "steel-plate",1) -- so that they are not too expensive
+end
 
 -- data:extend({ -- casting turrets
 --   { -- casting gun turret
@@ -494,70 +512,70 @@ data:extend({
 --   },
 -- })
 
--- casting explosive ammo
-data:extend({
-  { -- casting explosive shell
-    type = "recipe",
-    name = "casting-explosive-shell",
-    icons =
-    {
-      {
-        icon = "__base__/graphics/icons/explosive-cannon-shell.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      },
-      {
-        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      }
-    },
-    category = "metallurgy",
-    group = "combat",
-    subgroup = "alternative-ammo",
-    -- order = "bc",
-    enabled = false,
-    energy_required = 8, -- vanilla:
-    ingredients = {
-      { type = "fluid", name = "molten-iron", amount = 60 }, -- 30 iron/steel * 2 steel
-      { type = "item",  name = "explosives",  amount = 2 },
-      { type = "item",  name = "plastic-bar", amount = 2 },
-    },
-    results = { { type = "item", name = "explosive-cannon-shell", amount = 1 } },
-    allow_productivity = false,
-  },
-  { -- casting explosive uranium shell
-    type = "recipe",
-    name = "casting-explosive-uranium-shell",
-    icons =
-    {
-      {
-        icon = "__base__/graphics/icons/explosive-uranium-cannon-shell.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      },
-      {
-        icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      }
-    },
-    category = "metallurgy",
-    group = "combat",
-    subgroup = "alternative-ammo",
-    -- order = "bd",
-    enabled = false,
-    energy_required = 12, -- vanilla: 8 + 12
-    ingredients = {
-      { type = "fluid", name = "molten-iron", amount = 60 }, -- 30 iron/steel * 2 steel
-      { type = "item",  name = "explosives",  amount = 2 },
-      { type = "item",  name = "plastic-bar", amount = 2 },
-      { type = "item",  name = "uranium-238", amount = 1 },
-    },
-    results = { { type = "item", name = "explosive-uranium-cannon-shell", amount = 1 } },
-    allow_productivity = false,
-  },
-})
+-- -- casting explosive cannon shells
+-- data:extend({
+--   { -- casting explosive shell
+--     type = "recipe",
+--     name = "casting-explosive-shell",
+--     icons =
+--     {
+--       {
+--         icon = "__base__/graphics/icons/explosive-cannon-shell.png",
+--         icon_size = 64,
+--         icon_mipmaps = 4,
+--       },
+--       {
+--         icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
+--         icon_size = 64,
+--         icon_mipmaps = 4,
+--       }
+--     },
+--     category = "metallurgy",
+--     group = "combat",
+--     subgroup = "alternative-ammo",
+--     -- order = "bc",
+--     enabled = false,
+--     energy_required = 8, -- vanilla:
+--     ingredients = {
+--       { type = "fluid", name = "molten-iron", amount = 60 }, -- 30 iron/steel * 2 steel
+--       { type = "item",  name = "explosives",  amount = 2 },
+--       { type = "item",  name = "plastic-bar", amount = 2 },
+--     },
+--     results = { { type = "item", name = "explosive-cannon-shell", amount = 1 } },
+--     allow_productivity = false,
+--   },
+--   { -- casting explosive uranium shell
+--     type = "recipe",
+--     name = "casting-explosive-uranium-shell",
+--     icons =
+--     {
+--       {
+--         icon = "__base__/graphics/icons/explosive-uranium-cannon-shell.png",
+--         icon_size = 64,
+--         icon_mipmaps = 4,
+--       },
+--       {
+--         icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
+--         icon_size = 64,
+--         icon_mipmaps = 4,
+--       }
+--     },
+--     category = "metallurgy",
+--     group = "combat",
+--     subgroup = "alternative-ammo",
+--     -- order = "bd",
+--     enabled = false,
+--     energy_required = 12, -- vanilla: 8 + 12
+--     ingredients = {
+--       { type = "fluid", name = "molten-iron", amount = 60 }, -- 30 iron/steel * 2 steel
+--       { type = "item",  name = "explosives",  amount = 2 },
+--       { type = "item",  name = "plastic-bar", amount = 2 },
+--       { type = "item",  name = "uranium-238", amount = 1 },
+--     },
+--     results = { { type = "item", name = "explosive-uranium-cannon-shell", amount = 1 } },
+--     allow_productivity = false,
+--   },
+-- })
 
 -- biochamber recipes
 data:extend({
@@ -588,7 +606,7 @@ data:extend({
       { type = "item",  name = "coal",   amount = 1 },
     },
     results = { { type = "item", name = "explosives", amount = 2 } },
-    -- allow_productivity = false,
+    allow_productivity = true,
     -- allow_decomposition = false,
     -- auto_recycle = true,
   },
@@ -613,14 +631,14 @@ data:extend({
     group = "intermediate-products",
     -- subgroup = "ammo",
     enabled = false,
-    energy_required = 10,                            -- 4explosives + 5*2coal-synthesis = 14 -- use the slowest part
+    energy_required = 10, -- 4explosives + 5*2coal-synthesis = 14 -- use the slowest part
     ingredients = {
       { type = "fluid", name = "water",  amount = 10 }, -- could be replaced by waterice
       { type = "item",  name = "sulfur", amount = 2 }, -- 1 for coal-synthesis + 1 for explosives
       { type = "item",  name = "carbon", amount = 5 }, -- 5 for coal-synthesis
     },
     results = { { type = "item", name = "explosives", amount = 2 } },
-    -- allow_productivity = false,
+    allow_productivity = true,
     -- allow_decomposition = false,
     -- auto_recycle = true,
   },
@@ -645,17 +663,18 @@ data:extend({
     group = "intermediate-products",
     -- subgroup = "ammo",
     enabled = false,
-    energy_required = 60,                              -- 5*12spoilage-to-carbon + 5*2coal-synthesis + 2*2sulfur + 1*4explosives = 78 -- use the slowest part (5*12=60)
+    energy_required = 60, -- 5*12spoilage-to-carbon + 5*2coal-synthesis + 2*2sulfur + 1*4explosives = 78 -- use the slowest part (5*12=60)
     ingredients = {
       { type = "fluid", name = "water",    amount = 35 }, -- 10 for explosives + 5*5 coal-synthesis
       { type = "item",  name = "spoilage", amount = 40 }, -- 5 for sulfur x2, 6 for carbon x5 for 1 coal-synthesis = 2*5 + 5*6 = 40
       { type = "item",  name = "bioflux",  amount = 2 }, -- 1 for sulfur x2 (one for coal-synthesis)
     },
     results = { { type = "item", name = "explosives", amount = 2 } },
-    -- allow_productivity = false,
+    allow_productivity = true,
     allow_decomposition = false,
     -- auto_recycle = true,
   },
+  --[[ -- "bio-rocket" works with the generator, "bio-explosive-rocket" does not work
   { -- bio-rocket
     type = "recipe",
     name = "bio-rocket",
@@ -716,6 +735,7 @@ data:extend({
     -- allow_decomposition = false,
     -- auto_recycle = true,
   },
+  -- ]]
   { -- fish-breeding shamelessly copied from space-age-dlc. space version
     type = "recipe",
     name = "space-fish-breeding",
@@ -1115,7 +1135,7 @@ local new_alt_recipes = {
     alternative_recipes = {
       ["explosives"] = {"bio-explosives", "bio-explosives-space", "bio-explosives-gleba","explosives"},
       ["rocket"] = {"bio-rocket","rocket"},
-      ["explosive-rocket"] = {"bio-explosive-rocket"},
+      ["explosive-rocket"] = {"bio-explosive-rocket","explosive-rocket"},
     }
   },
   ["metallurgy"] = {
@@ -1171,7 +1191,7 @@ local casting_dict = {
   ["rocket"]                   = "organic",
   ["explosive-rocket"]         = "organic",
 }
-if settings.startup["allow-casting-gun-turrets"].value then
+if settings.startup["casting-weapons"].value then
   -- weapons
   casting_dict["gun-turret"] = "metallurgy"
   casting_dict["combat-shotgun"] = "metallurgy"
@@ -1185,6 +1205,8 @@ if settings.startup["allow-casting-gun-turrets"].value then
   casting_dict["flamethrower"] = "metallurgy"
 end
 if settings.startup["allow-casting-explosive-ammo"].value then
+  casting_dict["explosive-cannon-shell"] = "metallurgy"
+  casting_dict["explosive-uranium-cannon-shell"] = "metallurgy"
   casting_dict["artillery-shell"] = "metallurgy"
   casting_dict["heavy-artillery-shell"] = "metallurgy"
 end
