@@ -152,6 +152,11 @@ local recipe_tech_mapping = {
     -- ["kr-imersite-anti-materiel-rifle-magazine"] = "casting-imersite-ammo-tech", -- pink sniper ammo
     -- ["pulse-kr-impulse-rifle-ammo"] = {"casting-imersite-ammo-tech"},
 
+    -- rockets
+    -- ["kr-nuclear-turret-rocket"] = "bio-rocketry-tech", -- nukular?
+    ["bio-kr-explosive-turret-rocket"] = "bio-rocketry-tech",
+    ["bio-kr-heavy-rocket"] = "bio-rocketry-tech",
+
     -- railgun and artillery
     ["casting-kr-basic-railgun-shell"] = {"casting-railgun-ammo-tech"},
     ["casting-kr-explosive-railgun-shell"] = {"casting-railgun-ammo-tech"},

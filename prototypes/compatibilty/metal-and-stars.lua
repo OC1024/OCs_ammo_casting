@@ -65,12 +65,14 @@ for _, r in ipairs(oc_bullets) do
   table.insert(all_bullets, "casting-"..r)
 end
 
--- k2 normal + casting
-for _, r in ipairs(kr_bullets) do
-    -- complat patch with K2SO - should be done within metal-and-stars mod instead.
-  table.insert(all_bullets, r)
-    -- compat patch for all three mods (yea this has to be done by me)
-  table.insert(all_bullets, "casting-"..r)
+if mods["Krastorio2-spaced-out"] then
+  -- k2 normal + casting
+  for _, r in ipairs(kr_bullets) do
+      -- complat patch with K2SO - should be done within metal-and-stars mod instead.
+    table.insert(all_bullets, r)
+      -- compat patch for all three mods (yea this has to be done by me)
+    table.insert(all_bullets, "casting-"..r)
+  end
 end
 
 -- now iterate and add all these to the tech
@@ -108,12 +110,14 @@ for _, r in ipairs(oc_railgun) do
   table.insert(all_railguns, "casting-"..r)
 end
 
--- k2 normal + casting
-for _, r in ipairs(kr_railgun) do
-    -- complat patch with K2SO - should be done within metal-and-stars mod instead.
-  table.insert(all_railguns, r)
-    -- compat patch for all three mods (yea this has to be done by me)
-  table.insert(all_railguns, "casting-"..r)
+if mods["Krastorio2-spaced-out"] then
+  -- k2 normal + casting
+  for _, r in ipairs(kr_railgun) do
+      -- complat patch with K2SO - should be done within metal-and-stars mod instead.
+    table.insert(all_railguns, r)
+      -- compat patch for all three mods (yea this has to be done by me)
+    table.insert(all_railguns, "casting-"..r)
+  end
 end
 
 for tech_name, _ in pairs(data.raw.technology) do
@@ -151,12 +155,14 @@ for _, r in ipairs(oc_rockets) do
   table.insert(all_rockets, "casting-"..r) -- special case as these gauss rockets are casted instead of biologised as my other rockets
 end
 
--- k2 normal + casting
-for _, r in ipairs(kr_rockets) do
-    -- complat patch with K2SO - should be done within metal-and-stars mod instead.
-  table.insert(all_rockets, r)
-    -- compat patch for all three mods (yea this has to be done by me)
-  table.insert(all_rockets, "bio-"..r)
+if mods["Krastorio2-spaced-out"] then
+  -- k2 normal + casting
+  for _, r in ipairs(kr_rockets) do
+      -- complat patch with K2SO - should be done within metal-and-stars mod instead.
+    table.insert(all_rockets, r)
+      -- compat patch for all three mods (yea this has to be done by me)
+    table.insert(all_rockets, "bio-"..r)
+  end
 end
 
 for tech_name, _ in pairs(data.raw.technology) do
@@ -167,31 +173,3 @@ for tech_name, _ in pairs(data.raw.technology) do
     -- log("Patched "..tech_name.." with productivity for "..#all_bullets.." recipes")
   end
 end
-
---[[
-for tech_name, tech_data in pairs(data.raw.technology) do
-    if string.match(tech_name, "^bullet%-productivity%-?%d*$") then
-        add_productivity_bonus(tech_data, "casting-piercing-rounds-magazine", 0.1)
-        add_productivity_bonus(tech_data, "casting-uranium-rounds-magazine", 0.1)
-        add_productivity_bonus(tech_data, "tungsten-rounds-magazine", 0.1)
-        add_productivity_bonus(tech_data, "casting-tungsten-rounds-magazine", 0.1)
-        log("Added bullet prod to tech "..tech_name)
-    end
-end
-
-for tech_name, tech_data in pairs(data.raw.technology) do
-    if string.match(tech_name, "^railgun%-ammo%-productivity%-?%d*$")then
-        add_productivity_bonus(tech_data, "casting-railgun-ammo", 0.1)
-        add_productivity_bonus(tech_data, "casting-tungsten-railgun-ammo", 0.1)
-        add_productivity_bonus(tech_data, "tungsten-railgun-ammo", 0.1)
-    end
-end
-
-for tech_name, tech_data in pairs(data.raw.technology) do
-    if string.match(tech_name, "^rocket%-ammo%-productivity%-?%d*$")then
-        add_productivity_bonus(tech_data, "bio-rocket", 0.1)
-        add_productivity_bonus(tech_data, "bio-explosive-rocket", 0.1)
-    end
-end
-]]
-

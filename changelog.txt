@@ -1,4 +1,29 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.3
+Date: 2025-11-07
+  Bugfixes:
+    - Hotfix for [Metal and Stars] if [K2SO] is not present. It works but I want to do it better later. Thanks to LabsJ for the patient.
+---------------------------------------------------------------------------------------------------
+Version: 0.8.2
+Date: 2025-11-05
+  Bugfixes:
+    - Localisation EN now with capital letters for everything
+    - Localisation DE "magnetisieren" changed to "pulsen" to be consistend with other mods.
+    - [K2SO] rockets were not unlocked by the corresponding tech, now fixed. Except nuclear rockets, as I am not sure what to do whith their balance.
+---------------------------------------------------------------------------------------------------
+Version: 0.8.1
+Date: 2025-11-05
+  Bugfixes:
+    - Fixed missing localisation for explosive (uranium) cannon shells. EN and DE.
+    - Added missing localisation lines for [K2SO] compatibility. EN and DE.
+    - Fixed wrong recipe subgroup for explosive (uranium) cannon shells.
+    - Deleted obsolete code lines.
+    - [vtk cannon turret] Disabling cannon turret casting if mod option is off, and some other issues.
+  Note:
+    - I also included some [K2SO + HeroTurretRedux] compatibility already in 0.8.0, but forgot to mention it in the changelog.
+      If any of these mod combination get their own compat in one of their respective mods, please report it so I don't have to keep them here.
+      Mostly, I just increased the turret range massively so that the ammo don't hit the ground prematurely.
+---------------------------------------------------------------------------------------------------
 Version: 0.8.0
 Date: 2025-11-05
   Minor Features:
@@ -13,7 +38,7 @@ Date: 2025-11-05
     - Switched "ultra light armour plating" sci pack from agricultural to electromagnetic.
     - Renamed many internal names because of the generator. If any migration issues arise, please report them.
   Balancing:
-    - Optionally: Switch (tungsten carbide + steel plate) to (tungsten steel) for tungsten ammo. (except for shontgun shells)
+    - Optionally: Switch (tungsten carbide + steel plate) to (tungsten steel) for tungsten ammo, except for shontgun shells. Off by default as it was the old recipe, still check your factory.
   Bugfixes:
     - Fixes a crash with the mod "More Ammo".
     - Fixed a typo in German localisation.

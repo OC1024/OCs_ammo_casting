@@ -1,6 +1,6 @@
 {
   "name": "OCs_ammo_casting",
-  "version": "0.8.0",
+  "version": "0.8.3",
   "title": "OCs Ammo and Armor",
   "author": "OC1024",
   "description": "Adds recipes to the foundry that uses molten metals to cast various ammunitions. It also adds tungsten ammo with bonus range. Bio-rockets can be crafted in the biochamber.\nNEW: Armour plating as very slow but strong shields. (optional)",
@@ -8,7 +8,7 @@
   "dependencies": [
     "base >= 2.0",
     "space-age",
-    "OCs_base_assets >= 0.3.0",
+    "OCs_base_assets >= 0.3.2",
     "? Krastorio2-spaced-out >= 1.4.0",
     "! ICastBullets"
   ]

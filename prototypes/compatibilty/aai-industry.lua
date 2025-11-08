@@ -6,4 +6,3 @@ local casting_dict = {
     ["gun-turret"] = "metallurgy",
 }
 generator_api.batch_generator(casting_dict)
-log("Compatibility for AAI Industry: Modified recipe for casting-gun-turret.")
