@@ -1,4 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.4
+Date: 2026-02-10
+  Minor Features:
+    - Adding alternative atomic bomb recipe at the end of my tech tree.
+  Changes:
+    - Added a new setting (off by default) for the heavy artillery shells. Turn on if you used them before.
+    - [K2SO] Restricted use cases of casting imersite rifle according to mod setting, same with heavy rockests.
+    - Added new mod setting and tech for [K2SO] antimatter ammo.
+  Bugfixes:
+    - [K2SO + Metal and Stars] Fixed that casting [K2SO] ammo was not added to the [Metal and Stars] productivity techs.
+    - Fixed casting-railgun-ammo recipe was not found (Report by omegacute).
+  Compatibility:
+    - [AAI Ironclad], [Ironclad gunboat and mortar turret (fork)], [stratetic mortar ammo]: Experimental compat,some finetuning will be done later.
+    - [King Jo Vehicles] Experimental compat. Not all vehicles yet, mostly just tanks, no air vehicles.
+  Other:
+    - Removed old unused code lines.
+  Localisation:
+    - Unify EN localisation with my other mods.
+    - EN: Renaming "armour" to "armor" to be consistent with the vanilla game. (suggested by omegacute)
+---------------------------------------------------------------------------------------------------
 Version: 0.8.3
 Date: 2025-11-07
   Bugfixes:

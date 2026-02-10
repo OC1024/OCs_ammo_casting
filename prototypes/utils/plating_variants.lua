@@ -8,11 +8,10 @@ plating_variants = {
          decrease = 1,
          percent = 5
         },
-        -- {
-        --  type = "fire",
-        --  decrease = 1,
-        --  percent = 5,
-        -- },
+        {
+         type = "fire",
+         percent = 5,
+        },
       },
       categories = {"personal-armour-plating-equipment","vehicle-armour-plating-equipment"},
       tint = {r = 1.0, g = 1.0, b = 0.5, a = 1.0}, -- yellow

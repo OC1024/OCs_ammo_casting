@@ -4,7 +4,7 @@ local armor_platings = {}
 for _, variant in pairs(plating_variants) do
   table.insert(armor_platings,
     { -- armor-plating-prototype
-      type = "energy-shield-equipment",
+      type = "energy-shield-equipment", -- base for energy shield, does consume energy
       -- type = "battery-equipment", -- does not consume energy
       -- type = "movement-bonus-equipment", -- base for movement bonus
       name = variant.name,
@@ -26,8 +26,8 @@ for _, variant in pairs(plating_variants) do
       energy_source = {
         type = "electric",
         usage_priority = "primary-input",
-        buffer_capacity = variant.buffer_capacity, -- optional, for battery and shields
-        input_flow_limit = variant.input_flow_limit, -- optional, for battery and shields
+        buffer_capacity = variant.buffer_capacity,
+        input_flow_limit = variant.input_flow_limit,
       },
       movement_bonus = variant.movement_bonus, -- optional
       resistances = variant.resistances,

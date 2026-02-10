@@ -19,7 +19,7 @@ local mapping = {
     ["casting-thorium-cannon-shell"] = "alternative-ammo",
     ["casting-gauss-rocket"] = "alternative-ammo",
 }
-set_recipes_subgroup_mapped(mapping)
+change_recipes_subgroup(mapping)
 
 local recipe_tech_mapping = {
     ["casting-thorium-rounds-magazine"] = {"casting-heavy-ammo-tech"},

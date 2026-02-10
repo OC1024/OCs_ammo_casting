@@ -201,6 +201,9 @@ data:extend({
     allow_decomposition = false,
     -- auto_recycle = true,
   },
+})
+if settings.startup["space-fish"].value then
+  data:extend({
   { -- fish-breeding shamelessly copied from space-age-dlc. space version
     type = "recipe",
     name = "space-fish-breeding",
@@ -249,7 +252,8 @@ data:extend({
     },
     show_amount_in_title = false
   },
-})
+  })
+end
 
 -- armour plating related
 data:extend({
@@ -418,7 +422,7 @@ data:extend({
 })
 
 -- change vanilla artillery shells to medium and introduce heavy artillery shells
-if settings.startup["allow-casting-explosive-ammo"].value then
+if settings.startup["heavy-artillery-shells"].value then
   -- vanilla version is overwritten to medium artillery shell
   if data.raw["recipe"]["artillery-shell"] then
     data.raw["recipe"]["artillery-shell"].localised_name = { "recipe-name.medium-artillery-shell" }
@@ -434,45 +438,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 
   -- casting light artillery shell + heavy artillery shell
   data:extend({
-    { -- casting-artillery-shell (vanilla-like without DLC)
-      type = "recipe",
-      name = "casting-artillery-shell",
-      localised_name = { "recipe-name.casting-medium-artillery-shell" },
-      icons =
-      {
-        {
-          icon = "__base__/graphics/icons/artillery-shell.png",
-          icon_size = 64,
-          icon_mipmaps = 4,
-        },
-        {
-          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
-          icon_size = 64,
-          icon_mipmaps = 4,
-        }
-      },
-      category = "metallurgy",
-      group = "combat",
-      subgroup = "alternative-ammo",
-      -- order = "ca",
-      enabled = false,
-      energy_required = 16, -- from raw in space age: 24, last step: 15 for shell
-      ingredients = { -- vanilla like recipe
-        { type = "fluid", name = "molten-iron",   amount = 490 }, --  10*25iron-plate + 30*8steel-plate
-        { type = "fluid", name = "molten-copper", amount = 75 }, -- 7.5 copper-plates
-        { type = "item",  name = "explosives",    amount = 8 }, -- half of vanilla
-        -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
-      },
-      -- ingredients = { -- exactly DLC recipe
-      --   {type = "fluid", name = "molten-iron", amount = 250}, --  25iron-plate
-      --   {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5copper-plate
-      --   {type = "item", name = "tungsten-plate", amount = 4},
-      --   {type = "item", name = "explosives", amount = 8},
-      --   {type = "item", name = "calcite", amount = 1},
-      -- },
-      results = { { type = "item", name = "artillery-shell", amount = 1 } },
-      allow_productivity = false,
-    },
     { -- heavy artillery shell (DLC-like)
       type = "recipe",
       name = "heavy-artillery-shell",
@@ -515,6 +480,46 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       },
       results = { { type = "item", name = "heavy-artillery-shell", amount = 1 } },
     },
+    --[[
+    { -- casting-artillery-shell (vanilla-like without DLC)
+      type = "recipe",
+      name = "casting-artillery-shell",
+      localised_name = { "recipe-name.casting-medium-artillery-shell" },
+      icons =
+      {
+        {
+          icon = "__base__/graphics/icons/artillery-shell.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__OCs_base_assets__/graphics/icons/overlayer-recipe-molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        }
+      },
+      category = "metallurgy",
+      group = "combat",
+      subgroup = "alternative-ammo",
+      -- order = "ca",
+      enabled = false,
+      energy_required = 16, -- from raw in space age: 24, last step: 15 for shell
+      ingredients = { -- vanilla like recipe
+        { type = "fluid", name = "molten-iron",   amount = 490 }, --  10*25iron-plate + 30*8steel-plate
+        { type = "fluid", name = "molten-copper", amount = 75 }, -- 7.5 copper-plates
+        { type = "item",  name = "explosives",    amount = 8 }, -- half of vanilla
+        -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
+      },
+      -- ingredients = { -- exactly DLC recipe
+      --   {type = "fluid", name = "molten-iron", amount = 250}, --  25iron-plate
+      --   {type = "fluid", name = "molten-copper", amount = 75}, -- 7.5copper-plate
+      --   {type = "item", name = "tungsten-plate", amount = 4},
+      --   {type = "item", name = "explosives", amount = 8},
+      --   {type = "item", name = "calcite", amount = 1},
+      -- },
+      results = { { type = "item", name = "artillery-shell", amount = 1 } },
+      allow_productivity = false,
+    },
     { -- casting heavy artillery shell
       type = "recipe",
       name = "casting-heavy-artillery-shell",
@@ -549,9 +554,9 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       allow_decomposition = false,
       auto_recycle = true,
     }
+    -- ]]
   })
-  -- Todo: use casting generator for these here too.
-  log("Added heavy artillery shell and casting recipes.")
+  log("Added heavy artillery shell recipes.")
 else -- nothing happens
   log("Vanilla Artillery shell untouched.")
 end
@@ -582,6 +587,7 @@ local new_alt_recipes = {
     ["cannon-shell"] = {"casting-cannon-shell","cannon-shell"},
     ["uranium-cannon-shell"] = {"casting-uranium-cannon-shell","uranium-cannon-shell"},
     ["tungsten-cannon-shell"] = {"casting-tungsten-cannon-shell","tungsten-cannon-shell"},
+    ["railgun-ammo"] = {"casting-railgun-ammo", "railgun-ammo"},
     ["tungsten-railgun-ammo"] = {"casting-tungsten-railgun-ammo","tungsten-railgun-ammo"},
     ["artillery-shell"] = {"casting-artillery-shell", "artillery-shell"},
     ["heavy-artillery-shell"] = {"casting-heavy-artillery-shell", "heavy-artillery-shell","heavy-artillery-shell-upgrading"},
@@ -620,6 +626,7 @@ local casting_dict = {
   ["rocket"]                   = "organic",
   ["explosive-rocket"]         = "organic",
 }
+-- add optional recipes to the casting_dict
 if settings.startup["casting-weapons"].value then
   -- weapons
   casting_dict["gun-turret"] = "metallurgy"
@@ -633,15 +640,21 @@ if settings.startup["casting-weapons"].value then
   casting_dict["rocket-launcher"] = "electromagnetics"
   casting_dict["flamethrower"] = "metallurgy"
 end
+if settings.startup["nuclear-ammo"].value then
+  casting_dict["atomic-bomb"] = "cryogenics"
+end
 if settings.startup["allow-casting-explosive-ammo"].value then
   casting_dict["explosive-cannon-shell"] = "metallurgy"
   casting_dict["explosive-uranium-cannon-shell"] = "metallurgy"
+end
+if settings.startup["allow-casting-explosive-ammo"].value and settings.startup["heavy-artillery-shells"].value then
   casting_dict["artillery-shell"] = "metallurgy"
   casting_dict["heavy-artillery-shell"] = "metallurgy"
 end
+-- execute generator from casting_dict
 generator_api.batch_generator(casting_dict)
 
--- set the subrgoup to alternative-ammo to distinct them from normal crafting recipes
+-- set the subgroup to alternative-ammo to distinct them from normal crafting recipes
 local mapping = {
   -- base ammo
   ["casting-firearm-magazine"] = "alternative-ammo",
@@ -660,5 +673,6 @@ local mapping = {
   ["casting-tungsten-railgun-ammo"] = "alternative-ammo",
   ["bio-rocket"] = "alternative-ammo",
   ["bio-explosive-rocket"] = "alternative-ammo",
+  ["cryo-atomic-bomb"] = "alternative-ammo",
 }
-set_recipes_subgroup_mapped(mapping)
+change_recipes_subgroup(mapping)

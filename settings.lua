@@ -8,10 +8,17 @@ data:extend({
     },
     {
         type = "bool-setting",
-        name = "allow-casting-explosive-ammo", -- now includes heavy artillery
+        name = "allow-casting-explosive-ammo",
         setting_type = "startup",
         default_value = true,
         order = "b-b",
+    },
+    {
+        type = "bool-setting",
+        name = "heavy-artillery-shells",
+        setting_type = "startup",
+        default_value = false,
+        order = "b-c",
     },
     { -- crafting explosives and rockets in biochamber
         type = "bool-setting",
@@ -39,6 +46,20 @@ data:extend({
         name = "tungsten-steel-ammo",
         setting_type = "startup",
         default_value = false,
-        order = "e"
+        order = "e-a"
+    },
+    { -- vanilla nuclear rockets and key setting for fusion, anitmatter, ...
+        type = "bool-setting",
+        name = "nuclear-ammo",
+        setting_type = "startup",
+        default_value = true,
+        order = "f-a"
+    },
+    { -- [K2SO: antimatter ammo]
+        type = "bool-setting",
+        name = "antimatter-ammo",
+        setting_type = "startup",
+        default_value = false,
+        order = "f-b"
     }
 })

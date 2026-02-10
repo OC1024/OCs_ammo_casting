@@ -1,29 +1,29 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
 
--- adding items to the base item list
-if casting_materials then
-  local additions = {
-    ["lead-plate"] = { fluid = "molten-lead", ratio = 10, energy_required = 1.6 }, -- originally 3.2 for 2lead-plate but normalized to one plate
-  }
-  for name, props in pairs(additions) do
-    casting_materials[name] = props
-  end
-  -- log the new version of the casting_materials table
-  local keys = {}
-  for k in pairs(casting_materials) do table.insert(keys, k) end
-  table.sort(keys)
-  debug_log("Current casting_materials: " .. table.concat(keys, ", "),"generator")
-end
+-- -- adding items to the base item list
+-- if casting_materials then
+--   local additions = {
+--     ["lead-plate"] = { fluid = "molten-lead", ratio = 10, energy_required = 1.6 }, -- originally 3.2 for 2lead-plate but normalized to one plate
+--   }
+--   for name, props in pairs(additions) do
+--     casting_materials[name] = props
+--   end
+--   -- log the new version of the casting_materials table
+--   local keys = {}
+--   for k in pairs(casting_materials) do table.insert(keys, k) end
+--   table.sort(keys)
+--   debug_log("Current casting_materials: " .. table.concat(keys, ", "),"generator")
+-- end
 
 
 -- Add/Change order of Alternative Receptes
 local alternatives = {
   ["molten-lead"] = {"molten-lead","molten-lead-from-lava"},
   ["lead-plate"] = {"casting-lead","lead-plate",},
-  ["lead-expansion-bolt"] = {"casting-lead-expansion-bolt","lead-expansion-bolt"}, -- luckily it is already there
+  ["lead-expansion-bolt"] = {"casting-lead-expansion-bolt","lead-expansion-bolt"},
   ["firearm-magazine"] = {"firearm-magazine-iron-only","firearm-magazine-iron-lead","firearm-magazine-copper-lead","firearm-magazine","casting-firearm-magazine"},
-  ["shotgun-shell"] = {"shotgun-shell"},
+  -- ["shotgun-shell"] = {"shotgun-shell"},
 }
 generator_api.register_category_alt_recipes("metallurgy", alternatives)
 

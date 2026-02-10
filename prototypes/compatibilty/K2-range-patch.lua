@@ -45,7 +45,7 @@ local function ensure_actions_table(a)
     return a
 end
 
-log("Sorry for the crude patch, but HeroTurretRedux has higher range than Krastorio2 ammo by default.")
+log("Sorry for the crude patch, but HeroTurretRedux has higher range than Krastorio2 ammo by default. Sincerely OC1024.")
 for name, new_range in pairs(ammo_range_patch) do
   local ammo = data.raw["ammo"][name]
   if not ammo or not ammo.ammo_type then goto continue end

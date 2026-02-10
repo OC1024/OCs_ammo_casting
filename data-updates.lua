@@ -1,18 +1,22 @@
 
--- generator related code
--- main frame of this mod
--- require("prototypes.recipe-updates")
--- require("prototypes.technology-updates")
-
 -- mod compatibility
 if mods["aai-industry"] then
   require("prototypes.compatibilty.aai-industry")
 end
 
--- if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio-2 with space-age compatible version
--- requre("OCs_base_assets.prototypes.compatibility.Krastorio2")  
--- require("prototypes.compatibility.Krastorio-2")
--- end
+if mods["kj_vehicles"] then
+  require("prototypes.compatibilty.king-jo")
+end
+
+if mods["aai-vehicles-ironclad"] then
+  require("prototypes.compatibilty.aai-vehicles-ironclad")
+  if mods["ironclad-gunboat-and-mortar-turret-fork"] then
+    require("prototypes.compatibilty.ironclad-gunboad-and-mortar-turret")
+    if mods["strategy-mortar-turret"] then
+      require("prototypes.compatibilty.stategy-mortar-turret") -- note that there has to be a step in the data-final-fixes stage
+    end
+  end
+end
 
 if mods["scattergun_turret"] then
   require("prototypes.compatibilty.scattergun_turret")
@@ -26,21 +30,22 @@ if mods["bzlead"] then
   require("prototypes.compatibilty.bzlead")
 end
 
-if mods["More_Ammo"] then
+if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
 end
 
-if mods["AmmoGroup"] then
+if mods["AmmoGroup"] then -- reversing the subgroup thing
   require("prototypes.compatibilty.AmmoGroup")
-end
-
-if mods["metal-and-stars"] then
-  require("prototypes.compatibilty.metal-and-stars")
 end
 
 if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio2 with space-age compatible version
   require("prototypes.compatibilty.Krastorio2")
 end
-if mods["Krastorio2-spaced-out"] and mods["HeroTurretRedux"] then
+
+if mods["Krastorio2-spaced-out"] and mods["HeroTurretRedux"] then -- tripple compat patch
   require("prototypes.compatibilty.K2-range-patch")
+end
+
+if mods["metal-and-stars"] then
+  require("prototypes.compatibilty.metal-and-stars")
 end
