@@ -187,12 +187,19 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         { type = "unlock-recipe", recipe = "casting-explosive-cannon-shell" },
         { type = "unlock-recipe", recipe = "casting-explosive-uranium-cannon-shell" },
         { type = "unlock-recipe", recipe = "casting-artillery-shell" },
-        { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
-        { type = "unlock-recipe", recipe = "casting-heavy-artillery-shell" },
-        { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
+        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
+        -- { type = "unlock-recipe", recipe = "casting-heavy-artillery-shell" },
+        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
       },
     },
   })
+  if settings.startup["heavy-artillery-shells"].value then
+    local heavy_art = {
+      ["casting-heavy-artillery-shell"] = "casting-explosive-ammo-tech",
+      ["heavy-artillery-shell"] = "casting-explosive-ammo-tech",
+      ["heavy-artillery-shell-upgrading"] = "casting-explosive-ammo-tech",}
+    add_recipe_unlocks(heavy_art)
+  end
 end
 
 if settings.startup["allow-bio-explosives"].value then

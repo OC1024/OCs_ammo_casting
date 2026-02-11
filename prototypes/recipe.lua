@@ -646,9 +646,9 @@ end
 if settings.startup["allow-casting-explosive-ammo"].value then
   casting_dict["explosive-cannon-shell"] = "metallurgy"
   casting_dict["explosive-uranium-cannon-shell"] = "metallurgy"
+  casting_dict["artillery-shell"] = "metallurgy"
 end
 if settings.startup["allow-casting-explosive-ammo"].value and settings.startup["heavy-artillery-shells"].value then
-  casting_dict["artillery-shell"] = "metallurgy"
   casting_dict["heavy-artillery-shell"] = "metallurgy"
 end
 -- execute generator from casting_dict

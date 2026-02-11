@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.5
+Date: 2026-02-11
+  Bugfixes:
+    - Fixed that casting-artillery-shell was missing for (default setting) heavy artillery shells. (thanks omegacute and nattanang for reporting)
+  Localisation:
+    - Modified mod setting description for heavy artillery shells to be more clear.
+    - Slightly changed the info text for alternative antimatter ammo, that it requries alternative atomic bomb setting, too.
+---------------------------------------------------------------------------------------------------
 Version: 0.8.4
 Date: 2026-02-10
   Minor Features:
@@ -7,6 +15,7 @@ Date: 2026-02-10
     - Added a new setting (off by default) for the heavy artillery shells. Turn on if you used them before.
     - [K2SO] Restricted use cases of casting imersite rifle according to mod setting, same with heavy rockests.
     - Added new mod setting and tech for [K2SO] antimatter ammo.
+    - Updated dependency of [OCs Base Assets] to >0.3.3 as helper functions were updated. (missed this in the changelog)
   Bugfixes:
     - [K2SO + Metal and Stars] Fixed that casting [K2SO] ammo was not added to the [Metal and Stars] productivity techs.
     - Fixed casting-railgun-ammo recipe was not found (Report by omegacute).

@@ -1,9 +1,9 @@
 {
   "name": "OCs_ammo_casting",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "title": "OCs Ammo and Armor",
   "author": "OC1024",
-  "description": "Adds recipes to the foundry that uses molten metals to cast various ammunitions. It also adds tungsten ammo with bonus range. Bio-rockets can be crafted in the biochamber.\nNEW: Armour plating as very slow but strong shields. (optional)",
+  "description": "Adds recipes to the foundry that uses molten metals to cast various ammunitions. It also adds tungsten ammo with bonus range. Bio-rockets can be crafted in the biochamber. The armour plating are very slow but strong shields.",
   "factorio_version": "2.0",
   "dependencies": [
     "base >= 2.0",
