@@ -10,12 +10,12 @@ end
 
 if mods["aai-vehicles-ironclad"] then
   require("prototypes.compatibilty.aai-vehicles-ironclad")
-  if mods["ironclad-gunboat-and-mortar-turret-fork"] then
-    require("prototypes.compatibilty.ironclad-gunboad-and-mortar-turret")
-    if mods["strategy-mortar-turret"] then
-      require("prototypes.compatibilty.stategy-mortar-turret") -- note that there has to be a step in the data-final-fixes stage
-    end
-  end
+end
+if mods["ironclad-gunboat-and-mortar-turret-fork"] then
+  require("prototypes.compatibilty.ironclad-gunboad-and-mortar-turret")
+end
+if mods["strategy-mortar-turret"] then
+  require("prototypes.compatibilty.stategy-mortar-turret") -- note that there has to be a step in the data-final-fixes stage
 end
 
 if mods["scattergun_turret"] then
@@ -32,6 +32,10 @@ end
 
 if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
+end
+
+if mods["Uranium-Artillery-Shell"] then -- experimental
+  require("prototypes.compatibilty.Uranium-Artillery-Shell")
 end
 
 if mods["AmmoGroup"] then -- reversing the subgroup thing

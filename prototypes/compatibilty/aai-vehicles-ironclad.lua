@@ -1,5 +1,6 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 -- optional TODO: create new tungsten mortar dart/ tungsten shrapnel ammo
 
@@ -8,11 +9,10 @@ local casting_dict = {
     ["mortar-bomb"] = "metallurgy",
     ["mortar-cluster-bomb"] = "metallurgy",
 }
-generator_api.batch_generator(casting_dict)
-
 if settings.startup["casting-weapons"].value then
     casting_dict["ironclad"] = "metallurgy"
 end
+generator_api.batch_generator(casting_dict)
 
 data:extend({
     { -- casting basic mortar ammo
@@ -50,11 +50,12 @@ data:extend({
 local adding_prereq_dict ={
     ["casting-explosive-ammo-tech"] = {"casting-basic-mortar-ammo-tech"},
 }
-add_prerequisites(adding_prereq_dict)
+oc_helper.add_prerequisites(adding_prereq_dict)
+
 local recipe_unlock_mapping = {
-    ["casting-ironclad"] = "ironclad",
+    ["casting-ironclad"] = "ironclad", -- if "casting weapons" is enabled
 }
-add_recipe_unlocks(recipe_unlock_mapping)
+oc_helper.add_recipe_unlocks(recipe_unlock_mapping)
 
 -- move to subgroup
 data:extend({
@@ -71,4 +72,4 @@ local mapping = {
     ["casting-mortar-bomb"] = "mortar-ammo",
     ["casting-mortar-cluster-bomb"] = "mortar-ammo",
 }
-change_recipes_subgroup(mapping)
+oc_helper.change_recipes_subgroup(mapping)

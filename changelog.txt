@@ -1,4 +1,57 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.0
+Date: 2026-04-11
+  Minor Features:
+    - Option: Light and/or heavy armor get a micro or tiny equipment grid, respectively. (Default: Heavy. Grid sizes: heavy armor 4x3, light armor 2x3)
+    - Option: Earlier armor plating. It moves the armor plating techs before the modular armor, so you can get them earlier. (Default: off)
+    - Option: Earlier portable solar panels. As a energy source is needed, this is the cheapest way to get it. (Default: off). I reccomend some burner-generator equipment mod.
+  Balancing:
+    - For armour plating technologies: Switched the double cost from production science to utility science.
+    - Added electronics as prerequisite for the light armor plating tech, as it is needed for the casting recipe.
+    - Increased heavy armor grid size from 2x3 to 4x3, to be a bit closer to the car and the next tier (modular armor has 5x5) and give room for the light armor grid.
+    - Removed carbon cost from the heavy armor plating.
+    - Removing utility and production science pack from the heavy armor plating tech and added power armor as prerequisite.
+    - The reactive armor plating is now only be placable in vehicles, as it was inteded from the start.
+  Changes:
+    - Set this mod properly to be a [Space Age] mod, which it was from the start.
+    - Removed the reduction of steel cost for the tungsten rounds ammo if tungsten steel ammo option is disabled.
+    - Separated heavy artillery shell crafting recipes from the casting explosive ammo setting. You now can craft them even if you disable the casting recipe.
+    - Internally set the grid definitions to be local variables to less spamming the global namespace.
+    - Internally reframing the grid definitions and code.
+    - Increased car grid size from 4x4 to 6x4, to be in line with other mods like [kry-vehicle-grids].
+    - [ironclad-gunboat-and-mortar-turret] Added military-3 for the normal casting mortar bomb tech, and military-4 for casting clusterbomb tech. The clusterbomb requres military-4.
+  Graphics:
+    - Changed the icon for all armor plating to something independent.
+    - Added tint for tungsten (and uranium) shotgun pelets to make them slightly more distinguishable.
+    - Removed overlayer from light and heavy armor plating tech icon.
+  Compatibility:
+    - Updated dependency of [OCs Base Assets] to >=0.3.5 as helper functions were updated. (makes it incompatible with older versions)
+    - Made compats for [aai-vehicles-ironclad], [Ironclad gunboat and mortar turret], and [stratetic mortar ammo] independent of each other.
+    - Removed compatibility for [UraniumShotgunShell] as it is integrated into this mod.
+  Bugfixes:
+    - Added missing localisation for [Uranium Artillery Shell] compatibility.
+    - Heavy artillery shells were unable to unlocked if "casting-explosive-ammo-tech" was disabled, now fixed. The casting recipe is still not added in this case. (thanks to GingerBeard118 for reporting)
+    - Hopefully fixing the startup crashes regarding missing ammo recipes.
+    - [aai-vehicles-ironclad] Fixed that the ironclad casting recipe was not added when the setting was on.
+    - [K2SO] Now support K2S0>0.5.0 which changed some internal names breaking my compat file. This should fix some startup crashes.
+    - [strategic-mortar-turret] Fixed that the cryo-mortar-light-nuclear-ammo was unable to be unlocked.
+    - [strategic-mortar-turret] Added missing localisations.
+    - [strategic-mortar-turret] Fixed issues if some of the mortar ammo is not enabled by its mod settings.
+    - [strategic-mortar-turret] Fixed some issues if [Ironclad gunboat and mortar turret] is not present.
+    - [vtk-cannon-turret] Fixed that the turret casting recipes were not created.
+    - [vtk-cannon-turret] Fixed that exlosive cannon shell magazine was not created.
+---------------------------------------------------------------------------------------------------
+Version: 0.8.6
+Date: 2026-02-14
+  Changes:
+    - Updated dependency of [OCs Base Assets] to >=0.3.4 as helper functions were updated. (missed the similar thing in the previous changelog)
+    - Reduced crafting time for bio explosives (Gleba edition) from 60 to 20. This is arbitrary, but feels better.
+  Compatibility:
+    - Added compatibility for [UraniumShotgunShell] and [Uranium Artillery Shell].
+  Bugfixes:
+    - Hopefully fixing the startup crashes regarding missing ammo recipes.
+    - [aai-vehcles-ironclad] Fixed missing localisations for casting mortar bomb.
+---------------------------------------------------------------------------------------------------
 Version: 0.8.5
 Date: 2026-02-11
   Bugfixes:
@@ -15,7 +68,7 @@ Date: 2026-02-10
     - Added a new setting (off by default) for the heavy artillery shells. Turn on if you used them before.
     - [K2SO] Restricted use cases of casting imersite rifle according to mod setting, same with heavy rockests.
     - Added new mod setting and tech for [K2SO] antimatter ammo.
-    - Updated dependency of [OCs Base Assets] to >0.3.3 as helper functions were updated. (missed this in the changelog)
+    - Updated dependency of [OCs Base Assets] to >=0.3.3 as helper functions were updated. (missed this in the changelog)
   Bugfixes:
     - [K2SO + Metal and Stars] Fixed that casting [K2SO] ammo was not added to the [Metal and Stars] productivity techs.
     - Fixed casting-railgun-ammo recipe was not found (Report by omegacute).

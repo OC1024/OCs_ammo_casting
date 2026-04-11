@@ -1,5 +1,6 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 -- optional TODO: create new tungsten mortar dart/ tungsten shrapnel ammo
 
@@ -8,8 +9,8 @@ local casting_dict = {
     -- casting
     -- ["mortar-cluster-bomb"] = "metallurgy", -- basic
     ["mortar-shrapnel-ammo"] = "metallurgy", -- basic
-    ["mortar-heavy-ammo"] = "metallurgy",     -- heavy ammo
-    ["mortar-fire-ammo"] = "metallurgy",      -- chemical (see gunboat-compat file)
+    ["mortar-heavy-ammo"] = "metallurgy",    -- heavy ammo
+    ["mortar-fire-ammo"] = "metallurgy",     -- chemical (see gunboat-compat file)
     -- bio/chemical
     ["mortar-slowdown-ammo"] = "organic",
     ["mortar-poison-bomb"] = "organic", -- overwrite gunboat-compat file
@@ -28,6 +29,7 @@ if settings.startup["casting-weapons"].value then
     casting_dict["heavy-mortar-turret"] = "metallurgy"
 end
 generator_api.batch_generator(casting_dict)
+
 data.raw.recipe["casting-mortar-poison-bomb"].hidden = true -- overwrite old casting version in favor of the bio one.
 
 -- creating new mortat techs
@@ -49,11 +51,11 @@ data:extend({
         },
         prerequisites = {
             "biochamber", -- crafting building
-            "casting-basic-mortar-ammo-tech", -- continuation of chemical ammo, but earlier than cluster-bomb
-            "mortar-slowdown-ammo",
-            "mortar-poison-bomb",
-            "mortar-illumination-ammo",
-            "mortar-hypnosis-ammo",
+            -- "casting-basic-mortar-ammo-tech", -- continuation of chemical ammo
+            -- "mortar-slowdown-ammo",
+            -- "mortar-poison-bomb",
+            -- "mortar-illumination-ammo",
+            -- "mortar-hypnosis-ammo",
         },
         unit = {
             ingredients = {
@@ -68,10 +70,10 @@ data:extend({
             count = 200
         },
         effects = {
-            { type = "unlock-recipe", recipe = "bio-mortar-slowdown-ammo" },
-            { type = "unlock-recipe", recipe = "bio-mortar-poison-bomb" },
-            { type = "unlock-recipe", recipe = "bio-mortar-illumination-ammo" },
-            { type = "unlock-recipe", recipe = "bio-mortar-hypnosis-ammo" },
+            -- { type = "unlock-recipe", recipe = "bio-mortar-slowdown-ammo" },
+            -- { type = "unlock-recipe", recipe = "bio-mortar-poison-bomb" },
+            -- { type = "unlock-recipe", recipe = "bio-mortar-illumination-ammo" },
+            -- { type = "unlock-recipe", recipe = "bio-mortar-hypnosis-ammo" },
         },
     },
     { -- robot mortar ammo
@@ -92,11 +94,11 @@ data:extend({
         prerequisites = {
             "electromagnetic-plant", -- crafting building
             "mortar-turret",         -- its okay if it does not require the foundry-path
-            "mortar-energy-ammo",
-            "mortar-defender-robot-ammo",
-            "mortar-distractor-robot-ammo",
-            "mortar-destroyer-robot-ammo",
-            "mortar-lure-robot-ammo",
+            -- "mortar-energy-ammo",
+            -- "mortar-defender-robot-ammo",
+            -- "mortar-distractor-robot-ammo",
+            -- "mortar-destroyer-robot-ammo",
+            -- "mortar-lure-robot-ammo",
         },
         unit = {
             ingredients = {
@@ -111,29 +113,70 @@ data:extend({
             count = 200
         },
         effects = {
-            { type = "unlock-recipe", recipe = "pulse-mortar-energy-ammo" },
-            { type = "unlock-recipe", recipe = "pulse-mortar-defender-robot-ammo" },
-            { type = "unlock-recipe", recipe = "pulse-mortar-distractor-robot-ammo" },
-            { type = "unlock-recipe", recipe = "pulse-mortar-destroyer-robot-ammo" },
-            { type = "unlock-recipe", recipe = "pulse-mortar-lure-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "pulse-mortar-energy-ammo" },
+            -- { type = "unlock-recipe", recipe = "pulse-mortar-defender-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "pulse-mortar-distractor-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "pulse-mortar-destroyer-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "pulse-mortar-lure-robot-ammo" },
         },
     },
 })
 
+-- biochemical mortar ammo
+local biochemical_req = {
+    ["biochemical-mortar-ammo-tech"] =
+    {
+        "casting-basic-mortar-ammo-tech", -- continuation of chemical ammo
+        "mortar-slowdown-ammo",
+        "mortar-poison-bomb",
+        "mortar-illumination-ammo",
+        "mortar-hypnosis-ammo",
+    }
+}
+oc_helper.add_prerequisites(biochemical_req)
+
+local biochemical_ammo = {
+    ["bio-mortar-slowdown-ammo"] = "biochemical-mortar-ammo-tech",
+    ["bio-mortar-poison-bomb"] = "biochemical-mortar-ammo-tech",
+    ["bio-mortar-illumination-ammo"] = "biochemical-mortar-ammo-tech",
+    ["bio-mortar-hypnosis-ammo"] = "biochemical-mortar-ammo-tech",
+}
+oc_helper.add_recipe_unlocks(biochemical_ammo)
+
+-- robot mortar ammo
+local robot_req = {
+    ["pulse-mortar-ammo-tech"] = {
+        "mortar-energy-ammo",
+        "mortar-defender-robot-ammo",
+        "mortar-distractor-robot-ammo",
+        "mortar-destroyer-robot-ammo",
+        "mortar-lure-robot-ammo",
+    }
+}
+oc_helper.add_prerequisites(robot_req)
+local robot_ammo = {
+    ["pulse-mortar-energy-ammo"] = "pulse-mortar-ammo-tech",
+    ["pulse-mortar-defender-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["pulse-mortar-distractor-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["pulse-mortar-destroyer-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["pulse-mortar-lure-robot-ammo"] = "pulse-mortar-ammo-tech",
+}
+oc_helper.add_recipe_unlocks(robot_ammo)
+
 -- add prerequisites
 local adding_prereq_dict = {
-    ["casting-heavy-ammo-tech"] = { "casting-basic-mortar-ammo-tech", "mortar-heavy-ammo" }, -- because heavy mortar ammo
+    ["casting-heavy-ammo-tech"] = { "casting-basic-mortar-ammo-tech", "mortar-heavy-ammo" },                                -- because heavy mortar ammo
     ["nuclear-ammo-tech"] = { "casting-chemical-mortar-ammo-tech", "pulse-mortar-ammo-tech", "mortar-light-nuclear-ammo" }, -- requires all of my techs
     ["casting-chemical-mortar-ammo-tech"] = { "mortar-cluster-bomb", "mortar-fire-bomb" },
 }
-add_prerequisites(adding_prereq_dict)
+oc_helper.add_prerequisites(adding_prereq_dict)
 
 -- remove old unlocks
 local old_unlocks = {
-    ["casting-mortar-poison-bomb"]  = { "casting-chemical-mortar-ammo-tech" }, -- added in the gunboat-compat file
+    ["casting-mortar-poison-bomb"]  = { "casting-chemical-mortar-ammo-tech" }, -- added in the gunboat-compat file, moved to the new bio-chemical tech
     ["casting-mortar-cluster-bomb"] = { "casting-basic-mortar-ammo-tech" },    -- added in the aai-ironclad-compat file, replaced by shrapnel ammo
 }
-remove_recipe_unlocks(old_unlocks)
+oc_helper.remove_recipe_unlocks(old_unlocks)
 
 -- add recipe unlocks to technology
 local mapping = {
@@ -141,11 +184,11 @@ local mapping = {
     ["casting-mortar-shrapnel-ammo"] = "casting-basic-mortar-ammo-tech", -- replaces the now stronger cluster-bomb
     ["casting-mortar-fire-ammo"] = "casting-chemical-ammo-tech",
     ["casting-mortar-heavy-ammo"] = "casting-heavy-ammo-tech",
-    ["cryo-mortar-light-nuclear-ammo"] = "casting-nuclear-ammo-tech",
+    ["cryo-mortar-light-nuclear-ammo"] = "nuclear-ammo-tech",
     -- weapons (if present)
     ["casting-heavy-mortar-turret"] = "heavy-mortar-turret",
 }
-add_recipe_unlocks(mapping)
+oc_helper.add_recipe_unlocks(mapping)
 
 
 -- move to subgroup
@@ -157,4 +200,4 @@ local mapping = {
     ["casting-mortar-heavy-ammo"] = "mortar-ammo",
     ["cryo-mortar-light-nuclear-ammo"] = "mortar-ammo",
 }
-change_recipes_subgroup(mapping)
+oc_helper.change_recipes_subgroup(mapping)

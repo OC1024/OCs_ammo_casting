@@ -1,23 +1,35 @@
+local grids = {}
 
-personal_armor_grids = {
-    ["modular-armor"] = "small-equipment-grid",
-    ["power-armor"] = "medium-equipment-grid",
-    ["power-armor-mk2"] = "large-equipment-grid",
-    ["mech-armor"] = "huge-equipment-grid",
+-- define new grid sizes
+grids.equipment_grids = {
+    -- small-equipment_grid (vanilla, modular armor) 5x5
+    ["micro-equipment-grid"] = {
+        width = 2,
+        height = 3,
+    },
+    ["tiny-equipment-grid"] = {
+        width = 4,
+        height = 3,
+    },
+    -- just like from other mods
+    ["car-equipment-grid"] = {
+        width = 6,
+        height = 4,
+    },
+    -- vanilla values
+    ["tank-equipment-grid"] = {
+        width = 8,
+        height = 6,
+    },
 }
-vehicle_grids = {
+
+-- new definitions and overwrite grids
+grids.override_gridtype = {
+    ["light-armor"] = "micro-equipment-grid",
+    ["heavy-armor"] = "tiny-equipment-grid",
+    -- ["power-armor"] = "medium-equipment-grid",-- vanilla
     ["car"] = "car-equipment-grid",
     ["tank"] = "tank-equipment-grid",
-    ["spidertron"] = "spidertron-equipment-grid",
-    -- AAI vehicles
-    ["vehicle-chaingunner"] = "chaingunner-equipment-grid",
-    ["vehicle-flame-tumbler"] = "flame-tumbler-equipment-grid",
-    ["vehicle-warden"] = "warden-equipment-grid",
-    ["vehicle-flame-tank"] = "flame-tank-equipment-grid",
-    ["vehicle-laser-tank"] = "laser-tank-equipment-grid",
-    ["ironclad"] = "ironclad-equipment-grid",
-    -- hovercraft mod
-    ["hovercraft-entity"] = "hovercraft-equipment-grid",
-    ["missilecraft"] = "hovercraft-equipment-grid",
 }
 
+return grids

@@ -1,4 +1,6 @@
+if not settings.startup["armour-plating"].value then return end -- skip if armor plating is disabled
 
+local plating_variants = require("prototypes.utils.plating_variants")
 local armor_platings = {}
 
 for _, variant in pairs(plating_variants) do
@@ -9,10 +11,10 @@ for _, variant in pairs(plating_variants) do
       -- type = "movement-bonus-equipment", -- base for movement bonus
       name = variant.name,
       sprite = {
-        filename = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png",
+        filename = "__OCs_base_assets__/graphics/icons/reinforced_plating.png",
         width = 64,
         height = 64,
-        icon_mipmaps = 1,
+        icon_mipmaps = 4,
         priority = "medium",
         tint = variant.tint,
       },
@@ -29,7 +31,7 @@ for _, variant in pairs(plating_variants) do
         buffer_capacity = variant.buffer_capacity,
         input_flow_limit = variant.input_flow_limit,
       },
-      movement_bonus = variant.movement_bonus, -- optional
+      -- movement_bonus = variant.movement_bonus, -- optional. not possible to have both
       resistances = variant.resistances,
       categories = variant.categories,
       order = variant.order,

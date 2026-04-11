@@ -1,19 +1,19 @@
 data:extend({
-    {
+    { -- casting weapons
         type = "bool-setting",
         name = "casting-weapons",
         setting_type = "startup",
         default_value = true,
         order = "a",
     },
-    {
+    { -- casting explosive ammo (artilery, explosive cannon shells)
         type = "bool-setting",
         name = "allow-casting-explosive-ammo",
         setting_type = "startup",
         default_value = true,
         order = "b-b",
     },
-    {
+    { -- replace vanilla shells to medium and DLC to heavy shells.
         type = "bool-setting",
         name = "heavy-artillery-shells",
         setting_type = "startup",
@@ -34,14 +34,38 @@ data:extend({
         default_value = true,
         order = "c-b",
     },
-    {
+    -- armor and armor plating
+    { -- key setting for the follwinging
         type = "bool-setting",
         name = "armour-plating",
         setting_type = "startup",
         default_value = true,
-        order = "d"
+        order = "d-a"
     },
-    {
+    { -- early armor grid
+        type = "string-setting",
+        name = "early-armor-grid",
+        setting_type = "startup",
+        allowed_values = { "light-armor", "heavy-armor", "none" },
+        default_value = "heavy-armor",
+        order = "d-b"
+    },
+    { -- earlier armor plating (requires armour-plating to be true)
+        type = "bool-setting",
+        name = "earlier-armor-plating", -- requires armour-plating to be true
+        setting_type = "startup",
+        default_value = false,
+        order = "d-c"
+    },
+    { -- earlier solar panel equipment
+        type = "bool-setting",
+        name = "earlier-solar-panel-equipment",
+        setting_type = "startup",
+        default_value = false,
+        order = "d-d"
+    },
+    -- crafting options
+    { -- tungsten steel ammo (changes tungsten carbide+steel to tungsten steel)
         type = "bool-setting",
         name = "tungsten-steel-ammo",
         setting_type = "startup",
@@ -55,7 +79,7 @@ data:extend({
         default_value = true,
         order = "f-a"
     },
-    { -- [K2SO: antimatter ammo]
+    { -- [K2SO: antimatter ammo] (requires nuclear ammo TRUE)
         type = "bool-setting",
         name = "antimatter-ammo",
         setting_type = "startup",

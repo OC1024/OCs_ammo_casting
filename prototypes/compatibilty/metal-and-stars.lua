@@ -1,5 +1,6 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 generator_api.register_single_alt_recipe("metallurgy","neodymium-plate",{"neodymium-alloy-plate","neodymium-plate"})
 
@@ -11,22 +12,22 @@ local casting_dict = {
 }
 generator_api.batch_generator(casting_dict)
 --replace u238 with thorium in the thorium ammo recipes
-replace_ingredient("casting-thorium-rounds-magazine","item","uranium-238","item","thorium",true)
-replace_ingredient("casting-thorium-cannon-shell","item","uranium-238","item","thorium",true)
+oc_helper.replace_ingredient("casting-thorium-rounds-magazine","item","uranium-238","item","thorium",true)
+oc_helper.replace_ingredient("casting-thorium-cannon-shell","item","uranium-238","item","thorium",true)
 
 local mapping = {
     ["casting-thorium-rounds-magazine"] = "alternative-ammo",
     ["casting-thorium-cannon-shell"] = "alternative-ammo",
     ["casting-gauss-rocket"] = "alternative-ammo",
 }
-change_recipes_subgroup(mapping)
+oc_helper.change_recipes_subgroup(mapping)
 
 local recipe_tech_mapping = {
     ["casting-thorium-rounds-magazine"] = {"casting-heavy-ammo-tech"},
     ["casting-thorium-cannon-shell"] = "casting-heavy-ammo-tech",
     ["casting-gauss-rocket"] = {"gauss-rockets"},
 }
-add_recipe_unlocks(recipe_tech_mapping)
+oc_helper.add_recipe_unlocks(recipe_tech_mapping)
 
 
 -- ===  adding casting/bio recipes to the productivity-tech (also a K2SO patch inclusive) ===
@@ -45,6 +46,7 @@ local kr_bullets = {
     "kr-rifle-magazine", -- yellow ammo
     "kr-armor-piercing-rifle-magazine", -- red ammo
     "kr-imersite-rifle-magazine", -- pink ammo
+    "kr-imersite-rounds-magazine", -- new name: pink ammo
 
     -- sniper ammo
     "kr-anti-materiel-rifle-magazine", -- yellow sniper ammo
@@ -79,9 +81,8 @@ end
 for tech_name, _ in pairs(data.raw.technology) do
   if string.match(tech_name, "^bullet%-productivity%-?%d*$") then
     for _, recipe_name in ipairs(all_bullets) do
-      add_productivity_bonus(tech_name, recipe_name, 0.1)
+      oc_helper.add_productivity_bonus(tech_name, recipe_name, 0.1)
     end
-    -- log("Patched "..tech_name.." with productivity for "..#all_bullets.." recipes")
   end
 end
 
@@ -123,7 +124,7 @@ end
 for tech_name, _ in pairs(data.raw.technology) do
   if string.match(tech_name, "^railgun%-ammo%-productivity%-?%d*$") then
     for _, recipe_name in ipairs(all_railguns) do
-      add_productivity_bonus(tech_name, recipe_name, 0.1)
+      oc_helper.add_productivity_bonus(tech_name, recipe_name, 0.1)
     end
     -- log("Patched "..tech_name.." with productivity for "..#all_bullets.." recipes")
   end
@@ -168,7 +169,7 @@ end
 for tech_name, _ in pairs(data.raw.technology) do
   if string.match(tech_name, "^rocket%-ammo%-productivity%-?%d*$") then
     for _, recipe_name in ipairs(all_rockets) do
-      add_productivity_bonus(tech_name, recipe_name, 0.1)
+      oc_helper.add_productivity_bonus(tech_name, recipe_name, 0.1)
     end
     -- log("Patched "..tech_name.." with productivity for "..#all_bullets.." recipes")
   end

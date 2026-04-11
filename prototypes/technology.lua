@@ -1,4 +1,8 @@
-data:extend({ -- standard ammo techs of this mod
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local plating_variants = require("prototypes.utils.plating_variants")
+
+-- standard ammo-casting techs of this mod
+data:extend({
   { -- casting light ammo (red & yellow ammo)
     type = "technology",
     name = "casting-light-ammo-tech",
@@ -108,7 +112,7 @@ data:extend({ -- standard ammo techs of this mod
       { type = "unlock-recipe", recipe = "tungsten-cannon-shell" },
     },
   },
-  { -- casting railgung ammo
+  { -- casting railgun ammo
     type = "technology",
     name = "casting-railgun-ammo-tech",
     icons =
@@ -149,7 +153,14 @@ data:extend({ -- standard ammo techs of this mod
   },
 })
 
--- Conditionally included technologies
+if settings.startup["uranium-shotgun-shells"] then
+  oc_helper.add_recipe_unlocks({{
+    ["uranium-shotgun-shell"] = "uranium-ammo",
+    ["casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
+  }})
+end
+
+-- Conditionally included technologies: explosive ammo (including heavy artillery shells)
 if settings.startup["allow-casting-explosive-ammo"].value then
   data:extend({
     { -- casting explosive cannon shells and artillery shells
@@ -197,14 +208,23 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     local heavy_art = {
       ["casting-heavy-artillery-shell"] = "casting-explosive-ammo-tech",
       ["heavy-artillery-shell"] = "casting-explosive-ammo-tech",
-      ["heavy-artillery-shell-upgrading"] = "casting-explosive-ammo-tech",}
-    add_recipe_unlocks(heavy_art)
+      ["heavy-artillery-shell-upgrading"] = "casting-explosive-ammo-tech",
+    }
+    oc_helper.add_recipe_unlocks(heavy_art)
   end
+else
+  -- tech is disabled but heavy artillery might be enambled
+  local heavy_art = {
+    -- ["casting-heavy-artillery-shell"] = "artillery",-- as it is not allowed to cast it directly
+    ["heavy-artillery-shell"] = "artillery",
+    ["heavy-artillery-shell-upgrading"] = "artillery",
+  }
+  oc_helper.add_recipe_unlocks(heavy_art)
 end
 
 if settings.startup["allow-bio-explosives"].value then
   data:extend({ -- biochamber techs
-    { -- bio explosives
+    {           -- bio explosives
       type = "technology",
       name = "bio-explosives-tech",
       icons =
@@ -276,6 +296,7 @@ end
 
 if settings.startup["armour-plating"].value then
   -- wheather bio-explosive is needed or not
+  local prereq_tech_reactive
   if settings.startup["allow-bio-explosives"].value then
     prereq_tech_reactive = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech",
       "agricultural-science-pack" }
@@ -284,28 +305,27 @@ if settings.startup["armour-plating"].value then
       "agricultural-science-pack" }
   end
 
-  data:extend({ -- armour plating techs
+  -- armour plating techs
+  data:extend({
     { -- light armour plating
       type = "technology",
       name = "light-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from Space Exploration by Earendel
-          -- icon = "__base__/graphics/icons/iron-plate.png",
-          icon_size = 64,
-          icon_mipmaps = 1,
-          scale = 4,
+          icon = "__OCs_base_assets__/graphics/technology/reinforced_plating.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
           tint = plating_variants["light"].tint,
         },
-        {
-          icon = "__base__/graphics/icons/energy-shield-equipment.png",
-          icon_size = 64,
-          icon_scale = 0.25,
-          -- shift = {16, -16},
-          -- icon_mipmaps = 4,
-        }
+        -- {
+        --   icon = "__base__/graphics/icons/energy-shield-equipment.png",
+        --   icon_size = 64,
+        --   -- icon_scale = 0.25,
+        --   shift = { 32, -32 },
+        --   icon_mipmaps = 4,
+        -- }
       },
-      prerequisites = { "heavy-armor", "automobilism", "military-science-pack" },
+      prerequisites = { "solar-panel-equipment", "military-science-pack", "automobilism" }, --modular armor as indirect prereq of solar-panel-equipment
       unit = {
         ingredients = {
           { "automation-science-pack", 1 },
@@ -325,34 +345,29 @@ if settings.startup["armour-plating"].value then
       name = "heavy-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
-          icon_size = 64,
-          icon_mipmaps = 1,
-          scale = 4,
+          icon = "__OCs_base_assets__/graphics/technology/reinforced_plating.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
         },
-        {
-          icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
-          icon_size = 64,
-          icon_scale = 0.25,
-          -- shift = {16, -16},
-          -- icon_mipmaps = 4,
-        }
+        -- {
+        --   icon = "__base__/graphics/icons/energy-shield-mk2-equipment.png",
+        --   icon_size = 64,
+        --   icon_scale = 0.25,
+        --   shift = { 32, -32 },
+        --   icon_mipmaps = 4,
+        -- }
       },
-      icon_size = 256,
-      icon_mipmaps = 4,
-      prerequisites = { "light-armour-plating-tech", "modular-armor", "tank", "space-science-pack", "military-science-pack", "utility-science-pack", "production-science-pack" },
+      prerequisites = { "light-armour-plating-tech", "power-armor", "tank", "low-density-structure" },
       unit = {
         ingredients = {
           { "automation-science-pack", 1 },
           { "logistic-science-pack",   1 },
-          { "chemical-science-pack",   1 },
+          { "chemical-science-pack",   2 },
           { "military-science-pack",   2 }, -- duh!
-          { "utility-science-pack",    1 },
-          { "production-science-pack", 2 }, -- duh-hu!
-          { "space-science-pack",      1 },
+          -- { "utility-science-pack",    2 }, -- duh-hu!
         },
         time = 45,
-        count = 120
+        count = 150
       },
       effects = {
         { type = "unlock-recipe", recipe = "heavy-armour-plating" },
@@ -364,10 +379,9 @@ if settings.startup["armour-plating"].value then
       name = "tungsten-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
-          icon_size = 64,
-          icon_mipmaps = 1,
-          scale = 2,
+          icon = "__OCs_base_assets__/graphics/technology/reinforced_plating.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
           tint = plating_variants["tungsten"].tint,
 
         },
@@ -377,8 +391,6 @@ if settings.startup["armour-plating"].value then
           icon_mipmaps = 4,
         }
       },
-      icon_size = 256,
-      icon_mipmaps = 4,
       prerequisites = { "heavy-armour-plating-tech", "military-4", "power-armor", "metallurgic-science-pack" },
       unit = {
         ingredients = {
@@ -386,8 +398,8 @@ if settings.startup["armour-plating"].value then
           { "logistic-science-pack",    1 },
           { "chemical-science-pack",    1 },
           { "military-science-pack",    2 }, -- duh!
-          { "utility-science-pack",     1 },
-          { "production-science-pack",  2 }, -- duh-hu!
+          { "utility-science-pack",     2 }, -- duh-hu!
+          { "production-science-pack",  1 },
           { "space-science-pack",       1 },
           { "metallurgic-science-pack", 2 }, -- duh-uh-hu!
         },
@@ -403,10 +415,9 @@ if settings.startup["armour-plating"].value then
       name = "reactive-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
-          icon_size = 64,
-          -- icon_mipmaps = 1,
-          scale = 2,
+          icon = "__OCs_base_assets__/graphics/technology/reinforced_plating.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
           tint = plating_variants["reactive"].tint,
         },
         {
@@ -424,8 +435,8 @@ if settings.startup["armour-plating"].value then
           { "logistic-science-pack",     1 },
           { "chemical-science-pack",     1 },
           { "military-science-pack",     2 }, -- duh!
-          { "utility-science-pack",      1 },
-          { "production-science-pack",   2 }, -- duh-hu!
+          { "utility-science-pack",      2 }, -- duh-hu!
+          { "production-science-pack",   1 },
           { "space-science-pack",        1 },
           { "agricultural-science-pack", 2 }, -- duh-uh-hu!
         },
@@ -441,10 +452,9 @@ if settings.startup["armour-plating"].value then
       name = "ultra-light-armour-plating-tech",
       icons = {
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/heat-shielding.png", -- from  space-exploration by Earendel
-          icon_size = 64,
-          icon_mipmaps = 1,
-          scale = 2,
+          icon = "__OCs_base_assets__/graphics/technology/reinforced_plating.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
           tint = plating_variants["ultra_light"].tint,
         },
         {
@@ -460,8 +470,8 @@ if settings.startup["armour-plating"].value then
           { "logistic-science-pack",        1 },
           { "chemical-science-pack",        1 },
           { "military-science-pack",        2 }, -- duh!
-          { "utility-science-pack",         1 },
-          { "production-science-pack",      2 }, -- duh-hu!
+          { "utility-science-pack",         2 }, -- duh-hu!
+          { "production-science-pack",      1 },
           { "space-science-pack",           1 },
           { "electromagnetic-science-pack", 2 }, -- duh-uh-hu!
         },
@@ -473,6 +483,44 @@ if settings.startup["armour-plating"].value then
       },
     },
   })
+
+  if settings.startup["earlier-armor-plating"].value then
+    local remove_prereps = {
+      ["light-armour-plating-tech"] = { "solar-panel-equipment", "military-science-pack", "automobilism" },
+      ["heavy-armour-plating-tech"] = { "power-armor", "tank", "low-density-structure" },
+    }
+    local adding_prereps = {
+      ["light-armour-plating-tech"] = { "heavy-armor", "military-2", "electronics" },
+      ["heavy-armour-plating-tech"] = { "modular-armor", "automobilism", "military-science-pack", "solar-panel-equipment", "advanced-material-proces", "chemical-science-pack" },
+    }
+    oc_helper.remove_prerequisites(remove_prereps)
+    oc_helper.add_prerequisites(adding_prereps)
+    -- also make the techs easier/cheaper
+    oc_helper.remove_tech_ingredient("light-armour-plating-tech", "military-science-pack")
+    -- data.raw["technology"]["light-armour-plating-tech"].unit.ingredients = {
+    --   { "automation-science-pack", 1 },
+    --   { "logistic-science-pack",   1 },
+    -- }
+    data.raw["technology"]["light-armour-plating-tech"].unit.count = 90 -- because it was 120 military-science-pack before
+    -- oc_helper.remove_tech_ingredient("heavy-armour-plating-tech", "production-science-pack")
+    -- oc_helper.remove_tech_ingredient("heavy-armour-plating-tech", "utility-science-pack")
+    -- oc_helper.remove_tech_ingredient("heavy-armour-plating-tech", "space-science-pack")
+  end
+  if settings.startup["earlier-solar-panel-equipment"].value then
+    -- make the solar panel equipment earlier
+    local remove_prereps = {
+      ["solar-panel-equipment"] = { "modular-armor" },
+    }
+    oc_helper.remove_prerequisites(remove_prereps)
+    local add_prereps = {
+      ["solar-panel-equipment"] = { "heavy-armor", "electronics", "military-2" },
+      -- make sure follow-up techs are still properly locked
+      ["energy-shield-equipment"] = { "modular-armor", "advanced-circuit" },
+      ["belt-immunity-equipment"] = { "modular-armor", "advanced-circuit" },
+      ["night-vision-equipment"] = { "modular-armor", "advanced-circuit" },
+    }
+    oc_helper.add_prerequisites(add_prereps)
+  end
 end
 
 if settings.startup["nuclear-ammo"].value then
@@ -496,15 +544,15 @@ if settings.startup["nuclear-ammo"].value then
       prerequisites = { "atomic-bomb", "cryogenic-science-pack" },
       unit = {
         ingredients = {
-          { "automation-science-pack", 1 },
-          { "logistic-science-pack",   1 },
-          { "chemical-science-pack",   1 },
-          { "military-science-pack",   2 },
-          { "space-science-pack",      1 },
-          { "metallurgic-science-pack", 2 },
+          { "automation-science-pack",      1 },
+          { "logistic-science-pack",        1 },
+          { "chemical-science-pack",        1 },
+          { "military-science-pack",        2 },
+          { "space-science-pack",           1 },
+          { "metallurgic-science-pack",     2 },
           { "electromagnetic-science-pack", 2 },
           -- {"agricultural-science-pack", 2}, -- it is still fun with(out) gleba-science
-          { "cryogenic-science-pack",  2 },
+          { "cryogenic-science-pack",       2 },
         },
         time = 60,
         count = 1000,
@@ -516,16 +564,16 @@ if settings.startup["nuclear-ammo"].value then
   })
   -- add the optional techs as prerequisites
   if settings.startup["allow-bio-explosives"].value then
-    add_prerequisites( { ["nuclear-ammo-tech"] = "bio-rocketry-tech"})
+    oc_helper.add_prerequisites({ ["nuclear-ammo-tech"] = "bio-rocketry-tech" })
   end
   if settings.startup["allow-casting-explosive-ammo"].value then
-    add_prerequisites( { ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech"})
+    oc_helper.add_prerequisites({ ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech" })
   end
 end
 
 -- changes to vanilla techs
 if settings.startup["space-fish"].value and settings.startup["allow-bio-explosives"].value then
-  add_recipe_unlocks( { ["space-fish-breeding"] = {"fish-breeding"}})
+  oc_helper.add_recipe_unlocks({ ["space-fish-breeding"] = { "fish-breeding" } })
 end
 
 -- changes to mod tech
@@ -540,5 +588,5 @@ if settings.startup["casting-weapons"].value then
     ["pulse-rocket-launcher"] = { "bio-rocketry-tech" },
     ["casting-flamethrower"] = { "casting-explosive-ammo-tech" },
   }
-  add_recipe_unlocks(recipe_tech_mapping)
+  oc_helper.add_recipe_unlocks(recipe_tech_mapping)
 end

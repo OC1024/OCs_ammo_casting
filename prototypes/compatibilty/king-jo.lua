@@ -1,5 +1,6 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 -- casting all KingJoe ammos
 local casting_dict = {
@@ -115,11 +116,11 @@ local mapping = {
     ["casting-kj_40kdreadnought"] = "kj_40kdreadnought",
     ["casting-kj_rex"] = "kj_rex",
     -- === hand weapons === --
-    ["kj_mg34_hand"] = {"kj_panzer4"},
-    ["kj_mg42_hand"] = {"kj_maustank"},
-    ["kj_mg3_hand"] = {"kj_2a6"},
+    ["casting-kj_mg34_hand"] = {"kj_panzer4"},
+    ["casting-kj_mg42_hand"] = {"kj_maustank"},
+    ["casting-kj_mg3_hand"] = {"kj_2a6"},
 }
-add_recipe_unlocks(mapping)
+oc_helper.add_recipe_unlocks(mapping)
 
 -- move to subgroup
 -- if modsettings exist and true, then within the KJ groupd, have the subgroup
@@ -133,38 +134,9 @@ if data.raw["item-group"]["kj_group"] then
         },
     })
 end
-local mapping = {
-    -- kj_pak_gun
-    ["kj_pak_ap"] = "alternative-ammo",
-    ["kj_pak_he"] = "alternative-ammo",
-    ["kj_pak_inc"] = "alternative-ammo",
-    -- kj_panzer4
-    ["kj_75kwk40_ap"] = "alternative-ammo",
-    ["kj_75kwk40_he"] = "alternative-ammo",
-    ["kj_75kwk40_aphe"] = "alternative-ammo",
-    -- kj_2cmfv (vierlingsflack/flakpanzer)
-    ["kj_2cmfv_normal"] = "alternative-ammo",
-    -- kj_maustank
-    ["kj_120kwk40_ap"] = "alternative-ammo",
-    ["kj_120kwk40_he"] = "alternative-ammo",
-    ["kj_120kwk40_aphe"] = "alternative-ammo",
-    -- kj_2a6
-    ["aj_rh120_ap"] = "alternative-ammo",
-    ["kj_rh120_he"] = "alternative-ammo",
-    ["kj_rh120_aphe"] = "alternative-ammo",
-    ["kj_rh120_can"] = "alternative-ammo",
-    -- kj_rattetank
-    ["kj_280SKC34_ap"] = "alternative-ammo",
-    ["kj_280SKC34_he"] = "alternative-ammo",
-    ["kj_280SKC34_inc"] = "alternative-ammo",
-    -- kj_master
-    ["kj_bolt"] = "alternative-ammo",
-    -- Warhammer 40k stuff
-    ["kj_predator_normal"] = "alternative-ammo",
-    ["kj_lemanruss_normal"] = "alternative-ammo",
-    ["kj_baneblade_normal"] = "alternative-ammo",
-    ["kj_baneblade_artillery"] = "alternative-ammo",
-    ["kj_40kdreadnought_normal"] = "alternative-ammo",
-    ["kj_rex_normal"] = "alternative-ammo",
-}
-change_recipes_subgroup(mapping)
+
+for key, _ in pairs(casting_dict) do
+    mapping[key] = "alternative-ammo"
+end
+
+oc_helper.change_recipes_subgroup(mapping)

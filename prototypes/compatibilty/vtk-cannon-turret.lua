@@ -1,5 +1,6 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 local projtungsten = table.deepcopy(data.raw["projectile"]["tungsten-cannon-projectile"])
 local item_sounds = require("__base__.prototypes.item_sounds")
@@ -9,8 +10,7 @@ projtungsten.direction_only = true
 projtungsten.force_condition = "not-same"
 projtungsten.hit_collision_mask = { layers = { object = true, player = true, train = true, trigger_target = true } }
 
-data:extend(
-  {
+data:extend({
     projtungsten,
   })
 log("Thanks the clean code, vtk! Sincerely, OC1024.")
@@ -91,20 +91,22 @@ data:extend({
 local casting_dict = {
   ["cannon-shell-magazine"] = "metallurgy",
   ["uranium-cannon-shell-magazine"] = "metallurgy",
-  ["exposive-cannon-shell-magazine"] = "metallurgy",
-  ["explosive-uranium-cannon-shell-magazine"] = "metallurgy",
   ["tungsten-cannon-shell-magazine"] = "metallurgy",
 }
-generator_api.batch_generator(casting_dict)
-if settings.startup["casting-weapons"].value then
-  casting_dict["cannon-turret"] = "metallurgy"
-  casting_dict["cannon-turret-heavy"] = "metallurgy"
+if settings.startup["allow-casting-explosive-ammo"].value then
+  casting_dict["explosive-cannon-shell-magazine"] = "metallurgy"
+  casting_dict["explosive-uranium-cannon-shell-magazine"] = "metallurgy"
 end
+if settings.startup["casting-weapons"].value then
+  casting_dict["vtk-cannon-turret"] = "metallurgy"
+  casting_dict["vtk-cannon-turret-heavy"] = "metallurgy"
+end
+generator_api.batch_generator(casting_dict)
 
 local recipe_unlock_mapping = {
   -- turrets
-  ["casting-cannon-turret"] = { "vtk-cannon-turret-unlock" },
-  ["casting-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
+  ["casting-vtk-vtk-cannon-turret"] = { "vtk-cannon-turret-unlock" },
+  ["casting-vtk-vtk-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
   -- ammo
   ["casting-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
   ["casting-uranium-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
@@ -115,4 +117,4 @@ if settings.startup["allow-casting-explosive-ammo"].value then
   recipe_unlock_mapping["casting-explosive-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
   recipe_unlock_mapping["casting-explosive-uranium-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
 end
-add_recipe_unlocks(recipe_unlock_mapping)
+oc_helper.add_recipe_unlocks(recipe_unlock_mapping)

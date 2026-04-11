@@ -1,6 +1,8 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
+-- increase effective range for tungsten cannon shell
 if data.raw["ammo"]["tungsten-cannon-shell"] and data.raw["projectile"]["tungsten-cannon-projectile"] then
     data.raw["ammo"]["tungsten-cannon-shell"].ammo_type.range_modifier = 1.375 -- such that it is still better but just half of the bonus added
     data.raw["ammo"]["tungsten-cannon-shell"].ammo_type.target_type = "position"
@@ -35,7 +37,7 @@ local mapping = {
     ["casting-w93-slowdown-magazine"]="casting-light-ammo-tech",
     ["bio-w93-turret-slowdown-rocket"] = {"bio-rocketry-tech"},
 }
-add_recipe_unlocks(mapping)
+oc_helper.add_recipe_unlocks(mapping)
 -- move to subgroup
 local mapping = {
     ["casting-w93-fragmentation-cannon-shell"] = "alternative-ammo",
@@ -43,7 +45,7 @@ local mapping = {
     ["casting-w93-slowdown-magazine"] = "alternative-ammo",
     ["bio-w93-turret-slowdown-rocket"] = "alternative-ammo",
 }
-change_recipes_subgroup(mapping)
+oc_helper.change_recipes_subgroup(mapping)
 
 
 if settings.startup["casting-weapons"].value then
@@ -97,5 +99,5 @@ if settings.startup["casting-weapons"].value then
             {type = "unlock-recipe", recipe = "casting-w93-modular-gun-lcannon"},
         },
     }
-})
+    })
 end

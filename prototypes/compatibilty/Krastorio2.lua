@@ -1,8 +1,10 @@
 -- raise stack size of tungsten rifle ammo to match Factorio 1.1 and K2SO of 200
 data.raw.ammo["tungsten-rounds-magazine"].stack_size = 200
+if data.raw.ammo["heavy-artillery-shell"] then data.raw.ammo["heavy-artillery-shell"].stack_size = 25 end
 
 -- 0. load API
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 -- 1. Preparations: Edit all Tables
 local new_blacklist = {
@@ -25,7 +27,8 @@ local casting_dict = {
   ["kr-rifle-magazine"]                              = "metallurgy", -- yellow
   ["kr-armor-piercing-rifle-magazine"]               = "metallurgy", -- red
   -- uranium ammo unchanged -> already generated
-  ["kr-imersite-rifle-magazine"]                     = "metallurgy", -- pink
+  ["kr-imersite-rifle-magazine"]                     = "metallurgy", -- pink. old name
+  ["kr-imersite-rounds-magazine"]                    = "metallurgy", -- pink. new name
 
   -- sniper ammo
   ["kr-anti-materiel-rifle-magazine"]                = "metallurgy", -- yellow
@@ -77,11 +80,10 @@ data:extend({
     },
     prerequisites = { "kr-military-5", "casting-heavy-ammo-tech" },
     effects = {
-      { type = "unlock-recipe", recipe = "casting-kr-imersite-rifle-magazine" },               -- pink rifle ammo
-      { type = "unlock-recipe", recipe = "casting-kr-imersite-anti-materiel-rifle-magazine" }, -- pink sniper ammo
+      -- { type = "unlock-recipe", recipe = "casting-kr-imersite-rifle-magazine" },               -- pink rifle ammo
+      -- { type = "unlock-recipe", recipe = "casting-kr-imersite-anti-materiel-rifle-magazine" }, -- pink sniper ammo
       -- {type = "unlock-recipe", recipe = "pulse-kr-impulse-rifle"}, -- impulse rifle
-      { type = "unlock-recipe", recipe = "pulse-kr-impulse-rifle-ammo" },                      -- impulse rifle ammo
-      -- {type = "unlock-recipe", recipe = "bio-kr-heavy-rocket"},
+      { type = "unlock-recipe", recipe = "pulse-kr-impulse-rifle-ammo" }, -- impulse rifle ammo
     },
     unit = {
       time = 60,
@@ -98,10 +100,16 @@ data:extend({
     },
   },
 })
+local imersite_ammo = {
+  "casting-kr-imersite-rifle-magazine",               -- for K2SO <1.5 old name for pink rifle ammo
+  "casting-kr-imersite-anti-materiel-rifle-magazine", -- pink sniper ammo. old name for K2SO <1.5
+  "kr-imersite-rounds-magazine",                      -- for K2SO >=1.5 new name for pink rifle ammo
+}
+oc_helper.add_recipe_unlocks({ ["casting-imersite-ammo-tech"] = imersite_ammo })
 
 if settings.startup["allow-bio-explosives"].value then -- heavy rocket if bio explosive
-  add_prerequisites({ ["casting-imersite-ammo-tech"] = { "bio-rocketry-tech" } })
-  add_recipe_unlocks({ ["bio-kr-heavy-rocket"] = { "casting-imersite-ammo-tech" } })
+  oc_helper.add_prerequisites({ ["casting-imersite-ammo-tech"] = { "bio-rocketry-tech" } })
+  oc_helper.add_recipe_unlocks({ ["bio-kr-heavy-rocket"] = { "casting-imersite-ammo-tech" } })
 end
 
 if settings.startup["casting-weapons"].value then -- optional new gun to pulse
@@ -109,11 +117,11 @@ if settings.startup["casting-weapons"].value then -- optional new gun to pulse
     ["pulse-kr-impulse-rifle"] = { "casting-imersite-ammo-tech" },
     ["pulse-kr-heavy-rocket-launcher"] = { "casting-imersite-ammo-tech" }, -- iff bio-explosive
   }
-  add_recipe_unlocks(additional_unlocks)
+  oc_helper.add_recipe_unlocks(additional_unlocks)
 end
 
 if settings.startup["allow-casting-explosive-ammo"].value then --is imersite ammo explosive?
-  add_prerequisites({ ["casting-imersite-ammo-tech"] = "casting-explosive-ammo-tech" })
+  oc_helper.add_prerequisites({ ["casting-imersite-ammo-tech"] = "casting-explosive-ammo-tech" })
 end
 
 -- [[ -- antimatter recipes + tech
@@ -194,7 +202,7 @@ local recipe_tech_mapping = {
   ["casting-kr-basic-railgun-shell"]                         = { "casting-railgun-ammo-tech" },
   ["casting-kr-explosive-railgun-shell"]                     = { "casting-railgun-ammo-tech" },
   ["cryo-kr-nuclear-artillery-shell"]                        = { "nuclear-ammo-tech" },
-  -- ["kr-antimatter-artillery-shell"]                          = { "oc-antimatter-tech" },
+  -- ["kr-antimatter-artillery-shell"]                          = { "antimatter-ammo-tech" },
 }
 if settings.startup["casting-weapons"].value then
   -- weapons
@@ -202,4 +210,4 @@ if settings.startup["casting-weapons"].value then
   -- vehicles
   -- recipe_tech_mapping["casting-kr-advanced-tank"] = { "kr-advanced-tank" }
 end
-add_recipe_unlocks(recipe_tech_mapping)
+oc_helper.add_recipe_unlocks(recipe_tech_mapping)
