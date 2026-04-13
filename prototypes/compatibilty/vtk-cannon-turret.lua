@@ -62,8 +62,7 @@ data:extend({
   { -- tungsten-cannon-shell-magazine
     type = "recipe",
     name = "tungsten-cannon-shell-magazine",
-    icons =
-    {
+    icons = {
       {
         icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
         icon_size = 64,
@@ -105,16 +104,16 @@ generator_api.batch_generator(casting_dict)
 
 local recipe_unlock_mapping = {
   -- turrets
-  ["casting-vtk-vtk-cannon-turret"] = { "vtk-cannon-turret-unlock" },
-  ["casting-vtk-vtk-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
+  ["oc-casting-vtk-vtk-cannon-turret"] = { "vtk-cannon-turret-unlock" },
+  ["oc-casting-vtk-vtk-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
   -- ammo
-  ["casting-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
-  ["casting-uranium-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
-  ["casting-tungsten-cannon-shell-magazine"] = { "casting-tungsten-ammo-tech" },
+  ["oc-casting-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
+  ["oc-casting-uranium-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
+  ["oc-casting-tungsten-cannon-shell-magazine"] = { "casting-tungsten-ammo-tech" },
   ["tungsten-cannon-shell-magazine"] = { "casting-tungsten-ammo-tech" },
 }
 if settings.startup["allow-casting-explosive-ammo"].value then
-  recipe_unlock_mapping["casting-explosive-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
-  recipe_unlock_mapping["casting-explosive-uranium-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
+  recipe_unlock_mapping["oc-casting-explosive-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
+  recipe_unlock_mapping["oc-casting-explosive-uranium-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
 end
 oc_helper.add_recipe_unlocks(recipe_unlock_mapping)

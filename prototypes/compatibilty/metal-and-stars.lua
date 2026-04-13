@@ -102,13 +102,13 @@ local kr_railgun = {
 local all_railguns = {}
 -- vanilla/M&S casting only
 for _, r in ipairs(vanilla_railgun) do
-  table.insert(all_railguns, "casting-"..r)
+  table.insert(all_railguns, "oc-casting-"..r)
 end
 
 -- oc normal + casting
 for _, r in ipairs(oc_railgun) do
   table.insert(all_railguns, r)
-  table.insert(all_railguns, "casting-"..r)
+  table.insert(all_railguns, "oc-casting-"..r)
 end
 
 if mods["Krastorio2-spaced-out"] then
@@ -117,7 +117,7 @@ if mods["Krastorio2-spaced-out"] then
       -- complat patch with K2SO - should be done within metal-and-stars mod instead.
     table.insert(all_railguns, r)
       -- compat patch for all three mods (yea this has to be done by me)
-    table.insert(all_railguns, "casting-"..r)
+    table.insert(all_railguns, "oc-casting-"..r)
   end
 end
 
@@ -145,24 +145,24 @@ local kr_rockets = {
 
 -- building the all_rockets table
 local all_rockets = {}
--- vanilla/M&S bio-* only
+-- vanilla/M&S oc-bio-* only
 for _, r in ipairs(vanilla_rockets) do
-  table.insert(all_rockets, "bio-"..r)
+  table.insert(all_rockets, "oc-bio-"..r)
 end
 
--- oc normal + bio-*
+-- oc normal + oc-bio-*
 for _, r in ipairs(oc_rockets) do
   -- table.insert(all_rockets, r)
-  table.insert(all_rockets, "casting-"..r) -- special case as these gauss rockets are casted instead of biologised as my other rockets
+  table.insert(all_rockets, "oc-casting-"..r) -- special case as these gauss rockets are casted instead of biologised as my other rockets
 end
 
 if mods["Krastorio2-spaced-out"] then
-  -- k2 normal + casting
+  -- k2 normal + oc-casting
   for _, r in ipairs(kr_rockets) do
       -- complat patch with K2SO - should be done within metal-and-stars mod instead.
     table.insert(all_rockets, r)
       -- compat patch for all three mods (yea this has to be done by me)
-    table.insert(all_rockets, "bio-"..r)
+    table.insert(all_rockets, "oc-bio-"..r)
   end
 end
 

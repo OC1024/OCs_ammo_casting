@@ -1,8 +1,8 @@
 {
   "recipe": [     
-    ["casting-firearm-magazine","oc-casting-piercing-magazine"],
-    ["casting-piercing-rounds-magazine", "oc-casting-piercing-magazine"],
-    ["casting-uranium-rounds-magazine", "oc-casting-uranium-magazine"],
+    ["casting-firearm-magazine","oc-casting-firearm-magazine"],
+    ["casting-piercing-rounds-magazine", "oc-casting-piercing-rounds-magazine"],
+    ["casting-uranium-rounds-magazine", "oc-casting-uranium-rounds-magazine"],
     ["casting-shotgun-shell", "oc-casting-shotgun-shell"],
     ["casting-piercing-shotgun-shell", "oc-casting-piercing-shotgun-shell"],
     ["casting-cannon-shell", "oc-casting-cannon-shell"],
@@ -18,6 +18,8 @@
     ["casting-heavy-armour-plating","oc-casting-heavy-armour-plating"],
 
     ["bio-explosives", "oc-bio-explosives"],
+    ["bio-explosives-space", "oc-bio-explosives-space"],
+    ["bio-explosives-gleba", "oc-bio-explosives-gleba"],
     ["bio-rocket", "oc-bio-rocket"],
     ["bio-explosive-rocket", "oc-bio-explosive-rocket"],
 
@@ -38,8 +40,9 @@
     ["casting-artillery-shell", "oc-casting-artillery-shell"],
     ["casting-heavy-artillery-shell", "oc-casting-heavy-artillery-shell"],
 
+    ["casting-ironclad", "oc-casting-ironclad"],
     ["casting-mortar-bomb", "oc-casting-mortar-bomb"],
-    ["mortar-cluster-bomb", "oc-mortar-cluster-bomb"],
+    ["casting-mortar-cluster-bomb", "oc-casting-mortar-cluster-bomb"],
 
   
     ["casting-lead-chest", "oc-casting-lead-chest"],

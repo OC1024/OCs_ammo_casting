@@ -30,8 +30,8 @@ generator_api.batch_generator(casting_dict)
 
 local mapping = { -- it seems that lead is a early game material so casting shall be ASAP.
   -- ["lead-plate"] = {"foundry"},
-  ["casting-lead-expansion-bolt"] = {"foundry"}, -- to be sure it is there as the mod wants it.
-  ["casting-lead-chest"] = {"foundry"}, -- base item instantly craftable but casting still needs the foundry to be useful. avoid cluttering
-  ["casting-lithium-lead-eutectic"] = {"fusion-reactor"}, -- this should be moved to another mod, not the ammo mod but eh, who cares?
+  ["oc-casting-lead-expansion-bolt"] = {"foundry"}, -- to be sure it is there as the mod wants it.
+  ["oc-casting-lead-chest"] = {"foundry"}, -- base item instantly craftable but casting still needs the foundry to be useful. avoid cluttering
+  ["oc-casting-lithium-lead-eutectic"] = {"fusion-reactor"}, -- this should be moved to another mod, not the ammo mod but eh, who cares?
 }
 oc_helper.add_recipe_unlocks(mapping)

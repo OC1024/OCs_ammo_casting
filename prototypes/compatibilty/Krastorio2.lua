@@ -101,21 +101,21 @@ data:extend({
   },
 })
 local imersite_ammo = {
-  "casting-kr-imersite-rifle-magazine",               -- for K2SO <1.5 old name for pink rifle ammo
-  "casting-kr-imersite-anti-materiel-rifle-magazine", -- pink sniper ammo. old name for K2SO <1.5
+  "oc-casting-kr-imersite-rifle-magazine",               -- for K2SO <1.5 old name for pink rifle ammo
+  "oc-casting-kr-imersite-anti-materiel-rifle-magazine", -- pink sniper ammo. old name for K2SO <1.5
   "kr-imersite-rounds-magazine",                      -- for K2SO >=1.5 new name for pink rifle ammo
 }
 oc_helper.add_recipe_unlocks({ ["casting-imersite-ammo-tech"] = imersite_ammo })
 
 if settings.startup["allow-bio-explosives"].value then -- heavy rocket if bio explosive
-  oc_helper.add_prerequisites({ ["casting-imersite-ammo-tech"] = { "bio-rocketry-tech" } })
-  oc_helper.add_recipe_unlocks({ ["bio-kr-heavy-rocket"] = { "casting-imersite-ammo-tech" } })
+  oc_helper.add_prerequisites({ ["oc-casting-imersite-ammo-tech"] = { "bio-rocketry-tech" } })
+  oc_helper.add_recipe_unlocks({ ["oc-bio-kr-heavy-rocket"] = { "casting-imersite-ammo-tech" } })
 end
 
 if settings.startup["casting-weapons"].value then -- optional new gun to pulse
   local additional_unlocks = {
-    ["pulse-kr-impulse-rifle"] = { "casting-imersite-ammo-tech" },
-    ["pulse-kr-heavy-rocket-launcher"] = { "casting-imersite-ammo-tech" }, -- iff bio-explosive
+    ["oc-pulse-kr-impulse-rifle"] = { "casting-imersite-ammo-tech" },
+    ["oc-pulse-kr-heavy-rocket-launcher"] = { "casting-imersite-ammo-tech" }, -- iff bio-explosive
   }
   oc_helper.add_recipe_unlocks(additional_unlocks)
 end
@@ -139,8 +139,7 @@ if settings.startup["antimatter-ammo"].value and settings.startup["nuclear-ammo"
     { -- oc antimatter ammo
       type = "technology",
       name = "antimatter-ammo-tech",
-      icons =
-      {
+      icons = {
         {
           icon = "__Krastorio2Assets__/technologies/antimatter-ammo.png",
           icon_size = 256,
@@ -169,10 +168,10 @@ if settings.startup["antimatter-ammo"].value and settings.startup["nuclear-ammo"
         },
       },
       effects = {
-        { type = "unlock-recipe", recipe = "cryo-kr-antimatter-turret-rocket" },
-        { type = "unlock-recipe", recipe = "cryo-kr-antimatter-artillery-shell" },
-        { type = "unlock-recipe", recipe = "cryo-kr-antimatter-rocket" },
-        { type = "unlock-recipe", recipe = "cryo-kr-antimatter-railgun-shell" },
+        { type = "unlock-recipe", recipe = "oc-cryo-kr-antimatter-turret-rocket" },
+        { type = "unlock-recipe", recipe = "oc-cryo-kr-antimatter-artillery-shell" },
+        { type = "unlock-recipe", recipe = "oc-cryo-kr-antimatter-rocket" },
+        { type = "unlock-recipe", recipe = "oc-cryo-kr-antimatter-railgun-shell" },
       }
     },
   })
@@ -182,32 +181,32 @@ end
 -- Add Recipes to Techs
 local recipe_tech_mapping = {
   -- rifle ammo
-  ["casting-kr-rifle-magazine"]                              = { "casting-light-ammo-tech" }, -- yellow
-  ["casting-kr-armor-piercing-rifle-magazine"]               = { "casting-light-ammo-tech" }, -- red
+  ["oc-casting-kr-rifle-magazine"]                              = { "casting-light-ammo-tech" }, -- yellow
+  ["oc-casting-kr-armor-piercing-rifle-magazine"]               = { "casting-light-ammo-tech" }, -- red
   -- ["kr-imersite-rounds-magazine"]                            = "metallurgy",                  -- pink ammo, unlocked with immersite ammo tech
 
   -- sniper rifle ammo
-  ["casting-kr-anti-materiel-rifle-magazine"]                = { "casting-light-ammo-tech" }, -- yellow
-  ["casting-kr-armor-piercing-anti-materiel-rifle-magazine"] = { "casting-light-ammo-tech" }, -- red
-  ["casting-kr-uranium-anti-materiel-rifle-magazine"]        = { "casting-heavy-ammo-tech" }, -- green
+  ["oc-casting-kr-anti-materiel-rifle-magazine"]                = { "casting-light-ammo-tech" }, -- yellow
+  ["oc-casting-kr-armor-piercing-anti-materiel-rifle-magazine"] = { "casting-light-ammo-tech" }, -- red
+  ["oc-casting-kr-uranium-anti-materiel-rifle-magazine"]        = { "casting-heavy-ammo-tech" }, -- green
   -- ["kr-imersite-anti-materiel-rifle-magazine"]               = { "casting-imersite-ammo-tech" },  -- pink sniper ammo, unlocked with immersite ammo tech
   -- ["pulse-kr-impulse-rifle-ammo"]                            = { "casting-imersite-ammo-tech" }, -- unlocked with immersite ammo tech
 
   -- rockets
-  ["bio-kr-explosive-turret-rocket"]                         = "bio-rocketry-tech",
-  ["cryo-kr-nuclear-turret-rocket"]                          = "nuclear-ammo-tech",
-  -- ["bio-kr-heavy-rocket"]                                    = "bio-rocketry-tech", -- unlocked with immersite ammo tech
+  ["oc-bio-kr-explosive-turret-rocket"]                         = "bio-rocketry-tech",
+  ["oc-cryo-kr-nuclear-turret-rocket"]                          = "nuclear-ammo-tech",
+  -- ["oc-bio-kr-heavy-rocket"]                                    = "bio-rocketry-tech", -- unlocked with immersite ammo tech
 
   -- railgun and artillery
-  ["casting-kr-basic-railgun-shell"]                         = { "casting-railgun-ammo-tech" },
-  ["casting-kr-explosive-railgun-shell"]                     = { "casting-railgun-ammo-tech" },
-  ["cryo-kr-nuclear-artillery-shell"]                        = { "nuclear-ammo-tech" },
-  -- ["kr-antimatter-artillery-shell"]                          = { "antimatter-ammo-tech" },
+  ["oc-casting-kr-basic-railgun-shell"]                         = { "casting-railgun-ammo-tech" },
+  ["oc-casting-kr-explosive-railgun-shell"]                     = { "casting-railgun-ammo-tech" },
+  ["oc-cryo-kr-nuclear-artillery-shell"]                        = { "nuclear-ammo-tech" },
+  -- ["oc-kr-antimatter-artillery-shell"]                          = { "antimatter-ammo-tech" },
 }
 if settings.startup["casting-weapons"].value then
   -- weapons
-  recipe_tech_mapping["casting-kr-anti-materiel-rifle"] = { "casting-light-ammo-tech" } -- sniper for light ammo tech
+  recipe_tech_mapping["oc-casting-kr-anti-materiel-rifle"] = { "casting-light-ammo-tech" } -- sniper for light ammo tech
   -- vehicles
-  -- recipe_tech_mapping["casting-kr-advanced-tank"] = { "kr-advanced-tank" }
+  -- recipe_tech_mapping["oc-casting-kr-advanced-tank"] = { "kr-advanced-tank" }
 end
 oc_helper.add_recipe_unlocks(recipe_tech_mapping)

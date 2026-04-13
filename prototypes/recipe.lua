@@ -115,7 +115,6 @@ if not mods["scattergun_turret"] then
         icon = "__OCs_ammo_casting__/graphics/icons/uranium-shotgun-shell.png",
         icon_size = 64,
         icon_mipmaps = 4,
-        -- tint = { r = 0.1, g = 0.8, b = 0.1 }
       } },
       category = "crafting",
       group = "combat",
@@ -124,23 +123,22 @@ if not mods["scattergun_turret"] then
       energy_required = 10,
       ingredients = {
         { type = "item", name = "piercing-shotgun-shell", amount = 1 },
-        { type = "item", name = "uranium-238",          amount = 1 }
+        { type = "item", name = "uranium-238",            amount = 1 }
       },
       results = { { type = "item", name = "uranium-shotgun-shell", amount = 1 } },
       allow_productivity = false,
       allow_decomposition = false,
       auto_recycle = true,
-     }
-   })
+    }
+  })
 end
 
 -- biochamber recipes
 data:extend({
   { -- explosives (item)
     type = "recipe",
-    name = "bio-explosives",
-    icons =
-    {
+    name = "oc-bio-explosives",
+    icons = {
       {
         icon = "__base__/graphics/icons/explosives.png",
         icon_size = 64,
@@ -168,9 +166,8 @@ data:extend({
   },
   { -- explosives space (also viable on gleba)
     type = "recipe",
-    name = "bio-explosives-space",
-    icons =
-    {
+    name = "oc-bio-explosives-space",
+    icons = {
       {
         icon = "__base__/graphics/icons/explosives.png",
         icon_size = 64,
@@ -200,9 +197,8 @@ data:extend({
   },
   { -- explosives gleba style
     type = "recipe",
-    name = "bio-explosives-gleba",
-    icons =
-    {
+    name = "oc-bio-explosives-gleba",
+    icons = {
       {
         icon = "__base__/graphics/icons/explosives.png",
         icon_size = 64,
@@ -451,12 +447,12 @@ if settings.startup["armour-plating"].value then
     -- replace_ingredient("heavy-armour-plating", "item", "carbon", "item", "coal", true)
     -- remove_ingredient("heavy-armour-plating", "item", "electric-circuit", 4)
     oc_helper.remove_ingredient("heavy-armour-plating", "item", "low-density-structure", 2)
-    oc_helper.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)-- 2x2steel-plate + 2x5plastic-bar. round down
-    oc_helper.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40)-- 2x20copper-plate
+    oc_helper.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)    -- 2x2steel-plate + 2x5plastic-bar. round down
+    oc_helper.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40) -- 2x20copper-plate
   end
   if settings.startup["earlier-solar-panel-equipment"].value then
     oc_helper.remove_ingredient("solar-panel-equipment", "item", "advanced-circuit", 2)
-    oc_helper.add_ingredient("solar-panel-equipment", "item", "electronic-circuit", 10)-- 2x2=4 but it shall not to be to cheap
+    oc_helper.add_ingredient("solar-panel-equipment", "item", "electronic-circuit", 10) -- 2x2=4 but it shall not to be to cheap
   end
 end
 
@@ -530,35 +526,35 @@ end
 local new_alt_recipes = {
   ["organic"] = {
     alternative_recipes = {
-      ["explosives"] = { "bio-explosives", "bio-explosives-space", "bio-explosives-gleba", "explosives" },
-      ["rocket"] = { "bio-rocket", "rocket" },
-      ["explosive-rocket"] = { "bio-explosive-rocket", "explosive-rocket" },
+      ["explosives"] = { "oc-bio-explosives", "oc-bio-explosives-space", "oc-bio-explosives-gleba", "explosives" },
+      ["rocket"] = { "oc-bio-rocket", "rocket" },
+      ["explosive-rocket"] = { "oc-bio-explosive-rocket", "explosive-rocket" },
     }
   },
   ["metallurgy"] = {
     alternative_recipes = {
       -- personal ammo
-      ["firearm-magazine"] = { "casting-firearm-magazine", "firearm-magazine" },
-      ["piercing-rounds-magazine"] = { "casting-piercing-rounds-magazine", "piercing-rounds-magazine" },
-      ["uranium-rounds-magazine"] = { "casting-uranium-rounds-magazine", "uranium-rounds-magazine" },
-      ["tungsten-rounds-magazine"] = { "casting-tungsten-rounds-magazine", "tungsten-rounds-magazine" },
-      ["shotgun-shell"] = { "casting-shotgun-shell", "shotgun-shell" },
-      ["piercing-shotgun-shell"] = { "casting-piercing-shotgun-shell", "piercing-shotgun-shell" },
-      ["uranium-shotgun-shell"] = { "casting-uranium-shotgun-shell", "uranium-shotgun-shell" }, -- if existent
-      ["tungsten-shotgun-shell"] = { "casting-tungsten-shotgun-shell", "tungsten-shotgun-shell" },
+      ["firearm-magazine"] = { "oc-casting-firearm-magazine", "firearm-magazine" },
+      ["piercing-rounds-magazine"] = { "oc-casting-piercing-rounds-magazine", "piercing-rounds-magazine" },
+      ["uranium-rounds-magazine"] = { "oc-casting-uranium-rounds-magazine", "uranium-rounds-magazine" },
+      ["tungsten-rounds-magazine"] = { "oc-casting-tungsten-rounds-magazine", "tungsten-rounds-magazine" },
+      ["shotgun-shell"] = { "oc-casting-shotgun-shell", "shotgun-shell" },
+      ["piercing-shotgun-shell"] = { "oc-casting-piercing-shotgun-shell", "piercing-shotgun-shell" },
+      ["uranium-shotgun-shell"] = { "oc-casting-uranium-shotgun-shell", "uranium-shotgun-shell" }, -- if existent
+      ["tungsten-shotgun-shell"] = { "oc-casting-tungsten-shotgun-shell", "tungsten-shotgun-shell" },
       -- heavy ammo
-      ["cannon-shell"] = { "casting-cannon-shell", "cannon-shell" },
-      ["uranium-cannon-shell"] = { "casting-uranium-cannon-shell", "uranium-cannon-shell" },
-      ["tungsten-cannon-shell"] = { "casting-tungsten-cannon-shell", "tungsten-cannon-shell" },
-      ["railgun-ammo"] = { "casting-railgun-ammo", "railgun-ammo" },
-      ["tungsten-railgun-ammo"] = { "casting-tungsten-railgun-ammo", "tungsten-railgun-ammo" },
-      ["artillery-shell"] = { "casting-artillery-shell", "artillery-shell" },
-      ["heavy-artillery-shell"] = { "casting-heavy-artillery-shell", "heavy-artillery-shell", "heavy-artillery-shell-upgrading" },
+      ["cannon-shell"] = { "oc-casting-cannon-shell", "cannon-shell" },
+      ["uranium-cannon-shell"] = { "oc-casting-uranium-cannon-shell", "uranium-cannon-shell" },
+      ["tungsten-cannon-shell"] = { "oc-casting-tungsten-cannon-shell", "tungsten-cannon-shell" },
+      ["railgun-ammo"] = { "oc-casting-railgun-ammo", "railgun-ammo" },
+      ["tungsten-railgun-ammo"] = { "oc-casting-tungsten-railgun-ammo", "tungsten-railgun-ammo" },
+      ["artillery-shell"] = { "oc-casting-artillery-shell", "artillery-shell" },
+      ["heavy-artillery-shell"] = { "oc-casting-heavy-artillery-shell", "heavy-artillery-shell", "heavy-artillery-shell-upgrading" },
       -- armour plating
-      ["light-armour-plating"] = { "casting-light-armour-plating", "light-armour-plating" },
-      ["heavy-armour-plating"] = { "casting-heavy-armour-plating", "heavy-armour-plating" },
+      ["light-armour-plating"] = { "oc-casting-light-armour-plating", "light-armour-plating" },
+      ["heavy-armour-plating"] = { "oc-casting-heavy-armour-plating", "heavy-armour-plating" },
       -- buildings
-      ["gun-turret"] = { "casting-gun-turret", "gun-turret" },
+      ["gun-turret"] = { "oc-casting-gun-turret", "gun-turret" },
     }
   }
 }
@@ -623,23 +619,23 @@ generator_api.batch_generator(casting_dict)
 -- set the subgroup to alternative-ammo to distinct them from normal crafting recipes
 local mapping = {
   -- base ammo
-  ["casting-firearm-magazine"] = "alternative-ammo",
-  ["casting-piercing-rounds-magazine"] = "alternative-ammo",
-  ["casting-uranium-rounds-magazine"] = "alternative-ammo",
-  ["casting-tungsten-rounds-magazine"] = "alternative-ammo",
-  ["casting-shotgun-shell"] = "alternative-ammo",
-  ["casting-piercing-shotgun-shell"] = "alternative-ammo",
-  ["casting-uranium-shotgun-shell"] = "alternative-ammo", -- if existent
-  ["casting-cannon-shell"] = "alternative-ammo",
-  ["casting-uranium-cannon-shell"] = "alternative-ammo",
-  ["casting-explosive-cannon-shell"] = "alternative-ammo",
-  ["casting-explosive-uranium-cannon-shell"] = "alternative-ammo",
-  ["casting-tungsten-cannon-shell"] = "alternative-ammo",
-  ["casting-tungsten-shotgun-shell"] = "alternative-ammo",
-  ["casting-railgun-ammo"] = "alternative-ammo",
-  ["casting-tungsten-railgun-ammo"] = "alternative-ammo",
-  ["bio-rocket"] = "alternative-ammo",
-  ["bio-explosive-rocket"] = "alternative-ammo",
-  ["cryo-atomic-bomb"] = "alternative-ammo",
+  ["oc-casting-firearm-magazine"] = "alternative-ammo",
+  ["oc-casting-piercing-rounds-magazine"] = "alternative-ammo",
+  ["oc-casting-uranium-rounds-magazine"] = "alternative-ammo",
+  ["oc-casting-tungsten-rounds-magazine"] = "alternative-ammo",
+  ["oc-casting-shotgun-shell"] = "alternative-ammo",
+  ["oc-casting-piercing-shotgun-shell"] = "alternative-ammo",
+  ["oc-casting-uranium-shotgun-shell"] = "alternative-ammo", -- if existent
+  ["oc-casting-cannon-shell"] = "alternative-ammo",
+  ["oc-casting-uranium-cannon-shell"] = "alternative-ammo",
+  ["oc-casting-explosive-cannon-shell"] = "alternative-ammo",
+  ["oc-casting-explosive-uranium-cannon-shell"] = "alternative-ammo",
+  ["oc-casting-tungsten-cannon-shell"] = "alternative-ammo",
+  ["oc-casting-tungsten-shotgun-shell"] = "alternative-ammo",
+  ["oc-casting-railgun-ammo"] = "alternative-ammo",
+  ["oc-casting-tungsten-railgun-ammo"] = "alternative-ammo",
+  ["oc-bio-rocket"] = "alternative-ammo",
+  ["oc-bio-explosive-rocket"] = "alternative-ammo",
+  ["oc-cryo-atomic-bomb"] = "alternative-ammo",
 }
 oc_helper.change_recipes_subgroup(mapping)

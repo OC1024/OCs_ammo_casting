@@ -3,15 +3,15 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 
 
 -- developement paused
-if data.raw.recipe["casting-tungsten-rounds-magazine"] then
-  data.raw.recipe["casting-tungsten-rounds-magazine"].ingredients = {
+if data.raw.recipe["oc-casting-tungsten-rounds-magazine"] then
+  data.raw.recipe["oc-casting-tungsten-rounds-magazine"].ingredients = {
     {type="fluid", name="molten-iron", amount=50}, -- piercing-rounds-magazine: 1steel + 5copper + 2iron-plate(empty shells)
     {type="fluid", name="molten-copper", amount=50},
     {type="item", name="tungsten-carbide", amount=1}
   }
-  log("Modified recipe for casting-tungsten-rounds-magazine.")
+  log("Modified recipe for oc-casting-tungsten-rounds-magazine.")
 else
-  log("Warning: Recipe 'casting-tungsten-rounds-magazine' not found.")
+  log("Warning: Recipe 'oc-casting-tungsten-rounds-magazine' not found.")
 end
 
 if data.raw.recipe["tungsten-rounds-magazine"] then
@@ -24,15 +24,15 @@ else
   log("Warning: Recipe 'tungsten-rounds-magazine' not found.")
 end
 
-if data.raw.recipe["casting-tungsten-shotgun-shell"] then
-  data.raw.recipe["casting-tungsten-shotgun-shell"].ingredients = {
+if data.raw.recipe["oc-casting-tungsten-shotgun-shell"] then
+  data.raw.recipe["oc-casting-tungsten-shotgun-shell"].ingredients = {
     {type="fluid", name="molten-iron", amount=60}, -- 1 piercing-shogun-shell =2steel + 5copper + 2copper-plate(empty shells)
     {type="fluid", name="molten-copper", amount=20},
     {type="item", name="tungsten-carbide", amount=1}
   }
-  log("Modified recipe for casting-tungsten-shotgun-shell.")
+  log("Modified recipe for oc-casting-tungsten-shotgun-shell.")
 else
-  log("Warning: Recipe 'casting' not found.")
+  log("Warning: Recipe 'oc-casting-tungsten-shotgun-shell' not found.")
 end
 
 if data.raw.recipe["tungsten-shotgun-shell"] then

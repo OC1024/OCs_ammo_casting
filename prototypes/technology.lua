@@ -30,16 +30,15 @@ data:extend({
       count = 100
     },
     effects = {
-      { type = "unlock-recipe", recipe = "casting-firearm-magazine" },
-      { type = "unlock-recipe", recipe = "casting-piercing-rounds-magazine" },
-      { type = "unlock-recipe", recipe = "casting-shotgun-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-firearm-magazine" },
+      { type = "unlock-recipe", recipe = "oc-casting-piercing-rounds-magazine" },
+      { type = "unlock-recipe", recipe = "oc-casting-shotgun-shell" },
     },
   },
   { -- casting heavy ammo (uranium ammo and tank shells)
     type = "technology",
     name = "casting-heavy-ammo-tech",
-    icons =
-    {
+    icons = {
       {
         icon = "__base__/graphics/technology/physical-projectile-damage-2.png",
         icon_size = 256,
@@ -65,17 +64,16 @@ data:extend({
       count = 400
     },
     effects = {
-      { type = "unlock-recipe", recipe = "casting-uranium-rounds-magazine" },
-      { type = "unlock-recipe", recipe = "casting-piercing-shotgun-shell" },
-      { type = "unlock-recipe", recipe = "casting-cannon-shell" },
-      { type = "unlock-recipe", recipe = "casting-uranium-cannon-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-uranium-rounds-magazine" },
+      { type = "unlock-recipe", recipe = "oc-casting-piercing-shotgun-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-cannon-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-uranium-cannon-shell" },
     },
   },
   { -- casting tungsten ammo
     type = "technology",
     name = "casting-tungsten-ammo-tech",
-    icons =
-    {
+    icons = {
       {
         icon = "__OCs_ammo_casting__/graphics/technology/tungsten-ammo-tech.png",
         icon_size = 256,
@@ -104,19 +102,18 @@ data:extend({
       count = 800
     },
     effects = {
-      { type = "unlock-recipe", recipe = "casting-tungsten-rounds-magazine" },
-      { type = "unlock-recipe", recipe = "casting-tungsten-shotgun-shell" },
-      { type = "unlock-recipe", recipe = "casting-tungsten-cannon-shell" },
       { type = "unlock-recipe", recipe = "tungsten-rounds-magazine" },
       { type = "unlock-recipe", recipe = "tungsten-shotgun-shell" },
       { type = "unlock-recipe", recipe = "tungsten-cannon-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-tungsten-rounds-magazine" },
+      { type = "unlock-recipe", recipe = "oc-casting-tungsten-shotgun-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-tungsten-cannon-shell" },
     },
   },
   { -- casting railgun ammo
     type = "technology",
     name = "casting-railgun-ammo-tech",
-    icons =
-    {
+    icons = {
       {
         icon = "__space-age__/graphics/technology/railgun.png",
         icon_size = 256,
@@ -146,9 +143,9 @@ data:extend({
       count = 1000
     },
     effects = {
-      { type = "unlock-recipe", recipe = "casting-railgun-ammo" },
+      { type = "unlock-recipe", recipe = "oc-casting-railgun-ammo" },
       { type = "unlock-recipe", recipe = "tungsten-railgun-ammo" },
-      { type = "unlock-recipe", recipe = "casting-tungsten-railgun-ammo" },
+      { type = "unlock-recipe", recipe = "oc-casting-tungsten-railgun-ammo" },
     },
   },
 })
@@ -156,7 +153,7 @@ data:extend({
 if settings.startup["uranium-shotgun-shells"] then
   oc_helper.add_recipe_unlocks({{
     ["uranium-shotgun-shell"] = "uranium-ammo",
-    ["casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
+    ["oc-casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
   }})
 end
 
@@ -195,18 +192,18 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         count = 1000
       },
       effects = {
-        { type = "unlock-recipe", recipe = "casting-explosive-cannon-shell" },
-        { type = "unlock-recipe", recipe = "casting-explosive-uranium-cannon-shell" },
-        { type = "unlock-recipe", recipe = "casting-artillery-shell" },
+        { type = "unlock-recipe", recipe = "oc-casting-explosive-cannon-shell" },
+        { type = "unlock-recipe", recipe = "oc-casting-explosive-uranium-cannon-shell" },
+        { type = "unlock-recipe", recipe = "oc-casting-artillery-shell" },
         -- { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
-        -- { type = "unlock-recipe", recipe = "casting-heavy-artillery-shell" },
+        -- { type = "unlock-recipe", recipe = "oc-casting-heavy-artillery-shell" },
         -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
       },
     },
   })
   if settings.startup["heavy-artillery-shells"].value then
     local heavy_art = {
-      ["casting-heavy-artillery-shell"] = "casting-explosive-ammo-tech",
+      ["oc-casting-heavy-artillery-shell"] = "casting-explosive-ammo-tech",
       ["heavy-artillery-shell"] = "casting-explosive-ammo-tech",
       ["heavy-artillery-shell-upgrading"] = "casting-explosive-ammo-tech",
     }
@@ -223,12 +220,12 @@ else
 end
 
 if settings.startup["allow-bio-explosives"].value then
-  data:extend({ -- biochamber techs
-    {           -- bio explosives
+  -- biochamber techs
+  data:extend({
+    { -- bio explosives
       type = "technology",
       name = "bio-explosives-tech",
-      icons =
-      {
+      icons = {
         {
           icon = "__base__/graphics/technology/explosives.png",
           icon_size = 256,
@@ -252,16 +249,15 @@ if settings.startup["allow-bio-explosives"].value then
         count = 150
       },
       effects = {
-        { type = "unlock-recipe", recipe = "bio-explosives" },
-        { type = "unlock-recipe", recipe = "bio-explosives-gleba" },
-        { type = "unlock-recipe", recipe = "bio-explosives-space" },
+        { type = "unlock-recipe", recipe = "oc-bio-explosives" },
+        { type = "unlock-recipe", recipe = "oc-bio-explosives-gleba" },
+        { type = "unlock-recipe", recipe = "oc-bio-explosives-space" },
       },
     },
     { -- bio rocketry
       type = "technology",
       name = "bio-rocketry-tech",
-      icons =
-      {
+      icons = {
         {
           icon = "__base__/graphics/technology/explosive-rocketry.png",
           icon_size = 256,
@@ -287,8 +283,8 @@ if settings.startup["allow-bio-explosives"].value then
         count = 200
       },
       effects = {
-        { type = "unlock-recipe", recipe = "bio-rocket" },
-        { type = "unlock-recipe", recipe = "bio-explosive-rocket" },
+        { type = "unlock-recipe", recipe = "oc-bio-rocket" },
+        { type = "unlock-recipe", recipe = "oc-bio-explosive-rocket" },
       },
     },
   })
@@ -337,7 +333,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         { type = "unlock-recipe", recipe = "light-armour-plating" },
-        { type = "unlock-recipe", recipe = "casting-light-armour-plating" },
+        { type = "unlock-recipe", recipe = "oc-casting-light-armour-plating" },
       },
     },
     { -- heavy armour plating
@@ -371,7 +367,7 @@ if settings.startup["armour-plating"].value then
       },
       effects = {
         { type = "unlock-recipe", recipe = "heavy-armour-plating" },
-        { type = "unlock-recipe", recipe = "casting-heavy-armour-plating" },
+        { type = "unlock-recipe", recipe = "oc-casting-heavy-armour-plating" },
       },
     },
     { -- tungsten armour plating
@@ -558,7 +554,7 @@ if settings.startup["nuclear-ammo"].value then
         count = 1000,
       },
       effects = {
-        { type = "unlock-recipe", recipe = "cryo-atomic-bomb" },
+        { type = "unlock-recipe", recipe = "oc-cryo-atomic-bomb" },
       },
     },
   })
@@ -580,13 +576,13 @@ end
 if settings.startup["casting-weapons"].value then
   -- adding recipes to techs
   local recipe_tech_mapping = {
-    ["casting-gun-turret"] = { "casting-light-ammo-tech" },
-    ["casting-pistol"] = { "casting-light-ammo-tech" },
-    ["casting-submachine-gun"] = { "casting-light-ammo-tech" },
-    ["casting-shotgun"] = { "casting-light-ammo-tech" },
-    ["casting-combat-shotgun"] = { "casting-heavy-ammo-tech" },
-    ["pulse-rocket-launcher"] = { "bio-rocketry-tech" },
-    ["casting-flamethrower"] = { "casting-explosive-ammo-tech" },
+    ["oc-casting-gun-turret"] = { "casting-light-ammo-tech" },
+    ["oc-casting-pistol"] = { "casting-light-ammo-tech" },
+    ["oc-casting-submachine-gun"] = { "casting-light-ammo-tech" },
+    ["oc-casting-shotgun"] = { "casting-light-ammo-tech" },
+    ["oc-casting-combat-shotgun"] = { "casting-heavy-ammo-tech" },
+    ["oc-pulse-rocket-launcher"] = { "bio-rocketry-tech" },
+    ["oc-casting-flamethrower"] = { "casting-explosive-ammo-tech" },
   }
   oc_helper.add_recipe_unlocks(recipe_tech_mapping)
 end

@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.0
-Date: 2026-04-12-wip
+Date: 2026-04-13
   Minor Features:
     - Option: Light and/or heavy armor get a micro or tiny equipment grid, respectively. (Default: Heavy. Grid sizes: heavy armor 4x3, light armor 2x3)
     - Option: Earlier armor plating. It moves the armor plating techs before the modular armor, so you can get them earlier. (Default: off)
@@ -21,13 +21,13 @@ Date: 2026-04-12-wip
     - Internally reframing the grid definitions and code.
     - Increased car grid size from 4x4 to 6x4, to be in line with other mods like [kry-vehicle-grids].
     - [ironclad-gunboat-and-mortar-turret] Added military-3 for the normal casting mortar bomb tech, and military-4 for casting clusterbomb tech. The clusterbomb requres military-4.
-    - [scattergun turret] Switched backline mount from foundry to EMplant as it has more of these coponents. (slightly breaking change)
+    - [scattergun turret] Switched backline mount from foundry to EMplant as it has more of these coponents. (breaking change)
   Graphics:
     - Changed the icon for all armor plating to something independent.
-    - Added tint for tungsten (and uranium) shotgun pelets to make them slightly more distinguishable.
+    - Added tint for tungsten and uranium shotgun pelets to make them slightly more distinguishable.
     - Removed overlayer from light and heavy armor plating tech icon.
   Compatibility:
-    - Updated dependency of [OCs Base Assets] to >=0.3.5 as helper functions were updated. (makes it incompatible with older versions)
+    - Updated dependency of [OCs Base Assets] to >=0.4.0 as helper functions were updated. (makes it incompatible with older versions)
     - Made compats for [aai-vehicles-ironclad], [Ironclad gunboat and mortar turret], and [stratetic mortar ammo] independent of each other.
     - Removed compatibility for [UraniumShotgunShell], as it is integrated into this mod.
   Bugfixes:

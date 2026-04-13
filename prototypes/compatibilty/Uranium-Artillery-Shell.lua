@@ -21,9 +21,9 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 end
 
 local mapping = {
-    ["casting-uranium-artillery-shell"] = "alternative-ammo",
-    -- ["pulse-dense-uranium-casing"] = "alternative-ammo",
-    -- ["casting-stabilized-radiation-core"] = "alternative-ammo",
-    ["casting-uranium-artillery-shell-mk2"] = "alternative-ammo",
+    ["oc-casting-uranium-artillery-shell"] = "alternative-ammo",
+    -- ["oc-pulse-dense-uranium-casing"] = "alternative-ammo",
+    -- ["oc-casting-stabilized-radiation-core"] = "alternative-ammo",
+    ["oc-casting-uranium-artillery-shell-mk2"] = "alternative-ammo",
 }
 oc_helper.change_recipes_subgroup(mapping)

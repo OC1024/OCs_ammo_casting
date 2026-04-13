@@ -45,27 +45,27 @@ data:extend({
             count = 150
         },
         effects = {
-            { type = "unlock-recipe", recipe = "casting-mortar-fire-bomb" },
-            { type = "unlock-recipe", recipe = "casting-mortar-poison-bomb" },
-            { type = "unlock-recipe", recipe = "casting-mortar-cluster-bomb" },-- require military-4, else military-2 is sufficient.
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-fire-bomb" },
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-poison-bomb" },
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-cluster-bomb" },-- require military-4, else military-2 is sufficient.
         },
     },
 })
 -- changing (ironclad) mod tech
 local removing_prereq_dict = {
-    ["casting-basic-mortar-ammo-tech"] = { "ironclad" }, -- decouple mortar from ironclad
+    ["oc-casting-basic-mortar-ammo-tech"] = { "ironclad" }, -- decouple mortar from ironclad
 }
 oc_helper.remove_prerequisites(removing_prereq_dict)
 local adding_prereq_dict = {
     -- would need "military-4" for the clusterbomb. maybe moving the clusterbomb to the casting-explosive-ammo-tech
-    ["casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3"},
-    ["casting-explosive-ammo-tech"] = {"casting-chemical-mortar-ammo-tech"},
+    ["oc-casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3"},
+    ["oc-casting-explosive-ammo-tech"] = {"oc-casting-chemical-mortar-ammo-tech"},
 }
 oc_helper.add_prerequisites(adding_prereq_dict)
 
 -- remove recipe from techs
 oc_helper.remove_recipe_unlocks({
-    {["casting-mortar-cluster-bomb"] = "casting-basic-mortar-ammo-tech"}
+    {["oc-casting-mortar-cluster-bomb"] = "casting-basic-mortar-ammo-tech"}
 })
 
 -- add recipes to technology
@@ -73,8 +73,8 @@ local mapping = {
     -- ["mortar-slowdown-bomb"] = "metallurgy",
     -- ["casting-mortar-poison-bomb"] = "metallurgy",
     -- weapons (if present)
-    ["casting-ironclad-gunboat"] = "ironclad-gunboat",
-    ["casting-mortar-turret"] = "mortar-turret",
+    ["oc-casting-ironclad-gunboat"] = "ironclad-gunboat",
+    ["oc-casting-mortar-turret"] = "mortar-turret",
 }
 oc_helper.add_recipe_unlocks(mapping)
 -- TODO: create new techs or reordering them slightly to make the mortar ammor still midgame (midgame+vulcanus) available

@@ -30,7 +30,7 @@ if settings.startup["casting-weapons"].value then
 end
 generator_api.batch_generator(casting_dict)
 
-data.raw.recipe["casting-mortar-poison-bomb"].hidden = true -- overwrite old casting version in favor of the bio one.
+data.raw.recipe["oc-casting-mortar-poison-bomb"].hidden = true -- overwrite old casting version in favor of the bio one.
 
 -- creating new mortat techs
 data:extend({
@@ -70,10 +70,10 @@ data:extend({
             count = 200
         },
         effects = {
-            -- { type = "unlock-recipe", recipe = "bio-mortar-slowdown-ammo" },
-            -- { type = "unlock-recipe", recipe = "bio-mortar-poison-bomb" },
-            -- { type = "unlock-recipe", recipe = "bio-mortar-illumination-ammo" },
-            -- { type = "unlock-recipe", recipe = "bio-mortar-hypnosis-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-bio-mortar-slowdown-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-bio-mortar-poison-bomb" },
+            -- { type = "unlock-recipe", recipe = "oc-bio-mortar-illumination-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-bio-mortar-hypnosis-ammo" },
         },
     },
     { -- robot mortar ammo
@@ -113,11 +113,11 @@ data:extend({
             count = 200
         },
         effects = {
-            -- { type = "unlock-recipe", recipe = "pulse-mortar-energy-ammo" },
-            -- { type = "unlock-recipe", recipe = "pulse-mortar-defender-robot-ammo" },
-            -- { type = "unlock-recipe", recipe = "pulse-mortar-distractor-robot-ammo" },
-            -- { type = "unlock-recipe", recipe = "pulse-mortar-destroyer-robot-ammo" },
-            -- { type = "unlock-recipe", recipe = "pulse-mortar-lure-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-pulse-mortar-energy-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-pulse-mortar-defender-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-pulse-mortar-distractor-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-pulse-mortar-destroyer-robot-ammo" },
+            -- { type = "unlock-recipe", recipe = "oc-pulse-mortar-lure-robot-ammo" },
         },
     },
 })
@@ -126,7 +126,7 @@ data:extend({
 local biochemical_req = {
     ["biochemical-mortar-ammo-tech"] =
     {
-        "casting-basic-mortar-ammo-tech", -- continuation of chemical ammo
+        "oc-casting-basic-mortar-ammo-tech", -- continuation of chemical ammo
         "mortar-slowdown-ammo",
         "mortar-poison-bomb",
         "mortar-illumination-ammo",
@@ -136,10 +136,10 @@ local biochemical_req = {
 oc_helper.add_prerequisites(biochemical_req)
 
 local biochemical_ammo = {
-    ["bio-mortar-slowdown-ammo"] = "biochemical-mortar-ammo-tech",
-    ["bio-mortar-poison-bomb"] = "biochemical-mortar-ammo-tech",
-    ["bio-mortar-illumination-ammo"] = "biochemical-mortar-ammo-tech",
-    ["bio-mortar-hypnosis-ammo"] = "biochemical-mortar-ammo-tech",
+    ["oc-bio-mortar-slowdown-ammo"] = "biochemical-mortar-ammo-tech",
+    ["oc-bio-mortar-poison-bomb"] = "biochemical-mortar-ammo-tech",
+    ["oc-bio-mortar-illumination-ammo"] = "biochemical-mortar-ammo-tech",
+    ["oc-bio-mortar-hypnosis-ammo"] = "biochemical-mortar-ammo-tech",
 }
 oc_helper.add_recipe_unlocks(biochemical_ammo)
 
@@ -155,11 +155,11 @@ local robot_req = {
 }
 oc_helper.add_prerequisites(robot_req)
 local robot_ammo = {
-    ["pulse-mortar-energy-ammo"] = "pulse-mortar-ammo-tech",
-    ["pulse-mortar-defender-robot-ammo"] = "pulse-mortar-ammo-tech",
-    ["pulse-mortar-distractor-robot-ammo"] = "pulse-mortar-ammo-tech",
-    ["pulse-mortar-destroyer-robot-ammo"] = "pulse-mortar-ammo-tech",
-    ["pulse-mortar-lure-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["oc-pulse-mortar-energy-ammo"] = "pulse-mortar-ammo-tech",
+    ["oc-pulse-mortar-defender-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["oc-pulse-mortar-distractor-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["oc-pulse-mortar-destroyer-robot-ammo"] = "pulse-mortar-ammo-tech",
+    ["oc-pulse-mortar-lure-robot-ammo"] = "pulse-mortar-ammo-tech",
 }
 oc_helper.add_recipe_unlocks(robot_ammo)
 
@@ -173,31 +173,31 @@ oc_helper.add_prerequisites(adding_prereq_dict)
 
 -- remove old unlocks
 local old_unlocks = {
-    ["casting-mortar-poison-bomb"]  = { "casting-chemical-mortar-ammo-tech" }, -- added in the gunboat-compat file, moved to the new bio-chemical tech
-    ["casting-mortar-cluster-bomb"] = { "casting-basic-mortar-ammo-tech" },    -- added in the aai-ironclad-compat file, replaced by shrapnel ammo
+    ["oc-casting-mortar-poison-bomb"]  = { "casting-chemical-mortar-ammo-tech" }, -- added in the gunboat-compat file, moved to the new bio-chemical tech
+    ["oc-casting-mortar-cluster-bomb"] = { "casting-basic-mortar-ammo-tech" },    -- added in the aai-ironclad-compat file, replaced by shrapnel ammo
 }
 oc_helper.remove_recipe_unlocks(old_unlocks)
 
 -- add recipe unlocks to technology
 local mapping = {
-    ["casting-mortar-cluster-bomb"] = "casting-chemical-mortar-ammo-tech",
-    ["casting-mortar-shrapnel-ammo"] = "casting-basic-mortar-ammo-tech", -- replaces the now stronger cluster-bomb
-    ["casting-mortar-fire-ammo"] = "casting-chemical-ammo-tech",
-    ["casting-mortar-heavy-ammo"] = "casting-heavy-ammo-tech",
-    ["cryo-mortar-light-nuclear-ammo"] = "nuclear-ammo-tech",
+    ["oc-casting-mortar-cluster-bomb"] = "casting-chemical-mortar-ammo-tech",
+    ["oc-casting-mortar-shrapnel-ammo"] = "casting-basic-mortar-ammo-tech", -- replaces the now stronger cluster-bomb
+    ["oc-casting-mortar-fire-ammo"] = "casting-chemical-ammo-tech",
+    ["oc-casting-mortar-heavy-ammo"] = "casting-heavy-ammo-tech",
+    ["oc-cryo-mortar-light-nuclear-ammo"] = "nuclear-ammo-tech",
     -- weapons (if present)
-    ["casting-heavy-mortar-turret"] = "heavy-mortar-turret",
+    ["oc-casting-heavy-mortar-turret"] = "heavy-mortar-turret",
 }
 oc_helper.add_recipe_unlocks(mapping)
 
 
 -- move to subgroup
 local mapping = {
-    ["casting-mortar-shrapnel-ammo"] = "mortar-ammo",
+    ["oc-casting-mortar-shrapnel-ammo"] = "mortar-ammo",
     ["mortar-illumination-bomb"] = "mortar-ammo",
     ["mortar-fire-ammo"] = "mortar-ammo",
-    ["pulse-mortar-energy-ammo"] = "mortar-ammo",
-    ["casting-mortar-heavy-ammo"] = "mortar-ammo",
-    ["cryo-mortar-light-nuclear-ammo"] = "mortar-ammo",
+    ["oc-pulse-mortar-energy-ammo"] = "mortar-ammo",
+    ["oc-casting-mortar-heavy-ammo"] = "mortar-ammo",
+    ["oc-cryo-mortar-light-nuclear-ammo"] = "mortar-ammo",
 }
 oc_helper.change_recipes_subgroup(mapping)

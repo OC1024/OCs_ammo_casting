@@ -42,8 +42,8 @@ data:extend({
             count = 100
         },
         effects = {
-            { type = "unlock-recipe", recipe = "casting-mortar-bomb" },
-            { type = "unlock-recipe", recipe = "casting-mortar-cluster-bomb" },
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-bomb" },
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-cluster-bomb" },
         },
     },
 })
