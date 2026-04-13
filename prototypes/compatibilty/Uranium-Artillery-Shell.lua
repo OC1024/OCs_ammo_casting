@@ -10,7 +10,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     if settings.startup["nuclear-ammo"].value then -- "nuclear" artillery shell and special ingredients
         local casting_dict = {
             ["uranium-artillery-shell"] = "metallurgy",
-            -- ["uranium-antidote"] = "", -- does not fit here
+            -- ["uranium-antidote"] = "organic", -- does not fit here
             ["dense-uranium-casing"] = "metallurgy",
             -- ["stabilized-radiation-core"] = "electromagnetics",-- which category should this be in?
             ["uranium-artillery-shell-mk2"] = "metallurgy",

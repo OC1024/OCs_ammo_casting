@@ -1,10 +1,11 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.0
-Date: 2026-04-11
+Date: 2026-04-12-wip
   Minor Features:
     - Option: Light and/or heavy armor get a micro or tiny equipment grid, respectively. (Default: Heavy. Grid sizes: heavy armor 4x3, light armor 2x3)
     - Option: Earlier armor plating. It moves the armor plating techs before the modular armor, so you can get them earlier. (Default: off)
     - Option: Earlier portable solar panels. As a energy source is needed, this is the cheapest way to get it. (Default: off). I reccomend some burner-generator equipment mod.
+    - [scattergun turret] Added radar and pulse laser "gun"s to the special recipes. No special tech required.
   Balancing:
     - For armour plating technologies: Switched the double cost from production science to utility science.
     - Added electronics as prerequisite for the light armor plating tech, as it is needed for the casting recipe.
@@ -20,6 +21,7 @@ Date: 2026-04-11
     - Internally reframing the grid definitions and code.
     - Increased car grid size from 4x4 to 6x4, to be in line with other mods like [kry-vehicle-grids].
     - [ironclad-gunboat-and-mortar-turret] Added military-3 for the normal casting mortar bomb tech, and military-4 for casting clusterbomb tech. The clusterbomb requres military-4.
+    - [scattergun turret] Switched backline mount from foundry to EMplant as it has more of these coponents. (slightly breaking change)
   Graphics:
     - Changed the icon for all armor plating to something independent.
     - Added tint for tungsten (and uranium) shotgun pelets to make them slightly more distinguishable.
@@ -27,7 +29,7 @@ Date: 2026-04-11
   Compatibility:
     - Updated dependency of [OCs Base Assets] to >=0.3.5 as helper functions were updated. (makes it incompatible with older versions)
     - Made compats for [aai-vehicles-ironclad], [Ironclad gunboat and mortar turret], and [stratetic mortar ammo] independent of each other.
-    - Removed compatibility for [UraniumShotgunShell] as it is integrated into this mod.
+    - Removed compatibility for [UraniumShotgunShell], as it is integrated into this mod.
   Bugfixes:
     - Added missing localisation for [Uranium Artillery Shell] compatibility.
     - Heavy artillery shells were unable to unlocked if "casting-explosive-ammo-tech" was disabled, now fixed. The casting recipe is still not added in this case. (thanks to GingerBeard118 for reporting)

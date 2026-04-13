@@ -1,6 +1,5 @@
---  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
-
+local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
 
 -- Add/Change order of Alternative Receptes
 local alternatives = {
@@ -35,4 +34,4 @@ local mapping = { -- it seems that lead is a early game material so casting shal
   ["casting-lead-chest"] = {"foundry"}, -- base item instantly craftable but casting still needs the foundry to be useful. avoid cluttering
   ["casting-lithium-lead-eutectic"] = {"fusion-reactor"}, -- this should be moved to another mod, not the ammo mod but eh, who cares?
 }
-add_recipe_unlocks(mapping)
+oc_helper.add_recipe_unlocks(mapping)

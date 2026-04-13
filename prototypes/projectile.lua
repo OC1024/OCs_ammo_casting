@@ -124,7 +124,7 @@ data:extend({
   },
 })
 
-if settings.startup["uranium-shotgun-shells"].value and not mods["uranium-shotgun-shells"] and not mods["scattergun_turret"] then
+if not mods["scattergun_turret"] then
   data:extend({
     { -- uranium shotgun pellet
       type = "projectile",
