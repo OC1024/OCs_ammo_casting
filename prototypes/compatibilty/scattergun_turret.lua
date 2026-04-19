@@ -86,7 +86,7 @@ if settings.startup["casting-weapons"].value then
         "space-science-pack",
         "utility-science-pack",
         "production-science-pack",
-        "metallurgy-science-pack",
+        "metallurgic-science-pack",
       },
       unit = {
         ingredients = {
@@ -132,28 +132,28 @@ if settings.startup["casting-weapons"].value then
         "space-science-pack",
         "utility-science-pack",
         "production-science-pack",
-        "electromagnetics-science-pack",
+        "electromagnetic-science-pack",
       },
       unit = {
         ingredients = {
-          { "automation-science-pack",       1 },
-          { "logistic-science-pack",         1 },
-          { "chemical-science-pack",         1 },
-          { "military-science-pack",         2 },
-          { "utility-science-pack",          1 }, -- removed if cheaper
-          { "production-science-pack",       1 }, -- removed if cheaper
-          { "space-science-pack",            1 },
-          { "electromagnetics-science-pack", 2 }, -- removed if cheaper
+          { "automation-science-pack",      1 },
+          { "logistic-science-pack",        1 },
+          { "chemical-science-pack",        1 },
+          { "military-science-pack",        2 },
+          { "utility-science-pack",         1 },  -- removed if cheaper
+          { "production-science-pack",      1 },  -- removed if cheaper
+          { "space-science-pack",           1 },
+          { "electromagnetic-science-pack", 2 },  -- removed if cheaper
         },
         time = 45,
         count = 150
       },
       effects =
       {
-        { type = "unlock-recipe", recipe = "oc-pulse-w93-plaser" },
+        { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-plaser" },
         { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-turret2-base" },
-        { type = "unlock-recipe", recipe = "oc-pulse-w93-radar" },
-        { type = "unlock-recipe", recipe = "oc-pulse-w93-radar2" },
+        { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-radar" },
+        { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-radar2" },
       },
     },
   })

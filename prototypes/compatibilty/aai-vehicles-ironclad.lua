@@ -31,7 +31,7 @@ data:extend({
                 icon_mipmaps = 4,
             }
         },
-        prerequisites = { "foundry", "ironclad", "metallurgy-science-pack" }, -- early as possible
+        prerequisites = { "foundry", "ironclad", "metallurgic-science-pack" }, -- early as possible
         unit = {
             ingredients = {
                 { "automation-science-pack",  1 },

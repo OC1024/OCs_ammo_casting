@@ -59,7 +59,7 @@ if mods["metal-and-stars"] then
 end
 
 if mods["any-planet-strategy"] then
-  require("any-planet-start")
+  require("prototypes.compatibilty.any-planet-start")
 end
 
-require("technology-update")
+require("prototypes.technology-update")
