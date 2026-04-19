@@ -1,4 +1,38 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.3
+Date: 2026-04-19
+  Balancing:
+    - Changed (light) armour plating from hand-craftable to only assembler-2. With "earlier armor plating" active, it is craftable in an assembler-1.
+    - All alternative ammo techs now require the planet specific research pack (e.g. casting needs metallurgy). Note the new setting, which rewinds this.
+  Changes:
+    - Removing the condition "allow-bio-explosives" from the space-fish-breeding recipe.
+    - Changing order of tungsten and uranium shotgun shells.
+  Compatibility:
+    - Added missing dependency of [Metal and Stars], [Modular Turrets] and [AAI Industry]. How could I forgot this?
+    - Revisiting [Ammo Group]: Now my subgroup of "alternative ammo" is correctly within the ammo group. Note that not all other modded ammos are there.
+    - Added [atomic-land-mine] compatibility. The special nuclear landmine recipe is as the others, in the cryogenetic plant. Requires "nuclear-ammo" setting to be on.
+    - Updated dependency of [OCs Base Assets] to >=0.4.1 as helper functions were updated.
+    - [Modular Turrets] got a new tech for pulsing few "guns" like pulsed laser and radar.
+  Minor Features:
+    - Added [Any Planet Start] explicitly to the dependency and made a dedicated compat file. (Work in Progress)
+    - New setting: "earlier alt ammo techs". Default: true (for legacy). If off, all ammo techs are now demand the special science pack. [Any Planet Start] has the same effect for the starter planet.
+  Bugfixes:
+    - Flamethrower turret was not castable.
+    - Fixed a bug with [Metal and Stars] compat. Some recipes weren't correctly updated.
+    - Fixing mortar cluster bomb for [ironclad-gunboad-and-mortar-turret] data_final_fixes state.
+---------------------------------------------------------------------------------------------------
+Version: 0.9.2
+Date: 2026-04-14
+  Bugfixes:
+    - Fixed a bug with the [King-Jo] compat file. Error was incorrect function calling
+    - Fixed a bug with the [K2SE] compat file. Error was incorect recipe unlock.
+    - Fixed a bug with the light armor "armour plating" subgroup. Hopefully.
+---------------------------------------------------------------------------------------------------
+Version: 0.9.1
+Date: 2026-04-14
+  Bugfixes:
+    - Fixed startup error with uranium shotgun shell.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.0
 Date: 2026-04-13
   Minor Features:

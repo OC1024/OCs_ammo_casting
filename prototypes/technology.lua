@@ -1,4 +1,4 @@
-local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 local plating_variants = require("prototypes.utils.plating_variants")
 
 -- standard ammo-casting techs of this mod
@@ -18,13 +18,13 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "foundry", "military-2" }, -- early as possible
+    prerequisites = { "foundry", "military-2", "metallurgic-science-pack" }, -- early as possible
     unit = {
       ingredients = {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack",   1 },
-        { "military-science-pack",   2 },
-        -- {"metallurgic-science-pack", 2},
+        { "automation-science-pack",  1 },
+        { "logistic-science-pack",    1 },
+        { "military-science-pack",    2 },
+        { "metallurgic-science-pack", 2 },
       },
       time = 30,
       count = 100
@@ -50,15 +50,15 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "casting-light-ammo-tech", "uranium-ammo" },
+    prerequisites = { "casting-light-ammo-tech", "uranium-ammo", "utility-science-pack" },
     unit = {
       ingredients = {
-        { "automation-science-pack", 1 },
-        { "logistic-science-pack",   1 },
-        { "chemical-science-pack",   1 },
-        -- {"utility-science-pack", 1},
-        { "military-science-pack",   2 },
-        -- {"metallurgic-science-pack", 2},
+        { "automation-science-pack",  1 },
+        { "logistic-science-pack",    1 },
+        { "chemical-science-pack",    1 },
+        { "utility-science-pack",     1 },
+        { "military-science-pack",    2 },
+        { "metallurgic-science-pack", 2 },
       },
       time = 45,
       count = 400
@@ -85,7 +85,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "casting-heavy-ammo-tech", "metallurgic-science-pack" },
+    prerequisites = { "casting-heavy-ammo-tech", "metallurgic-science-pack", "production-science-pack" },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },
@@ -96,7 +96,6 @@ data:extend({
         { "production-science-pack",  1 },
         { "space-science-pack",       1 },
         { "metallurgic-science-pack", 2 },
-        -- {"electromagnetic-science-pack", 2},
       },
       time = 60,
       count = 800
@@ -150,11 +149,11 @@ data:extend({
   },
 })
 
-if settings.startup["uranium-shotgun-shells"] then
-  oc_helper.add_recipe_unlocks({{
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
+  oc_tech.add_recipe_unlocks({ {
     ["uranium-shotgun-shell"] = "uranium-ammo",
     ["oc-casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
-  }})
+  } })
 end
 
 -- Conditionally included technologies: explosive ammo (including heavy artillery shells)
@@ -163,8 +162,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     { -- casting explosive cannon shells and artillery shells
       type = "technology",
       name = "casting-explosive-ammo-tech",
-      icons =
-      {
+      icons = {
         {
           icon = "__base__/graphics/technology/explosives.png",
           icon_size = 256,
@@ -195,9 +193,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         { type = "unlock-recipe", recipe = "oc-casting-explosive-cannon-shell" },
         { type = "unlock-recipe", recipe = "oc-casting-explosive-uranium-cannon-shell" },
         { type = "unlock-recipe", recipe = "oc-casting-artillery-shell" },
-        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
-        -- { type = "unlock-recipe", recipe = "oc-casting-heavy-artillery-shell" },
-        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" }
       },
     },
   })
@@ -207,7 +202,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
       ["heavy-artillery-shell"] = "casting-explosive-ammo-tech",
       ["heavy-artillery-shell-upgrading"] = "casting-explosive-ammo-tech",
     }
-    oc_helper.add_recipe_unlocks(heavy_art)
+    oc_tech.add_recipe_unlocks(heavy_art)
   end
 else
   -- tech is disabled but heavy artillery might be enambled
@@ -216,7 +211,7 @@ else
     ["heavy-artillery-shell"] = "artillery",
     ["heavy-artillery-shell-upgrading"] = "artillery",
   }
-  oc_helper.add_recipe_unlocks(heavy_art)
+  oc_tech.add_recipe_unlocks(heavy_art)
 end
 
 if settings.startup["allow-bio-explosives"].value then
@@ -237,13 +232,14 @@ if settings.startup["allow-bio-explosives"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = { "biochamber", "explosives", "chemical-science-pack" },
+      prerequisites = { "biochamber", "explosives", "chemical-science-pack", "agricultural-science-pack" },
       unit = {
         ingredients = {
-          { "automation-science-pack", 1 },
-          { "logistic-science-pack",   1 },
-          { "chemical-science-pack",   2 },
-          -- {"agricultural-science-pack", 2}, -- not included to make a gleba-start more fun
+          { "automation-science-pack",   1 },
+          { "logistic-science-pack",     1 },
+          { "chemical-science-pack",     2 },
+          { "space-science-pack",        1 },
+          { "agricultural-science-pack", 2 }, -- not included to make a gleba-start more fun
         },
         time = 30,
         count = 150
@@ -276,8 +272,8 @@ if settings.startup["allow-bio-explosives"].value then
           { "logistic-science-pack",   1 },
           { "chemical-science-pack",   1 },
           { "military-science-pack",   2 },
-          -- {"space-science-pack", 1},
-          -- {"agricultural-science-pack", 2}, -- not included to make a gleba-start more fun
+          {"space-science-pack", 1},
+          {"agricultural-science-pack", 2}, -- not included to make a gleba-start more fun
         },
         time = 45,
         count = 200
@@ -489,10 +485,10 @@ if settings.startup["armour-plating"].value then
       ["light-armour-plating-tech"] = { "heavy-armor", "military-2", "electronics" },
       ["heavy-armour-plating-tech"] = { "modular-armor", "automobilism", "military-science-pack", "solar-panel-equipment", "advanced-material-proces", "chemical-science-pack" },
     }
-    oc_helper.remove_prerequisites(remove_prereps)
-    oc_helper.add_prerequisites(adding_prereps)
+    oc_tech.remove_prerequisites(remove_prereps)
+    oc_tech.add_prerequisites(adding_prereps)
     -- also make the techs easier/cheaper
-    oc_helper.remove_tech_ingredient("light-armour-plating-tech", "military-science-pack")
+    oc_tech.remove_tech_ingredient("light-armour-plating-tech", "military-science-pack")
     -- data.raw["technology"]["light-armour-plating-tech"].unit.ingredients = {
     --   { "automation-science-pack", 1 },
     --   { "logistic-science-pack",   1 },
@@ -507,7 +503,7 @@ if settings.startup["armour-plating"].value then
     local remove_prereps = {
       ["solar-panel-equipment"] = { "modular-armor" },
     }
-    oc_helper.remove_prerequisites(remove_prereps)
+    oc_tech.remove_prerequisites(remove_prereps)
     local add_prereps = {
       ["solar-panel-equipment"] = { "heavy-armor", "electronics", "military-2" },
       -- make sure follow-up techs are still properly locked
@@ -515,7 +511,7 @@ if settings.startup["armour-plating"].value then
       ["belt-immunity-equipment"] = { "modular-armor", "advanced-circuit" },
       ["night-vision-equipment"] = { "modular-armor", "advanced-circuit" },
     }
-    oc_helper.add_prerequisites(add_prereps)
+    oc_tech.add_prerequisites(add_prereps)
   end
 end
 
@@ -560,29 +556,30 @@ if settings.startup["nuclear-ammo"].value then
   })
   -- add the optional techs as prerequisites
   if settings.startup["allow-bio-explosives"].value then
-    oc_helper.add_prerequisites({ ["nuclear-ammo-tech"] = "bio-rocketry-tech" })
+    oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = "bio-rocketry-tech" })
   end
   if settings.startup["allow-casting-explosive-ammo"].value then
-    oc_helper.add_prerequisites({ ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech" })
+    oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech" })
   end
 end
 
 -- changes to vanilla techs
-if settings.startup["space-fish"].value and settings.startup["allow-bio-explosives"].value then
-  oc_helper.add_recipe_unlocks({ ["space-fish-breeding"] = { "fish-breeding" } })
+if settings.startup["space-fish"].value then
+  oc_tech.add_recipe_unlocks({ ["space-fish-breeding"] = { "fish-breeding" } })
 end
 
 -- changes to mod tech
 if settings.startup["casting-weapons"].value then
   -- adding recipes to techs
   local recipe_tech_mapping = {
-    ["oc-casting-gun-turret"] = { "casting-light-ammo-tech" },
     ["oc-casting-pistol"] = { "casting-light-ammo-tech" },
     ["oc-casting-submachine-gun"] = { "casting-light-ammo-tech" },
     ["oc-casting-shotgun"] = { "casting-light-ammo-tech" },
     ["oc-casting-combat-shotgun"] = { "casting-heavy-ammo-tech" },
     ["oc-pulse-rocket-launcher"] = { "bio-rocketry-tech" },
     ["oc-casting-flamethrower"] = { "casting-explosive-ammo-tech" },
+    ["oc-casting-gun-turret"] = { "casting-light-ammo-tech" },
+    ["oc-casting-flamethrower-turret"] = { "casting-explosive-ammo-tech" },
   }
-  oc_helper.add_recipe_unlocks(recipe_tech_mapping)
+  oc_tech.add_recipe_unlocks(recipe_tech_mapping)
 end

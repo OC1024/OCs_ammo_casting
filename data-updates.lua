@@ -18,7 +18,7 @@ if mods["strategy-mortar-turret"] then
   require("prototypes.compatibilty.stategy-mortar-turret") -- note that there has to be a step in the data-final-fixes stage
 end
 
-if mods["scattergun_turret"] then
+if mods["scattergun_turret"] then -- modular turret mod
   require("prototypes.compatibilty.scattergun_turret")
 end
 
@@ -38,6 +38,10 @@ if mods["Uranium-Artillery-Shell"] then -- experimental
   require("prototypes.compatibilty.Uranium-Artillery-Shell")
 end
 
+if mods["atomic-land-mine"] then
+  require("prototypes.compatibilty.atomic-land-mines")
+end
+
 if mods["AmmoGroup"] then -- reversing the subgroup thing
   require("prototypes.compatibilty.AmmoGroup")
 end
@@ -53,3 +57,9 @@ end
 if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end
+
+if mods["any-planet-strategy"] then
+  require("any-planet-start")
+end
+
+require("technology-update")

@@ -8,22 +8,18 @@ data:extend({
     name = "tungsten-rounds-magazine",
     icon = "__OCs_ammo_casting__/graphics/icons/tungsten-firearm-magazine.png",
     ammo_category = "bullet",
-    ammo_type =
-    {
+    ammo_type = {
       range_modifier = 1.25,
-      action =
-      {
+      action = {
         type = "direct",
-        action_delivery =
-        {
+        action_delivery = {
           type = "instant",
           source_effects =
           {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
           },
-          target_effects =
-          {
+          target_effects = {
             {
               type = "create-entity",
               entity_name = "explosion-hit",
@@ -44,7 +40,7 @@ data:extend({
     },
     magazine_size = 10,
     subgroup = "ammo",
-    order = "a[piercing-rounds-magazine]-c[tungsten-rounds-magazine]",
+    order = "a[basic-clips]-d[tungsten-rounds-magazine]",
     inventory_move_sound = item_sounds.ammo_small_inventory_move,
     pick_sound = item_sounds.ammo_small_inventory_pickup,
     drop_sound = item_sounds.ammo_small_inventory_move,
@@ -58,20 +54,16 @@ data:extend({
     icon_size = 64,
     icon_mipmaps = 4,
     ammo_category = "shotgun-shell",
-    ammo_type =
-    {
+    ammo_type = {
       range_modifier = 1.25,
       target_type = "direction",
       clamp_position = true,
-      action =
-      {
+      action = {
         {
           type = "direct",
-          action_delivery =
-          {
+          action_delivery = {
             type = "instant",
-            source_effects =
-            {
+            source_effects = {
               {
                 type = "create-explosion",
                 entity_name = "explosion-gunshot"
@@ -82,8 +74,7 @@ data:extend({
         {
           type = "direct",
           repeat_count = 16, -- amout of pellets
-          action_delivery =
-          {
+          action_delivery = {
             type = "projectile",
             projectile = "tungsten-shotgun-pellet",
             starting_speed = 1,
@@ -97,7 +88,7 @@ data:extend({
     },
     magazine_size = 10,
     subgroup = "ammo",
-    order = "b-[shotgun]-b[piercing-shotgun-shells]",
+    order = "b-[shotgun]-d[tungsten]",
     inventory_move_sound = item_sounds.ammo_small_inventory_move,
     pick_sound = item_sounds.ammo_small_inventory_pickup,
     drop_sound = item_sounds.ammo_small_inventory_move,
@@ -109,15 +100,12 @@ data:extend({
     name = "tungsten-cannon-shell",
     icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell.png",
     ammo_category = "cannon-shell",
-    ammo_type =
-    {
+    ammo_type = {
       range_modifier = 1.25,
       target_type = "direction",
-      action =
-      {
+      action = {
         type = "direct",
-        action_delivery =
-        {
+        action_delivery = {
           type = "projectile",
           projectile = "tungsten-cannon-projectile",
           starting_speed = 1,
@@ -125,8 +113,7 @@ data:extend({
           range_deviation = 0.1,
           max_range = 30 * 1.375,
           min_range = 5,
-          source_effects =
-          {
+          source_effects = {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
           }
@@ -146,13 +133,11 @@ data:extend({
     name = "tungsten-railgun-ammo",
     icon = "__OCs_ammo_casting__/graphics/icons/tungsten-railgun-ammo.png",
     ammo_category = "railgun",
-    ammo_type =
-    {
+    ammo_type = {
       range_modifier = 1.25,
       target_type = "direction",
       clamp_position = true,
-      action =
-      {
+      action = {
         type = "line",
         range = 50 * 1.25,
         width = 1,
@@ -161,16 +146,13 @@ data:extend({
           type = "create-explosion",
           entity_name = "railgun-beam"
         },
-        action_delivery =
-        {
+        action_delivery = {
           type = "instant",
-          target_effects =
-          {
+          target_effects = {
             type = "damage",
             damage = { amount = 10000, type = "physical" }
           },
-          source_effects =
-          {
+          source_effects = {
             type = "create-explosion",
             entity_name = "explosion-gunshot"
           }
@@ -201,21 +183,17 @@ if settings.startup["heavy-artillery-shells"].value then
       icon_size = 64,
       icon_mipmaps = 4,
       ammo_category = "artillery-shell",
-      ammo_type =
-      {
+      ammo_type = {
         target_type = "position",
-        action =
-        {
+        action = {
           type = "direct",
-          action_delivery =
-          {
+          action_delivery = {
             type = "artillery",
             projectile = "heavy-artillery-projectile",
             starting_speed = 0.8, -- -20% range
             direction_deviation = 0,
             range_deviation = 0,
-            source_effects =
-            {
+            source_effects = {
               type = "create-explosion",
               entity_name = "artillery-cannon-muzzle-flash"
             }
@@ -263,7 +241,7 @@ if settings.startup["armour-plating"] then
   data:extend(items) -- add to the game
 end
 
-if settings.startup["uranium-shotgun-shells"] then
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
   data:extend({
     { -- uranium shotgun shell
       type = "ammo",
@@ -272,22 +250,17 @@ if settings.startup["uranium-shotgun-shells"] then
         icon = "__OCs_ammo_casting__/graphics/icons/uranium-shotgun-shell.png",
         icon_size = 64,
         icon_mipmaps = 4,
-        -- tint = { r = 0.5, g = 1.0, b = 0.5 }
       } },
       ammo_category = "shotgun-shell",
-      ammo_type =
-      {
+      ammo_type = {
         target_type = "direction",
         clamp_position = true,
-        action =
-        {
+        action = {
           {
             type = "direct",
-            action_delivery =
-            {
+            action_delivery = {
               type = "instant",
-              source_effects =
-              {
+              source_effects = {
                 {
                   type = "create-explosion",
                   entity_name = "explosion-gunshot"
@@ -298,8 +271,7 @@ if settings.startup["uranium-shotgun-shells"] then
           {
             type = "direct",
             repeat_count = 16, -- amout of pellets
-            action_delivery =
-            {
+            action_delivery = {
               type = "projectile",
               projectile = "uranium-shotgun-pellet",
               starting_speed = 1,
@@ -313,7 +285,7 @@ if settings.startup["uranium-shotgun-shells"] then
       },
       magazine_size = 10,
       subgroup = "ammo",
-      order = "b-[shotgun]-b[piercing-shotgun-shells]",
+      order = "b-[shotgun]-c[uranium]",
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,

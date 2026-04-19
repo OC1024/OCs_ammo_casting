@@ -1,6 +1,7 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
-local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
+local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 
 -- casting all KingJoe ammos
 local casting_dict = {
@@ -65,7 +66,7 @@ if settings.startup["casting-weapons"].value then
 end
 
 -- add recipes to technology
-local mapping = {
+local unlocking_tech = {
     -- === vehicles/ammo === --
     -- kj_pak_gun
     ["oc-casting-kj_pak_ap"] = "casting-heavy-ammo-tech",
@@ -120,7 +121,7 @@ local mapping = {
     ["oc-casting-kj_mg42_hand"] = {"kj_maustank"},
     ["oc-casting-kj_mg3_hand"] = {"kj_2a6"},
 }
-oc_helper.add_recipe_unlocks(mapping)
+oc_tech.add_recipe_unlocks(unlocking_tech)
 
 -- move to subgroup
 -- if modsettings exist and true, then within the KJ groupd, have the subgroup
@@ -135,8 +136,10 @@ if data.raw["item-group"]["kj_group"] then
     })
 end
 
+local subgroup_mapping = {}
+
 for key, _ in pairs(casting_dict) do
-    mapping[key] = "alternative-ammo"
+    subgroup_mapping[key] = "alternative-ammo"
 end
 
-oc_helper.change_recipes_subgroup(mapping)
+oc_recipe.change_recipes_subgroup(subgroup_mapping)

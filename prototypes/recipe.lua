@@ -1,7 +1,8 @@
 local plating_variants = require("prototypes.utils.plating_variants")
-local tungsten_steel_mode = settings.startup["tungsten-steel-ammo"].value
+local tungsten_steel_mode = settings.startup["tungsten-steel-ammo"].value -- true means "use tungsten-plate"
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api") -- pepare the generator
 local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
 
 --- either tungsten-plate or tungsten-carbide + steel-plate
 ---@param n integer --amount of (n tungsten-plate) OR (2*n of tungten-carbide + n of steel-plate)
@@ -106,7 +107,7 @@ data:extend({
 })
 
 -- uranium shotgun shell (avoid duplicates)
-if not mods["scattergun_turret"] then
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
   data:extend({
     { -- uranium shotgun shell
       type = "recipe",
@@ -232,8 +233,7 @@ if settings.startup["space-fish"].value then
     { -- fish-breeding shamelessly copied from space-age-dlc. space version
       type = "recipe",
       name = "space-fish-breeding",
-      icons =
-      {
+      icons = {
         {
           icon = "__space-age__/graphics/icons/fish-breeding.png",
           icon_size = 64,
@@ -253,16 +253,10 @@ if settings.startup["space-fish"].value then
       auto_recycle = false,
       energy_required = 6,
       enabled = false,
-      surface_conditions =
-      {
-        {
-          property = "gravity",
-          min = 0,
-          max = 0
-        }
+      surface_conditions = {
+        { property = "gravity", min = 0, max = 0 }
       },
-      ingredients =
-      {
+      ingredients = {
         { type = "item",  name = "raw-fish",  amount = 2,  ignored_by_stats = 2 },
         { type = "item",  name = "nutrients", amount = 110 }, -- vanilla is 100. Positive-feedback-loop now at +10 instead of +20 per cycle.
         { type = "fluid", name = "water",     amount = 100 }
@@ -270,8 +264,7 @@ if settings.startup["space-fish"].value then
       results = { { type = "item", name = "raw-fish", amount = 4 } }, -- percent_spoiled=0.5
       allow_productivity = false,
       allow_quality = false,
-      crafting_machine_tint =
-      {
+      crafting_machine_tint = {
         primary = { 0, 0, 1, 1 },
         secondary = { 0, 0, 1, 1 }
       },
@@ -294,7 +287,8 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["light"].tint,
         },
       },
-      category = "crafting",
+      category = "advanced-crafting",--not handcraftable, assembler-2 needed
+      -- category = "metallurgy-or-assembling",--not handcraftable
       group = "combat",
       subgroup = "armour-plating",
       enabled = false,
@@ -446,13 +440,14 @@ if settings.startup["armour-plating"].value then
   if settings.startup["earlier-armor-plating"].value then
     -- replace_ingredient("heavy-armour-plating", "item", "carbon", "item", "coal", true)
     -- remove_ingredient("heavy-armour-plating", "item", "electric-circuit", 4)
-    oc_helper.remove_ingredient("heavy-armour-plating", "item", "low-density-structure", 2)
-    oc_helper.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)    -- 2x2steel-plate + 2x5plastic-bar. round down
-    oc_helper.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40) -- 2x20copper-plate
+    oc_recipe.remove_ingredient("heavy-armour-plating", "item", "low-density-structure", 2)
+    oc_recipe.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)    -- 2x2steel-plate + 2x5plastic-bar. round down
+    oc_recipe.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40) -- 2x20copper-plate
+    data.raw["recipe"]["light-armour-plating"].category = "basic-crafting" -- assembler-1 allowed
   end
   if settings.startup["earlier-solar-panel-equipment"].value then
-    oc_helper.remove_ingredient("solar-panel-equipment", "item", "advanced-circuit", 2)
-    oc_helper.add_ingredient("solar-panel-equipment", "item", "electronic-circuit", 10) -- 2x2=4 but it shall not to be to cheap
+    oc_recipe.remove_ingredient("solar-panel-equipment", "item", "advanced-circuit", 2)
+    oc_recipe.add_ingredient("solar-panel-equipment", "item", "electronic-circuit", 10) -- 2x2=4 but it shall not to be to cheap
   end
 end
 
@@ -586,21 +581,19 @@ local casting_dict = {
   ["explosive-rocket"]         = "organic",
 }
 -- add optional recipes to the casting_dict
-if not mods["scattergun_turret"] then
+if data.raw["item"]["uranium-shotgun-shell"] then
   casting_dict["uranium-shotgun-shell"] = "metallurgy"
 end
 if settings.startup["casting-weapons"].value then
   -- weapons
-  casting_dict["gun-turret"] = "metallurgy"
-  casting_dict["combat-shotgun"] = "metallurgy"
-  casting_dict["flamethrower"] = "metallurgy"
-  casting_dict["rocket-launcher"] = "electromagnetics"
   casting_dict["pistol"] = "metallurgy"
   casting_dict["submachine-gun"] = "metallurgy"
+  casting_dict["flamethrower"] = "metallurgy"
   casting_dict["shotgun"] = "metallurgy"
   casting_dict["combat-shotgun"] = "metallurgy"
   casting_dict["rocket-launcher"] = "electromagnetics"
-  casting_dict["flamethrower"] = "metallurgy"
+  casting_dict["gun-turret"] = "metallurgy"
+  casting_dict["flamethrower-turret"] = "metallurgy"
 end
 if settings.startup["nuclear-ammo"].value then
   casting_dict["atomic-bomb"] = "cryogenics"
@@ -638,4 +631,4 @@ local mapping = {
   ["oc-bio-explosive-rocket"] = "alternative-ammo",
   ["oc-cryo-atomic-bomb"] = "alternative-ammo",
 }
-oc_helper.change_recipes_subgroup(mapping)
+oc_recipe.change_recipes_subgroup(mapping)

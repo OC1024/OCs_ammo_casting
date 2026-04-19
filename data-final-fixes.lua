@@ -9,7 +9,7 @@ end
 -- fix "mortar-cluster-bomb" technology missing prerequisite (its defined in the data-fina-fixes stage)
 if mods["ironclad-gunboad-and-mortar-turret"] then
     local adding_prereq_dict = {
-        ["casting-chemical-mortar-ammo-tech"] = { "mortar-cluster-bomb"}, -- fire bomb already added in data-update stage
+        ["oc-casting-chemical-mortar-ammo-tech"] = { "mortar-cluster-bomb"}, -- fire bomb already added in data-update stage
     }
     oc_helper.add_prerequisites(adding_prereq_dict)
 end

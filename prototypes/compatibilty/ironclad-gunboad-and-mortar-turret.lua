@@ -1,6 +1,7 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
-local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
+local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 
 -- optional TODO: create new tungsten mortar dart/ tungsten shrapnel ammo
 
@@ -35,11 +36,12 @@ data:extend({
         prerequisites = { "casting-basic-mortar-ammo-tech", "military-4", "ironclad" },
         unit = {
             ingredients = {
-                { "automation-science-pack", 1 },
-                { "logistic-science-pack",   1 },
-                { "military-science-pack",   2 },
-                { "chemical-science-pack",   2 },
-                -- {"metallurgic-science-pack", 2},
+                { "automation-science-pack",  1 },
+                { "logistic-science-pack",    1 },
+                { "military-science-pack",    2 },
+                { "chemical-science-pack",    2 },
+                { "space-science-pack",       1 }, -- removed if earler
+                { "metallurgic-science-pack", 2 }, -- removed if earler
             },
             time = 30,
             count = 150
@@ -47,7 +49,7 @@ data:extend({
         effects = {
             { type = "unlock-recipe", recipe = "oc-casting-mortar-fire-bomb" },
             { type = "unlock-recipe", recipe = "oc-casting-mortar-poison-bomb" },
-            { type = "unlock-recipe", recipe = "oc-casting-mortar-cluster-bomb" },-- require military-4, else military-2 is sufficient.
+            { type = "unlock-recipe", recipe = "oc-casting-mortar-cluster-bomb" }, -- require military-4, else military-2 is sufficient.
         },
     },
 })
@@ -55,17 +57,17 @@ data:extend({
 local removing_prereq_dict = {
     ["oc-casting-basic-mortar-ammo-tech"] = { "ironclad" }, -- decouple mortar from ironclad
 }
-oc_helper.remove_prerequisites(removing_prereq_dict)
+oc_tech.remove_prerequisites(removing_prereq_dict)
 local adding_prereq_dict = {
     -- would need "military-4" for the clusterbomb. maybe moving the clusterbomb to the casting-explosive-ammo-tech
-    ["oc-casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3"},
-    ["oc-casting-explosive-ammo-tech"] = {"oc-casting-chemical-mortar-ammo-tech"},
+    ["oc-casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3" },
+    ["oc-casting-explosive-ammo-tech"] = { "oc-casting-chemical-mortar-ammo-tech" },
 }
-oc_helper.add_prerequisites(adding_prereq_dict)
+oc_tech.add_prerequisites(adding_prereq_dict)
 
 -- remove recipe from techs
-oc_helper.remove_recipe_unlocks({
-    {["oc-casting-mortar-cluster-bomb"] = "casting-basic-mortar-ammo-tech"}
+oc_tech.remove_recipe_unlocks({
+    { ["oc-casting-mortar-cluster-bomb"] = "casting-basic-mortar-ammo-tech" }
 })
 
 -- add recipes to technology
@@ -76,7 +78,7 @@ local mapping = {
     ["oc-casting-ironclad-gunboat"] = "ironclad-gunboat",
     ["oc-casting-mortar-turret"] = "mortar-turret",
 }
-oc_helper.add_recipe_unlocks(mapping)
+oc_tech.add_recipe_unlocks(mapping)
 -- TODO: create new techs or reordering them slightly to make the mortar ammor still midgame (midgame+vulcanus) available
 -- Note: keep Any_planet in mind such that a vulcanus run feels even better.
 -- Note: Mortar still shall be midgame (even on vuclanus start)
@@ -87,4 +89,4 @@ local mapping = {
     ["mortar-fire-bomb"] = "mortar-ammo",
     ["mortar-poison-bomb"] = "mortar-ammo",
 }
-oc_helper.change_recipes_subgroup(mapping)
+oc_recipe.change_recipes_subgroup(mapping)

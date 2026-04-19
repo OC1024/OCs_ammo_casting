@@ -40,7 +40,7 @@ data:extend({
         name = "armour-plating",
         setting_type = "startup",
         default_value = true,
-        order = "d-a"
+        order = "d-a",
     },
     { -- early armor grid
         type = "string-setting",
@@ -48,21 +48,21 @@ data:extend({
         setting_type = "startup",
         allowed_values = { "light-armor", "heavy-armor", "none" },
         default_value = "heavy-armor",
-        order = "d-b"
+        order = "d-b",
     },
     { -- earlier armor plating (requires armour-plating to be true)
         type = "bool-setting",
         name = "earlier-armor-plating", -- requires armour-plating to be true
         setting_type = "startup",
         default_value = false,
-        order = "d-c"
+        order = "d-c",
     },
     { -- earlier solar panel equipment
         type = "bool-setting",
         name = "earlier-solar-panel-equipment",
         setting_type = "startup",
         default_value = false,
-        order = "d-d"
+        order = "d-d",
     },
     -- crafting options
     { -- tungsten steel ammo (changes tungsten carbide+steel to tungsten steel)
@@ -70,20 +70,34 @@ data:extend({
         name = "tungsten-steel-ammo",
         setting_type = "startup",
         default_value = false,
-        order = "e-a"
+        order = "e-a",
+    },
+    { -- uranium steel ammo
+        type = "bool-setting",
+        name = "uranium-shotgun-shell",
+        setting_type = "startup",
+        default_value = true,
+        order = "e-b",
     },
     { -- vanilla nuclear rockets and key setting for fusion, anitmatter, ...
         type = "bool-setting",
         name = "nuclear-ammo",
         setting_type = "startup",
         default_value = true,
-        order = "f-a"
+        order = "f-a",
     },
     { -- [K2SO: antimatter ammo] (requires nuclear ammo TRUE)
         type = "bool-setting",
         name = "antimatter-ammo",
         setting_type = "startup",
         default_value = false,
-        order = "f-b"
+        order = "f-b",
+    },
+    {
+        type = "bool-setting",
+        name = "earlier-alt-ammo-techs",
+        setting_type = "startup",
+        default_value = true,
+        order = "g",
     }
 })

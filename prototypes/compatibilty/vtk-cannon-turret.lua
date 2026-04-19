@@ -1,6 +1,7 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
-local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
+local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 
 local projtungsten = table.deepcopy(data.raw["projectile"]["tungsten-cannon-projectile"])
 local item_sounds = require("__base__.prototypes.item_sounds")
@@ -11,27 +12,24 @@ projtungsten.force_condition = "not-same"
 projtungsten.hit_collision_mask = { layers = { object = true, player = true, train = true, trigger_target = true } }
 
 data:extend({
-    projtungsten,
-  })
+  projtungsten,
+})
 log("Thanks the clean code, vtk! Sincerely, OC1024.")
 
--- item/ammo
 data:extend({
+  -- item/ammo
   { -- tungsten cannon shell magazine
     type = "ammo",
     name = "tungsten-cannon-shell-magazine",
     icon = "__OCs_ammo_casting__/graphics/icons/tungsten-cannon-shell-magazine.png",
     ammo_category = "cannon-shell-magazine",
-    ammo_type =
-    {
+    ammo_type = {
       category = "cannon-shell-magazine",
       range_modifier = 1.25,
       target_type = "direction",
-      action =
-      {
+      action = {
         type = "direct",
-        action_delivery =
-        {
+        action_delivery = {
           type = "projectile",
           projectile = "tungsten-cannon-magazine-projectile",
           starting_speed = 1,
@@ -56,9 +54,7 @@ data:extend({
     stack_size = 20,
     weight = (40 * 10 + 20) * kg -- +20*kg accound for the magazinie clip
   },
-})
--- crafting
-data:extend({
+  -- crafting
   { -- tungsten-cannon-shell-magazine
     type = "recipe",
     name = "tungsten-cannon-shell-magazine",
@@ -116,4 +112,15 @@ if settings.startup["allow-casting-explosive-ammo"].value then
   recipe_unlock_mapping["oc-casting-explosive-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
   recipe_unlock_mapping["oc-casting-explosive-uranium-cannon-shell-magazine"] = { "casting-explosive-ammo-tech" }
 end
-oc_helper.add_recipe_unlocks(recipe_unlock_mapping)
+oc_tech.add_recipe_unlocks(recipe_unlock_mapping)
+
+local subgroup_mapping = {}
+
+for key, _ in pairs(casting_dict) do
+    subgroup_mapping[key] = "alternative-ammo"
+end
+-- weapons are not ammo
+subgroup_mapping["vtk-cannon-turret"] = nil
+subgroup_mapping["vtk-cannon-turret-heavy"] = nil
+
+oc_recipe.change_recipes_subgroup(subgroup_mapping)

@@ -1,9 +1,10 @@
 --  load api
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
-local oc_helper = require("__OCs_base_assets__.prototypes.utils.helper")
+local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
+local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 
 if settings.startup["allow-casting-explosive-ammo"].value then
-    generator_api.batch_generator({ ["uranium-artillery-shell"] = "metallurgy", }) -- very heavy artillery shell, not nuclear
+    generator_api.batch_generator({ ["uranium-artillery-shell"] = "metallurgy", }) -- very heavy artillery shell, not thermo-nuclear
 
     oc_helper.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "uranium-artillery-shell" }, })
 
@@ -16,7 +17,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
             ["uranium-artillery-shell-mk2"] = "metallurgy",
         }
         generator_api.batch_generator(casting_dict)
-        oc_helper.add_prerequisites({ ["nuclear-ammo-tech"] = { "uranium-artillery-shell-mk2" } })
+        oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = { "uranium-artillery-shell-mk2" } })
     end
 end
 
@@ -26,4 +27,4 @@ local mapping = {
     -- ["oc-casting-stabilized-radiation-core"] = "alternative-ammo",
     ["oc-casting-uranium-artillery-shell-mk2"] = "alternative-ammo",
 }
-oc_helper.change_recipes_subgroup(mapping)
+oc_recipe.change_recipes_subgroup(mapping)
