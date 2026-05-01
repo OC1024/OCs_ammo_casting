@@ -13,8 +13,8 @@ local casting_dict = {
 }
 generator_api.batch_generator(casting_dict)
 --replace u238 with thorium in the thorium ammo recipes
-oc_recipe.replace_ingredient("oc-casting-thorium-rounds-magazine", "item", "uranium-238", "item", "thorium", true)
-oc_recipe.replace_ingredient("oc-casting-thorium-cannon-shell", "item", "uranium-238", "item", "thorium", true)
+oc_recipe.replace_ingredient("oc-casting-thorium-rounds-magazine", "item", "uranium-238", "item", "thorium")
+oc_recipe.replace_ingredient("oc-casting-thorium-cannon-shell", "item", "uranium-238", "item", "thorium")
 
 local mapping = {
   ["oc-casting-thorium-rounds-magazine"] = "alternative-ammo",
@@ -74,7 +74,7 @@ if mods["Krastorio2-spaced-out"] then
     -- complat patch with K2SO - should be done within metal-and-stars mod instead.
     table.insert(all_bullets, r)
     -- compat patch for all three mods (yea this has to be done by me)
-    table.insert(all_bullets, "casting-" .. r)
+    table.insert(all_bullets, "oc-casting-" .. r)
   end
 end
 

@@ -81,12 +81,10 @@ if settings.startup["casting-weapons"].value then
       },
       prerequisites = {
         "casting-light-ammo-tech",
-        "w93-modular-turrets2",
-        "w93-scattergun-turrets",
-        "space-science-pack",
-        "utility-science-pack",
-        "production-science-pack",
-        "metallurgic-science-pack",
+        "w93-modular-turrets",
+        "space-science-pack", -- removed if cheaper
+        "utility-science-pack", -- removed if cheaper
+        "metallurgic-science-pack", -- removed if cheaper
       },
       unit = {
         ingredients = {
@@ -95,8 +93,7 @@ if settings.startup["casting-weapons"].value then
           { "chemical-science-pack",    1 },
           { "military-science-pack",    2 },
           { "utility-science-pack",     1 }, -- removed if cheaper
-          { "production-science-pack",  1 }, -- removed if cheaper
-          { "space-science-pack",       1 },
+          { "space-science-pack",       1 }, -- removed if cheaper
           { "metallurgic-science-pack", 2 }, -- removed if cheaper
         },
         time = 45,
@@ -105,7 +102,7 @@ if settings.startup["casting-weapons"].value then
       effects =
       {
         { type = "unlock-recipe", recipe = "oc-casting-w93-scattergun-turret" },
-        -- { type = "unlock-recipe", recipe = "oc-casting-w93-modular-turret-base" },
+        { type = "unlock-recipe", recipe = "oc-casting-w93-modular-turret-base" },
         { type = "unlock-recipe", recipe = "oc-casting-w93-modular-gun-hmg" },
         { type = "unlock-recipe", recipe = "oc-casting-w93-modular-gun-lcannon" },
       },
@@ -115,7 +112,7 @@ if settings.startup["casting-weapons"].value then
       name = "pulse-modular-turrets",
       icons = {
         {
-          icon = "__scattergun_turret__/graphics/technology/modular-turret-tech.png",
+          icon = "__scattergun_turret__/graphics/technology/modular-turret-radar-tech.png",
           icon_size = 128,
           icon_mipmaps = 1,
         },
@@ -126,13 +123,12 @@ if settings.startup["casting-weapons"].value then
         }
       },
       prerequisites = {
-        "casting-light-ammo-tech",
-        -- "w93-modular-turrets2",
+        "electromagnetic-plant", -- crafting building
+        "w93-modular-turrets2",
         "w93-modular-turrets-radar",
-        "space-science-pack",
-        "utility-science-pack",
-        "production-science-pack",
-        "electromagnetic-science-pack",
+        "space-science-pack", -- removed if cheaper
+        "utility-science-pack", -- removed if cheaper
+        "electromagnetic-science-pack", -- removed if cheaper
       },
       unit = {
         ingredients = {
@@ -141,8 +137,7 @@ if settings.startup["casting-weapons"].value then
           { "chemical-science-pack",        1 },
           { "military-science-pack",        2 },
           { "utility-science-pack",         1 },  -- removed if cheaper
-          { "production-science-pack",      1 },  -- removed if cheaper
-          { "space-science-pack",           1 },
+          { "space-science-pack",           1 }, -- removed if cheaper
           { "electromagnetic-science-pack", 2 },  -- removed if cheaper
         },
         time = 45,

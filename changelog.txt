@@ -1,4 +1,28 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.4
+Date: 2026-05-01
+  Bugfixes:
+    - [AAI Ironclad] Casting ironclad was not unlocked correctly.
+    - [Ironclad Gunboat and Mortar Turrent] Fixed that "Casting basic mortar ammo tech" required ironclad. Ship and turrent are decoupled.
+    - [Modular Turrets] Fixed that the casting recipe for the turret was not unlocked.
+    - Fixed that all other (non-armour platings) were unable to be used in vehicles. Bugreport by kullre_gun.
+    - [Metal and Stars] Fixed that castig ammo recipes did not receive the productivity bonus from the bullet prod tech.
+  Compatibility:
+    - Updated dependecy of [OCs Base Assets] to >=0.4.3, where helper functions were updated.
+    - Simple [Cupric Asteroids] compatibility added.
+    - [Any Planet Start] compat file now activated. For a Vulcanus-Start, it switches uranium and tungsten amm along new techs, while removing an obsolete one.
+      For the other planets, no big change so far. For all planets, it removes some prerequites and science pack costs for the starter planet, similar to rhe "earlier alt ammo techs" settings.
+      I included [Moshine] as a first modded planet if you want another one, please suggest it.
+  Changes:
+    - Added missing chemical sciene pack and non-Nauvis specific science pack prerequisites and costs for some techs. Gets mostly removed if "earlier alt ammo techs" setting is on.
+    - [Modular Turrents] Pulsing modular tech now does not require the casting tech branch. Also updated the icon to the radar tech.
+      Also removed production science pack from the prerequistes and costs for both "casting/pulse modular turrets tech".
+    - Making bio-explosives mandatory, aka. removing the option to disable it.
+    - Setting default value of "earlier alt ammo techs" to true. It is a legacy option.
+  Minor Features:
+    - New setting: fulgora coal. If on, the scrap recycling will yield coal instead of solid fuel. Enables grenades therefore military science pack. (Default: off)
+      I'd like to get your feedback if that is really usefull or not.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.3
 Date: 2026-04-19
   Balancing:

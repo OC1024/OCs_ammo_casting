@@ -6,10 +6,12 @@ grids.equipment_grids = {
     ["micro-equipment-grid"] = {
         width = 2,
         height = 3,
+        equipment_categories = {"armor"}
     },
     ["tiny-equipment-grid"] = {
         width = 4,
         height = 3,
+        equipment_categories = {"armor"}
     },
     -- just like from other mods
     ["car-equipment-grid"] = {

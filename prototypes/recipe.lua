@@ -287,7 +287,7 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["light"].tint,
         },
       },
-      category = "advanced-crafting",--not handcraftable, assembler-2 needed
+      category = "advanced-crafting", --not handcraftable, assembler-2 needed
       -- category = "metallurgy-or-assembling",--not handcraftable
       group = "combat",
       subgroup = "armour-plating",
@@ -438,12 +438,12 @@ if settings.startup["armour-plating"].value then
   })
 
   if settings.startup["earlier-armor-plating"].value then
-    -- replace_ingredient("heavy-armour-plating", "item", "carbon", "item", "coal", true)
+    -- replace_ingredient("heavy-armour-plating", "item", "carbon", "item", "coal")
     -- remove_ingredient("heavy-armour-plating", "item", "electric-circuit", 4)
     oc_recipe.remove_ingredient("heavy-armour-plating", "item", "low-density-structure", 2)
     oc_recipe.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)    -- 2x2steel-plate + 2x5plastic-bar. round down
     oc_recipe.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40) -- 2x20copper-plate
-    data.raw["recipe"]["light-armour-plating"].category = "basic-crafting" -- assembler-1 allowed
+    data.raw["recipe"]["light-armour-plating"].category = "basic-crafting"         -- assembler-1 allowed
   end
   if settings.startup["earlier-solar-panel-equipment"].value then
     oc_recipe.remove_ingredient("solar-panel-equipment", "item", "advanced-circuit", 2)
@@ -518,6 +518,21 @@ else -- nothing happens
   log("Vanilla Artillery shell untouched.")
 end
 
+-- Optional replace solid fuel with coal on scrap recycling on fulgora. This enables to craft grenates and to research with military science pack.
+local r = data.raw.recipe["scrap-recycling"]
+local has_coal = false
+for _, v in ipairs(r.results or {}) do
+  if v.type == "item" and v.name == "coal" then
+    has_coal = true
+    break
+  end
+end
+if settings.startup["fulgora-coal"].value and not has_coal then
+  oc_recipe.add_result("scrap-recycling", "item", "coal", 1, 0.07) -- 7% chance, just like solid fuel
+  oc_recipe.remove_result("scrap-recycling", "item", "solid-fuel", 1)
+end
+
+-- register alt recipes for generator API to save a bit of compuation power.
 local new_alt_recipes = {
   ["organic"] = {
     alternative_recipes = {
@@ -557,6 +572,7 @@ generator_api.register_multi_category_alt_recipes(new_alt_recipes)
 
 oc_helper.debug_log("__OCs_ammo_casting__ rules table: " .. serpent.block(generator_api.rules_table), "generator_api")
 
+-- generate new recipes with the generator API
 local casting_dict = {
   -- vanilla ammo casting
   ["firearm-magazine"]         = "metallurgy",

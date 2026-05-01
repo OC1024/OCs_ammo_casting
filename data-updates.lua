@@ -30,6 +30,10 @@ if mods["bzlead"] then
   require("prototypes.compatibilty.bzlead")
 end
 
+if mods["cupric-asteroids"] then
+  require("prototypes.compatibilty.cupric-asteroids")
+end
+
 if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
 end
@@ -58,7 +62,7 @@ if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end
 
-if mods["any-planet-strategy"] then
+if mods["any-planet-start"] then
   require("prototypes.compatibilty.any-planet-start")
 end
 

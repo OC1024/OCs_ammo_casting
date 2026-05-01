@@ -16,7 +16,7 @@ end
 generator_api.batch_generator(casting_dict)
 
 data:extend({
-    { -- casting basic mortar ammo
+    { -- casting basic mortar ammo tech
         type = "technology",
         name = "casting-basic-mortar-ammo-tech",
         icons = {
@@ -31,7 +31,7 @@ data:extend({
                 icon_mipmaps = 4,
             }
         },
-        prerequisites = { "foundry", "ironclad", "metallurgic-science-pack" }, -- early as possible
+        prerequisites = { "foundry", "ironclad", "space-science-pack", "metallurgic-science-pack" }, -- early as possible
         unit = {
             ingredients = {
                 { "automation-science-pack",  1 },
@@ -55,7 +55,7 @@ local adding_prereq_dict = {
 oc_tech.add_prerequisites(adding_prereq_dict)
 
 local recipe_unlock_mapping = {
-    ["casting-ironclad"] = "ironclad", -- if "casting weapons" is enabled
+    ["oc-casting-ironclad"] = "ironclad", -- if "casting weapons" is enabled
 }
 oc_tech.add_recipe_unlocks(recipe_unlock_mapping)
 

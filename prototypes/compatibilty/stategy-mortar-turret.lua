@@ -57,6 +57,7 @@ data:extend({
       -- "mortar-poison-bomb",
       -- "mortar-illumination-ammo",
       -- "mortar-hypnosis-ammo",
+      "space-science-pack",        -- removed if cheaper
       "utility-science-pack",      -- removed if cheaper
       "agricultural-science-pack", -- removed if cheaper
     },
@@ -67,7 +68,7 @@ data:extend({
         { "military-science-pack",     2 },
         { "chemical-science-pack",     2 },
         { "utility-science-pack",      1 }, -- removed if cheaper
-        { "space-science-pack",        1 },
+        { "space-science-pack",        1 }, -- removed if cheaper
         { "agricultural-science-pack", 2 }, -- removed if cheaper
       },
       time = 30,

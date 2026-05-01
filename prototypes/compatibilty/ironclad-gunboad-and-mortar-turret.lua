@@ -55,7 +55,7 @@ data:extend({
 })
 -- changing (ironclad) mod tech
 local removing_prereq_dict = {
-    ["oc-casting-basic-mortar-ammo-tech"] = { "ironclad" }, -- decouple mortar from ironclad
+    ["casting-basic-mortar-ammo-tech"] = { "ironclad" }, -- decouple mortar from ironclad
 }
 oc_tech.remove_prerequisites(removing_prereq_dict)
 local adding_prereq_dict = {
