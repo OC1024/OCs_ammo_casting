@@ -6,7 +6,7 @@ local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 if settings.startup["allow-casting-explosive-ammo"].value then
     generator_api.batch_generator({ ["uranium-artillery-shell"] = "metallurgy", }) -- very heavy artillery shell, not thermo-nuclear
 
-    oc_helper.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "uranium-artillery-shell" }, })
+    oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "uranium-artillery-shell" }, })
 
     if settings.startup["nuclear-ammo"].value then -- "nuclear" artillery shell and special ingredients
         local casting_dict = {
