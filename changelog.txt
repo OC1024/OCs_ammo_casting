@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.5
+Date: 2026-05-03
+  Bugfixes:
+    - Fixed that in [Metal and Stars] the bullet productivity research was not applied to the casting recipes.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.4
 Date: 2026-05-01
   Bugfixes:

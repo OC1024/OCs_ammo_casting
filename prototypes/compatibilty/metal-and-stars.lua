@@ -60,12 +60,12 @@ local kr_bullets = {
 local all_bullets = {}
 -- vanilla casting only
 for _, r in ipairs(vanilla_bullets) do
-  table.insert(all_bullets, "casting-" .. r)
+  table.insert(all_bullets, "oc-casting-" .. r)
 end
 -- oc normal + casting
 for _, r in ipairs(oc_bullets) do
   table.insert(all_bullets, r)
-  table.insert(all_bullets, "casting-" .. r)
+  table.insert(all_bullets, "oc-asting-" .. r)
 end
 
 if mods["Krastorio2-spaced-out"] then
