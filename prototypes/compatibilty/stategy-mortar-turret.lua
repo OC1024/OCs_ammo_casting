@@ -31,7 +31,9 @@ if settings.startup["casting-weapons"].value then
 end
 generator_api.batch_generator(casting_dict)
 
-data.raw.recipe["oc-casting-mortar-poison-bomb"].hidden = true -- overwrite old casting version in favor of the bio one.
+if data.raw.recipe["oc-casting-mortar-poison-bomb"] then
+  data.raw.recipe["oc-casting-mortar-poison-bomb"].hidden = true -- overwrite old casting version in favor of the bio one.
+end
 
 -- creating new mortat techs
 data:extend({

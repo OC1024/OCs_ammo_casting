@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.8
+Date: 2026-06-07
+  Bugfixes:
+    - Fixed recipe names in the English localisation.
+---------------------------------------------------------------------------------------------------
+Version: 0.9.7
+Date: 2026-05-05
+  Bugfixes:
+    - Fixed a crash with [Strategy Mortar Turret] if [Ironclad Gunboad and Mortar Turret] is not present.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.6
 Date: 2026-05-04
   Bugfixes:
