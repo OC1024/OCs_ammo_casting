@@ -88,7 +88,7 @@ data:extend({
     },
     magazine_size = 10,
     subgroup = "ammo",
-    order = "b-[shotgun]-d[tungsten]",
+    order = "b[shotgun]-d[tungsten]",
     inventory_move_sound = item_sounds.ammo_small_inventory_move,
     pick_sound = item_sounds.ammo_small_inventory_pickup,
     drop_sound = item_sounds.ammo_small_inventory_move,
@@ -241,7 +241,7 @@ if settings.startup["armour-plating"] then
   data:extend(items) -- add to the game
 end
 
-if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["ammo"]["uranium-shotgun-shell"]) then -- either "ammo" or "item", idk
   data:extend({
     { -- uranium shotgun shell
       type = "ammo",
@@ -285,7 +285,7 @@ if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["ur
       },
       magazine_size = 10,
       subgroup = "ammo",
-      order = "b-[shotgun]-c[uranium]",
+      order = "b[shotgun]-c[uranium]",
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,

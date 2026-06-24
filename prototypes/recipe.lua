@@ -107,16 +107,16 @@ data:extend({
 })
 
 -- uranium shotgun shell (avoid duplicates)
-if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["recipe"]["uranium-shotgun-shell"]) then
   data:extend({
     { -- uranium shotgun shell
       type = "recipe",
       name = "uranium-shotgun-shell",
-      icons = { {
-        icon = "__OCs_ammo_casting__/graphics/icons/uranium-shotgun-shell.png",
-        icon_size = 64,
-        icon_mipmaps = 4,
-      } },
+      -- icons = { {
+      --   icon = "__OCs_ammo_casting__/graphics/icons/uranium-shotgun-shell.png",
+      --   icon_size = 64,
+      --   icon_mipmaps = 4,
+      -- } },
       category = "crafting",
       group = "combat",
       subgroup = "ammo",
@@ -597,7 +597,7 @@ local casting_dict = {
   ["explosive-rocket"]         = "organic",
 }
 -- add optional recipes to the casting_dict
-if data.raw["item"]["uranium-shotgun-shell"] then
+if data.raw["ammo"]["uranium-shotgun-shell"] then
   casting_dict["uranium-shotgun-shell"] = "metallurgy"
 end
 if settings.startup["casting-weapons"].value then

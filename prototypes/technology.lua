@@ -221,11 +221,13 @@ data:extend({
   },
 })
 
-if settings.startup["uranium-shotgun-shell"].value and (not data.raw["item"]["uranium-shotgun-shell"]) then
-  oc_tech.add_recipe_unlocks({ {
+if settings.startup["uranium-shotgun-shell"].value then
+  log("ach geh ficken")
+  local uranium_shot = {
     ["uranium-shotgun-shell"] = "uranium-ammo",
     ["oc-casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
-  } })
+  }
+  oc_tech.add_recipe_unlocks(uranium_shot)
 end
 
 -- Conditionally included technologies: explosive ammo (including heavy artillery shells)

@@ -1,4 +1,10 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.9
+Date: 2026-06-24
+  Bugfixes:
+    - Fixed that uranium shotgun shell was not created even if the setting was on.
+    - Fixed tungsten and uranium shotgun shell inventory order.
+---------------------------------------------------------------------------------------------------
 Version: 0.9.8
 Date: 2026-06-07
   Bugfixes:
