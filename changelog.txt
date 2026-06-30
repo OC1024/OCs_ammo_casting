@@ -1,4 +1,19 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.0
+Date: 2026-06-28-wip
+  Major Features:
+    - Updated to Factorio 2.1
+  Balancing:
+    - Changed "casting light ammo tech" to require military 3 instead of military 2.
+    - Moved "casting piercing shotgun shells" from "casting heavy ammo tech" to "casting light ammo tech", because of Factorio 2.1 change.
+    - Added "military 4" as prerequisite for "casting heavy ammo tech", as combat shotgun is now unlocked by military 4 instead of military 3.
+    - Increased damage of tungsten and uranium shotgun shells from 20 to 24 per pellet, as piercing shells were incresed from 8 to 12.
+  Compatibility:
+    - Updated dependency of [OCs Base Assets] to >=0.5.0, where helper functions were updated.
+    - Better compatibility if [Any Planet Start] and [vtk cannon turret] are active.
+  Bugfixes:
+    - Fixed that [K2SO] imersite ammo was unlockable. Now unlocked with "casting immersive ammo tech".
+---------------------------------------------------------------------------------------------------
 Version: 0.9.9
 Date: 2026-06-24
   Bugfixes:
@@ -37,7 +52,7 @@ Date: 2026-05-01
     - Updated dependecy of [OCs Base Assets] to >=0.4.3, where helper functions were updated.
     - Simple [Cupric Asteroids] compatibility added.
     - [Any Planet Start] compat file now activated. For a Vulcanus-Start, it switches uranium and tungsten amm along new techs, while removing an obsolete one.
-      For the other planets, no big change so far. For all planets, it removes some prerequites and science pack costs for the starter planet, similar to rhe "earlier alt ammo techs" settings.
+      For the other planets, no big change so far. For all planets, it removes some prerequites and science pack costs for the starter planet, similar to the "earlier alt ammo techs" settings.
       I included [Moshine] as a first modded planet if you want another one, please suggest it.
   Changes:
     - Added missing chemical sciene pack and non-Nauvis specific science pack prerequisites and costs for some techs. Gets mostly removed if "earlier alt ammo techs" setting is on.

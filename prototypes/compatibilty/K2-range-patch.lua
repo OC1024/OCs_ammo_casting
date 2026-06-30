@@ -4,7 +4,8 @@ local ammo_range_patch = {
     ["kr-rifle-magazine"]  = 50, -- yellow ammo
     ["kr-armor-piercing-rifle-magazine"]  = 50, -- red ammo
     ["kr-uranium-rifle-magazine"] = 50, -- green ammo
-    ["kr-imersite-rifle-magazine"] = 50, -- pink ammo
+    ["kr-imersite-rifle-magazine"] = 50, -- pink ammo old
+    ["kr-imersite-rounds-magazine"] = 50, -- pink ammo new
     ["tungsten-rounds-magazine"] = 80, -- green ammo
 
     -- sniper ammo
@@ -19,7 +20,7 @@ local ammo_range_patch = {
     ["explosive-uranium-cannon-shell"] = 120,
     ["tungsten-cannon-shell"] = 150,
 
-    ["kr-impulse-rifle-ammo"] = 70,
+    ["kr-impulse-rifle-ammo"] = 70, -- impulse rifle ammo
 
     -- k2 heavy rockets
     -- ["kr-basic-rocket"] = 200,

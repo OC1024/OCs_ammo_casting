@@ -42,11 +42,11 @@ if mods["Uranium-Artillery-Shell"] then -- experimental
   require("prototypes.compatibilty.Uranium-Artillery-Shell")
 end
 
-if mods["atomic-land-mine"] then
+if mods["atomic-land-mines"] then
   require("prototypes.compatibilty.atomic-land-mines")
 end
 
-if mods["AmmoGroup"] then -- reversing the subgroup thing
+if mods["AmmoGroup"] then -- pushing the subgroups in the new group
   require("prototypes.compatibilty.AmmoGroup")
 end
 
@@ -63,7 +63,7 @@ if mods["metal-and-stars"] then
 end
 
 if mods["any-planet-start"] then
-  require("prototypes.compatibilty.any-planet-start")
+  require("prototypes.compatibilty.any-planet-start") -- must be after most other mod patches
 end
 
 require("prototypes.technology-update")

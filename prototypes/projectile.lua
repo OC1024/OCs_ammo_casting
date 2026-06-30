@@ -19,7 +19,7 @@ data:extend({
         target_effects =
         {
           type = "damage",
-          damage = { amount = 20, type = "physical" } -- per pellet
+          damage = { amount = 24, type = "physical" } -- per pellet
         }
       }
     },
@@ -51,7 +51,7 @@ data:extend({
         target_effects =
         {
           type = "damage",
-          damage = { amount = 20, type = "physical" } -- per pellet
+          damage = { amount = 24, type = "physical" } -- per pellet
         }
       }
     },

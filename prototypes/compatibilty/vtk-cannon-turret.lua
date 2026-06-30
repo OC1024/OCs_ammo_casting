@@ -65,7 +65,7 @@ data:extend({
         icon_mipmaps = 4,
       },
     },
-    category = "advanced-crafting",
+    categories = {"advanced-crafting"},
     group = "combat",
     subgroup = "ammo",
     enabled = false,

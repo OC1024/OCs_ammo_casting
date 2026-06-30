@@ -102,12 +102,13 @@ data:extend({
   },
 })
 local imersite_ammo = {
-  "kr-imersite-rounds-magazine",                         -- for K2SO >=1.5 new name for pink rifle ammo
-  "oc-casting-kr-imersite-rifle-magazine",               -- for K2SO <1.5 old name for pink rifle ammo
-  "oc-casting-kr-imersite-anti-materiel-rifle-magazine", -- pink sniper ammo. old name for K2SO <1.5
-  "oc-pulse-kr-impulse-rifle-ammo",                      -- impulse rifle ammo
+  ["oc-casting-kr-imersite-rounds-magazine"] = { "casting-imersite-ammo-tech" },              -- for K2SO >=1.5 new name for pink rifle ammo
+  ["oc-casting-kr-imersite-rifle-magazine"] = { "casting-imersite-ammo-tech" },               -- for K2SO <1.5 old name for pink rifle ammo
+  ["oc-casting-kr-imersite-anti-materiel-rifle-magazine"] = { "casting-imersite-ammo-tech" }, -- pink sniper ammo. old name for K2SO <1.5
+  -- ["oc-casting-kr-imersite-anti-materiel-rifle-magazine"] = {"casting-imersite-ammo-tech"}, -- pink sniper ammo. new name for K2SO >=1.5
+  ["oc-pulse-kr-impulse-rifle-ammo"] = { "casting-imersite-ammo-tech" },                      -- impulse rifle ammo
 }
-oc_tech.add_recipe_unlocks({ ["casting-imersite-ammo-tech"] = imersite_ammo })
+oc_tech.add_recipe_unlocks(imersite_ammo)
 
 if settings.startup["allow-bio-explosives"].value then -- heavy rocket if bio explosive
   oc_tech.add_prerequisites({ ["oc-casting-imersite-ammo-tech"] = { "bio-rocketry-tech" } })
@@ -126,7 +127,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then --is imersite amm
   oc_tech.add_prerequisites({ ["casting-imersite-ammo-tech"] = "casting-explosive-ammo-tech" })
 end
 
--- [[ -- antimatter recipes + tech
+-- antimatter recipes + tech
 if settings.startup["antimatter-ammo"].value and settings.startup["nuclear-ammo"].value then
   local antimatter_dict = {
     -- antimatter ammo is to high-tech for any of the simple machines
@@ -178,7 +179,6 @@ if settings.startup["antimatter-ammo"].value and settings.startup["nuclear-ammo"
     },
   })
 end
--- ]]
 
 -- Add Recipes to Techs
 local recipe_tech_mapping = {
@@ -212,3 +212,35 @@ if settings.startup["casting-weapons"].value then
   -- recipe_tech_mapping["oc-casting-kr-advanced-tank"] = { "kr-advanced-tank" }
 end
 oc_tech.add_recipe_unlocks(recipe_tech_mapping)
+
+
+local subgroup_mapping = {
+  -- rifle ammo
+  ["oc-casting-kr-rifle-magazine"]                              = "alternative-ammo", -- yellow
+  ["oc-casting-kr-armor-piercing-rifle-magazine"]               = "alternative-ammo", -- red
+  -- imersite
+  ["oc-casting-kr-imersite-rounds-magazine"]                    = "alternative-ammo", -- for K2SO >=1.5 new name for pink rifle ammo
+  ["oc-casting-kr-imersite-rifle-magazine"]                     = "alternative-ammo", -- for K2SO <1.5 old name for pink rifle ammo
+  ["oc-casting-kr-imersite-anti-materiel-rifle-magazine"]       = "alternative-ammo", -- pink sniper ammo
+  ["oc-pulse-kr-impulse-rifle-ammo"]                            = "alternative-ammo", -- impulse rifle ammo
+  -- sniper rifle ammo
+  ["oc-casting-kr-anti-materiel-rifle-magazine"]                = "alternative-ammo", -- yellow
+  ["oc-casting-kr-armor-piercing-anti-materiel-rifle-magazine"] = "alternative-ammo", -- red
+  ["oc-casting-kr-uranium-anti-materiel-rifle-magazine"]        = "alternative-ammo", -- green
+  ["kr-imersite-anti-materiel-rifle-magazine"]                  = "alternative-ammo", -- pink sniper ammo
+  ["pulse-kr-impulse-rifle-ammo"]                               = "alternative-ammo", -- pulse rifle
+  -- rockets
+  ["oc-bio-kr-explosive-turret-rocket"]                         = "alternative-ammo",
+  ["oc-cryo-kr-nuclear-turret-rocket"]                          = "alternative-ammo",
+  ["oc-bio-kr-heavy-rocket"]                                    = "alternative-ammo",
+  -- railgun and artillery
+  ["oc-casting-kr-basic-railgun-shell"]                         = "alternative-ammo",
+  ["oc-casting-kr-explosive-railgun-shell"]                     = "alternative-ammo",
+  ["oc-cryo-kr-nuclear-artillery-shell"]                        = "alternative-ammo",
+  ["oc-kr-antimatter-artillery-shell"]                          = "alternative-ammo",
+  ["oc-cryo-kr-antimatter-rocket"]                              = "alternative-ammo",
+  ["oc-cryo-kr-antimatter-railgun-shell"]                       = "alternative-ammo",
+  ["oc-cryo-kr-antimatter-turret-rocket"]                       = "alternative-ammo",
+  ["oc-cryo-kr-antimatter-artillery-shell"]                     = "alternative-ammo",
+}
+oc_recipe.change_recipes_subgroup(subgroup_mapping)

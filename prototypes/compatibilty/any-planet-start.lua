@@ -6,14 +6,14 @@ local starter_planet = settings.startup["aps-planet"].value
 local supported_planets = { "none", "vulcanus", "fulgora", "gleba", "moshine" }
 if not table.contains(supported_planets, starter_planet) then
   log("Unsupported starter planet: " ..
-  tostring(starter_planet) .. ". Supported planets are: " .. table.concat(supported_planets, ", "))
+    tostring(starter_planet) .. ". Supported planets are: " .. table.concat(supported_planets, ", "))
 end
 
 
 if starter_planet == "none" then
   return
 elseif starter_planet == "moshine" then
-   -- todo : add dedicated moshine compat, not just a simpler vulcanus clone
+  -- todo : add dedicated moshine compat, not just a simpler vulcanus clone
   -- make techs cheaper and simpler
   local moshine_mapping = {
     ["casting-light-ammo-tech"] = { "space-science-pack", "metallurgic-science-pack" },
@@ -26,7 +26,7 @@ elseif starter_planet == "moshine" then
   oc_tech.remove_tech_ingredients(moshine_mapping)
 
   -- end of moshine changes, WIP
-elseif starter_planet == "vulcanus" or starter_planet == "moshine" then
+elseif starter_planet == "vulcanus" then
   -- make techs cheaper and simpler
   local vulcanus_mapping = {
     ["casting-light-ammo-tech"] = { "space-science-pack", "metallurgic-science-pack" },
@@ -43,7 +43,7 @@ elseif starter_planet == "vulcanus" or starter_planet == "moshine" then
   oc_tech.remove_tech_ingredients(vulcanus_mapping)
 
   data:extend({
-    { -- tungsten-ammo-tech, "uranium-ammo" equivalent
+    { -- tungsten-ammo-tech, as the "uranium-ammo" equivalent
       type = "technology",
       name = "tungsten-ammo-tech",
       icons = {
@@ -71,7 +71,7 @@ elseif starter_planet == "vulcanus" or starter_planet == "moshine" then
         { type = "unlock-recipe", recipe = "tungsten-cannon-shell" },
       },
     },
-    { -- casting-uranium-ammo-tech, "casting-tungsten-ammo-tech" equivalent
+    { -- casting-uranium-ammo-tech, as the "casting-tungsten-ammo-tech" equivalent
       type = "technology",
       name = "casting-uranium-ammo-tech",
       icons = {
@@ -135,6 +135,11 @@ elseif starter_planet == "vulcanus" or starter_planet == "moshine" then
     -- metal-and-stars
     ["oc-casting-thorium-cannon-shell"] = "casting-uranium-ammo-tech",
     ["oc-casting-thorium-rounds-magazine"] = "casting-uranium-ammo-tech",
+    -- vtk-cannon-turret
+    ["tungsten-cannon-shell-magazine"] = "tungsten-ammon-tech",
+    ["oc-casting-tungsten-cannon-shell-magazine"] = { "tungsten-ammo-tech" },
+    ["oc-casting-cannon-shell-magazine"] = { "casting-uranium-ammo-tech" },
+    ["oc-casting-uranium-cannon-shell-magazine"] = { "casting-uranium-ammo-tech" },
   })
   data.raw["technology"]["casting-tungsten-ammo-tech"].hidden = true -- basically removing the old tech
 

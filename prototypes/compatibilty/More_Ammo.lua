@@ -16,8 +16,8 @@ local item_sounds = require("__base__.prototypes.item_sounds")
 
 if data.raw.recipe["tungsten-rounds-magazine"] then
   data.raw.recipe["tungsten-rounds-magazine"].ingredients = {
-    {type="item", name="piercing-rounds-magazine", amount=1},
-    {type="item", name="tungsten-carbide", amount=1}
+    { type = "item", name = "piercing-rounds-magazine", amount = 1 },
+    { type = "item", name = "tungsten-carbide",     amount = 1 }
   }
   log("Modified recipe for tungsten-rounds-magazine.")
 else
@@ -37,8 +37,8 @@ end
 
 if data.raw.recipe["tungsten-shotgun-shell"] then
   data.raw.recipe["tungsten-shotgun-shell"].ingredients = {
-    {type="item", name="piercing-shotgun-shell", amount=1},
-    {type="item", name="tungsten-carbide", amount=1}
+    { type = "item", name = "piercing-shotgun-shell", amount = 1 },
+    { type = "item", name = "tungsten-carbide",   amount = 1 }
   }
   log("Modified recipe for tungsten-shotgun-shell.")
 else
@@ -70,12 +70,12 @@ data:extend({
             {
               type = "create-entity",
               entity_name = "explosion-hit",
-              offsets = {{0, 1}},
-              offset_deviation = {{-0.5, -0.5}, {0.5, 0.5}}
+              offsets = { { 0, 1 } },
+              offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } }
             },
             {
               type = "damage",
-              damage = {amount = 24, type = "physical"}
+              damage = { amount = 24, type = "physical" }
             },
             {
               type = "activate-impact",
@@ -92,7 +92,7 @@ data:extend({
     pick_sound = item_sounds.ammo_small_inventory_pickup,
     drop_sound = item_sounds.ammo_small_inventory_move,
     stack_size = 100,
-    weight = 40*kg
+    weight = 40 * kg
   },
   { -- tungsten shotgun shell
     type = "ammo",
@@ -102,40 +102,40 @@ data:extend({
     icon_mipmaps = 4,
     ammo_category = "shotgun-shell",
     ammo_type = {
-        range_modifier = 1.25,
-        target_type = "direction",
-        clamp_position = true,
-        action =
+      range_modifier = 1.25,
+      target_type = "direction",
+      clamp_position = true,
+      action =
+      {
         {
-        {
-            type = "direct",
-            action_delivery =
-            {
+          type = "direct",
+          action_delivery =
+          {
             type = "instant",
             source_effects =
             {
-                {
+              {
                 type = "create-explosion",
                 entity_name = "explosion-gunshot"
-                }
+              }
             }
-            }
+          }
         },
         {
-            type = "direct",
-            repeat_count = 16,
-            action_delivery =
-            {
+          type = "direct",
+          repeat_count = 16,
+          action_delivery =
+          {
             type = "projectile",
             projectile = "tungsten-shotgun-pellet",
             starting_speed = 1,
             starting_speed_deviation = 0.1,
             direction_deviation = 0.3,
             range_deviation = 0.3,
-            max_range = 15*1.25
-            }
+            max_range = 15 * 1.25
+          }
         }
-        }
+      }
     },
     magazine_size = 10,
     subgroup = "ammo",
@@ -144,7 +144,7 @@ data:extend({
     pick_sound = item_sounds.ammo_small_inventory_pickup,
     drop_sound = item_sounds.ammo_small_inventory_move,
     stack_size = 100,
-    weight = 40*kg
+    weight = 40 * kg
   },
 })
 log("Overriding tungsten ammo from 'More_Ammo'. Experimental and unfinished.")

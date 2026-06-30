@@ -18,7 +18,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "foundry", "military-2", "chemical-science-pack", "space-science-pack", "metallurgic-science-pack" },
+    prerequisites = { "foundry", "military-3", "chemical-science-pack", "space-science-pack", "metallurgic-science-pack" },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },
@@ -35,6 +35,7 @@ data:extend({
       { type = "unlock-recipe", recipe = "oc-casting-firearm-magazine" },
       { type = "unlock-recipe", recipe = "oc-casting-piercing-rounds-magazine" },
       { type = "unlock-recipe", recipe = "oc-casting-shotgun-shell" },
+      { type = "unlock-recipe", recipe = "oc-casting-piercing-shotgun-shell" },
     },
   },
   { -- casting heavy ammo (uranium ammo and tank shells)
@@ -52,7 +53,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "casting-light-ammo-tech", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
+    prerequisites = { "casting-light-ammo-tech","military-4", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },
@@ -67,7 +68,6 @@ data:extend({
       count = 400
     },
     effects = {
-      { type = "unlock-recipe", recipe = "oc-casting-piercing-shotgun-shell" },
       { type = "unlock-recipe", recipe = "oc-casting-cannon-shell" },
       { type = "unlock-recipe", recipe = "oc-casting-uranium-rounds-magazine" },
       { type = "unlock-recipe", recipe = "oc-casting-uranium-cannon-shell" },
@@ -222,7 +222,6 @@ data:extend({
 })
 
 if settings.startup["uranium-shotgun-shell"].value then
-  log("ach geh ficken")
   local uranium_shot = {
     ["uranium-shotgun-shell"] = "uranium-ammo",
     ["oc-casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech",
