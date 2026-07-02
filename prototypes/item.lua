@@ -211,7 +211,7 @@ if settings.startup["heavy-artillery-shells"].value then
   })
 end
 
-if settings.startup["armour-plating"] then
+if settings.startup["armour-plating"].value then
   local items = {}
   -- creating the items for armour plating
   for _, variant in pairs(plating_variants) do

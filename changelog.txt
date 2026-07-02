@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.0
-Date: 2026-06-28-wip
+Date: 2026-07-02
   Major Features:
     - Updated to Factorio 2.1
   Balancing:
@@ -11,8 +11,10 @@ Date: 2026-06-28-wip
   Compatibility:
     - Updated dependency of [OCs Base Assets] to >=0.5.0, where helper functions were updated.
     - Better compatibility if [Any Planet Start] and [vtk cannon turret] are active.
+    - For [K2SO], now all of the alternative ammo are in the same subgroup.
   Bugfixes:
     - Fixed that [K2SO] imersite ammo was unlockable. Now unlocked with "casting immersive ammo tech".
+    - Fixed that the disabled mod setting "Activates the armor plating" lead to a crash.
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.9
 Date: 2026-06-24
