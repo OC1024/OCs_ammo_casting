@@ -2,25 +2,25 @@ local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
 local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 local starter_planet_tables = require("prototypes.utils.starter-planet-tables")
 
-local starter_planet = settings.startup["aps-planet"].value
--- expected result: "none", "vulcanus", "fulgora", "gleba"}
-local supported_planets = { "none", "vulcanus", "fulgora", "gleba", "moshine" }
-if not table.contains(supported_planets, starter_planet) then
-  log("Unsupported starter planet: " ..  tostring(starter_planet) .. ". Supported planets are: " .. table.concat(supported_planets, ", "))
-end
+-- sp for starter_planet
+local sp_vulcanus = settings.startup["oc-pp-vulcanus"].value
+local sp_fulgora = settings.startup["oc-pp-fulgora"].value
+local sp_gleba = settings.startup["oc-pp-gleba"].value
+local sp_moshine = settings.startup["oc-pp-moshine"].value
+local starter_planets = {}
 
-
-if starter_planet == "none" then
-  return
-elseif starter_planet == "moshine" then
-  -- todo : add dedicated moshine compat, not just a simpler vulcanus clone
+-- todo : add dedicated moshine compat, not just a simpler vulcanus clone
+if sp_moshine then
   -- make techs cheaper and simpler
   local moshine_techs = starter_planet_tables.moshine_techs
   oc_tech.remove_prerequisites(moshine_techs)
   oc_tech.remove_tech_ingredients(moshine_techs)
 
   -- end of moshine changes, WIP
-elseif starter_planet == "vulcanus" then
+  starter_planets[#starter_planets + 1] = "moshine"
+end
+
+if sp_vulcanus then
   -- make techs cheaper and simpler
   local vulcanus_techs = starter_planet_tables.vulcanus_techs
   oc_tech.remove_prerequisites(vulcanus_techs)
@@ -35,7 +35,7 @@ elseif starter_planet == "vulcanus" then
   oc_tech.remove_prerequisites(vulcanus_mapping)
   oc_tech.remove_tech_ingredients(vulcanus_mapping)
 
-  -- new techs
+  -- new techs for switching
   data:extend({
     { -- tungsten-ammo-tech, as the "uranium-ammo" equivalent
       type = "technology",
@@ -54,7 +54,7 @@ elseif starter_planet == "vulcanus" then
           { "logistic-science-pack",   1 },
           { "military-science-pack",   2 },
           { "chemical-science-pack",   1 },
-          { "utility-science-pack",    2 }, -- like uranium ammo
+          { "utility-science-pack",    2 },
         },
         time = 60,
         count = 500, -- effectively 1k for the interesting science packs
@@ -102,7 +102,7 @@ elseif starter_planet == "vulcanus" then
       },
     },
   })
-  -- witch uranium and tungsten ammo functionally
+  -- switch uranium and tungsten ammo functionally
   oc_tech.add_prerequisites({
     ["casting-heavy-ammo-tech"] = "tungsten-ammo-tech",
     ["uranium-ammo"] = "tungsten-ammo-tech", --switching indirect dependendy
@@ -131,28 +131,35 @@ elseif starter_planet == "vulcanus" then
     ["oc-casting-thorium-cannon-shell"] = "casting-uranium-ammo-tech",
     ["oc-casting-thorium-rounds-magazine"] = "casting-uranium-ammo-tech",
     -- vtk-cannon-turret
-    ["tungsten-cannon-shell-magazine"] = "tungsten-ammo-tech",
+    ["tungsten-cannon-shell-magazine"] = "tungsten-ammon-tech",
     ["oc-casting-tungsten-cannon-shell-magazine"] = "tungsten-ammo-tech",
     ["oc-casting-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
     ["oc-casting-uranium-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
   })
   data.raw["technology"]["casting-tungsten-ammo-tech"].hidden = true -- basically removing the old tech
 
-  -- end of vulvanus changes
-elseif starter_planet == "gleba" then
+  -- end of vulcanus changes
+  starter_planets[#starter_planets + 1] = "vulcanus"
+end
+
+if sp_gleba then
   -- make techs cheaper and simpler
   local gleba_techs = starter_planet_tables.gleba_techs
   oc_tech.remove_prerequisites(gleba_techs)
   oc_tech.remove_tech_ingredients(gleba_techs)
 
   -- end of gleba changes
-elseif starter_planet == "fulgora" then
+  starter_planets[#starter_planets + 1] = "gleba"
+end
+
+if sp_fulgora then
   -- make techs cheaper and simpler
   local fulgora_techs = starter_planet_tables.fulgora_techs
   oc_tech.remove_prerequisites(fulgora_techs)
   oc_tech.remove_tech_ingredients(fulgora_techs)
 
   -- end of fulgora changes
+  starter_planets[#starter_planets + 1] = "fulgora"
 end
 
-log("Changed OCs techs slightly because starter planet is " .. tostring(starter_planet))
+log("Changed OCs techs slightly because starter planets are " .. table.concat(starter_planets, ", "))

@@ -53,7 +53,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "casting-light-ammo-tech","military-4", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
+    prerequisites = { "casting-light-ammo-tech", "military-4", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },
@@ -174,8 +174,8 @@ data:extend({
         { "automation-science-pack",   1 },
         { "logistic-science-pack",     1 },
         { "chemical-science-pack",     2 },
-        { "space-science-pack",        1 },   -- removed if cheaper settings
-        { "agricultural-science-pack", 2 },   -- removed if cheaper settings
+        { "space-science-pack",        1 }, -- removed if cheaper settings
+        { "agricultural-science-pack", 2 }, -- removed if cheaper settings
       },
       time = 30,
       count = 150
@@ -208,8 +208,8 @@ data:extend({
         { "logistic-science-pack",     1 },
         { "chemical-science-pack",     1 },
         { "military-science-pack",     2 },
-        { "space-science-pack",        1 },   -- removed if cheaper settings
-        { "agricultural-science-pack", 2 },   -- removed if cheaper settings
+        { "space-science-pack",        1 }, -- removed if cheaper settings
+        { "agricultural-science-pack", 2 }, -- removed if cheaper settings
       },
       time = 45,
       count = 200
@@ -277,8 +277,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     }
     oc_tech.add_recipe_unlocks(heavy_art)
   end
-else
-  -- tech is disabled but heavy artillery might be enambled
+else -- tech is disabled but heavy artillery might be enambled
   local heavy_art = {
     -- ["oc-casting-heavy-artillery-shell"] = "artillery",-- as it is not allowed to cast it directly
     ["heavy-artillery-shell"] = "artillery",
@@ -450,7 +449,7 @@ if settings.startup["armour-plating"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "electromagnetic-plant" },
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "electromagnetic-science-pack" },
       unit = {
         ingredients = {
           { "automation-science-pack",      1 },

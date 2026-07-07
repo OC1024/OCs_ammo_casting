@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.1
+Date: 2026-07-03
+  Compatibility:
+    - Updated dependency of [OCs Base Assets] to >=0.5.2.
+    - [Planet Picker] added compatibility.
+  Other:
+    - Restructuring cases for other starter planets. Now [Planet Picker], [Any Planet Start] and mod setting "earlier alt ammo techs" are all using the same data.
+    - Changed mod setting description for "fulgora-coal" slightly.
+  Bugfixes:
+    - Fixed tungsten cannon shell magazine [vtk cannon turret] was not unlocked in [Any Planet Start] compat file.
+  Balancing:
+    - Fixed that ultralight armor plate tech had still not the electromagnetic science pack as prerequisite.
+    - [Any Planet Start] For Vulcanus starts: Removed "uranium ammo" as prerequirement for "casting heavy ammo". One shall get this tech without leaving Vucanus.
+  Graphics:
+    - Slightly improved "updgrading medium artillery shell" with an overlay to make it distinct from the direct crafting.
+---------------------------------------------------------------------------------------------------
 Version: 0.10.0
 Date: 2026-07-02
   Major Features:
