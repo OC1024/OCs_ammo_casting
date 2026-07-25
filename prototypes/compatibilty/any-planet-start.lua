@@ -102,12 +102,14 @@ elseif starter_planet == "vulcanus" then
       },
     },
   })
-  -- witch uranium and tungsten ammo functionally
+  -- switch uranium and tungsten ammo functionally
   oc_tech.add_prerequisites({
     ["casting-heavy-ammo-tech"] = "tungsten-ammo-tech",
     ["uranium-ammo"] = "tungsten-ammo-tech", --switching indirect dependendy
     ["casting-explosive-ammo-tech"] = "casting-uranium-ammo-tech",
-    ["casting-railgun-ammo-tech"] = "tungsten-ammo-tech",
+    ["casting-railgun-ammo-tech"] = "casting-uranium-ammo-tech",
+    -- vtk-cannnon-turret
+    ["tungsten-ammo-tech"] = "vtk-cannon-turret-unlock" -- as it has the cannon shell magazines
   })
   -- switch uranium and tungsten recipe unlocks
   oc_tech.remove_recipe_unlocks({
@@ -119,12 +121,14 @@ elseif starter_planet == "vulcanus" then
     -- metal-and-stars
     ["oc-casting-thorium-cannon-shell"] = "casting-heavy-ammo-tech",
     ["oc-casting-thorium-rounds-magazine"] = "casting-heavy-ammo-tech",
+    -- vtk-cannnon-turret
+    ["oc-casting-uranium-cannon-shell-magazine"] = "casting-heavy-ammo-tech"
   })
   oc_tech.add_recipe_unlocks({
     ["oc-casting-tungsten-cannon-shell"] = "casting-heavy-ammo-tech",
     ["oc-casting-tungsten-shotgun-shell"] = "casting-heavy-ammo-tech",
     ["oc-casting-tungsten-rounds-magazine"] = "casting-heavy-ammo-tech",
-    ["oc-casting-uranium-shotgun-shell"] = "casting-uranium-ammo-tech", --if activated
+    ["oc-casting-uranium-shotgun-shell"] = "casting-uranium-ammo-tech", -- if activated
     -- scattergun turret/modular turrets
     ["oc-casting-w93-uranium-shotgun-shell"] = "casting-uranium-ammo-tech",
     -- metal-and-stars
@@ -132,7 +136,7 @@ elseif starter_planet == "vulcanus" then
     ["oc-casting-thorium-rounds-magazine"] = "casting-uranium-ammo-tech",
     -- vtk-cannon-turret
     ["tungsten-cannon-shell-magazine"] = "tungsten-ammo-tech",
-    ["oc-casting-tungsten-cannon-shell-magazine"] = "tungsten-ammo-tech",
+    ["oc-casting-tungsten-cannon-shell-magazine"] = "casting-heavy-ammo-tech",
     ["oc-casting-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
     ["oc-casting-uranium-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
   })

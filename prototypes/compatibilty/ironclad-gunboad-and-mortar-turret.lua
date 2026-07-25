@@ -60,8 +60,8 @@ local removing_prereq_dict = {
 oc_tech.remove_prerequisites(removing_prereq_dict)
 local adding_prereq_dict = {
   -- would need "military-4" for the clusterbomb. maybe moving the clusterbomb to the casting-explosive-ammo-tech
-  ["oc-casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3" },
-  ["oc-casting-explosive-ammo-tech"] = { "oc-casting-chemical-mortar-ammo-tech" },
+  ["casting-basic-mortar-ammo-tech"] = { "mortar-turret", "military-3" },
+  ["casting-explosive-ammo-tech"] = { "oc-casting-chemical-mortar-ammo-tech" },
 }
 oc_tech.add_prerequisites(adding_prereq_dict)
 

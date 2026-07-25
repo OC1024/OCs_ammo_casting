@@ -545,6 +545,7 @@ end
 if settings.startup["fulgora-coal"].value and not has_coal then
   oc_recipe.add_result("scrap-recycling", "item", "coal", 1, { shared_probability = { min = 0.20, max = 0.27 } }) -- 7% chance, just like solid fuel
   oc_recipe.remove_result("scrap-recycling", "item", "solid-fuel")
+  log("Switched 7% solid fuel with 7% coal in scrap recycling recipe.")
 end
 
 -- register alt recipes for generator API to save a bit of compuation power.
@@ -692,6 +693,7 @@ if settings.startup["casting-weapons"].value then
   casting_dict["rocket-launcher"] = "electromagnetics"
   casting_dict["gun-turret"] = "metallurgy"
   casting_dict["flamethrower-turret"] = "metallurgy"
+  casting_dict["laser-turret"] = "electromagnetics"
 end
 if settings.startup["nuclear-ammo"].value then
   casting_dict["atomic-bomb"] = "cryogenics"
@@ -703,6 +705,10 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 end
 if settings.startup["allow-casting-explosive-ammo"].value and settings.startup["heavy-artillery-shells"].value then
   casting_dict["heavy-artillery-shell"] = "metallurgy"
+end
+if settings.startup["casting-grenates"].value then
+  casting_dict["grenate"] = "metallurgy"
+  casting_dict["cluster-grenate"] = "metallurgy"
 end
 -- execute generator from casting_dict
 generator_api.batch_generator(casting_dict)

@@ -1,4 +1,23 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.2
+Date: 2026-07-24
+  Minor Features:
+    - Added Laser Turret to the list of "weapons" with new recipes.
+    - Added setting to cast (cluster) grenates, deactivated by default.
+  Translation:
+    - Fixed Spelling in mod title.
+    - Added missing localisations and updated old ones (internal names changed at 0.9.0).
+  Compatibility:
+    - Updated dependency of [OCs Base Assets] to >=0.5.3. This fixes an issue with fulgora-coal mod setting.
+    - Fixing few [AmmoGroup] related cases.
+    - Fixed that (heavy) cannon turrent from [vtk cannon turret] was impossible to unlock.
+    - Changes: [Strategy mortar Turret] "alternative chemical mortar ammo tech" is now a prerequistite for "casting explosive ammo tech".
+      This was already the case with [ironclad gunboat and mortar turret], but this prerequ was missing without that mod.
+      Fixed that (light) mortar turret is castable if [ironclad gunboad and mortar turet] is disabled and [strategy mortar turret] is enabled.
+      Removed prerequisite "casting mortar ammo tech" from "alternative biochemical mortar ammo tech" to make it independent from the foundry tech tree.
+      Overall this mod combination is now more refined.
+    - [Any Planet Start] For Vulcanus Start: "casting railgun ammo tech" now requires "uranium casting tech", analgous to the non-vulcanus start.
+---------------------------------------------------------------------------------------------------
 Version: 0.10.1
 Date: 2026-07-03
   Compatibility:
@@ -8,7 +27,7 @@ Date: 2026-07-03
     - Restructuring cases for other starter planets. Now [Planet Picker], [Any Planet Start] and mod setting "earlier alt ammo techs" are all using the same data.
     - Changed mod setting description for "fulgora-coal" slightly.
   Bugfixes:
-    - Fixed tungsten cannon shell magazine [vtk cannon turret] was not unlocked in [Any Planet Start] compat file.
+    - Fixed tungsten cannon shell magazine [vtk cannon turret] was impossible to unlock in [Any Planet Start] compat file.
   Balancing:
     - Fixed that ultralight armor plate tech had still not the electromagnetic science pack as prerequisite.
     - [Any Planet Start] For Vulcanus starts: Removed "uranium ammo" as prerequirement for "casting heavy ammo". One shall get this tech without leaving Vucanus.
@@ -29,7 +48,7 @@ Date: 2026-07-02
     - Better compatibility if [Any Planet Start] and [vtk cannon turret] are active.
     - For [K2SO], now all of the alternative ammo are in the same subgroup.
   Bugfixes:
-    - Fixed that [K2SO] imersite ammo was unlockable. Now unlocked with "casting immersive ammo tech".
+    - Fixed that [K2SO] imersite ammo was impossible to unlock. Now unlocked with "casting immersive ammo tech".
     - Fixed that the disabled mod setting "Activates the armor plating" lead to a crash.
 ---------------------------------------------------------------------------------------------------
 Version: 0.9.9

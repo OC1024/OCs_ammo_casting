@@ -87,6 +87,13 @@ data:extend({
     default_value = true,
     order = "e-b",
   },
+  { -- casting (cluster) grenates.
+    type = "bool-setting",
+    name = "casting-grenates",
+    setting_type = "startup",
+    default_value = false,
+    order = "e-c",
+  },
   -- even more powerful ammo types
   { -- vanilla nuclear rockets and key setting for fusion, anitmatter, ...
     type = "bool-setting",

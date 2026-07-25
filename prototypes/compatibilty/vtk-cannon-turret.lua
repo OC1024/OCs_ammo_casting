@@ -83,6 +83,7 @@ data:extend({
   },
 })
 
+-- create new recipes
 local casting_dict = {
   ["cannon-shell-magazine"] = "metallurgy",
   ["uranium-cannon-shell-magazine"] = "metallurgy",
@@ -98,10 +99,11 @@ if settings.startup["casting-weapons"].value then
 end
 generator_api.batch_generator(casting_dict)
 
+-- unlocks of new recipes
 local recipe_unlock_mapping = {
   -- turrets
-  ["oc-casting-vtk-vtk-cannon-turret"] = { "vtk-cannon-turret-unlock" },
-  ["oc-casting-vtk-vtk-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
+  ["oc-casting-vtk-cannon-turret"] = { "vtk-cannon-turret-unlock" },
+  ["oc-casting-vtk-cannon-turret-heavy"] = { "vtk-cannon-turret-heavy-unlock" },
   -- ammo
   ["oc-casting-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
   ["oc-casting-uranium-cannon-shell-magazine"] = { "casting-heavy-ammo-tech" },
@@ -116,6 +118,7 @@ oc_tech.add_recipe_unlocks(recipe_unlock_mapping)
 
 local subgroup_mapping = {}
 
+-- set new subgroup
 for key, _ in pairs(casting_dict) do
     subgroup_mapping[key] = "alternative-ammo"
 end
@@ -124,3 +127,9 @@ subgroup_mapping["vtk-cannon-turret"] = nil
 subgroup_mapping["vtk-cannon-turret-heavy"] = nil
 
 oc_recipe.change_recipes_subgroup(subgroup_mapping)
+
+-- adding extra prerequ
+local new_prerequisite = {
+  ["casting-heavy-ammo-tech"] = { "vtk-cannon-turret-unlock" } -- as the cannon shell magazines are unlocked with that tech
+}
+oc_tech.add_prerequisites(new_prerequisite)

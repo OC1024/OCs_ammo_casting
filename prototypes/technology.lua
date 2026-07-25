@@ -567,6 +567,15 @@ if settings.startup["casting-weapons"].value then
     ["oc-casting-flamethrower"] = { "casting-explosive-ammo-tech" },
     ["oc-casting-gun-turret"] = { "casting-light-ammo-tech" },
     ["oc-casting-flamethrower-turret"] = { "casting-explosive-ammo-tech" },
+    ["oc-pulse-laser-turret"] = { "laser-turret" }
+  }
+  oc_tech.add_recipe_unlocks(recipe_tech_mapping)
+end
+
+if settings.startup["casting-grenates"].value then
+  local recipe_tech_mapping = {
+    ["grenate"] = "casting-light-ammo-tech",
+    ["cluster-grenate"] = "casting-heavy-ammo-tech",
   }
   oc_tech.add_recipe_unlocks(recipe_tech_mapping)
 end

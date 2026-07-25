@@ -1,6 +1,6 @@
 {
   "name": "OCs_ammo_casting",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "title": "OCs Ammo and Armor",
   "author": "OC1024",
   "space_travel_required": true,
@@ -9,7 +9,7 @@
   "dependencies": [
     "base >= 2.1",
     "space-age",
-    "OCs_base_assets >= 0.5.2",
+    "OCs_base_assets >= 0.5.3",
     "? aai-industry",
     "? any-planet-start",
     "? kry-vehicle-grids",
