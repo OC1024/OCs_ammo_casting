@@ -31,6 +31,14 @@ if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
 end
 
+if mods["chemical-rocket"] then
+  require("prototypes.compatibilty.chemical-rocket")
+end
+
+if mods["missile-defense-systems-redux"] then
+  require("prototypes.compatibilty.missile-defense-systems-redux")
+end
+
 if mods["Uranium-Artillery-Shell"] then -- experimental
   require("prototypes.compatibilty.Uranium-Artillery-Shell")
 end
@@ -64,11 +72,8 @@ if mods["Krastorio2-spaced-out"] and mods["HeroTurretRedux"] then -- tripple com
   require("prototypes.compatibilty.K2-range-patch")
 end
 
-if mods["any-planet-start"] then
+if mods["any-planet-start"] or mods["planet-picker-21patch"] then -- pp21patch is a unofficial patch
   require("prototypes.compatibilty.any-planet-start") -- must be after most other mod patches
-end
-if mods["planet-picker-21patch"] then -- unofficial patch
-  require("prototypes.compatibilty.planet-picker") -- must be after most other mod patches
 end
 
 require("prototypes.technology-update")

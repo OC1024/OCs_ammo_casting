@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.4
+Date: 2026-07-31
+  Compatibility:
+    - Added [Chemical Rocket] compatibility. Both rockets are simply added to the bio-explosive rocketry.
+    - Added [Missile Defence Systems Redux] compatibility.
+    - Merging [Any Planet Start] and [Planet Picker 21 Patch] compatibility into a single file.
+  Changes:
+    - Remove option of casting grenades (it was broken anyway) for foundry, reintroduce them to the bio-explosive tree with new tech.
+    - Moved the unlock of weapon casting/pulsing from the ammo-techs directly to the weapon-unlock tech
+---------------------------------------------------------------------------------------------------
 Version: 0.10.3
 Date: 2026-07-26
   Translation:

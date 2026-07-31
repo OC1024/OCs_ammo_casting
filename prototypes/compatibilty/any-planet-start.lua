@@ -2,25 +2,57 @@ local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
 local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 local starter_planet_tables = require("prototypes.utils.starter-planet-tables")
 
-local starter_planet = settings.startup["aps-planet"].value
--- expected result: "none", "vulcanus", "fulgora", "gleba"}
-local supported_planets = { "none", "vulcanus", "fulgora", "gleba", "moshine" }
-if not table.contains(supported_planets, starter_planet) then
-  log("Unsupported starter planet: " ..  tostring(starter_planet) .. ". Supported planets are: " .. table.concat(supported_planets, ", "))
+local starter_planets = {}
+
+-- sp: multiple possible starter planets
+if mods["planet-picker-21patch"] then
+  if settings.startup["oc-pp-vulcanus"].value then
+    starter_planets.vulcanus = true
+  end
+  if settings.startup["oc-pp-fulgora"].value then
+    starter_planets.fulgora = true
+  end
+  if settings.startup["oc-pp-gleba"].value then
+    starter_planets.gleba = true
+  end
+  if settings.startup["oc-pp-moshine"].value then
+    starter_planets.moshine = true
+  end
+end
+local aps_starter_planet = settings.startup["aps-planet"].value
+
+local supported_planets = {
+  none = true,
+  vulcanus = true,
+  fulgora = true,
+  gleba = true,
+  moshine = true,
+}
+
+if not supported_planets[aps_starter_planet] then
+  log(
+    "Unsupported starter planet: " ..
+    tostring(aps_starter_planet) ..
+    ". Supported planets are: " ..
+    table.concat({ "none", "vulcanus", "fulgora", "gleba", "moshine" }, ", ")
+  )
+else
+  starter_planets[aps_starter_planet] = true
 end
 
 
-if starter_planet == "none" then
-  return
-elseif starter_planet == "moshine" then
-  -- todo : add dedicated moshine compat, not just a simpler vulcanus clone
+-- todo : add dedicated moshine compat, not just a simpler vulcanus clone
+if starter_planets.moshine then
   -- make techs cheaper and simpler
   local moshine_techs = starter_planet_tables.moshine_techs
   oc_tech.remove_prerequisites(moshine_techs)
   oc_tech.remove_tech_ingredients(moshine_techs)
 
   -- end of moshine changes, WIP
-elseif starter_planet == "vulcanus" then
+  starter_planets[#starter_planets + 1] = "moshine"
+end
+
+if starter_planets.vulcanus then
   -- make techs cheaper and simpler
   local vulcanus_techs = starter_planet_tables.vulcanus_techs
   oc_tech.remove_prerequisites(vulcanus_techs)
@@ -35,73 +67,11 @@ elseif starter_planet == "vulcanus" then
   oc_tech.remove_prerequisites(vulcanus_mapping)
   oc_tech.remove_tech_ingredients(vulcanus_mapping)
 
-  -- new techs
-  data:extend({
-    { -- tungsten-ammo-tech, as the "uranium-ammo" equivalent
-      type = "technology",
-      name = "tungsten-ammo-tech",
-      icons = {
-        {
-          icon = "__OCs_ammo_casting__/graphics/technology/tungsten-ammo-tech.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-        }
-      },
-      prerequisites = { "tungsten-steel", "tank", "military-4" },
-      unit = {
-        ingredients = {
-          { "automation-science-pack", 1 },
-          { "logistic-science-pack",   1 },
-          { "military-science-pack",   2 },
-          { "chemical-science-pack",   1 },
-          { "utility-science-pack",    2 }, -- like uranium ammo
-        },
-        time = 60,
-        count = 500, -- effectively 1k for the interesting science packs
-      },
-      effects = {
-        { type = "unlock-recipe", recipe = "tungsten-rounds-magazine" },
-        { type = "unlock-recipe", recipe = "tungsten-shotgun-shell" },
-        { type = "unlock-recipe", recipe = "tungsten-cannon-shell" },
-      },
-    },
-    { -- casting-uranium-ammo-tech, as the "casting-tungsten-ammo-tech" equivalent
-      type = "technology",
-      name = "casting-uranium-ammo-tech",
-      icons = {
-        {
-          icon = "__base__/graphics/technology/uranium-ammo.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-        },
-        {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-        },
-      },
-      prerequisites = { "uranium-ammo", "casting-heavy-ammo-tech", "space-science-pack", "production-science-pack", "metallurgic-science-pack" },
-      unit = {
-        ingredients = {
-          { "automation-science-pack",  1 },
-          { "logistic-science-pack",    1 },
-          { "military-science-pack",    2 },
-          { "chemical-science-pack",    1 },
-          { "utility-science-pack",     1 },
-          { "space-science-pack",       1 },
-          { "production-science-pack",  1 },
-          { "metallurgic-science-pack", 2 },
-        },
-        time = 60,
-        count = 800, -- effectively 1k for the interesting science packs
-      },
-      effects = {
-        { type = "unlock-recipe", recipe = "oc-casting-uranium-rounds-magazine" },
-        -- { type = "unlock-recipe", recipe = "oc-casting-uranium-shotgun-shell" },--optional, see below
-        { type = "unlock-recipe", recipe = "oc-casting-uranium-cannon-shell" },
-      },
-    },
-  })
+  -- new techs for switching
+  data.raw["technology"]["casting-tungsten-ammo-tech"].hidden = true -- basically removing the old tech
+  data.raw["technology"]["casting-uranium-ammo-tech"].hidden = false -- activating the hidden tech
+  data.raw["technology"]["tungsten-ammo-tech"].hidden = false        -- activating the hidden tech
+
   -- switch uranium and tungsten ammo functionally
   oc_tech.add_prerequisites({
     ["casting-heavy-ammo-tech"] = "tungsten-ammo-tech",
@@ -128,7 +98,7 @@ elseif starter_planet == "vulcanus" then
     ["oc-casting-tungsten-cannon-shell"] = "casting-heavy-ammo-tech",
     ["oc-casting-tungsten-shotgun-shell"] = "casting-heavy-ammo-tech",
     ["oc-casting-tungsten-rounds-magazine"] = "casting-heavy-ammo-tech",
-    ["oc-casting-uranium-shotgun-shell"] = "casting-uranium-ammo-tech", -- if activated
+    ["oc-casting-uranium-shotgun-shell"] = "casting-uranium-ammo-tech", --if activated
     -- scattergun turret/modular turrets
     ["oc-casting-w93-uranium-shotgun-shell"] = "casting-uranium-ammo-tech",
     -- metal-and-stars
@@ -137,26 +107,32 @@ elseif starter_planet == "vulcanus" then
     -- vtk-cannon-turret
     ["tungsten-cannon-shell-magazine"] = "tungsten-ammo-tech",
     ["oc-casting-tungsten-cannon-shell-magazine"] = "casting-heavy-ammo-tech",
-    ["oc-casting-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
+    -- ["oc-casting-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
     ["oc-casting-uranium-cannon-shell-magazine"] = "casting-uranium-ammo-tech",
   })
-  data.raw["technology"]["casting-tungsten-ammo-tech"].hidden = true -- basically removing the old tech
 
-  -- end of vulvanus changes
-elseif starter_planet == "gleba" then
+  -- end of vulcanus changes
+  starter_planets[#starter_planets + 1] = "vulcanus"
+end
+
+if starter_planets.gleba then
   -- make techs cheaper and simpler
   local gleba_techs = starter_planet_tables.gleba_techs
   oc_tech.remove_prerequisites(gleba_techs)
   oc_tech.remove_tech_ingredients(gleba_techs)
 
   -- end of gleba changes
-elseif starter_planet == "fulgora" then
+  starter_planets[#starter_planets + 1] = "gleba"
+end
+
+if starter_planets.fulgora then
   -- make techs cheaper and simpler
   local fulgora_techs = starter_planet_tables.fulgora_techs
   oc_tech.remove_prerequisites(fulgora_techs)
   oc_tech.remove_tech_ingredients(fulgora_techs)
 
   -- end of fulgora changes
+  starter_planets[#starter_planets + 1] = "fulgora"
 end
 
-log("Changed OCs techs slightly because starter planet is " .. tostring(starter_planet))
+log("Changed OCs techs slightly because starter planets are " .. table.concat(starter_planets, ", "))

@@ -73,6 +73,37 @@ data:extend({
       { type = "unlock-recipe", recipe = "oc-casting-uranium-cannon-shell" },
     },
   },
+  { -- tungsten-ammo-tech, as the "uranium-ammo" equivalent
+    type = "technology",
+    name = "tungsten-ammo-tech",
+    hidden = true,
+    icons = {
+      {
+        icon = "__OCs_ammo_casting__/graphics/technology/tungsten-ammo-tech.png",
+        icon_size = 256,
+        icon_mipmaps = 4,
+      }
+    },
+    prerequisites = { "tungsten-steel", "tank", "military-4", "space-science-pack", "metallurgic-science-pack" },
+    unit = {
+      ingredients = {
+        { "automation-science-pack",  1 },
+        { "logistic-science-pack",    1 },
+        { "military-science-pack",    2 },
+        { "chemical-science-pack",    1 },
+        { "space-science-pack",       1 }, -- removed if cheaper
+        { "utility-science-pack",     2 },
+        { "metallurgic-science-pack", 2 }, -- removed if cheaper
+      },
+      time = 60,
+      count = 500, -- effectively 1k for the interesting science packs
+    },
+    effects = {
+      { type = "unlock-recipe", recipe = "tungsten-rounds-magazine" },
+      { type = "unlock-recipe", recipe = "tungsten-shotgun-shell" },
+      { type = "unlock-recipe", recipe = "tungsten-cannon-shell" },
+    },
+  },
   { -- casting tungsten ammo
     type = "technology",
     name = "casting-tungsten-ammo-tech",
@@ -110,6 +141,43 @@ data:extend({
       { type = "unlock-recipe", recipe = "oc-casting-tungsten-rounds-magazine" },
       { type = "unlock-recipe", recipe = "oc-casting-tungsten-shotgun-shell" },
       { type = "unlock-recipe", recipe = "oc-casting-tungsten-cannon-shell" },
+    },
+  },
+  { -- casting-uranium-ammo-tech, as the "casting-tungsten-ammo-tech" equivalent
+    type = "technology",
+    name = "casting-uranium-ammo-tech",
+    hidden = true,
+    icons = {
+      {
+        icon = "__base__/graphics/technology/uranium-ammo.png",
+        icon_size = 256,
+        icon_mipmaps = 4,
+      },
+      {
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
+        icon_size = 256,
+        icon_mipmaps = 4,
+      },
+    },
+    prerequisites = { "uranium-ammo", "casting-heavy-ammo-tech", "space-science-pack", "production-science-pack", "metallurgic-science-pack" },
+    unit = {
+      ingredients = {
+        { "automation-science-pack",  1 },
+        { "logistic-science-pack",    1 },
+        { "military-science-pack",    2 },
+        { "chemical-science-pack",    1 },
+        { "utility-science-pack",     1 },
+        { "space-science-pack",       1 },
+        { "production-science-pack",  1 },
+        { "metallurgic-science-pack", 2 },
+      },
+      time = 60,
+      count = 800, -- effectively 1k for the interesting science packs
+    },
+    effects = {
+      { type = "unlock-recipe", recipe = "oc-casting-uranium-rounds-magazine" },
+      -- { type = "unlock-recipe", recipe = "oc-casting-uranium-shotgun-shell" }, --optional
+      { type = "unlock-recipe", recipe = "oc-casting-uranium-cannon-shell" },
     },
   },
   { -- casting railgun ammo
@@ -217,6 +285,41 @@ data:extend({
     effects = {
       { type = "unlock-recipe", recipe = "oc-bio-rocket" },
       { type = "unlock-recipe", recipe = "oc-bio-explosive-rocket" },
+    },
+  },
+  { -- bio grenades
+    type = "technology",
+    name = "bio-grenades-tech",
+    icons = {
+      {
+        icon = "__base__/graphics/icons/cluster-grenade.png",
+        icon_size = 64,
+        icon_mipmaps = 4,
+        scale = 2,
+      },
+      {
+        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
+        icon_size = 256,
+        icon_mipmaps = 4,
+      }
+    },
+    prerequisites = { "bio-explosives-tech", "military-4" },
+    unit = {
+      ingredients = {
+        { "automation-science-pack",   1 },
+        { "logistic-science-pack",     1 },
+        { "chemical-science-pack",     1 },
+        { "military-science-pack",     2 },
+        { "space-science-pack",        1 }, -- removed if cheaper settings
+        { "utility-science-pack",      1 },
+        { "agricultural-science-pack", 2 }, -- removed if cheaper settings
+      },
+      time = 45,
+      count = 200
+    },
+    effects = {
+      { type = "unlock-recipe", recipe = "oc-bio-grenade" },
+      { type = "unlock-recipe", recipe = "oc-bio-cluster-grenade" },
     },
   },
 })
@@ -507,8 +610,7 @@ if settings.startup["nuclear-ammo"].value then
     { -- nuclear ammo tech (cryo, atomic bomb)
       type = "technology",
       name = "nuclear-ammo-tech",
-      icons =
-      {
+      icons = {
         {
           icon = "__base__/graphics/technology/atomic-bomb.png",
           icon_size = 256,
@@ -520,7 +622,7 @@ if settings.startup["nuclear-ammo"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = { "atomic-bomb", "cryogenic-science-pack" },
+      prerequisites = { "cryogenic-science-pack", "atomic-bomb", "bio-rocketry-tech", "bio-grenades-tech" },
       unit = {
         ingredients = {
           { "automation-science-pack",      1 },
@@ -530,7 +632,7 @@ if settings.startup["nuclear-ammo"].value then
           { "space-science-pack",           1 },
           { "metallurgic-science-pack",     2 },
           { "electromagnetic-science-pack", 2 },
-          -- {"agricultural-science-pack", 2}, -- it is still fun with(out) gleba-science
+          { "agricultural-science-pack",    2 }, -- requires bio-rocketry-tech and bio-grenades-tech
           { "cryogenic-science-pack",       2 },
         },
         time = 60,
@@ -542,9 +644,6 @@ if settings.startup["nuclear-ammo"].value then
     },
   })
   -- add the optional techs as prerequisites
-  if settings.startup["allow-bio-explosives"].value then
-    oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = "bio-rocketry-tech" })
-  end
   if settings.startup["allow-casting-explosive-ammo"].value then
     oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech" })
   end
@@ -559,23 +658,15 @@ end
 if settings.startup["casting-weapons"].value then
   -- adding recipes to techs
   local recipe_tech_mapping = {
-    ["oc-casting-pistol"] = { "casting-light-ammo-tech" },
-    ["oc-casting-submachine-gun"] = { "casting-light-ammo-tech" },
-    ["oc-casting-shotgun"] = { "casting-light-ammo-tech" },
-    ["oc-casting-combat-shotgun"] = { "casting-heavy-ammo-tech" },
-    ["oc-pulse-rocket-launcher"] = { "bio-rocketry-tech" },
-    ["oc-casting-flamethrower"] = { "casting-explosive-ammo-tech" },
-    ["oc-casting-gun-turret"] = { "casting-light-ammo-tech" },
-    ["oc-casting-flamethrower-turret"] = { "casting-explosive-ammo-tech" },
+    ["oc-casting-pistol"] = { "military-1" },
+    ["oc-casting-submachine-gun"] = { "military-1" },
+    ["oc-casting-shotgun"] = { "military-1" },
+    ["oc-casting-combat-shotgun"] = { "military-4" },
+    ["oc-pulse-rocket-launcher"] = { "rocketry" },
+    ["oc-casting-flamethrower"] = { "flamethrower" },
+    ["oc-casting-gun-turret"] = { "gun-turret" },
+    ["oc-casting-flamethrower-turret"] = { "flamethrower" },
     ["oc-pulse-laser-turret"] = { "laser-turret" }
-  }
-  oc_tech.add_recipe_unlocks(recipe_tech_mapping)
-end
-
-if settings.startup["casting-grenates"].value then
-  local recipe_tech_mapping = {
-    ["grenate"] = "casting-light-ammo-tech",
-    ["cluster-grenate"] = "casting-heavy-ammo-tech",
   }
   oc_tech.add_recipe_unlocks(recipe_tech_mapping)
 end

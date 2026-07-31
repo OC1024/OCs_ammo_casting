@@ -87,11 +87,12 @@ data:extend({
     default_value = true,
     order = "e-b",
   },
-  { -- casting (cluster) grenates.
+  { -- casting (cluster) grenates. Stick with the typo instead of a migration
     type = "bool-setting",
     name = "casting-grenates",
     setting_type = "startup",
     default_value = false,
+    hidden = true, -- now mandatory but not casted
     order = "e-c",
   },
   -- even more powerful ammo types
