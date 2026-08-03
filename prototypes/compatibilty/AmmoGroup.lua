@@ -11,6 +11,10 @@ if data.raw["item-group"]["ammo"] then
     ["oc-casting-tungsten-cannon-shell-magazine"] = "ammo-row-cannon-shell-magazine",
     ["oc-cryo-mortar-light-nuclear-ammo"] = "ammo-row-mortar-bomb",
     ["oc-casting-mortar-shrapnel-ammo"] = "ammo-row-physical-mortar-ammo",
+    ["oc-casting-mortar-bomb"] = "ammo-row-mortar-bomb",
+    ["oc-casting-mortar-cluster-bomb"] = "ammo-row-mortar-bomb",
+    ["oc-casting-mortar-fire-bomb"] = "ammo-row-strategy-mortar-ammo",
+    ["oc-casting-mortar-poison-bomb"] = "ammo-row-strategy-mortar-ammo",
     ["oc-casting-mortar-heavy-ammo"] = "ammo-row-physical-mortar-ammo",
     ["oc-pulse-mortar-energy-ammo"] = "ammo-row-electric-mortar-ammo",
   }

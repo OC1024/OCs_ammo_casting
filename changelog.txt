@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.10.5
+Date: 2026-08-03
+  Compatibility:
+    - Added [more ammo redux] compatibility. Chemical ammo is behind the "bio-grenades tech", most other behind the "casting light/heavy ammo tech".
+  Minor Features:
+    - Added land mines to the "bio grenates tech", now called "weaponized bio explosives"
+---------------------------------------------------------------------------------------------------
 Version: 0.10.4
 Date: 2026-07-31
   Compatibility:
@@ -209,7 +216,7 @@ Version: 0.8.5
 Date: 2026-02-11
   Bugfixes:
     - Fixed that casting-artillery-shell was missing for (default setting) heavy artillery shells. (thanks omegacute and nattanang for reporting)
-  Localisation:
+  Translation:
     - Modified mod setting description for heavy artillery shells to be more clear.
     - Slightly changed the info text for alternative antimatter ammo, that it requries alternative atomic bomb setting, too.
 ---------------------------------------------------------------------------------------------------
@@ -230,7 +237,7 @@ Date: 2026-02-10
     - [King Jo Vehicles] Experimental compat. Not all vehicles yet, mostly just tanks, no air vehicles.
   Other:
     - Removed old unused code lines.
-  Localisation:
+  Translation:
     - Unify EN localisation with my other mods.
     - EN: Renaming "armour" to "armor" to be consistent with the vanilla game. (suggested by omegacute)
 ---------------------------------------------------------------------------------------------------
@@ -254,7 +261,7 @@ Date: 2025-11-05
     - Fixed wrong recipe subgroup for explosive (uranium) cannon shells.
     - Deleted obsolete code lines.
     - [vtk cannon turret] Disabling cannon turret casting if mod option is off, and some other issues.
-  Note:
+  Other:
     - I also included some [K2SO + HeroTurretRedux] compatibility already in 0.8.0, but forgot to mention it in the changelog.
       If any of these mod combination get their own compat in one of their respective mods, please report it so I don't have to keep them here.
       Mostly, I just increased the turret range massively so that the ammo don't hit the ground prematurely.

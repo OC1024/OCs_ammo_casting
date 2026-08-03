@@ -679,6 +679,7 @@ local casting_dict = {
   -- ["explosives"]               = "organic", -- blacklisted for convenience, see custom recipe
   ["grenade"]                  = "organic",
   ["cluster-grenade"]          = "organic",
+  ["land-mine"]                = "organic",
   ["rocket"]                   = "organic",
   ["explosive-rocket"]         = "organic",
 }

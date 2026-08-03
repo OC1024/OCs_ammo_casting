@@ -269,7 +269,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "bio-explosives-tech", "explosive-rocketry" },
+    prerequisites = { "bio-explosives-tech", "explosive-rocketry" }, -- which military-?
     unit = {
       ingredients = {
         { "automation-science-pack",   1 },
@@ -303,7 +303,7 @@ data:extend({
         icon_mipmaps = 4,
       }
     },
-    prerequisites = { "bio-explosives-tech", "military-4" },
+    prerequisites = { "bio-explosives-tech","land-mine", "military-4" },
     unit = {
       ingredients = {
         { "automation-science-pack",   1 },
@@ -320,6 +320,7 @@ data:extend({
     effects = {
       { type = "unlock-recipe", recipe = "oc-bio-grenade" },
       { type = "unlock-recipe", recipe = "oc-bio-cluster-grenade" },
+      { type = "unlock-recipe", recipe = "oc-bio-land-mine" },
     },
   },
 })

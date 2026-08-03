@@ -31,6 +31,10 @@ if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
 end
 
+if mods["more-ammo-redux"] then
+  require("prototypes.compatibilty.more-ammo-redux")
+end
+
 if mods["chemical-rocket"] then
   require("prototypes.compatibilty.chemical-rocket")
 end
