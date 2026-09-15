@@ -9,7 +9,7 @@
   "dependencies": [
     "base >= 2.1",
     "space-age",
-    "OCs_base_assets >= 0.5.4",
+    "OCs_base_assets >= 0.6.0",
     "? aai-industry",
     "? any-planet-start",
     "? kry-vehicle-grids",
