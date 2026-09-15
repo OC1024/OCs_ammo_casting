@@ -56,6 +56,11 @@ if mods["AmmoGroup"] then -- pushing the subgroups in the new group
 end
 
 -- overhaul mods
+
+if mods["more-infinite-research"] then
+  require("prototypes.compatibilty.more-infinite-research")
+end
+
 if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end

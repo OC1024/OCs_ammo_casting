@@ -3,6 +3,11 @@ Version: 0.10.6
 Date: 2026-09-02
   Translation:
     - Updated translation from Crowdin.
+  Compatibility:
+    - Added [more infinite research] compatibility (WIP)
+    - Incremented version of [OCs base assets]
+  Bugfixes:
+    - [metal and stars] Few casting recipes for bullets were not included in the bullet productivity tech.
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.5
 Date: 2026-08-03

@@ -560,11 +560,15 @@ local new_alt_recipes = {
       },
       ["rocket"] = {
         [40] = "oc-bio-rocket",
-        [20] = "rocket"
+        [20] = "rocket",
       },
       ["explosive-rocket"] = {
         [40] = "oc-bio-explosive-rocket",
-        [20] = "explosive-rocket"
+        [20] = "explosive-rocket",
+      },
+      ["grenade"] = {
+        [40] = "grenate",
+        [20] = "oc-bio-grenade",
       },
     }
   },
@@ -601,8 +605,7 @@ local new_alt_recipes = {
       },
       ["tungsten-shotgun-shell"] = {
         [40] = "oc-casting-tungsten-shotgun-shell",
-        [20] =
-        "tungsten-shotgun-shell"
+        [20] = "tungsten-shotgun-shell"
       },
       -- heavy ammo
       ["cannon-shell"] = {

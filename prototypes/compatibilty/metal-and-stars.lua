@@ -65,7 +65,7 @@ end
 -- oc normal + casting
 for _, r in ipairs(oc_bullets) do
   table.insert(all_bullets, r)
-  table.insert(all_bullets, "oc-asting-" .. r)
+  table.insert(all_bullets, "oc-casting-" .. r)
 end
 
 if mods["Krastorio2-spaced-out"] then
