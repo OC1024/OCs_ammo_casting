@@ -701,6 +701,9 @@ if settings.startup["casting-weapons"].value then
   casting_dict["gun-turret"] = "metallurgy"
   casting_dict["flamethrower-turret"] = "metallurgy"
   casting_dict["laser-turret"] = "electromagnetics"
+  -- vehicles
+  casting_dict["car"] = "metallurgy"
+  casting_dict["tank"] = "metallurgy"
 end
 if settings.startup["nuclear-ammo"].value then
   casting_dict["atomic-bomb"] = "cryogenics"
@@ -719,26 +722,30 @@ generator_api.batch_generator(casting_dict)
 
 -- set the subgroup to alternative-ammo to distinct them from normal crafting recipes
 local mapping = {
-  -- base ammo
+  -- bullet ammo
   ["oc-casting-firearm-magazine"] = "alternative-ammo",
   ["oc-casting-piercing-rounds-magazine"] = "alternative-ammo",
   ["oc-casting-uranium-rounds-magazine"] = "alternative-ammo",
   ["oc-casting-tungsten-rounds-magazine"] = "alternative-ammo",
   ["oc-casting-shotgun-shell"] = "alternative-ammo",
   ["oc-casting-piercing-shotgun-shell"] = "alternative-ammo",
-  ["oc-casting-uranium-shotgun-shell"] = "alternative-ammo", -- if existent
+  ["oc-casting-uranium-shotgun-shell"] = "alternative-ammo",
+  ["oc-casting-tungsten-shotgun-shell"] = "alternative-ammo",
+  -- cannon shells
   ["oc-casting-cannon-shell"] = "alternative-ammo",
   ["oc-casting-uranium-cannon-shell"] = "alternative-ammo",
   ["oc-casting-explosive-cannon-shell"] = "alternative-ammo",
   ["oc-casting-explosive-uranium-cannon-shell"] = "alternative-ammo",
   ["oc-casting-tungsten-cannon-shell"] = "alternative-ammo",
-  ["oc-casting-tungsten-shotgun-shell"] = "alternative-ammo",
-  ["oc-casting-railgun-ammo"] = "alternative-ammo",
-  ["oc-casting-tungsten-railgun-ammo"] = "alternative-ammo",
+  -- rockets
   ["oc-bio-rocket"] = "alternative-ammo",
   ["oc-bio-explosive-rocket"] = "alternative-ammo",
   ["oc-bio-grenade"] = "alternative-ammo",
+  ["oc-bio-land-mine"] = "alternative-ammo",
   ["oc-bio-cluster-grenade"] = "alternative-ammo",
+  -- late game ammo
+  ["oc-casting-railgun-ammo"] = "alternative-ammo",
+  ["oc-casting-tungsten-railgun-ammo"] = "alternative-ammo",
   ["oc-casting-artillery-shell"] = "alternative-ammo",
   ["oc-casting-heavy-artillery-shell"] = "alternative-ammo",
   ["oc-cryo-atomic-bomb"] = "alternative-ammo",

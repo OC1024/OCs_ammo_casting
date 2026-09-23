@@ -169,7 +169,7 @@ data:extend({
   },
 })
 
-if settings.startup["allow-casting-explosive-ammo"].value then
+if settings.startup["heavy-artillery-shells"].value then
   -- Modify the vanilla artillery shell to be called "Medium Artillery Shell"
   data.raw["ammo"]["artillery-shell"].localised_name = { "item-name.medium-artillery-shell" }
 end

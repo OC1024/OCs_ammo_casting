@@ -1,13 +1,21 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.6
-Date: 2026-09-15
+Date: 2026-09-23
+  Minor Features:
+    - Old savegame support: adding this mod upgrades all vanilla artillery, if "heavy artillery shells" is enabled.
+    - Added car and tank to castable recipes if casting weapons is enabled.
   Translation:
     - Updated translation from Crowdin.
   Compatibility:
     - Added [more infinite research] compatibility (WIP)
-    - Incremented version of [OCs base assets]
+    - Incremented version of [OCs base assets], now >= 0.6.0.
+  Changes:
+    - From [OCs Base Assets]: If you use tungsten ore for ammo casting, you might inspect your factory.
+    - Added shockwave graphics and damage to the heavy artillery shell projectile. The shockwave roughly doubles the radius but has weak damage output.
+    - Added casting raingun ammo tech as prerequirement for the alterantive nuclear ammo tech. (if enabled)
   Bugfixes:
     - [metal and stars] Few casting recipes for bullets were not included in the bullet productivity tech.
+    - Fixed inconsistency whith "heavy-artillery-shells" and "allow-casting-explosive-ammo" mod settings.
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.5
 Date: 2026-08-03

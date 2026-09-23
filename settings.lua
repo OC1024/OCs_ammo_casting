@@ -17,7 +17,7 @@ data:extend({
     type = "bool-setting",
     name = "heavy-artillery-shells",
     setting_type = "startup",
-    default_value = false,
+    default_value = true,
     order = "b-c",
   },
   { -- crafting explosives and rockets in biochamber (mandatory)

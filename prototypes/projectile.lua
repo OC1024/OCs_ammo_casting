@@ -140,7 +140,7 @@ if not mods["scattergun_turret"] then
         action_delivery = {
           type = "instant",
           target_effects =
-          { type = "damage", damage = { amount = 20, type = "physical" }} -- per pellet
+          { type = "damage", damage = { amount = 20, type = "physical" } } -- per pellet
         }
       },
       animation = {
@@ -155,89 +155,199 @@ if not mods["scattergun_turret"] then
   })
 end
 
---[[ -- shockwave idear
--- -- Ensure the shockwave exists before defining the projectile
--- local base_nuke_shockwave = data.raw["explosion"]["nuke-shockwave"]
--- if base_nuke_shockwave then
---   local small_nuke_shockwave = table.copy_and_rename(base_nuke_shockwave, "small-nuke-shockwave")
-
---   if small_nuke_shockwave.animations and small_nuke_shockwave.animations[1] then
---     small_nuke_shockwave.animations[1].scale = 0.5 -- Reduce size
---   end
-
---   small_nuke_shockwave.created_effect = {
---     type = "direct",
---     action_delivery = {
---       type = "instant",
---       target_effects = {
---         {
---           type = "damage",
---           damage = { amount = 400, type = "explosion" },
---         },
---         {
---           type = "damage",
---           damage = { amount = 100, type = "fire" },
---         }
---       }
---     }
---   }
-
---   data:extend({ small_nuke_shockwave })
--- else
---   log("Error: base nuke-shockwave not found in data.raw!")
--- end
---]]
-
-local massive_explosion = table.deepcopy(data.raw["explosion"]["big-explosion"])
-massive_explosion.name = "massive-explosion"
-data:extend({ massive_explosion })
-
 -- Create heavy artillery shell only if the settings allow it
-if settings.startup["allow-casting-explosive-ammo"].value then
-  local heavy_projectile = table.copy_and_rename(data.raw["artillery-projectile"]["artillery-projectile"],
-    "heavy-artillery-projectile")
+if settings.startup["heavy-artillery-shells"].value then
+  ----------------------------------------------------------------------
+  -- Heavy artillery shockwave
+  ----------------------------------------------------------------------
 
+  local max_steps = 10         -- set duration and radius(x2) of shockwave. vanilla = 30
+  local interval = 10          -- time interval. vanilla = 10
+  local shockwave_damage = 100 -- damage from first shockwave
+  local damage_falloff = 0.7   -- decay of damage value
+  local function make_heavy_artillery_shockwave()
+    local shockwave_prototypes = {}
+    local shockwave_delays = {}
+    for step = 1, max_steps do
+      local source_name = "small-demolisher-expanding-ash-cloud-" .. step
+      local source = data.raw["smoke-with-trigger"][source_name]
+      if not source then
+        error("Missing prototype: " .. source_name)
+      end
+
+      local shockwave = table.deepcopy(source)
+      shockwave.name = "heavy-artillery-shockwave-" .. step
+      -- Keep the Demolisher's visual cluster actions.
+      local visual_actions = {}
+
+      for _, action in pairs(shockwave.action or {}) do
+        if action.type == "cluster" then
+          table.insert(visual_actions, action)
+        end
+      end
+
+      shockwave.action = visual_actions
+      shockwave_prototypes[#shockwave_prototypes + 1] = shockwave
+
+      -- Each subsequent ring is spawned by a delayed-active-trigger.
+      if step > 1 then
+        local ring_damage = shockwave_damage * damage_falloff ^ (step - 1)
+        shockwave_delays[#shockwave_delays + 1] = {
+          type = "delayed-active-trigger",
+          name = "heavy-artillery-shockwave-delay-" .. step,
+          order = "ha-shockwave-" .. tostring(step),
+          delay = math.max(interval * (step - 1), 1),
+          action = {
+            {
+              type = "area",
+              radius = 2 * step, -- lucky guess
+              target_entities = true,
+              action_delivery = {
+                type = "instant",
+                target_effects = {
+                  {
+                    type = "damage",
+                    damage = {
+                      amount = ring_damage,
+                      type = "physical",
+                    },
+                    show_in_tooltip = true,
+                  },
+                },
+              },
+            },
+            {
+              type = "direct",
+              action_delivery = {
+                type = "instant",
+                target_effects = {
+                  {
+                    type = "create-entity",
+                    entity_name = "heavy-artillery-shockwave-" .. step,
+                  },
+                },
+              },
+            },
+          },
+        }
+      end
+    end
+
+    data:extend(shockwave_prototypes)
+    data:extend(shockwave_delays)
+    for step = 1, max_steps do
+      local name = "heavy-artillery-shockwave-" .. step
+      local prototype = data.raw["smoke-with-trigger"][name]
+      log(name .. " exists: " .. tostring(prototype ~= nil))
+      if prototype then
+        log(name .. " actions: " .. #prototype.action)
+      end
+    end
+
+    -- This is the effect sequence which starts the wave.
+    local effects = {
+      {
+        type = "create-entity",
+        entity_name = "heavy-artillery-shockwave-1",
+      },
+    }
+    for step = 2, max_steps do
+      table.insert(effects, {
+        type = "nested-result",
+        action = {
+          type = "direct",
+          action_delivery = {
+            type = "delayed",
+            delayed_trigger = "heavy-artillery-shockwave-delay-" .. step,
+          },
+        },
+      })
+    end
+    return effects
+  end
+
+  local heavy_artillery_shockwave = make_heavy_artillery_shockwave()
+
+  local heavy_projectile = table.deepcopy(data.raw["artillery-projectile"]["artillery-projectile"])
+  heavy_projectile.name = "heavy-artillery-projectile"
+
+  ----------------------------------------------------------------------
+  -- Heavy artillery projectile
+  ----------------------------------------------------------------------
   -- Modify the properties for balance
   heavy_projectile.action = {
-    type = "area",
-    radius = 6, -- epicenter explosion, +50% blast radius
-    force = "all",
+    type = "direct",
     action_delivery = {
       type = "instant",
       target_effects = {
-        -- inner explosion
+        -- inner explosion (area damage)
+        -- [[
         {
-          type = "damage",
-          damage = { amount = 3000, type = "physical" }
+          type = "nested-result",
+          action =
+          {
+            type = "area",
+            radius = 6.0, -- vanilla = 4
+            action_delivery =
+            {
+              type = "instant",
+              target_effects =
+              {
+                {
+                  type = "damage",
+                  damage = { amount = 3000, type = "physical" } -- vanilla = 1000
+                },
+                {
+                  type = "damage",
+                  damage = { amount = 1000, type = "explosion" }
+                }
+              }
+            }
+          }
         },
-        {
-          type = "damage",
-          damage = { amount = 1000, type = "explosion" }
-        },
+        --]]
+        -- cliff destruction
         {
           type = "destroy-cliffs",
           radius = 4, -- +33% more than cliff explosives
         },
-        -- -- shockwave
-        -- {
-        --   type = "nested-result",
-        --   action = {
-        --     type = "area",
-        --     radius = 12, -- shockwave radius
-        --     action_delivery = {
-        --       type = "instant",
-        --       target_effects = {
-        --         {
-        --           type = "create-entity",
-        --           entity_name = "small-nuke-shockwave",
-        --         }
-        --       }
-        --     }
-        --   }
-        -- }
+        -- vanilla artillery visuals
+        -- [[
+        {
+          type = "create-trivial-smoke",
+          smoke_name = "artillery-smoke",
+          initial_height = 0,
+          speed_from_center = 0.05,
+          speed_from_center_deviation = 0.005,
+          offset_deviation = { { -4, -4 }, { 4, 4 } },
+          max_radius = 3.5,
+          repeat_count = 4 * 4 * 15
+        },
+        {
+          type = "create-entity",
+          entity_name = "big-artillery-explosion"
+        },
+        {
+          type = "show-explosion-on-chart",
+          scale = 8 / 32
+        },
+        --]]
+        -- shockwave (added below)
       }
-    }
+    },
   }
+  -- shockwave
+  for _, effect in ipairs(heavy_artillery_shockwave) do
+    table.insert(heavy_projectile.action.action_delivery.target_effects, effect)
+  end
+
+  -- remove decorations (cliff-exposives=2; artillery-projectile=3.5)
+  for _, effect in pairs(heavy_projectile.final_action.action_delivery.target_effects) do
+    if effect.type == "destroy-decoratives" then
+      effect.radius = 5
+      break
+    end
+  end
   -- Register the new projectile
   data:extend({ heavy_projectile })
 end
