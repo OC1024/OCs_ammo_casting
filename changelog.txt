@@ -1,18 +1,24 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.10.6
+Version: 0.11.0
 Date: 2026-09-23
-  Minor Features:
+  Major Features:
     - Old savegame support: adding this mod upgrades all vanilla artillery, if "heavy artillery shells" is enabled.
+    - Added shockwave graphics and damage to the heavy artillery shell projectile. The shockwave roughly doubles the radius but has weak damage output.
+  Minor Features:
+    - Added alternative recipes for heavy artillery shells from uranium-238.
     - Added car and tank to castable recipes if casting weapons is enabled.
   Translation:
     - Updated translation from Crowdin.
   Compatibility:
-    - Added [more infinite research] compatibility (WIP)
+    - Added [more infinite research] compatibility (WIP).
     - Incremented version of [OCs base assets], now >= 0.6.0.
   Changes:
     - From [OCs Base Assets]: If you use tungsten ore for ammo casting, you might inspect your factory.
-    - Added shockwave graphics and damage to the heavy artillery shell projectile. The shockwave roughly doubles the radius but has weak damage output.
     - Added casting raingun ammo tech as prerequirement for the alterantive nuclear ammo tech. (if enabled)
+    - Heavy artillery shells now require a new technology after uranium and tungsten ammo.
+    - Added surface condition for (upgrading) heavy artillery shells such that they can only use the non-local recipe.
+      So on Vulcanus the uranium version and on Nauvis the tungsten version must be used. This feels more like the vanilla logistic "challenge".
+    - Casting explosive ammo tech now also requires the weaponized bio-exposives tech. It represents the knowledge from Gleba merged with Vulcanus.
   Bugfixes:
     - [metal and stars] Few casting recipes for bullets were not included in the bullet productivity tech.
     - Fixed inconsistency whith "heavy-artillery-shells" and "allow-casting-explosive-ammo" mod settings.

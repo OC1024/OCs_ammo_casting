@@ -1,3 +1,4 @@
+-- the technologies of the value talbe get removed from the key-technologies
 local starter_planet_tables = {}
 
 -- todo : add dedicated moshine compat, not just a simpler vulcanus clone

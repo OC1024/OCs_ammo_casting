@@ -1,7 +1,6 @@
 local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
 local oc_tech = require("__OCs_base_assets__.prototypes.utils.oc_tech")
 local starter_planet_tables = require("prototypes.utils.starter-planet-tables")
-
 local starter_planets = {}
 
 -- sp: multiple possible starter planets
@@ -63,9 +62,9 @@ if starter_planets.vulcanus then
     ["casting-heavy-ammo-tech"] = "uranium-ammo",
     ["casting-explosive-ammo-tech"] = "casting-tungsten-ammo-tech",
     ["casting-railgun-ammo-tech"] = "casting-tungsten-ammo-tech",
+    ["heavy-artillery-tech"]  = "casting-tungsten-ammo-tech",
   }
   oc_tech.remove_prerequisites(vulcanus_mapping)
-  oc_tech.remove_tech_ingredients(vulcanus_mapping)
 
   -- new techs for switching
   data.raw["technology"]["casting-tungsten-ammo-tech"].hidden = true -- basically removing the old tech
@@ -78,8 +77,9 @@ if starter_planets.vulcanus then
     ["uranium-ammo"] = "tungsten-ammo-tech", --switching indirect dependendy
     ["casting-explosive-ammo-tech"] = "casting-uranium-ammo-tech",
     ["casting-railgun-ammo-tech"] = "casting-uranium-ammo-tech",
+    ["heavy-artillery-tech"]  = "casting-uranium-ammo-tech",
     -- vtk-cannnon-turret
-    ["tungsten-ammo-tech"] = "vtk-cannon-turret-unlock" -- as it has the cannon shell magazines
+    ["tungsten-ammo-tech"] = "vtk-cannon-turret-unlock", -- as it has the cannon shell magazines
   })
   -- switch uranium and tungsten recipe unlocks
   oc_tech.remove_recipe_unlocks({

@@ -3,8 +3,9 @@ local tungsten_steel_mode = settings.startup["tungsten-steel-ammo"].value -- tru
 local generator_api = require("__OCs_base_assets__.prototypes.utils.api") -- pepare the generator
 local oc_debug = require("__OCs_base_assets__.prototypes.utils.oc_debug")
 local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
+local uranium_heavy_artillery = false
 
---- either tungsten-plate or tungsten-carbide + steel-plate
+--- Add either tungsten-plate or (tungsten-carbide + steel-plate) to a table
 ---@param n integer --amount of (n tungsten-plate) OR (2*n of tungten-carbide + n of steel-plate)
 ---@return table -- list for ingredient table. needed to be unpacked with table.unpack(tungsten_ing(n)) in the recipe definition
 local function tungsten_ing(n)
@@ -470,14 +471,25 @@ if settings.startup["heavy-artillery-shells"].value then
     log("Replaced artillery shell with medium artillery shell.")
   end
 
-  -- casting light artillery shell + heavy artillery shell
+  -- upgrading medium artillery shell + heavy artillery shell (DLC-like)
   data:extend({
-    { -- heavy artillery shell (DLC-like)
+    { -- heavy artillery shell tungsten
       type = "recipe",
       name = "heavy-artillery-shell",
-      icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
-      icon_size = 64,
-      icon_mipmaps = 4,
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__space-age__/graphics/icons/tungsten-plate.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 0.25,
+          shift = { 8, 8 }
+        }
+      },
       categories = { "crafting-with-fluid" }, -- just so it needs at least assembling machine 2
       group = "combat",
       subgroup = "ammo",
@@ -495,7 +507,7 @@ if settings.startup["heavy-artillery-shells"].value then
       allow_decomposition = false,
       auto_recycle = true,
     },
-    { -- upgrade to heavy artillery shell from artillery shell
+    { -- upgrade to heavy artillery shell with tungsten
       type = "recipe",
       name = "heavy-artillery-shell-upgrading",
       icons = {
@@ -509,10 +521,17 @@ if settings.startup["heavy-artillery-shells"].value then
           icon_size = 32,
           icon_mipmaps = 2,
           scale = 0.5,
-          shift = { 8, 8 }
+          shift = { 8, 8 },
+        },
+        {
+          icon = "__space-age__/graphics/icons/tungsten-plate.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 0.25,
+          shift = { -8, 8 }
         }
       },
-      categories = { "crafting-with-fluid" }, -- just so it needs at least assembling machine 2
+      categories = { "crafting-with-fluid" },
       group = "combat",
       subgroup = "ammo",
       enabled = false,
@@ -526,8 +545,111 @@ if settings.startup["heavy-artillery-shells"].value then
       results = { { type = "item", name = "heavy-artillery-shell", amount = 1 } },
     },
   })
+
+  if uranium_heavy_artillery then
+    -- fix surface_conditions of standard heavy artillery shells
+    local not_vulcanus = {
+      {
+        property = "pressure",
+        min = 300,  -- not space
+        max = 3900, -- not Vulcanus
+      }
+    }
+    local not_nauvis = {
+      {
+        property = "pressure",
+        min = 300,  -- not space
+        max = 3900, -- not Vulcanus
+      }
+    }
+    data.raw.recipe["heavy-artillery-shell"].surface_conditions = not_vulcanus
+    data.raw.recipe["heavy-artillery-shell-upgrading"].surface_conditions = not_vulcanus
+
+    data:extend({
+      { -- heavy artillery shell uranium
+        type = "recipe",
+        name = "heavy-artillery-shell-with-uranium",
+        icons = {
+          {
+            icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+          },
+          {
+            icon = "__base__/graphics/icons/uranium-238.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            scale = 0.25,
+            shift = { 8, 8 }
+          }
+        },
+        categories = { "crafting-with-fluid" },
+        group = "combat",
+        subgroup = "ammo",
+        enabled = false,
+        energy_required = 25,
+        ingredients = { -- DLC like recipe
+          { type = "item", name = "radar",       amount = 1 },
+          { type = "item", name = "explosives",  amount = 16 },
+          { type = "item", name = "calcite",     amount = 1 },
+          { type = "item", name = "uranium-238", amount = 4 },
+          -- {type = "item", name = "plastic-bar", amount = 8}, -- I don't like plastic ammo
+        },
+        results = { { type = "item", name = "heavy-artillery-shell", amount = 1 } },
+        surface_conditions = not_nauvis,
+        allow_productivity = false,
+        allow_decomposition = false,
+        auto_recycle = true,
+      },
+      { -- upgrade to heavy artillery shell with uranium
+        type = "recipe",
+        name = "heavy-artillery-shell-upgrading-with-uranium",
+        icons = {
+          {
+            icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+          },
+          {
+            icon = "__core__/graphics/icons/mip/expand.png",
+            icon_size = 32,
+            icon_mipmaps = 2,
+            scale = 0.5,
+            shift = { 8, 8 },
+          },
+          {
+            icon = "__base__/graphics/icons/uranium-238.png",
+            icon_size = 64,
+            icon_mipmaps = 4,
+            scale = 0.25,
+            shift = { -8, 8 }
+          }
+        },
+        categories = { "crafting-with-fluid" },
+        group = "combat",
+        subgroup = "ammo",
+        enabled = false,
+        energy_required = 10,
+        ingredients = {
+          { type = "item", name = "artillery-shell", amount = 1 },
+          { type = "item", name = "explosives",      amount = 8 },
+          { type = "item", name = "calcite",         amount = 1 },
+          { type = "item", name = "uranium-238",     amount = 4 }, -- replace tungsten-plate 1:1
+        },
+        results = { { type = "item", name = "heavy-artillery-shell", amount = 1 } },
+        surface_conditions = not_nauvis,
+        allow_productivity = false,
+        allow_decomposition = false,
+        auto_recycle = true,
+      },
+    })
+
+    -- make uranium-238 slightly lighter
+    data.raw["item"]["uranium-238"].weight = 10 * kg -- vanilla 50*kg
+  end
+
   local artillery_stack_size = data.raw.ammo["artillery-shell"] and data.raw.ammo["artillery-shell"].stack_size or 1
-  if data.raw.ammo["heavy-artillery-shell"] then data.raw.ammo["heavy-artillery-shell"].stack_size = artillery_stack_size end
+  data.raw.ammo["heavy-artillery-shell"].stack_size = artillery_stack_size
   log("Added heavy artillery shell recipes.")
 else -- nothing happens
   log("Vanilla Artillery shell untouched.")
@@ -715,6 +837,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 end
 if settings.startup["allow-casting-explosive-ammo"].value and settings.startup["heavy-artillery-shells"].value then
   casting_dict["heavy-artillery-shell"] = "metallurgy"
+  -- casting_dict["heavy-artillery-shell-with-uranium"] = "metallurgy"
 end
 
 -- execute generator from casting_dict
@@ -751,3 +874,9 @@ local mapping = {
   ["oc-cryo-atomic-bomb"] = "alternative-ammo",
 }
 oc_recipe.change_recipes_subgroup(mapping)
+
+-- -- update localised name for casting with uranium (needes as both recipes are parallel)
+-- if data.raw["recipe"]["oc-casting-heavy-artillery-shell-with-uranium"].localised_name then
+--   data.raw["recipe"]["oc-casting-heavy-artillery-shell-with-uranium"].localised_name =
+--   "recipe-name.oc-casting-heavy-artillery-shell-with-uranium"
+-- end

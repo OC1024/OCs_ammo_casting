@@ -334,6 +334,65 @@ data:extend({
 })
 
 -- Conditionally included technologies: explosive ammo (including heavy artillery shells)
+if settings.startup["heavy-artillery-shells"].value then
+  -- push artillery back to nauvis
+  oc_tech.remove_prerequisites({ ["artillery"] = { "metallurgic-science-pack" } })
+  oc_tech.add_prerequisites({ ["artillery"] = { "tank", "concrete", "space-science-pack" } })
+  oc_tech.add_tech_ingredients({ ["artillery"] = { "utility-science-pack" } })
+  oc_tech.remove_tech_ingredients({ ["artillery"] = { "metallurgic-science-pack" } })
+  -- I am nice and let the unit cost of 1500 be and not switch it back to vanilla 2000
+
+  -- new heavy artillery tech
+  data:extend({
+    { -- heavy artillery shells
+      type = "technology",
+      name = "heavy-artillery-tech",
+      icons = {
+        {
+          icon = "__base__/graphics/technology/artillery.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__base__/graphics/icons/uranium-238.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 0.25,
+          shift = { -16, 16 }
+        },
+        {
+          icon = "__space-age__/graphics/icons/tungsten-plate.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 0.25,
+          shift = { 16, 16 }
+        },
+      },
+      prerequisites = { "artillery", "casting-tungsten-ammo-tech", "uranium-ammo" },
+      unit = {
+        ingredients = {
+          { "automation-science-pack",  1 },
+          { "logistic-science-pack",    1 },
+          { "chemical-science-pack",    1 },
+          { "military-science-pack",    2 },
+          { "production-science-pack",  1 },
+          { "utility-science-pack",     1 },
+          { "space-science-pack",       1 },
+          { "metallurgic-science-pack", 2 },
+        },
+        time = 60,
+        count = 1000
+      },
+      effects = {
+        { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
+        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-with-uranium" },
+        { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" },
+        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading-with-uranium" },
+      },
+    },
+  })
+end
+
 if settings.startup["allow-casting-explosive-ammo"].value then
   data:extend({
     { -- casting explosive cannon shells and artillery shells
@@ -351,7 +410,9 @@ if settings.startup["allow-casting-explosive-ammo"].value then
           icon_mipmaps = 4,
         }
       },
-      prerequisites = { "casting-tungsten-ammo-tech", "artillery" }, -- explosives is indirectly required for tank and artillery
+      -- explosives is indirectly required for tank and artillery.
+      -- bio grenades tech such that it is a bit more road-blocked. see it as a convergence tech between Vulcanus and Gleba
+      prerequisites = { "casting-tungsten-ammo-tech", "artillery", "bio-grenades-tech" },
       unit = {
         ingredients = {
           { "automation-science-pack",  1 },
@@ -374,18 +435,10 @@ if settings.startup["allow-casting-explosive-ammo"].value then
     },
   })
 
-  -- optional the heavy artillery recipes (if existent)
-  local heavy_art = {
-    ["casting-explosive-ammo-tech"] = { "oc-casting-heavy-artillery-shell", "heavy-artillery-shell", "heavy-artillery-shell-upgrading" },
-  }
-  oc_tech.add_tech_unlocks(heavy_art)
-else -- tech is disabled, but heavy artillery might be enambled
-  local heavy_art = {
-    ["artillery"] = { "heavy-artillery-shell", "heavy-artillery-shell-upgrading" },
-  }
-  oc_tech.add_tech_unlocks(heavy_art)
+  -- optional the heavy artillery recipes and prereq (if existent)
+  oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "heavy-artillery-tech" } })
+  oc_tech.add_tech_unlocks({ ["casting-explosive-ammo-tech"] = { "oc-casting-heavy-artillery-shell", "oc-casting-heavy-artillery-shell-with-uranium", }, })
 end
-
 
 if settings.startup["armour-plating"].value then
   -- wheather bio-explosive is needed or not

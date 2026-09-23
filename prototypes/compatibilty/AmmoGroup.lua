@@ -7,7 +7,11 @@ if data.raw["item-group"]["ammo"] then
   -- this means all my subgroup definitions still are fine within the new group
 
   local mapping = {
+    ["heavy-artillery-shell-with-uranium"] = "ammo-row-artillery-shell",
     ["heavy-artillery-shell-upgrading"] = "ammo-row-artillery-shell",
+    ["heavy-artillery-shell-upgrading-with-uranium"] = "ammo-row-artillery-shell",
+    ["oc-casting-heavy-artillery-shell"] = "ammo-row-artillery-shell",
+    ["oc-casting-heavy-artillery-shell-with-uranium"] = "ammo-row-artillery-shell",
     ["oc-casting-tungsten-cannon-shell-magazine"] = "ammo-row-cannon-shell-magazine",
     ["oc-cryo-mortar-light-nuclear-ammo"] = "ammo-row-mortar-bomb",
     ["oc-casting-mortar-shrapnel-ammo"] = "ammo-row-physical-mortar-ammo",
