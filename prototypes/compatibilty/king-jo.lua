@@ -131,7 +131,7 @@ if data.raw["item-group"]["kj_group"] then
       type = "item-subgroup",
       name = "alternative-ammo", -- reuse the same name as for non-kj stuff
       group = "kj_group",
-      -- order = "g-a", -- TODO
+      -- order = "g-a", -- TODO, find the right order
     },
   })
 end
