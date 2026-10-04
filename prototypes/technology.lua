@@ -13,9 +13,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "foundry", "military-3", "chemical-science-pack", "space-science-pack", "metallurgic-science-pack" },
@@ -48,9 +50,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "casting-light-ammo-tech", "military-4", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
@@ -114,9 +118,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "casting-heavy-ammo-tech", "production-science-pack", "metallurgic-science-pack", },
@@ -154,9 +160,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       },
     },
     prerequisites = { "uranium-ammo", "casting-heavy-ammo-tech", "space-science-pack", "production-science-pack", "metallurgic-science-pack" },
@@ -189,9 +197,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "casting-tungsten-ammo-tech", "railgun" },
@@ -239,9 +249,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/biochamber.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "biochamber", "explosives", "chemical-science-pack", "space-science-pack", "agricultural-science-pack" },
@@ -272,9 +284,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/biochamber.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 16, -16 },
       }
     },
     prerequisites = { "bio-explosives-tech", "explosive-rocketry" }, -- which military-?
@@ -306,9 +320,11 @@ data:extend({
         scale = 2,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/biochamber.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "bio-explosives-tech", "land-mine", "military-4" },
@@ -333,9 +349,9 @@ data:extend({
   },
 })
 
--- Conditionally included technologies: explosive ammo (including heavy artillery shells)
+-- tech which separates normal from heavy artillery shells
 if settings.startup["heavy-artillery-shells"].value then
-  -- push artillery back to nauvis
+  -- push artillery back to nauvis (or any starter planet)
   oc_tech.remove_prerequisites({ ["artillery"] = { "metallurgic-science-pack" } })
   oc_tech.add_prerequisites({ ["artillery"] = { "tank", "concrete", "space-science-pack" } })
   oc_tech.add_tech_ingredients({ ["artillery"] = { "utility-science-pack" } })
@@ -352,20 +368,14 @@ if settings.startup["heavy-artillery-shells"].value then
           icon = "__base__/graphics/technology/artillery.png",
           icon_size = 256,
           icon_mipmaps = 4,
+          tint = { r = 1, g = 0.9, b = 0.8 }, -- slightly yellow
         },
         {
-          icon = "__base__/graphics/icons/uranium-238.png",
+          icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
           icon_size = 64,
           icon_mipmaps = 4,
-          scale = 0.25,
-          shift = { -16, 16 }
-        },
-        {
-          icon = "__space-age__/graphics/icons/tungsten-plate.png",
-          icon_size = 64,
-          icon_mipmaps = 4,
-          scale = 0.25,
-          shift = { 16, 16 }
+          scale = 1,
+          shift = { 32, 32 },
         },
       },
       prerequisites = { "artillery", "casting-tungsten-ammo-tech", "uranium-ammo" },
@@ -385,9 +395,69 @@ if settings.startup["heavy-artillery-shells"].value then
       },
       effects = {
         { type = "unlock-recipe", recipe = "heavy-artillery-shell" },
-        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-with-uranium" },
         { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading" },
-        -- { type = "unlock-recipe", recipe = "heavy-artillery-shell-upgrading-with-uranium" },
+      },
+    },
+  })
+
+  -- add graphic layer
+  if settings.startup["uranium-artillery-shells"].value then
+    local uranium_layer = {
+      icon = "__base__/graphics/icons/uranium-238.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      scale = 1,
+      shift = { -32, 32 },
+    }
+    local heavy_artillery_tech = data.raw.technology["heavy-artillery-tech"]
+    if heavy_artillery_tech then
+      table.insert(heavy_artillery_tech.icons, uranium_layer)
+    end
+    -- add uranium recipe unlocks
+    local uranium_unlocks = {
+      "heavy-artillery-shell-with-uranium",
+      "heavy-artillery-shell-upgrading-with-uranium"
+    }
+    oc_tech.add_tech_unlocks(uranium_unlocks)
+  end
+end
+
+-- nuclear artillery tech, independent of heavy artillery shells
+if settings.startup["nuclear-artillery-shells"].value then
+  data:extend({
+    { -- atomic bomb like artillery shells
+      type = "technology",
+      name = "nuclear-artillery-tech",
+      icons = {
+        {
+          icon = "__base__/graphics/technology/artillery.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__base__/graphics/icons/atomic-bomb.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, 32 },
+        }
+      },
+      prerequisites = { "atomic-bomb", "artillery" },
+      unit = {
+        ingredients = {
+          { "automation-science-pack", 1 },
+          { "logistic-science-pack",   1 },
+          { "chemical-science-pack",   1 },
+          { "military-science-pack",   2 },
+          { "production-science-pack", 1 },
+          { "utility-science-pack",    1 },
+          { "space-science-pack",      1 },
+        },
+        time = 60,
+        count = 1000, -- 5k for atomic bomb, 1.5k to 2k for artillery
+      },
+      effects = {
+        { type = "unlock-recipe", recipe = "nuclear-artillery-shell" },
       },
     },
   })
@@ -405,9 +475,11 @@ if settings.startup["allow-casting-explosive-ammo"].value then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+          icon_size = 64,
           icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
         }
       },
       -- explosives is indirectly required for tank and artillery.
@@ -436,7 +508,7 @@ if settings.startup["allow-casting-explosive-ammo"].value then
   })
 
   -- optional the heavy artillery recipes and prereq (if existent)
-  oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "heavy-artillery-tech" } })
+  oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "heavy-artillery-tech", "nuclear-artillery-tech" } })
   oc_tech.add_tech_unlocks({ ["casting-explosive-ammo-tech"] = { "oc-casting-heavy-artillery-shell", "oc-casting-heavy-artillery-shell-with-uranium", }, })
 end
 
@@ -667,9 +739,11 @@ if settings.startup["nuclear-ammo"].value then
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-cryo-plant.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/cryogenic-plant.png",
+          icon_size = 64,
           icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
         }
       },
       prerequisites = { "cryogenic-science-pack", "atomic-bomb", "casting-railgun-ammo-tech", "bio-rocketry-tech", "bio-grenades-tech" },
@@ -694,7 +768,10 @@ if settings.startup["nuclear-ammo"].value then
     },
   })
   -- add the optional techs as prerequisites if existent
-  oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = "casting-explosive-ammo-tech" })
+  oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = { "casting-explosive-ammo-tech", "nuclear-artillery-shell", } })
+
+  -- add optional unlocks
+  oc_tech.add_tech_unlocks({ ["nuclear-ammo-tech"] = { "oc-cryo-nuclear-artillery-shell", } })
 end
 
 -- changes to vanilla techs

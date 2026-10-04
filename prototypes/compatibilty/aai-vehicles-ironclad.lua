@@ -26,9 +26,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "foundry", "ironclad", "space-science-pack", "metallurgic-science-pack" }, -- early as possible

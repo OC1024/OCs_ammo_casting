@@ -25,7 +25,7 @@ local casting_ammo = {
   ["high-capacity-he-rounds-magazine"] = "organic",
 
   ["empty-shotgun-shell"] = "metallurgy",
-  ["uranium-shotgun-shell"] = "metallurgy", -- overwrite
+  ["uranium-shotgun-shell"] = "metallurgy", -- overwrite recipe
 
   ["high-capacity-empty-shotgun-shell"] = "metallurgy",
   ["high-capacity-shotgun-shell"] = "metallurgy",
@@ -55,7 +55,6 @@ local ammo_unlock_tech = {
   ["oc-bio-high-capacity-he-rounds-magazine"] = "bio-grenades-tech",
 
   ["oc-casting-empty-shotgun-shell"] = "casting-heavy-ammo-tech",
-  -- ["uranium-shotgun-shell"] = "metallurgy", -- overwrite
 
   ["oc-casting-high-capacity-empty-shotgun-shell"] = "casting-heavy-ammo-tech",
   ["oc-casting-high-capacity-shotgun-shell"] = "casting-heavy-ammo-tech",
@@ -75,6 +74,7 @@ if settings.startup["u238-slug-shell"].value and not settings.startup["uranium-s
   ammo_unlock_tech["oc-casting-uranium-shotgun-shell"] = "casting-heavy-ammo-tech"
 end
 
+-- execute generator, set prerequisites and unlocks
 generator_api.batch_generator(casting_ammo)
 oc_tech.add_recipe_unlocks(ammo_unlock_tech)
 oc_tech.add_prerequisites(extra_prereq)

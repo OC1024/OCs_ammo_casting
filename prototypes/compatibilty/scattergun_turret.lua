@@ -14,8 +14,6 @@ if data.raw["ammo"]["tungsten-cannon-shell"] and data.raw["projectile"]["tungste
   data.raw["projectile"]["tungsten-cannon-projectile"].force_condition = "not-same"
   data.raw["projectile"]["tungsten-cannon-projectile"].direction_only = false
   data.raw["projectile"]["tungsten-cannon-projectile"].hit_collision_mask = { layers = { object = true, player = true, train = true, trigger_target = true } }
-  -- log(serpent.block(data.raw["ammo"]["tungsten-cannon-shell"]))
-  -- log(serpent.block(data.raw["projectile"]["tungsten-cannon-projectile"]))
 end
 if data.raw["ammo"]["tungsten-shotgun-shell"] and data.raw["projectile"]["explosive-uranium-cannon-projectile"] then
   data.raw["ammo"]["tungsten-shotgun-shell"].ammo_type.target_type = "position"
@@ -74,9 +72,11 @@ if settings.startup["casting-weapons"].value then
           icon_mipmaps = 1,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+          icon_size = 64,
           icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
         }
       },
       prerequisites = {
@@ -117,9 +117,11 @@ if settings.startup["casting-weapons"].value then
           icon_mipmaps = 1,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-em-plant.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/electromagnetic-plant.png",
+          icon_size = 64,
           icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
         }
       },
       prerequisites = {

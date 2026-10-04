@@ -31,7 +31,7 @@ if mods["More_Ammo"] then -- experimental
   require("prototypes.compatibilty.More_Ammo")
 end
 
-if mods["more-ammo-redux"] then
+if mods["more-ammo-redux"] then -- by QuingKhaos 
   require("prototypes.compatibilty.more-ammo-redux")
 end
 
@@ -43,7 +43,7 @@ if mods["missile-defense-systems-redux"] then
   require("prototypes.compatibilty.missile-defense-systems-redux")
 end
 
-if mods["Uranium-Artillery-Shell"] then -- experimental
+if mods["Uranium-Artillery-Shell"] then -- experimental; ascended to be integrated
   require("prototypes.compatibilty.Uranium-Artillery-Shell")
 end
 
@@ -65,7 +65,7 @@ if mods["metal-and-stars"] then
   require("prototypes.compatibilty.metal-and-stars")
 end
 
-if mods["bzlead"] then
+if mods["bzlead"] or mods["khaoslead"] then
   require("prototypes.compatibilty.bzlead")
 end
 

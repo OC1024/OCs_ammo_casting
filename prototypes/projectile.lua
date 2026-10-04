@@ -124,7 +124,7 @@ data:extend({
   },
 })
 
-if not mods["scattergun_turret"] then
+if settings.startup["uranium-shotgun-shell"].value and (not data.raw["projectile"]["uranium-shotgun-pellet"]) then
   data:extend({
     { -- uranium shotgun pellet
       type = "projectile",
@@ -155,13 +155,12 @@ if not mods["scattergun_turret"] then
   })
 end
 
--- Create heavy artillery shell only if the settings allow it
+-- heavy artillery shell
 if settings.startup["heavy-artillery-shells"].value then
   ----------------------------------------------------------------------
   -- Heavy artillery shockwave
   ----------------------------------------------------------------------
-
-  local max_steps = 10         -- set duration and radius(x2) of shockwave. vanilla = 30
+  local max_steps = 10         -- set duration and radius(x2) of shockwave. demolisher = 30
   local interval = 10          -- time interval. vanilla = 10
   local shockwave_damage = 100 -- damage from first shockwave
   local damage_falloff = 0.7   -- decay of damage value
@@ -235,14 +234,6 @@ if settings.startup["heavy-artillery-shells"].value then
 
     data:extend(shockwave_prototypes)
     data:extend(shockwave_delays)
-    for step = 1, max_steps do
-      local name = "heavy-artillery-shockwave-" .. step
-      local prototype = data.raw["smoke-with-trigger"][name]
-      log(name .. " exists: " .. tostring(prototype ~= nil))
-      if prototype then
-        log(name .. " actions: " .. #prototype.action)
-      end
-    end
 
     -- This is the effect sequence which starts the wave.
     local effects = {
@@ -350,4 +341,15 @@ if settings.startup["heavy-artillery-shells"].value then
   end
   -- Register the new projectile
   data:extend({ heavy_projectile })
+end
+
+-- Nuclear artillery shell
+if settings.startup["nuclear-artillery-shells"].value then
+  local nuclear_projectile = table.deepcopy(data.raw["artillery-projectile"]["artillery-projectile"])
+  local atomic_projectile = data.raw["projectile"]["atomic-rocket"]
+
+  nuclear_projectile.name = "nuclear-artillery-projectile"
+  nuclear_projectile.action = table.deepcopy(atomic_projectile.action)
+
+  data:extend({ nuclear_projectile })
 end

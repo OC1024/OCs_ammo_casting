@@ -26,9 +26,11 @@ data:extend({
         icon_mipmaps = 4,
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/biochamber.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "agricultural-science-pack", "ballistic-missile-defense-system", "bio-rocketry-tech", "bio-grenades-tech" },

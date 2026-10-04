@@ -50,9 +50,11 @@ data:extend({
         icon_mipmaps = 1, --sadly
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/biochamber.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = {
@@ -96,9 +98,11 @@ data:extend({
         icon_mipmaps = 1, --sadly
       },
       {
-        icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-em-plant.png",
-        icon_size = 256,
+        icon = "__space-age__/graphics/icons/electromagnetic-plant.png",
+        icon_size = 64,
         icon_mipmaps = 4,
+        scale = 1,
+        shift = { 32, -32 },
       }
     },
     prerequisites = {
@@ -147,9 +151,11 @@ if not mods["ironclad-gunboat-and-mortar-turret-fork"] then -- changes see compa
           icon_mipmaps = 4,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+          icon_size = 64,
           icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
         }
       },
       prerequisites = { "casting-basic-mortar-ammo-tech", "military-4", "mortar-cluster-bomb" },

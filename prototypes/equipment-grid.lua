@@ -1,6 +1,9 @@
-if not settings.startup["armour-plating"].value then return end -- skip if armor plating is disabled
+-- skip if armor plating is disabled
+if not settings.startup["armour-plating"].value then
+  return
+end
 
-local grids = require("prototypes.utils.grid_definitions")      -- defines and maps categories (personal, vehicle) to equipment_grid
+local grids = require("prototypes.utils.grid_definitions") -- defines and maps categories (personal, vehicle) to equipment_grid
 
 -- 0) Create new equipment categories
 data:extend({
@@ -67,11 +70,11 @@ local function ensure_category(grid_name, category)
   grid.equipment_categories = grid.equipment_categories or {}
 
   if not table.contains(grid.equipment_categories, category) then
-    log("Grid " .. grid_name .. " already has category " .. category .. ", doing category assignment anyaway.")
+    -- log("Grid " .. grid_name .. " already has category " .. category .. ", doing category assignment anyaway.")
     table.insert(grid.equipment_categories, category)
   else
     table.insert(grid.equipment_categories, category)
-    log("Grid " .. grid_name .. " now has category " .. category)
+    -- log("Grid " .. grid_name .. " now has category " .. category)
   end
 end
 

@@ -20,6 +20,20 @@ data:extend({
     default_value = true,
     order = "b-c",
   },
+  { -- for heavy shells, allow uranium alternatives.
+    type = "bool-setting",
+    name = "uranium-artillery-shells",
+    setting_type = "startup",
+    default_value = true,
+    order = "b-d",
+  },
+  { -- independent of heavy artillery shells
+    type = "bool-setting",
+    name = "nuclear-artillery-shells",
+    setting_type = "startup",
+    default_value = true,
+    order = "b-d",
+  },
   { -- crafting explosives and rockets in biochamber (mandatory)
     type = "bool-setting",
     name = "allow-bio-explosives",
@@ -95,7 +109,7 @@ data:extend({
     hidden = true, -- now mandatory but not casted
     order = "e-c",
   },
-  -- even more powerful ammo types
+  -- "casting" even more powerful ammo types
   { -- vanilla nuclear rockets and key setting for fusion, anitmatter, ...
     type = "bool-setting",
     name = "nuclear-ammo",
@@ -110,6 +124,7 @@ data:extend({
     default_value = false,
     order = "f-b",
   },
+  -- shortcut for other starter planets
   {
     type = "bool-setting",
     name = "earlier-alt-ammo-techs",

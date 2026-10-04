@@ -172,9 +172,7 @@ data:extend({
 if settings.startup["heavy-artillery-shells"].value then
   -- Modify the vanilla artillery shell to be called "Medium Artillery Shell"
   data.raw["ammo"]["artillery-shell"].localised_name = { "item-name.medium-artillery-shell" }
-end
 
-if settings.startup["heavy-artillery-shells"].value then
   data:extend({
     { -- heavy-artillery-shell
       type = "ammo",
@@ -190,7 +188,7 @@ if settings.startup["heavy-artillery-shells"].value then
           action_delivery = {
             type = "artillery",
             projectile = "heavy-artillery-projectile",
-            starting_speed = 0.8, -- -20% range
+            starting_speed = 0.8,
             direction_deviation = 0,
             range_deviation = 0,
             source_effects = {
@@ -207,6 +205,44 @@ if settings.startup["heavy-artillery-shells"].value then
       drop_sound = item_sounds.artillery_large_inventory_move,
       stack_size = 1,
       weight = 200 * kg -- twice vanilla artillery shell
+    }
+  })
+end
+
+-- nuclear artillery, independent of heavy artillery
+if settings.startup["nuclear-artillery-shells"].value then
+  data:extend({
+    { -- nuclear-artillery-shell
+      type = "ammo",
+      name = "nuclear-artillery-shell",
+      icon = "__OCs_ammo_casting__/graphics/icons/nuclear-artillery-shell.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      ammo_category = "artillery-shell",
+      ammo_type = {
+        target_type = "position",
+        action = {
+          type = "direct",
+          action_delivery = {
+            type = "artillery",
+            projectile = "nuclear-artillery-projectile",
+            starting_speed = 0.75,
+            direction_deviation = 0,
+            range_deviation = 0,
+            source_effects = {
+              type = "create-explosion",
+              entity_name = "artillery-cannon-muzzle-flash"
+            }
+          }
+        }
+      },
+      subgroup = "ammo",
+      order = "d[explosive-cannon-shell]-d[artillery]-c[nuclear]",
+      inventory_move_sound = item_sounds.artillery_large_inventory_move,
+      pick_sound = item_sounds.artillery_large_inventory_pickup,
+      drop_sound = item_sounds.artillery_large_inventory_move,
+      stack_size = 1,
+      weight = 2 * tons -- too heavy for a rocket. 1/3 heavier than an atomic bomb.
     }
   })
 end
@@ -238,7 +274,7 @@ if settings.startup["armour-plating"].value then
     })
   end
 
-  data:extend(items) -- add to the game
+  data:extend(items)
 end
 
 if settings.startup["uranium-shotgun-shell"].value and (not data.raw["ammo"]["uranium-shotgun-shell"]) then -- either "ammo" or "item", idk
