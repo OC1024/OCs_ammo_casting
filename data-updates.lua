@@ -51,6 +51,10 @@ if mods["atomic-land-mines"] then
   require("prototypes.compatibilty.atomic-land-mines")
 end
 
+if mods["shield-projector"] then
+  require("prototypes.compatibilty.shield-projector")
+end
+
 if mods["AmmoGroup"] then -- pushing the subgroups in the new group
   require("prototypes.compatibilty.AmmoGroup")
 end
@@ -71,6 +75,10 @@ end
 
 if mods["aai-industry"] then
   require("prototypes.compatibilty.aai-industry")
+end
+
+if mods["bobwarfare"] then
+  require("prototypes.compatibilty.bobwarfare")
 end
 
 if mods["Krastorio2-spaced-out"] then -- replaces normal Krastorio2 with space-age compatible version

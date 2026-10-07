@@ -58,7 +58,7 @@ data:extend({
       }
     },
     prerequisites = {
-      "biochamber",                     -- crafting building
+      "biochamber",               -- crafting building
       -- "casting-basic-mortar-ammo-tech", -- continuation of chemical ammo? independent of the foundry!
       -- "mortar-slowdown-ammo",
       -- "mortar-poison-bomb",
@@ -74,8 +74,8 @@ data:extend({
         { "logistic-science-pack",     1 },
         { "military-science-pack",     2 },
         { "chemical-science-pack",     2 },
-        { "utility-science-pack",      1 }, -- removed if cheaper
         { "space-science-pack",        1 }, -- removed if cheaper
+        { "utility-science-pack",      1 }, -- removed if cheaper
         { "agricultural-science-pack", 2 }, -- removed if cheaper
       },
       time = 30,

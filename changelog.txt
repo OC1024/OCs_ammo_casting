@@ -8,12 +8,15 @@ Date: 2026-10-04
   Minor Features:
     - Added alternative recipes for heavy artillery shells from uranium-238.
     - Added car and tank to castable recipes if casting weapons is enabled.
+    - Moved armor equipment from [OCs Extraplanetary Production] to here (military and civil). Equipments can be craftet at the EM-plant.
   Translation:
     - Updated translation from Crowdin.
   Compatibility:
     - Added [more infinite research] compatibility (WIP).
+    - Added [Bob Warefare] compatibility (WIP).
+    - Added [Shield Projector] compatibility.
     - Incremented version of [OCs base assets], now >= 0.6.0.
-    - Replaced recommendation from [Ammo Group] to [QuingKhaos Ammo Group]. No dependency because of circular dependency.
+    - Replaced recommendation from [Ammo Group] to [QuingKhaos Ammo Group]. Technically no real dependency because of circular dependency.
     - Pushed some of the compatibility files for [BZ Lead] to [OCs Foundry Expansion] mod, as it is more appropriate there. The ammo casting recipes are still here.
   Graphics:
     - Changed icon paths to use DLC icons instead of base assets.
@@ -25,6 +28,7 @@ Date: 2026-10-04
       So on Vulcanus the uranium version and on Nauvis the tungsten version must be used. This feels more like the vanilla logistic "challenge".
     - Casting explosive ammo tech now also requires the weaponized bio-exposives tech. It represents the knowledge from Gleba merged with Vulcanus.
     - Set armor platings to recycle themselves.
+    - Hides antimatter ammo setting if [Kastorio 2 Spaced Out] is not active.
   Bugfixes:
     - [metal and stars] Few casting recipes for bullets were not included in the bullet productivity tech.
     - Fixed inconsistency whith "heavy-artillery-shells" and "allow-casting-explosive-ammo" mod settings.

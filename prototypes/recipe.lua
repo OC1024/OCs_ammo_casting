@@ -5,8 +5,8 @@ local oc_debug = require("__OCs_base_assets__.prototypes.utils.oc_debug")
 local oc_recipe = require("__OCs_base_assets__.prototypes.utils.oc_recipe")
 
 --- Add either tungsten-plate or (tungsten-carbide + steel-plate) to a table
----@param n integer --amount of (n tungsten-plate) OR (2*n of tungten-carbide + n of steel-plate)
----@return table -- list for ingredient table. needed to be unpacked with table.unpack(tungsten_ing(n)) in the recipe definition
+--- @param n integer amount of (n tungsten-plate) OR (2*n of tungten-carbide + n of steel-plate)
+--- @return table -- list for ingredient table. needed to be unpacked with table.unpack(tungsten_ing(n)) in the recipe definition
 local function tungsten_ing(n)
   if tungsten_steel_mode then
     return {
@@ -112,11 +112,6 @@ if settings.startup["uranium-shotgun-shell"].value and (not data.raw.recipe["ura
     { -- uranium shotgun shell
       type = "recipe",
       name = "uranium-shotgun-shell",
-      -- icons = { {
-      --   icon = "__OCs_ammo_casting__/graphics/icons/uranium-shotgun-shell.png",
-      --   icon_size = 64,
-      --   icon_mipmaps = 4,
-      -- } },
       categories = { "crafting" },
       group = "combat",
       subgroup = "ammo",
@@ -726,116 +721,39 @@ if settings.startup["fulgora-coal"].value and not has_coal then
   log("Switched 7% solid fuel with 7% coal in scrap recycling recipe.")
 end
 
--- register alt recipes for generator API to save a bit of compuation power.
-local new_alt_recipes = {
-  ["organic"] = {
-    alternative_recipes = {
-      ["explosives"] = {
-        [80] = "oc-bio-explosives",
-        [60] = "explosives",
-        [40] = "oc-bio-explosives-space",
-        [20] = "oc-bio-explosives-gleba",
-      },
-      ["rocket"] = {
-        [40] = "oc-bio-rocket",
-        [20] = "rocket",
-      },
-      ["explosive-rocket"] = {
-        [40] = "oc-bio-explosive-rocket",
-        [20] = "explosive-rocket",
-      },
-      ["grenade"] = {
-        [40] = "grenate",
-        [20] = "oc-bio-grenade",
-      },
-    }
-  },
-  ["metallurgy"] = {
-    alternative_recipes = {
-      -- personal ammo
-      ["firearm-magazine"] = {
-        [40] = "oc-casting-firearm-magazine",
-        [20] = "firearm-magazine"
-      },
-      ["piercing-rounds-magazine"] = {
-        [40] = "oc-casting-piercing-rounds-magazine",
-        [20] = "piercing-rounds-magazine"
-      },
-      ["uranium-rounds-magazine"] = {
-        [40] = "oc-casting-uranium-rounds-magazine",
-        [20] = "uranium-rounds-magazine"
-      },
-      ["tungsten-rounds-magazine"] = {
-        [40] = "oc-casting-tungsten-rounds-magazine",
-        [20] = "tungsten-rounds-magazine"
-      },
-      ["shotgun-shell"] = {
-        [40] = "oc-casting-shotgun-shell",
-        [20] = "shotgun-shell"
-      },
-      ["piercing-shotgun-shell"] = {
-        [40] = "oc-casting-piercing-shotgun-shell",
-        [20] = "piercing-shotgun-shell"
-      },
-      ["uranium-shotgun-shell"] = { -- if existent
-        [40] = "oc-casting-uranium-shotgun-shell",
-        [20] = "uranium-shotgun-shell"
-      },
-      ["tungsten-shotgun-shell"] = {
-        [40] = "oc-casting-tungsten-shotgun-shell",
-        [20] = "tungsten-shotgun-shell"
-      },
-      -- heavy ammo
-      ["cannon-shell"] = {
-        [40] = "oc-casting-cannon-shell",
-        [20] = "cannon-shell"
-      },
-      ["uranium-cannon-shell"] = {
-        [40] = "oc-casting-uranium-cannon-shell",
-        [20] = "uranium-cannon-shell"
-      },
-      ["tungsten-cannon-shell"] = {
-        [40] = "oc-casting-tungsten-cannon-shell",
-        [20] = "tungsten-cannon-shell"
-      },
-      ["railgun-ammo"] = {
-        [40] = "oc-casting-railgun-ammo",
-        [20] = "railgun-ammo"
-      },
-      ["tungsten-railgun-ammo"] = {
-        [40] = "oc-casting-tungsten-railgun-ammo",
-        [20] = "tungsten-railgun-ammo"
-      },
-      ["artillery-shell"] = {
-        [40] = "oc-casting-artillery-shell",
-        [20] = "artillery-shell"
-      },
-      ["heavy-artillery-shell"] = {
-        [60] = "oc-casting-heavy-artillery-shell",
-        [40] = "heavy-artillery-shell",
-        [20] = "heavy-artillery-shell-upgrading"
-      },
-      -- armour plating
-      ["light-armour-plating"] = {
-        [40] = "oc-casting-light-armour-plating",
-        [20] = "light-armour-plating"
-      },
-      ["heavy-armour-plating"] = {
-        [40] = "oc-casting-heavy-armour-plating",
-        [20] = "heavy-armour-plating"
-      },
-      -- buildings
-      ["gun-turret"] = {
-        [40] = "oc-casting-gun-turret",
-        [20] = "gun-turret"
-      },
-    }
-  }
+-- add crafting category
+local adding_cat = {
+  -- civil equipment
+  ["toolbelt-equipment"] = { "electromagnetics" },
+  ["nightvision-equipment"] = { "electromagnetics" },
+  ["exoskeleton-equipment"] = { "electromagnetics" },
+  ["personal-roboport-equipment"] = { "electromagnetics" },
+  ["personal-roboport-mk2-equipment"] = { "electromagnetics" },
+  ["solar-panel-equipment"] = { "electromagnetics" },
+  ["fission-reactor-equipment"] = { "electromagnetics" },
+  ["fusion-reactor-equipment"] = { "electromagnetics" },
+  ["battery-equipment"] = { "electromagnetics" },
+  ["battery-mk2-equipment"] = { "electromagnetics" },
+  ["battery-mk3-equipment"] = { "electromagnetics" },
+  -- military equipment
+  ["laser-turret"] = { "electromagnetics" },
+  ["discharge-defence-equipment"] = { "electromagnetics" },
+  ["energy-shield-equipment"] = { "electromagnetics" },
+  ["energy-shield-mk2-equipment"] = { "electromagnetics" },
+  ["personal-laser-defense-equipment"] = { "electromagnetics" },
+  -- battle bots
+  ["defender-capsule"] = { "electromagnetics" },
+  ["distractor-capsule"] = { "electromagnetics" },
+  ["destroyer-capsule"] = { "electromagnetics" },
+  -- armor
+  ["light-armor"] = { "metallurgy" },
+  ["heavy-armor"] = { "metallurgy" },
+  ["modular-armor"] = { "electromagnetics" },
+  ["power-armor"] = { "electromagnetics" },
+  ["power-armor-mk2"] = { "electromagnetics" },
+  ["mech-armor"] = { "electromagnetics" },
 }
-generator_api.register_multi_category_alt_recipes(new_alt_recipes)
-generator_api.register_item_blacklist("organic", "explosives") -- for convenience. Now this must be an intermediate step
-
-oc_debug.debug_log("__OCs_ammo_casting__ rules table: " .. serpent.block(generator_api.rules_table), "generator_api")
+oc_recipe.add_crafting_categories(adding_cat)
 
 -- generate new recipes with the generator API
 local casting_dict = {
@@ -863,6 +781,8 @@ local casting_dict = {
   ["land-mine"]                = "organic",
   ["rocket"]                   = "organic",
   ["explosive-rocket"]         = "organic",
+  -- buildling
+  ["radar"]                    = "electromagnetics"
 }
 -- add optional recipes to the casting_dict
 if data.raw["ammo"]["uranium-shotgun-shell"] then

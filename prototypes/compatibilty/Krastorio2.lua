@@ -20,7 +20,7 @@ local new_blacklist = {
     }
   }
 }
-generator_api.register_multi_item_blacklists(new_blacklist)
+generator_api.register_multi_item_blacklist(new_blacklist)
 
 -- 2. Execute the Generator.
 local casting_dict = {

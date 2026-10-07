@@ -1,3 +1,5 @@
+require("prototypes.compatibilty.rules-patch")
+
 require("prototypes.category")
 require("prototypes.equipment-grid")
 require("prototypes.item")

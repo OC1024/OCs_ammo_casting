@@ -8,7 +8,8 @@ data:extend({
     name = "casting-light-ammo-tech",
     icons = {
       {
-        icon = "__base__/graphics/technology/weapon-shooting-speed-1.png",
+        -- icon = "__base__/graphics/technology/weapon-shooting-speed-1.png",
+        icon = "__base__/graphics/technology/physical-projectile-damage-1.png",
         icon_size = 256,
         icon_mipmaps = 4,
       },
@@ -371,11 +372,12 @@ if settings.startup["heavy-artillery-shells"].value then
           tint = { r = 1, g = 0.9, b = 0.8 }, -- slightly yellow
         },
         {
-          icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
+          -- icon = "__OCs_ammo_casting__/graphics/icons/tungsten-artillery-shell.png",
+          icon = "__space-age__/graphics/icons/tungsten-plate.png",
           icon_size = 64,
           icon_mipmaps = 4,
-          scale = 1,
-          shift = { 32, 32 },
+          scale = 0.5,
+          shift = { 48, 48 },
         },
       },
       prerequisites = { "artillery", "casting-tungsten-ammo-tech", "uranium-ammo" },
@@ -406,8 +408,8 @@ if settings.startup["heavy-artillery-shells"].value then
       icon = "__base__/graphics/icons/uranium-238.png",
       icon_size = 64,
       icon_mipmaps = 4,
-      scale = 1,
-      shift = { -32, 32 },
+      scale = 0.5,
+      shift = { 16, 48 },
     }
     local heavy_artillery_tech = data.raw.technology["heavy-artillery-tech"]
     if heavy_artillery_tech then
@@ -449,9 +451,9 @@ if settings.startup["nuclear-artillery-shells"].value then
           { "logistic-science-pack",   1 },
           { "chemical-science-pack",   1 },
           { "military-science-pack",   2 },
+          { "space-science-pack",      1 },
           { "production-science-pack", 1 },
           { "utility-science-pack",    1 },
-          { "space-science-pack",      1 },
         },
         time = 60,
         count = 1000, -- 5k for atomic bomb, 1.5k to 2k for artillery
@@ -461,6 +463,7 @@ if settings.startup["nuclear-artillery-shells"].value then
       },
     },
   })
+  -- add nauvis-specific sci pack if existent
 end
 
 if settings.startup["allow-casting-explosive-ammo"].value then
@@ -513,16 +516,6 @@ if settings.startup["allow-casting-explosive-ammo"].value then
 end
 
 if settings.startup["armour-plating"].value then
-  -- wheather bio-explosive is needed or not
-  local prereq_tech_reactive
-  if settings.startup["allow-bio-explosives"].value then
-    prereq_tech_reactive = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech",
-      "agricultural-science-pack" }
-  else
-    prereq_tech_reactive = { "heavy-armour-plating-tech", "power-armor", "military-4", "explosives",
-      "agricultural-science-pack" }
-  end
-
   -- armour plating techs
   data:extend({
     { -- light armour plating
@@ -639,7 +632,7 @@ if settings.startup["armour-plating"].value then
       },
       icon_size = 256,
       icon_mipmaps = 4,
-      prerequisites = prereq_tech_reactive,
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech", "agricultural-science-pack" },
       unit = {
         ingredients = {
           { "automation-science-pack",   1 },
@@ -796,3 +789,9 @@ if settings.startup["casting-weapons"].value then
   }
   oc_tech.add_recipe_unlocks(recipe_tech_mapping)
 end
+
+-- add special recipe unlocks to the tech
+local recipe_unlocks = {
+  ["oc-pulse-radar"] = "radar",
+}
+oc_tech.add_recipe_unlocks(recipe_unlocks)

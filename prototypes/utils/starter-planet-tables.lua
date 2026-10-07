@@ -27,12 +27,14 @@ starter_planet_tables.gleba_techs = {
   -- ["reactive-armour-plating-tech"] = { "space-science-pack", "agricultural-science-pack" }, -- plating
   ["biochemical-mortar-ammo-tech"] = { "space-science-pack", "utility-science-pack", "agricultural-science-pack" },
   ["oc-mds-rocketry-tech"] = { "agricultural-science-pack" },
+  ["bio-bob-ammo-tech"] = { "space-science-pack", "utility-science-pack", "agricultural-science-pack" },
 }
 
 starter_planet_tables.fulgora_techs = {
   -- ["ultra-light-armour-plating-tech"] = { "space-science-pack", "electromagnetic-science-pack" }, -- plating
   ["pulse-mortar-ammo-tech"] = { "space-science-pack", "utility-science-pack", "electromagnetic-science-pack" },
-  ["pulse-modular-turrets"] = { "space-science-pack", "utility-science-pack", "electromagnetic-science-pack" }
+  ["pulse-modular-turrets"] = { "space-science-pack", "utility-science-pack", "electromagnetic-science-pack" },
+  ["pulse-bob-drones-tech"] = { "space-science-pack", "utility-science-pack",  "electromagnetic-science-pack"},
 }
 
 return starter_planet_tables

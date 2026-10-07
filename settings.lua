@@ -34,14 +34,6 @@ data:extend({
     default_value = true,
     order = "b-d",
   },
-  { -- crafting explosives and rockets in biochamber (mandatory)
-    type = "bool-setting",
-    name = "allow-bio-explosives",
-    setting_type = "startup",
-    default_value = true,
-    hidden = true, -- now mandatory
-    order = "c-a",
-  },
   { -- space fish breeding
     type = "bool-setting",
     name = "space-fish",
@@ -117,13 +109,6 @@ data:extend({
     default_value = true,
     order = "f-a",
   },
-  { -- [K2SO: antimatter ammo] (requires nuclear ammo TRUE)
-    type = "bool-setting",
-    name = "antimatter-ammo",
-    setting_type = "startup",
-    default_value = false,
-    order = "f-b",
-  },
   -- shortcut for other starter planets
   {
     type = "bool-setting",
@@ -133,3 +118,15 @@ data:extend({
     order = "g",
   }
 })
+
+if mods["Krastorio2-spaced-out"] then
+  data:extend({
+  { -- [K2SO: antimatter ammo] (requires nuclear ammo TRUE)
+    type = "bool-setting",
+    name = "antimatter-ammo",
+    setting_type = "startup",
+    default_value = false,
+    order = "f-b",
+  },
+  })
+end

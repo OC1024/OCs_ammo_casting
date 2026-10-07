@@ -220,6 +220,7 @@ if settings.startup["nuclear-artillery-shells"].value then
       icon_mipmaps = 4,
       ammo_category = "artillery-shell",
       ammo_type = {
+        cooldown_modifier = 2,
         target_type = "position",
         action = {
           type = "direct",
