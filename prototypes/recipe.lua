@@ -107,7 +107,8 @@ data:extend({
 })
 
 -- uranium shotgun shell (avoid duplicates)
-if settings.startup["uranium-shotgun-shell"].value and (not data.raw.recipe["uranium-shotgun-shell"]) then
+local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and (not data.raw.recipe["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
+if no_uranium_shotgun then
   data:extend({
     { -- uranium shotgun shell
       type = "recipe",

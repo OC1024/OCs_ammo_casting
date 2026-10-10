@@ -15,6 +15,7 @@ Date: 2026-10-04
     - Added [more infinite research] compatibility (WIP).
     - Added [Bob Warefare] compatibility (WIP).
     - Added [Shield Projector] compatibility.
+    - Added [AAI Chaingunner] compatibility.
     - Incremented version of [OCs base assets], now >= 0.6.0.
     - Replaced recommendation from [Ammo Group] to [QuingKhaos Ammo Group]. Technically no real dependency because of circular dependency.
     - Pushed some of the compatibility files for [BZ Lead] to [OCs Foundry Expansion] mod, as it is more appropriate there. The ammo casting recipes are still here.
@@ -32,6 +33,7 @@ Date: 2026-10-04
   Bugfixes:
     - [metal and stars] Few casting recipes for bullets were not included in the bullet productivity tech.
     - Fixed inconsistency whith "heavy-artillery-shells" and "allow-casting-explosive-ammo" mod settings.
+    - Fixed that (Casting) Tungsten Ammo Tech prerequired production instead of utility science pack research.
 ---------------------------------------------------------------------------------------------------
 Version: 0.10.5
 Date: 2026-08-03

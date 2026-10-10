@@ -278,7 +278,9 @@ if settings.startup["armour-plating"].value then
   data:extend(items)
 end
 
-if settings.startup["uranium-shotgun-shell"].value and (not data.raw["ammo"]["uranium-shotgun-shell"]) then -- either "ammo" or "item", idk
+-- uranium shotgun shell (avoid duplicates)
+local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and (not data.raw.ammo["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
+if no_uranium_shotgun then -- either "ammo" or "item", idk
   data:extend({
     { -- uranium shotgun shell
       type = "ammo",

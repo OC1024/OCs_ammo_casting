@@ -126,7 +126,7 @@ data:extend({
         shift = { 32, -32 },
       }
     },
-    prerequisites = { "casting-heavy-ammo-tech", "production-science-pack", "metallurgic-science-pack", },
+    prerequisites = { "casting-heavy-ammo-tech", "utility-science-pack", "metallurgic-science-pack", },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },
@@ -168,7 +168,7 @@ data:extend({
         shift = { 32, -32 },
       },
     },
-    prerequisites = { "uranium-ammo", "casting-heavy-ammo-tech", "space-science-pack", "production-science-pack", "metallurgic-science-pack" },
+    prerequisites = { "uranium-ammo", "casting-heavy-ammo-tech", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
     unit = {
       ingredients = {
         { "automation-science-pack",  1 },

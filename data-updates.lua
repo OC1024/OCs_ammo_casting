@@ -5,6 +5,10 @@ if mods["kj_vehicles"] then
   require("prototypes.compatibilty.king-jo")
 end
 
+if mods["aai-vehicles-chaingunner"] then
+  require("prototypes.compatibilty.aai-vehicles-chaingunner")
+end
+
 if mods["aai-vehicles-ironclad"] then
   require("prototypes.compatibilty.aai-vehicles-ironclad")
 end

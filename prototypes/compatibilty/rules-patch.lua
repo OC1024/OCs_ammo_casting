@@ -119,5 +119,3 @@ local blacklist_item = {
 generator_api.register_all_item_blacklist(blacklist_item)
 
 generator_api.register_item_blacklist("organic", "explosives") -- for convenience. Now this must be an intermediate step
-
-oc_debug.debug_log("__OCs_ammo_casting__ rules table: " .. serpent.block(generator_api.rules_table), "generator_api")
