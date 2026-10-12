@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.11.0
-Date: 2026-10-04
+Date: 2026-10-12
   Major Features:
     - Old savegame support: adding this mod upgrades all vanilla artillery, if "heavy artillery shells" is enabled.
     - Added shockwave graphics and damage to the heavy artillery shell projectile. The shockwave increases the radius massively, but has weak damage output.
