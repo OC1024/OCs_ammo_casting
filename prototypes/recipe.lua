@@ -855,9 +855,8 @@ if not (mods["AmmoGroup"] or mods["QuingKhaos_AmmoGroup"]) then
 end
 
 if settings.startup["nuclear-artillery-shells"].value then
-  -- update localised name for casting with uranium (needed as both recipes are parallel)
-  if data.raw["recipe"]["oc-casting-heavy-artillery-shell-with-uranium"].localised_name then
-    data.raw["recipe"]["oc-casting-heavy-artillery-shell-with-uranium"].localised_name =
-    "recipe-name.oc-casting-heavy-artillery-shell-with-uranium"
+  local recipe = data.raw.recipe["oc-casting-heavy-artillery-shell-with-uranium"]
+  if recipe and recipe.localised_name then
+    recipe.localised_name = {"recipe-name.oc-casting-heavy-artillery-shell-with-uranium"}
   end
 end

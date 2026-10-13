@@ -1,4 +1,9 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.1
+Date: 2026-10-13
+  Bugfixes:
+    - Fixed a crash if a recipe had no localised name. Now it falls back to English. Thanks to Ederpower.
+---------------------------------------------------------------------------------------------------
 Version: 0.11.0
 Date: 2026-10-12
   Major Features:
