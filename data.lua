@@ -1,4 +1,4 @@
-require("prototypes.compatibilty.rules-patch")
+require("prototypes.compatibility.rules-patch")
 
 require("prototypes.category")
 require("prototypes.equipment-grid")
