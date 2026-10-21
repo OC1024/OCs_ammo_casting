@@ -353,3 +353,106 @@ if settings.startup["nuclear-artillery-shells"].value then
 
   data:extend({ nuclear_projectile })
 end
+
+if settings.startup["promethium-ammo"].value then
+  data:extend({
+    { -- promethium shotgun pellet
+      type = "projectile",
+      name = "promethium-shotgun-pellet",
+      flags = { "not-on-map" },
+      hidden = true,
+      collision_box = { { -0.05, -0.25 }, { 0.05, 0.25 } },
+      acceleration = 0,
+      piercing_damage = 100,
+      direction_only = true,
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects = { -- per pellet
+            {
+              type = "damage",
+              damage = { amount = 24, type = "physical" }
+            },
+            {
+              type = "damage",
+              damage = { amount = 12, type = "poison" }
+            },
+          }
+        }
+      },
+      animation =
+      {
+        filename = "__base__/graphics/entity/bullet/bullet.png",
+        draw_as_glow = true,
+        width = 3,
+        height = 50,
+        priority = "high",
+        tint = plating_variants.tungsten.tint,
+      }
+    },
+    { -- promethium cannon shell
+      type = "projectile",
+      name = "promethium-cannon-projectile",
+      flags = { "not-on-map" },
+      hidden = true,
+      collision_box = { { -0.3, -1.1 }, { 0.3, 1.1 } },
+      acceleration = 0,
+      direction_only = true,
+      piercing_damage = 3200,
+      action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "damage",
+              damage = { amount = 2000, type = "physical" }
+            },
+            {
+              type = "damage",
+              damage = { amount = 200, type = "explosion" }
+            },
+            {
+              type = "damage",
+              damage = { amount = 1000, type = "poison" }
+            },
+            {
+              type = "create-entity",
+              entity_name = "explosion"
+            }
+          }
+        }
+      },
+      final_action =
+      {
+        type = "direct",
+        action_delivery =
+        {
+          type = "instant",
+          target_effects =
+          {
+            {
+              type = "create-entity",
+              entity_name = "small-scorchmark-tintable",
+              check_buildability = true
+            }
+          }
+        }
+      },
+      animation =
+      {
+        filename = "__base__/graphics/entity/bullet/bullet.png",
+        draw_as_glow = true,
+        width = 3,
+        height = 50,
+        priority = "high"
+      }
+    },
+  })
+end

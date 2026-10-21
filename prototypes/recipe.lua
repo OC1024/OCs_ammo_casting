@@ -107,7 +107,8 @@ data:extend({
 })
 
 -- uranium shotgun shell (avoid duplicates)
-local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and (not data.raw.recipe["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
+local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and
+    (not data.raw.recipe["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
 if no_uranium_shotgun then
   data:extend({
     { -- uranium shotgun shell
@@ -364,7 +365,7 @@ if settings.startup["armour-plating"].value then
       energy_required = 64,
       ingredients = {
         { type = "item", name = "heavy-armour-plating",  amount = 4 },
-        { type = "item", name = "tungsten-plate",        amount = 4 },
+        { type = "item", name = "tungsten-plate",        amount = 2 },
         -- {type = "fluid", name = "molten-iron", amount = 480}, -- 30*16steel-plate
         { type = "item", name = "low-density-structure", amount = 4 },
         { type = "item", name = "processing-unit",       amount = 1 },
@@ -388,21 +389,21 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["reactive"].tint,
         },
         {
-          icon = "__space-age__/graphics/icons/biochamber.png",
+          icon = "__space-age__/graphics/icons/superconductor.png",
           icon_size = 64,
           icon_mipmaps = 4,
           scale = 0.25,
           shift = { 8, -8 },
         }
       },
-      categories = { "organic" },
+      categories = { "electromagnetics" },
       group = "combat",
       subgroup = "armour-plating",
       enabled = false,
       energy_required = 64,
       ingredients = {
         { type = "item", name = "heavy-armour-plating",  amount = 4 },
-        { type = "item", name = "explosives",            amount = 4 },
+        { type = "item", name = "superconductor",        amount = 8 },-- they are cheap and light
         -- {type = "item", name = "steel-plate", amount = 16},
         { type = "item", name = "low-density-structure", amount = 4 },
         { type = "item", name = "processing-unit",       amount = 1 },
@@ -425,14 +426,14 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["ultra_light"].tint,
         },
         {
-          icon = "__space-age__/graphics/icons/electromagnetic-plant.png",
+          icon = "__space-age__/graphics/icons/carbon-fiber.png",
           icon_size = 64,
           icon_mipmaps = 4,
           scale = 0.25,
           shift = { 8, -8 },
         }
       },
-      categories = { "electromagnetics" },
+      categories = { "organic" },
       group = "combat",
       subgroup = "armour-plating",
       enabled = false,
@@ -454,8 +455,6 @@ if settings.startup["armour-plating"].value then
   })
 
   if settings.startup["earlier-armor-plating"].value then
-    -- replace_ingredient("heavy-armour-plating", "item", "carbon", "item", "coal")
-    -- remove_ingredient("heavy-armour-plating", "item", "electric-circuit", 4)
     oc_recipe.remove_ingredient("heavy-armour-plating", "item", "low-density-structure", 2)
     oc_recipe.add_ingredient("heavy-armour-plating", "item", "steel-plate", 10)    -- 2x2steel-plate + 2x5plastic-bar. round down
     oc_recipe.add_ingredient(("heavy-armour-plating"), "item", "copper-plate", 40) -- 2x20copper-plate
@@ -707,7 +706,8 @@ if settings.startup["nuclear-artillery-shells"].value then
   end
 end
 
--- Optional replace solid fuel with coal on scrap recycling on fulgora. This enables to craft grenates and to research with military science pack.
+-- Optional replace solid fuel with coal on scrap recycling on fulgora.
+-- This enables to craft grenates and to research with military science pack.
 local r = data.raw.recipe["scrap-recycling"]
 local has_coal = false
 for _, v in ipairs(r.results or {}) do
@@ -720,6 +720,100 @@ if settings.startup["fulgora-coal"].value and not has_coal then
   oc_recipe.add_result("scrap-recycling", "item", "coal", 1, { shared_probability = { min = 0.20, max = 0.27 } }) -- 7% chance, just like solid fuel
   oc_recipe.remove_result("scrap-recycling", "item", "solid-fuel")
   log("Switched 7% solid fuel with 7% coal in scrap recycling recipe.")
+end
+
+-- promethium ammo
+if settings.startup["promethium-ammo"].value then
+  data:extend({
+    { -- promethium-rounds
+      type = "recipe",
+      name = "promethium-rounds-magazine",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-firearm-magazine.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      categories = { "advanced-crafting" },
+      group = "combat",
+      subgroup = "ammo",
+      enabled = false,
+      energy_required = 8,
+      ingredients = {
+        { type = "item", name = "piercing-rounds-magazine",  amount = 1 },
+        { type = "item", name = "promethium-asteroid-chunk", amount = 1 },
+      },
+      results = { { type = "item", name = "promethium-rounds-magazine", amount = 1 } },
+      surface_conditions = { { property = "gravity", min = 0, max = 0 } },
+      allow_productivity = false,
+      allow_decomposition = false,
+      auto_recycle = true,
+    },
+    { -- promethium-shotgun-shell
+      type = "recipe",
+      name = "promethium-shotgun-shell",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-shotgun-shell.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      categories = { "advanced-crafting" },
+      group = "combat",
+      subgroup = "ammo",
+      enabled = false,
+      energy_required = 10,
+      ingredients = {
+        { type = "item", name = "piercing-shotgun-shell",    amount = 1 },
+        { type = "item", name = "promethium-asteroid-chunk", amount = 1 },
+      },
+      results = { { type = "item", name = "promethium-shotgun-shell", amount = 1 } },
+      surface_conditions = { { property = "gravity", min = 0, max = 0 } },
+      allow_productivity = false,
+      allow_decomposition = false,
+      auto_recycle = true,
+    },
+    { -- promethium-cannon-shell
+      type = "recipe",
+      name = "promethium-cannon-shell",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-cannon-shell.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      categories = { "advanced-crafting" },
+      group = "combat",
+      subgroup = "ammo",
+      enabled = false,
+      energy_required = 12,
+      ingredients = {
+        { type = "item", name = "iron-plate",                amount = 2 }, -- fins or something
+        { type = "item", name = "explosives",                amount = 2 }, -- twice the vanilla
+        { type = "item", name = "steel-plate",               amount = 2 },
+        { type = "item", name = "promethium-asteroid-chunk", amount = 1 },
+      },
+      results = { { type = "item", name = "promethium-cannon-shell", amount = 1 } },
+      surface_conditions = { { property = "gravity", min = 0, max = 0 } },
+      allow_productivity = false,
+      allow_decomposition = false,
+      auto_recycle = true,
+    },
+    { -- tungsten railgun ammo
+      type = "recipe",
+      name = "promethium-railgun-ammo",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-railgun-ammo.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      categories = { "advanced-crafting" },
+      group = "combat",
+      subgroup = "ammo",
+      enabled = false,
+      energy_required = 25,
+      ingredients = {
+        { type = "item", name = "copper-cable",              amount = 10 },
+        { type = "item", name = "steel-plate",               amount = 2 },
+        { type = "item", name = "explosives",                amount = 2 },
+        { type = "item", name = "promethium-asteroid-chunk", amount = 1 },
+      },
+      results = { { type = "item", name = "promethium-railgun-ammo", amount = 1 } },
+      surface_conditions = { { property = "gravity", min = 0, max = 0 } },
+      allow_productivity = false,
+      allow_decomposition = false,
+      auto_recycle = true,
+    },
+  })
 end
 
 -- add crafting category
@@ -816,6 +910,12 @@ if settings.startup["allow-casting-explosive-ammo"].value and settings.startup["
   casting_dict["heavy-artillery-shell"] = "metallurgy"
   casting_dict["heavy-artillery-shell-with-uranium"] = "metallurgy"
 end
+if settings.startup["promethium-ammo"].value then
+  casting_dict["promethium-rounds-magazine"] = "metallurgy"
+  casting_dict["promethium-shotgun-shell"] = "metallurgy"
+  casting_dict["promethium-cannon-shell"] = "metallurgy"
+  casting_dict["promethium-railgun-ammo"] = "metallurgy"
+end
 
 -- execute generator from casting_dict
 generator_api.batch_generator(casting_dict)
@@ -850,6 +950,11 @@ if not (mods["AmmoGroup"] or mods["QuingKhaos_AmmoGroup"]) then
     ["oc-casting-artillery-shell"] = "alternative-ammo",
     ["oc-casting-heavy-artillery-shell"] = "alternative-ammo",
     ["oc-cryo-atomic-bomb"] = "alternative-ammo",
+    -- promethium ammo
+    ["oc-casting-promethium-rounds-magazine"] = "alternative-ammo",
+    ["oc-casting-promethium-shotgun-shell"] = "alternative-ammo",
+    ["oc-casting-promethium-cannon-shell"] = "alternative-ammo",
+    ["oc-casting-promethium-railgun-ammo"] = "alternative-ammo",
   }
   oc_recipe.change_recipes_subgroup(mapping)
 end
@@ -857,6 +962,6 @@ end
 if settings.startup["nuclear-artillery-shells"].value then
   local recipe = data.raw.recipe["oc-casting-heavy-artillery-shell-with-uranium"]
   if recipe and recipe.localised_name then
-    recipe.localised_name = {"recipe-name.oc-casting-heavy-artillery-shell-with-uranium"}
+    recipe.localised_name = { "recipe-name.oc-casting-heavy-artillery-shell-with-uranium" }
   end
 end

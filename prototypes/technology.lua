@@ -19,7 +19,7 @@ data:extend({
         icon_mipmaps = 4,
         scale = 1,
         shift = { 32, -32 },
-      }
+      },
     },
     prerequisites = { "foundry", "military-3", "chemical-science-pack", "space-science-pack", "metallurgic-science-pack" },
     unit = {
@@ -56,7 +56,7 @@ data:extend({
         icon_mipmaps = 4,
         scale = 1,
         shift = { 32, -32 },
-      }
+      },
     },
     prerequisites = { "casting-light-ammo-tech", "military-4", "uranium-ammo", "space-science-pack", "utility-science-pack", "metallurgic-science-pack" },
     unit = {
@@ -87,7 +87,7 @@ data:extend({
         icon = "__OCs_ammo_casting__/graphics/technology/tungsten-ammo-tech.png",
         icon_size = 256,
         icon_mipmaps = 4,
-      }
+      },
     },
     prerequisites = { "tungsten-steel", "tank", "military-4", "space-science-pack", "metallurgic-science-pack" },
     unit = {
@@ -124,7 +124,7 @@ data:extend({
         icon_mipmaps = 4,
         scale = 1,
         shift = { 32, -32 },
-      }
+      },
     },
     prerequisites = { "casting-heavy-ammo-tech", "utility-science-pack", "metallurgic-science-pack", },
     unit = {
@@ -289,7 +289,7 @@ data:extend({
         icon_size = 64,
         icon_mipmaps = 4,
         scale = 1,
-        shift = { 16, -16 },
+        shift = { 32, -32 },
       }
     },
     prerequisites = { "bio-explosives-tech", "explosive-rocketry" }, -- which military-?
@@ -466,6 +466,7 @@ if settings.startup["nuclear-artillery-shells"].value then
   -- add nauvis-specific sci pack if existent
 end
 
+-- combination of Gleba and Vulcanus Tech resulting in casting explosive ammo
 if settings.startup["allow-casting-explosive-ammo"].value then
   data:extend({
     { -- casting explosive cannon shells and artillery shells
@@ -486,18 +487,20 @@ if settings.startup["allow-casting-explosive-ammo"].value then
         }
       },
       -- explosives is indirectly required for tank and artillery.
-      -- bio grenades tech such that it is a bit more road-blocked. see it as a convergence tech between Vulcanus and Gleba
+      -- bio grenades tech such that it is a bit more road-blocked.
+      -- See it as a combination of techs from Vulcanus and Gleba
       prerequisites = { "casting-tungsten-ammo-tech", "artillery", "bio-grenades-tech" },
       unit = {
         ingredients = {
-          { "automation-science-pack",  1 },
-          { "logistic-science-pack",    1 },
-          { "chemical-science-pack",    1 },
-          { "military-science-pack",    2 },
-          { "production-science-pack",  1 },
-          { "utility-science-pack",     1 },
-          { "space-science-pack",       1 },
-          { "metallurgic-science-pack", 2 },
+          { "automation-science-pack",   1 },
+          { "logistic-science-pack",     1 },
+          { "chemical-science-pack",     1 },
+          { "military-science-pack",     2 },
+          { "production-science-pack",   1 },
+          { "utility-science-pack",      1 },
+          { "space-science-pack",        1 },
+          { "agricultural-science-pack", 2 },
+          { "metallurgic-science-pack",  2 },
         },
         time = 60,
         count = 1000
@@ -511,10 +514,11 @@ if settings.startup["allow-casting-explosive-ammo"].value then
   })
 
   -- optional the heavy artillery recipes and prereq (if existent)
-  oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "heavy-artillery-tech", "nuclear-artillery-tech" } })
+  oc_tech.add_prerequisites({ ["casting-explosive-ammo-tech"] = { "heavy-artillery-tech" }, })
   oc_tech.add_tech_unlocks({ ["casting-explosive-ammo-tech"] = { "oc-casting-heavy-artillery-shell", "oc-casting-heavy-artillery-shell-with-uranium", }, })
 end
 
+-- three tiers of shield like equipment
 if settings.startup["armour-plating"].value then
   -- armour plating techs
   data:extend({
@@ -587,13 +591,14 @@ if settings.startup["armour-plating"].value then
           icon_size = 256,
           icon_mipmaps = 4,
           tint = plating_variants["tungsten"].tint,
-
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-molten-iron.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/foundry.png",
+          icon_size = 64,
           icon_mipmaps = 4,
-        }
+          scale = 1,
+          shift = { 32, -32 },
+        },
       },
       prerequisites = { "heavy-armour-plating-tech", "military-4", "power-armor", "metallurgic-science-pack" },
       unit = {
@@ -603,7 +608,6 @@ if settings.startup["armour-plating"].value then
           { "chemical-science-pack",    1 },
           { "military-science-pack",    2 }, -- duh!
           { "utility-science-pack",     2 }, -- duh-hu!
-          { "production-science-pack",  1 },
           { "space-science-pack",       1 },
           { "metallurgic-science-pack", 2 }, -- duh-uh-hu!
         },
@@ -625,24 +629,23 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["reactive"].tint,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-biochamber.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/electromagnetic-plant.png",
+          icon_size = 64,
           icon_mipmaps = 4,
-        }
+          scale = 1,
+          shift = { 32, -32 },
+        },
       },
-      icon_size = 256,
-      icon_mipmaps = 4,
-      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech", "agricultural-science-pack" },
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "electromagnetic-science-pack" },
       unit = {
         ingredients = {
-          { "automation-science-pack",   1 },
-          { "logistic-science-pack",     1 },
-          { "chemical-science-pack",     1 },
-          { "military-science-pack",     2 }, -- duh!
-          { "utility-science-pack",      2 }, -- duh-hu!
-          { "production-science-pack",   1 },
-          { "space-science-pack",        1 },
-          { "agricultural-science-pack", 2 }, -- duh-uh-hu!
+          { "automation-science-pack",      1 },
+          { "logistic-science-pack",        1 },
+          { "chemical-science-pack",        1 },
+          { "military-science-pack",        2 }, -- duh!
+          { "utility-science-pack",         2 }, -- duh-hu!
+          { "space-science-pack",           1 },
+          { "electromagnetic-science-pack", 2 }, -- duh-uh-hu!
         },
         time = 60,
         count = 400
@@ -662,22 +665,23 @@ if settings.startup["armour-plating"].value then
           tint = plating_variants["ultra_light"].tint,
         },
         {
-          icon = "__OCs_base_assets__/graphics/technology/overlayer-tech-em-plant.png",
-          icon_size = 256,
+          icon = "__space-age__/graphics/icons/biochamber.png",
+          icon_size = 64,
           icon_mipmaps = 4,
-        }
+          scale = 1,
+          shift = { 32, -32 },
+        },
       },
-      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "electromagnetic-science-pack" },
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech", "agricultural-science-pack" },
       unit = {
         ingredients = {
-          { "automation-science-pack",      1 },
-          { "logistic-science-pack",        1 },
-          { "chemical-science-pack",        1 },
-          { "military-science-pack",        2 }, -- duh!
-          { "utility-science-pack",         2 }, -- duh-hu!
-          { "production-science-pack",      1 },
-          { "space-science-pack",           1 },
-          { "electromagnetic-science-pack", 2 }, -- duh-uh-hu!
+          { "automation-science-pack",   1 },
+          { "logistic-science-pack",     1 },
+          { "chemical-science-pack",     1 },
+          { "military-science-pack",     2 }, -- duh!
+          { "utility-science-pack",      2 }, -- duh-hu!
+          { "space-science-pack",        1 },
+          { "agricultural-science-pack", 2 }, -- duh-uh-hu!
         },
         time = 60,
         count = 400
@@ -720,6 +724,7 @@ if settings.startup["armour-plating"].value then
   end
 end
 
+-- alt nuclear ammo
 if settings.startup["nuclear-ammo"].value then
   data:extend({
     { -- nuclear ammo tech (cryo, atomic bomb)
@@ -761,10 +766,115 @@ if settings.startup["nuclear-ammo"].value then
     },
   })
   -- add the optional techs as prerequisites if existent
-  oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = { "casting-explosive-ammo-tech", "nuclear-artillery-shell", } })
+  oc_tech.add_prerequisites({ ["nuclear-ammo-tech"] = { "casting-explosive-ammo-tech", "nuclear-artillery-tech", } })
 
   -- add optional unlocks
   oc_tech.add_tech_unlocks({ ["nuclear-ammo-tech"] = { "oc-cryo-nuclear-artillery-shell", } })
+end
+
+-- promethium ammo
+if settings.startup["promethium-ammo"].value then
+  data:extend({
+    { -- promethium-ammo-tech
+      type = "technology",
+      name = "promethium-ammo-tech",
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/technology/promethium-ammo-tech.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__space-age__/graphics/icons/promethium-asteroid-chunk.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, 32 },
+        },
+      },
+      prerequisites = { "artillery", "railgun", "promethium-science-pack", },
+      unit = {
+        ingredients = {
+          { "automation-science-pack",      1 },
+          { "logistic-science-pack",        1 },
+          { "military-science-pack",        2 },
+          { "chemical-science-pack",        1 },
+          { "space-science-pack",           1 },
+          { "utility-science-pack",         2 },
+          { "agricultural-science-pack",    2 },
+          { "electromagnetic-science-pack", 2 },
+          { "metallurgic-science-pack",     2 },
+          { "cryogenic-science-pack",       2 },
+          { "promethium-science-pack",      2 },
+        },
+        time = 60,
+        count = 2500, -- effectively 5k for the interesting science packs
+      },
+      effects = {
+        { type = "unlock-recipe", recipe = "promethium-rounds-magazine" },
+        { type = "unlock-recipe", recipe = "promethium-shotgun-shell" },
+        { type = "unlock-recipe", recipe = "promethium-cannon-shell" },
+        { type = "unlock-recipe", recipe = "promethium-railgun-ammo" },
+      },
+    },
+    { -- casting promethium-ammo-tech
+      type = "technology",
+      name = "casting-promethium-ammo-tech",
+      icons = {
+        {
+          icon = "__OCs_ammo_casting__/graphics/technology/promethium-ammo-tech.png",
+          icon_size = 256,
+          icon_mipmaps = 4,
+        },
+        {
+          icon = "__space-age__/graphics/icons/promethium-asteroid-chunk.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, 32 },
+        },
+        {
+          icon = "__space-age__/graphics/icons/fluid/molten-iron.png",
+          icon_size = 64,
+          icon_mipmaps = 4,
+          scale = 1,
+          shift = { 32, -32 },
+        },
+      },
+      prerequisites = {
+        "casting-heavy-ammo-tech", -- actually highest ammo casting tech needed.
+        "promethium-ammo-tech",
+      },
+      unit = {
+        ingredients = {
+          { "automation-science-pack",      1 },
+          { "logistic-science-pack",        1 },
+          { "military-science-pack",        2 },
+          { "chemical-science-pack",        1 },
+          { "space-science-pack",           1 },
+          { "utility-science-pack",         2 },
+          { "agricultural-science-pack",    2 },
+          { "electromagnetic-science-pack", 2 },
+          { "metallurgic-science-pack",     2 },
+          { "cryogenic-science-pack",       2 },
+          { "promethium-science-pack",      2 },
+        },
+        time = 60,
+        count = 500, -- effectively 1k for the interesting science packs
+      },
+      effects = {
+        { type = "unlock-recipe", recipe = "oc-casting-promethium-rounds-magazine" },
+        { type = "unlock-recipe", recipe = "oc-casting-promethium-shotgun-shell" },
+        { type = "unlock-recipe", recipe = "oc-casting-promethium-cannon-shell" },
+        { type = "unlock-recipe", recipe = "oc-casting-promethium-railgun-ammo" },
+      },
+    },
+  })
+  local promethium_mapping = {
+    ["promethium-ammo-tech"] = { "heavy-artillery-tech", "tungsten-ammo-tech", "casting-tungsten-ammo-tech" },
+    ["casting-promethium-ammo-tech"] = { "casting-explosive-ammo-tech" },
+  }
+  oc_tech.add_prerequisites(promethium_mapping)
 end
 
 -- changes to vanilla techs

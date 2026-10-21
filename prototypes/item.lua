@@ -279,10 +279,11 @@ if settings.startup["armour-plating"].value then
 end
 
 -- uranium shotgun shell (avoid duplicates)
-local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and (not data.raw.ammo["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
+local no_uranium_shotgun = settings.startup["uranium-shotgun-shell"].value and
+    (not data.raw.ammo["uranium-shotgun-shell"]) and (not mods["more-ammo-redux"])
 if no_uranium_shotgun then -- either "ammo" or "item", idk
   data:extend({
-    { -- uranium shotgun shell
+    {                      -- uranium shotgun shell
       type = "ammo",
       name = "uranium-shotgun-shell",
       icons = { {
@@ -330,6 +331,183 @@ if no_uranium_shotgun then -- either "ammo" or "item", idk
       drop_sound = item_sounds.ammo_small_inventory_move,
       stack_size = 100,
       weight = 40 * kg
+    },
+  })
+end
+
+if settings.startup["promethium-ammo"].value then
+  -- promethium ammo
+  data:extend({
+    { -- promethium rounds magazine
+      type = "ammo",
+      name = "promethium-rounds-magazine",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-firearm-magazine.png",
+      ammo_category = "bullet",
+      ammo_type = {
+        action = {
+          type = "direct",
+          action_delivery = {
+            type = "instant",
+            source_effects =
+            {
+              type = "create-explosion",
+              entity_name = "explosion-gunshot"
+            },
+            target_effects = {
+              {
+                type = "create-entity",
+                entity_name = "explosion-hit",
+                offsets = { { 0, 1 } },
+                offset_deviation = { { -0.5, -0.5 }, { 0.5, 0.5 } }
+              },
+              {
+                type = "damage",
+                damage = { amount = 24, type = "physical" }
+              },
+              {
+                type = "damage",
+                damage = { amount = 12, type = "poison" }
+              },
+              {
+                type = "activate-impact",
+                deliver_category = "bullet"
+              }
+            }
+          }
+        }
+      },
+      magazine_size = 10,
+      subgroup = "ammo",
+      order = "a[basic-clips]-e[promethium-rounds-magazine]",
+      inventory_move_sound = item_sounds.ammo_small_inventory_move,
+      pick_sound = item_sounds.ammo_small_inventory_pickup,
+      drop_sound = item_sounds.ammo_small_inventory_move,
+      stack_size = 50,
+      weight = 80 * kg
+    },
+    { -- promethium shotgun shell
+      type = "ammo",
+      name = "promethium-shotgun-shell",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-shotgun-shell.png",
+      icon_size = 64,
+      icon_mipmaps = 4,
+      ammo_category = "shotgun-shell",
+      ammo_type = {
+        target_type = "direction",
+        clamp_position = true,
+        action = {
+          {
+            type = "direct",
+            action_delivery = {
+              type = "instant",
+              source_effects = {
+                {
+                  type = "create-explosion",
+                  entity_name = "explosion-gunshot"
+                }
+              }
+            }
+          },
+          {
+            type = "direct",
+            repeat_count = 20, -- amout of pellets (8 base, 12 piercing, 16uranium, 16 tungsten)
+            action_delivery = {
+              type = "projectile",
+              projectile = "promethium-shotgun-pellet",
+              starting_speed = 1,
+              starting_speed_deviation = 0.1,
+              direction_deviation = 0.3,
+              range_deviation = 0.3,
+              max_range = 15,
+            }
+          }
+        }
+      },
+      magazine_size = 10,
+      subgroup = "ammo",
+      order = "b[shotgun]-e[promethium]",
+      inventory_move_sound = item_sounds.ammo_small_inventory_move,
+      pick_sound = item_sounds.ammo_small_inventory_pickup,
+      drop_sound = item_sounds.ammo_small_inventory_move,
+      stack_size = 50,
+      weight = 80 * kg
+    },
+    { -- promethium cannon shell
+      type = "ammo",
+      name = "promethium-cannon-shell",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-cannon-shell.png",
+      ammo_category = "cannon-shell",
+      ammo_type = {
+        -- range_modifier = 1.25,
+        target_type = "direction",
+        action = {
+          type = "direct",
+          action_delivery = {
+            type = "projectile",
+            projectile = "promethium-cannon-projectile",
+            starting_speed = 1,
+            direction_deviation = 0.05,
+            range_deviation = 0.1,
+            max_range = 30,
+            min_range = 5,
+            source_effects = {
+              type = "create-explosion",
+              entity_name = "explosion-gunshot"
+            }
+          }
+        }
+      },
+      subgroup = "ammo",
+      order = "d[cannon-shell]-e[promethium]",
+      inventory_move_sound = item_sounds.ammo_large_inventory_move,
+      pick_sound = item_sounds.ammo_large_inventory_pickup,
+      drop_sound = item_sounds.ammo_large_inventory_move,
+      stack_size = 50,
+      weight = 80 * kg
+    },
+    { -- promethium railgun ammo
+      type = "ammo",
+      name = "promethium-railgun-ammo",
+      icon = "__OCs_ammo_casting__/graphics/icons/promethium-railgun-ammo.png",
+      ammo_category = "railgun",
+      ammo_type = {
+        target_type = "direction",
+        clamp_position = true,
+        action = {
+          type = "line",
+          range = 50,
+          width = 1,
+          range_effects =
+          {
+            type = "create-explosion",
+            entity_name = "railgun-beam"
+          },
+          action_delivery = {
+            type = "instant",
+            target_effects = {
+              {
+                type = "damage",
+                damage = { amount = 10000, type = "physical" }
+              },
+              {
+                type = "damage",
+                damage = { amount = 5000, type = "poison" }
+              }
+            },
+            source_effects = {
+              type = "create-explosion",
+              entity_name = "explosion-gunshot"
+            }
+          }
+        }
+      },
+      subgroup = "ammo",
+      order = "e[railgun-ammo]-e[promethium]",
+      inventory_move_sound = item_sounds.ammo_large_inventory_move,
+      pick_sound = item_sounds.ammo_large_inventory_pickup,
+      drop_sound = item_sounds.ammo_large_inventory_move,
+      stack_size = 5,
+      weight = 500 * kg
     },
   })
 end

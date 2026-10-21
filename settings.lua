@@ -109,6 +109,13 @@ data:extend({
     default_value = true,
     order = "f-a",
   },
+  { -- prometium ammo
+    type = "bool-setting",
+    name = "promethium-ammo",
+    setting_type = "startup",
+    default_value = true,
+    order = "f-b",
+  },
   -- shortcut for other starter planets
   {
     type = "bool-setting",

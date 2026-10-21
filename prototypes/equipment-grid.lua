@@ -63,19 +63,12 @@ end
 local function ensure_category(grid_name, category)
   local grid = data.raw["equipment-grid"][grid_name]
   if not grid then
-    return
-      log("Error: " .. grid .. " is not a valid grid.")
+    return log("Error: " .. grid .. " is not a valid grid.")
   end
 
   grid.equipment_categories = grid.equipment_categories or {}
 
-  if not table.contains(grid.equipment_categories, category) then
-    -- log("Grid " .. grid_name .. " already has category " .. category .. ", doing category assignment anyaway.")
-    table.insert(grid.equipment_categories, category)
-  else
-    table.insert(grid.equipment_categories, category)
-    -- log("Grid " .. grid_name .. " now has category " .. category)
-  end
+  table.insert(grid.equipment_categories, category)
 end
 
 -- Personal Armor
@@ -107,6 +100,3 @@ for _, vehicle_type in pairs(vehicle_types) do
     end
   end
 end
-
--- log(data.raw["car"]["tank"].equipment_grid)
--- log(data.raw["armor"]["power-armor"].equipment_grid)
