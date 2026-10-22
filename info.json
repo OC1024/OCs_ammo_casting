@@ -1,6 +1,6 @@
 {
   "name": "OCs_ammo_casting",
-  "version": "0.11.3",
+  "version": "0.11.4",
   "title": "OCs Ammo and Armor",
   "author": "OC1024",
   "space_travel_required": true,
@@ -20,7 +20,6 @@
     "? metal-and-stars",
     "? scattergun_turret",
     "? vtk-cannon-turret",
-    "(?) Uranium-Artillery-Shell",
     "? atomic-land-mines",
     "? AmmoGroup",
     "? aai-vehicles-ironclad",

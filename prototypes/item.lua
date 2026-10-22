@@ -382,7 +382,7 @@ if settings.startup["promethium-ammo"].value then
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,
-      stack_size = 50,
+      stack_size = 100,
       weight = 80 * kg
     },
     { -- promethium shotgun shell
@@ -410,7 +410,7 @@ if settings.startup["promethium-ammo"].value then
           },
           {
             type = "direct",
-            repeat_count = 20, -- amout of pellets (8 base, 12 piercing, 16uranium, 16 tungsten)
+            repeat_count = 16, -- amout of pellets (8 base, 12 piercing, 16uranium, 16 tungsten)
             action_delivery = {
               type = "projectile",
               projectile = "promethium-shotgun-pellet",
@@ -429,7 +429,7 @@ if settings.startup["promethium-ammo"].value then
       inventory_move_sound = item_sounds.ammo_small_inventory_move,
       pick_sound = item_sounds.ammo_small_inventory_pickup,
       drop_sound = item_sounds.ammo_small_inventory_move,
-      stack_size = 50,
+      stack_size = 100,
       weight = 80 * kg
     },
     { -- promethium cannon shell
@@ -438,7 +438,6 @@ if settings.startup["promethium-ammo"].value then
       icon = "__OCs_ammo_casting__/graphics/icons/promethium-cannon-shell.png",
       ammo_category = "cannon-shell",
       ammo_type = {
-        -- range_modifier = 1.25,
         target_type = "direction",
         action = {
           type = "direct",
@@ -462,7 +461,7 @@ if settings.startup["promethium-ammo"].value then
       inventory_move_sound = item_sounds.ammo_large_inventory_move,
       pick_sound = item_sounds.ammo_large_inventory_pickup,
       drop_sound = item_sounds.ammo_large_inventory_move,
-      stack_size = 50,
+      stack_size = 100,
       weight = 80 * kg
     },
     { -- promethium railgun ammo
@@ -506,7 +505,7 @@ if settings.startup["promethium-ammo"].value then
       inventory_move_sound = item_sounds.ammo_large_inventory_move,
       pick_sound = item_sounds.ammo_large_inventory_pickup,
       drop_sound = item_sounds.ammo_large_inventory_move,
-      stack_size = 5,
+      stack_size = 10,
       weight = 500 * kg
     },
   })

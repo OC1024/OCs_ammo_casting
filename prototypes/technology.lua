@@ -636,7 +636,7 @@ if settings.startup["armour-plating"].value then
           shift = { 32, -32 },
         },
       },
-      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "electromagnetic-science-pack" },
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "electromagnetic-science-pack" },
       unit = {
         ingredients = {
           { "automation-science-pack",      1 },
@@ -672,7 +672,7 @@ if settings.startup["armour-plating"].value then
           shift = { 32, -32 },
         },
       },
-      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "bio-explosives-tech", "agricultural-science-pack" },
+      prerequisites = { "heavy-armour-plating-tech", "power-armor", "military-4", "carbon-fiber", "agricultural-science-pack" },
       unit = {
         ingredients = {
           { "automation-science-pack",   1 },
@@ -703,9 +703,9 @@ if settings.startup["armour-plating"].value then
     }
     oc_tech.remove_prerequisites(remove_prereps)
     oc_tech.add_prerequisites(adding_prereps)
-    -- also make the techs easier/cheaper
+    -- replace military science packs with automation and logistic science packs
     oc_tech.remove_tech_ingredients({ "light-armour-plating-tech", "military-science-pack" })
-    data.raw["technology"]["light-armour-plating-tech"].unit.count = 90 -- because it was 120 military-science-pack before
+    data.raw["technology"]["light-armour-plating-tech"].unit.count = 90 -- increase from 60 to 90
   end
   if settings.startup["earlier-solar-panel-equipment"].value then
     -- make the solar panel equipment earlier

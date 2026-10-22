@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.4
+Date: 2026-10-22
+  Balancing:
+    - Increased stack size of promethium ammo to normal values, 10 for railgun ammo, 100 for everything else.
+    - Reduced amount of pellets in shotgun shells from 20 to 16, like uranium and tungsten shotgun shells.
+  Other:
+    - Added missing log that in 0.11.3 reactive armour now can be used for personal armour as well.
+  Changes:
+    - Removed bio explosives tech as prerequisites for composite armour plating. This was forgotten last update.
+    - Moved "carbon fiber" prerequisites from reactive to composite armour plating. This was wrongly switched.
+---------------------------------------------------------------------------------------------------
 Version: 0.11.3
 Date: 2026-10-21
   Minor Features:
@@ -9,11 +20,12 @@ Date: 2026-10-21
   Changes:
     - Halving energy drain and energy per HP cost of reactive armor plating. Now this is the energy-saving variant of T3 platings.
     - Switched reactive armour plating to Fulgora tech and EM plant. Replace 4 explosives with 8 superconductors.
-    - Switched ultra light armour plating to Gleba tech and biochamber. Keepint the 4 carbon fiber cost.
-    - Both tech for ultra light armour and reactive armour were basically switched. Changed the icons of recipes and techs.
+    - Switched composite armour plating to Gleba tech and biochamber. Keepint the 4 carbon fiber cost.
+    - Both tech for composite armour and reactive armour were basically switched. Changed the icons of recipes and techs.
+    - Removed restriction for vehicle only of reactive armour. Now it is usable for personal armour as well.
     - Halved tungsten plate cost of heavy armour plating from 4 to 2.
-    - Simplified all numbers of energy per HP and charging rates of armour plating.
-    - Casting explosive ammo tech now requires agricultural science packs.
+    - Simplified all numbers of energy per HP and charging rates of armour plating, but kept ratios.
+    - The casting explosive ammo tech now requires agricultural science packs.
     - Removed nuclear artillery tech as prerequistite for casting explosive ammo tech. Alternative nuclear ammo tech still require nuclear artillery tech as prerequisite.
 ---------------------------------------------------------------------------------------------------
 Version: 0.11.2
