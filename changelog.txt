@@ -1,11 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.5
+Date: 2026-10-23
+  Bugfixes:
+    - Uranium heavy artillery shells were not unlocked with its technology.
+---------------------------------------------------------------------------------------------------
 Version: 0.11.4
 Date: 2026-10-22
   Balancing:
     - Increased stack size of promethium ammo to normal values, 10 for railgun ammo, 100 for everything else.
     - Reduced amount of pellets in shotgun shells from 20 to 16, like uranium and tungsten shotgun shells.
-  Other:
-    - Added missing log that in 0.11.3 reactive armour now can be used for personal armour as well.
   Changes:
     - Removed bio explosives tech as prerequisites for composite armour plating. This was forgotten last update.
     - Moved "carbon fiber" prerequisites from reactive to composite armour plating. This was wrongly switched.

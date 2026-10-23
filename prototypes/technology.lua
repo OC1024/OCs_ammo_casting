@@ -420,7 +420,7 @@ if settings.startup["heavy-artillery-shells"].value then
       "heavy-artillery-shell-with-uranium",
       "heavy-artillery-shell-upgrading-with-uranium"
     }
-    oc_tech.add_tech_unlocks(uranium_unlocks)
+    oc_tech.add_tech_unlocks({["heavy-artillery-tech"] = uranium_unlocks})
   end
 end
 
