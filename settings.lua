@@ -34,13 +34,6 @@ data:extend({
     default_value = true,
     order = "b-d",
   },
-  { -- space fish breeding
-    type = "bool-setting",
-    name = "space-fish",
-    setting_type = "startup",
-    default_value = true,
-    order = "c-b",
-  },
   { -- fulgora coal
     type = "bool-setting",
     name = "fulgora-coal",
@@ -93,14 +86,6 @@ data:extend({
     default_value = true,
     order = "e-b",
   },
-  { -- casting (cluster) grenates. Stick with the typo instead of a migration
-    type = "bool-setting",
-    name = "casting-grenates",
-    setting_type = "startup",
-    default_value = false,
-    hidden = true, -- now mandatory but not casted
-    order = "e-c",
-  },
   -- "casting" even more powerful ammo types
   { -- vanilla nuclear rockets and key setting for fusion, anitmatter, ...
     type = "bool-setting",
@@ -125,6 +110,7 @@ data:extend({
     order = "g",
   }
 })
+data.raw["bool-setting"]["space-fish"].hidden = false
 
 if mods["Krastorio2-spaced-out"] then
   data:extend({

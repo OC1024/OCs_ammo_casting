@@ -233,52 +233,7 @@ data:extend({
 })
 
 -- space fish for bio rockets in space
-if settings.startup["space-fish"].value then
-  data:extend({
-    { -- fish-breeding shamelessly copied from space-age-dlc. space version
-      type = "recipe",
-      name = "space-fish-breeding",
-      icons = {
-        {
-          icon = "__space-age__/graphics/icons/fish-breeding.png",
-          icon_size = 64,
-          icon_mipmaps = 4,
-        },
-        {
-          icon = "__space-age__/graphics/technology/space-platform.png",
-          icon_size = 256,
-          icon_mipmaps = 4,
-          scale = 0.25 * 0.25,
-          shift = { 8, -8 },
-        }
-      },
-      categories = { "organic" },
-      subgroup = "nauvis-agriculture",
-      order = "b[nauvis-agriculture]-b[fish-breeding]",
-      -- result_is_always_fresh = true,
-      energy_required = 6,
-      enabled = false,
-      surface_conditions = {
-        { property = "gravity", min = 0, max = 0 }
-      },
-      ingredients = {
-        { type = "item",  name = "raw-fish",  amount = 2,  ignored_by_stats = 2 },
-        { type = "item",  name = "nutrients", amount = 110 }, -- vanilla is 100. Positive-feedback-loop now at +10 instead of +20 per cycle.
-        { type = "fluid", name = "water",     amount = 100 }
-      },
-      results = { { type = "item", name = "raw-fish", amount = 4, reset_freshness_on_craft = true } }, -- percent_spoiled=0.5
-      crafting_machine_tint = {
-        primary = { 0, 0, 1, 1 },
-        secondary = { 0, 0, 1, 1 }
-      },
-      allow_productivity = false,
-      allow_quality = false,
-      show_amount_in_title = false,
-      allow_decomposition = false,
-      auto_recycle = false,
-    },
-  })
-end
+data.raw.recipe["space-fish-breeding"].hidden = false
 
 -- armour plating related
 if settings.startup["armour-plating"].value then

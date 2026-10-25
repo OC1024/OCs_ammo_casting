@@ -1,6 +1,6 @@
 {
   "name": "OCs_ammo_casting",
-  "version": "0.11.5",
+  "version": "0.11.6",
   "title": "OCs Ammo and Armor",
   "author": "OC1024",
   "space_travel_required": true,
@@ -9,13 +9,12 @@
   "dependencies": [
     "base >= 2.1",
     "space-age",
-    "OCs_base_assets >= 0.6.0",
+    "OCs_base_assets >= 0.6.4",
     "? aai-industry",
     "? any-planet-start",
     "? kry-vehicle-grids",
     "? kry-custom-grids",
     "? bzlead",
-    "? khaoslead",
     "? Krastorio2-spaced-out >= 1.4.0",
     "? metal-and-stars",
     "? scattergun_turret",

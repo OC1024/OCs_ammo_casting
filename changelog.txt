@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.6
+Date: 2026-10-25
+  Compatibility:
+    - Increased dependency of [OCs Base Assets].
+  Changes:
+    - Moved the optional space fish breeding recipe to a central place such that one does not rely on [OCs Ammo and Armor] mod.
+---------------------------------------------------------------------------------------------------
 Version: 0.11.5
 Date: 2026-10-23
   Bugfixes:
