@@ -6,12 +6,13 @@ local generator_api = require("__OCs_base_assets__.prototypes.utils.api")
 local new_alt_recipes = {
   ["organic"] = {
     alternative_recipes = {
-      ["explosives"] = {
-        [80] = "oc-bio-explosives",
-        [60] = "explosives",
-        [40] = "oc-bio-explosives-space",
-        [20] = "oc-bio-explosives-gleba",
-      },
+      -- currently blacklisted
+      -- ["explosives"] = {
+      --   [80] = "oc-bio-explosives",
+      --   [60] = "explosives",
+      --   [40] = "oc-bio-explosives-space",
+      --   [20] = "oc-bio-explosives-gleba",
+      -- },
       ["rocket"] = {
         [40] = "oc-bio-rocket",
         [20] = "rocket",

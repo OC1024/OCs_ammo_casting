@@ -36,7 +36,7 @@ local vanilla_bullets = {
   "firearm-magazine",
   "piercing-rounds-magazine",
   "uranium-rounds-magazine",
-  "thorium-rounds-magazine",   --not vanilla but only casting recipe needed here
+  "thorium-rounds-magazine", --not vanilla but only casting recipe needed here
   -- no shotgun shells? well okay, I like that
 }
 local oc_bullets = {
@@ -44,16 +44,16 @@ local oc_bullets = {
 }
 local kr_bullets = {
   -- rifle ammo
-  "kr-rifle-magazine",                  -- yellow ammo
-  "kr-armor-piercing-rifle-magazine",   -- red ammo
-  "kr-imersite-rifle-magazine",         -- pink ammo
-  "kr-imersite-rounds-magazine",        -- new name: pink ammo
+  "kr-rifle-magazine",                -- yellow ammo
+  "kr-armor-piercing-rifle-magazine", -- red ammo
+  "kr-imersite-rifle-magazine",       -- pink ammo
+  "kr-imersite-rounds-magazine",      -- new name: pink ammo
 
   -- sniper ammo
-  "kr-anti-materiel-rifle-magazine",                  -- yellow sniper ammo
-  "kr-armor-piercing-anti-materiel-rifle-magazine",   -- red sniper ammo
-  "kr-uranium-anti-materiel-rifle-magazine",          -- green sniper ammo
-  "kr-imersite-anti-materiel-rifle-magazine",         -- pink sniper ammo
+  "kr-anti-materiel-rifle-magazine",                -- yellow sniper ammo
+  "kr-armor-piercing-anti-materiel-rifle-magazine", -- red sniper ammo
+  "kr-uranium-anti-materiel-rifle-magazine",        -- green sniper ammo
+  "kr-imersite-anti-materiel-rifle-magazine",       -- pink sniper ammo
 }
 
 -- building the all_bullets table
@@ -136,7 +136,7 @@ local vanilla_rockets = {
   "explosive-rocket",
 }
 local oc_rockets = {
-  "gauss-rocket"   -- "casting-gauss-rocket" is my new recipe
+  "gauss-rocket" -- "casting-gauss-rocket" is my new recipe
 }
 local kr_rockets = {
   "kr-heavy-rocket",

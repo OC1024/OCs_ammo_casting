@@ -233,7 +233,9 @@ data:extend({
 })
 
 -- space fish for bio rockets in space
-data.raw.recipe["space-fish-breeding"].hidden = false
+if settings.startup["space-fish"] and settings.startup["space-fish"].value then
+  data.raw.recipe["space-fish-breeding"].hidden = false
+end
 
 -- armour plating related
 if settings.startup["armour-plating"].value then

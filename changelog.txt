@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.11.7
+Date: 2026-10-28
+  Changes:
+    - For [Modular Turrets] compat: Added prerequistite techs for casting/pulsing turret techs.
+  Other:
+    - Added nil check for space fish recipe unhiding.
+  Bugfixes:
+    - Fixed a startup crash with [K2SO]. A removed setting was asked for.
+---------------------------------------------------------------------------------------------------
 Version: 0.11.6
 Date: 2026-10-25
   Translation:

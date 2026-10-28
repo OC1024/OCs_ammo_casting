@@ -20,7 +20,7 @@ if data.raw["ammo"]["tungsten-shotgun-shell"] and data.raw["projectile"]["explos
 end
 
 
--- "casting" scattergun_turret stuff
+-- "casting" scattergun_turret ammo
 local casting_dict = {
   ["w93-fragmentation-cannon-shell"] = "metallurgy",
   ["w93-uranium-shotgun-shell"] = "metallurgy",
@@ -56,6 +56,7 @@ if settings.startup["casting-weapons"].value then
     ["w93-modular-gun-hmg"] = "metallurgy",
     ["w93-modular-gun-lcannon"] = "metallurgy",
     ["w93-modular-gun-plaser"] = "electromagnetics",
+    -- ["w93-modular-gun-tlaser"] = "electromagnetics",
     ["w93-modular-gun-radar"] = "electromagnetics",
     ["w93-modular-gun-radar2"] = "electromagnetics",
   }
@@ -82,6 +83,7 @@ if settings.startup["casting-weapons"].value then
       prerequisites = {
         "casting-light-ammo-tech",
         "w93-modular-turrets",
+        "w93-modular-turrets-lcannon",
         "space-science-pack", -- removed if cheaper
         "utility-science-pack", -- removed if cheaper
         "metallurgic-science-pack", -- removed if cheaper
@@ -99,8 +101,7 @@ if settings.startup["casting-weapons"].value then
         time = 45,
         count = 150
       },
-      effects =
-      {
+      effects = {
         { type = "unlock-recipe", recipe = "oc-casting-w93-scattergun-turret" },
         { type = "unlock-recipe", recipe = "oc-casting-w93-modular-turret-base" },
         { type = "unlock-recipe", recipe = "oc-casting-w93-modular-gun-hmg" },
@@ -128,6 +129,8 @@ if settings.startup["casting-weapons"].value then
         "electromagnetic-plant", -- crafting building
         "w93-modular-turrets2",
         "w93-modular-turrets-radar",
+        "w93-modular-turrets-plaser",
+        -- "w93-modular-turrets-tlaser",
         "space-science-pack", -- removed if cheaper
         "utility-science-pack", -- removed if cheaper
         "electromagnetic-science-pack", -- removed if cheaper
@@ -145,9 +148,9 @@ if settings.startup["casting-weapons"].value then
         time = 45,
         count = 150
       },
-      effects =
-      {
+      effects = {
         { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-plaser" },
+        -- { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-tlaser" },
         { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-turret2-base" },
         { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-radar" },
         { type = "unlock-recipe", recipe = "oc-pulse-w93-modular-gun-radar2" },
